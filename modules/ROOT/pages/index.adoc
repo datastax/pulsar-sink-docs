@@ -1,0 +1,58 @@
+= Welcome to DataStax Luna Streaming
+John Smart <john.smart@datastax.com>
+
+DataStax Luna Streaming is a new Kubernetes-based distribution of Apache Pulsar, based on the technology that Kesque built to run its Pulsar-as-a-service.
+
+== Components
+
+In addition to the distribution of https://pulsar.apache.org/docs/en/2.6.2/standalone/[Apache Pulsar 2.6.2], DataStax Luna Streaming provides:
+
+* An installer that can stand up a dev or production cluster on bare metal or VMs without a pre-existing Kubernetes environment
+
+* A helm chart that can deploy and manage Pulsar on your current Kubernetes infrastructure
+
+* Cassandra, Elastic, Kinesis, Kafka, and JDBC connectors
+
+* A management Admin Console
+
+* A monitoring and alerting system
+
+== Features
+
+* Horizontally scalable to millions of independent topics and millions of messages published per second
+
+* Strong ordering and consistency guarantees
+
+* Low latency durable storage
+
+* Topic and queue semantics
+
+* Load balancer
+
+* Designed for being deployed as a hosted service:
+** Multi-tenant
+** Authentication
+** Authorization
+** Quotas
+** Support for mixing very different workloads
+** Optional hardware isolation
+
+* Keeps track of consumer cursor position
+
+* REST API for provisioning, admin and stats
+
+* Geo replication
+
+* Transparent handling of partitioned topics
+
+* Transparent batching of messages
+
+== Where to go next...
+
+If you've got an existing K8 environment...:: To deploy Luna Streaming in your existing Kubernetes environment, see xref::quickstart-helm-installs.adoc[].
+
+If you've got bare metal or a cloud environment...:: To deploy Luna Streaming environment from scratch on bare metal or in a cloud environment, see xref::quickstart-server-installs.adoc[].
+
+If you'd like to learn about Pulsar Heartbeat...:: See xref::pulsar-monitor.adoc[].
+
+If you've got more questions...:: For additional information about Luna Streaming, see xref::faqs.adoc[].
