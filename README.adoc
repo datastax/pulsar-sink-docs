@@ -4,6 +4,10 @@ This repo contains the source files for the DataStax Apache Pulsar Connector doc
 
 The docs are written in asciidoc and use Antora to generate the output.
 
+Utlimate deployment target is TBD, but anticipating:
+
+https://docs.datastax.com/en/pulsar-sink/docs/
+
 == Dependencies
 
 Antora requires NodeJS. Install NodeJS, then Antora and then update project dependencies:
