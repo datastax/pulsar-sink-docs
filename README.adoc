@@ -1,6 +1,6 @@
-= DataStax Luna Streaming documentation
+= DataStax Apache Pulsar Connector documentation
 
-This repo contains the source files for the Luna Streaming documentation.
+This repo contains the source files for the DataStax Apache Pulsar Connector documentation. The project is also known as `pulsar-sink`.
 
 The docs are written in asciidoc and use Antora to generate the output.
 
