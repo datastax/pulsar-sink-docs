@@ -1,0 +1,20 @@
+[#kafkaTsRecordFailsToWriteToTable]
+= Record fails to write
+:imagesdir: _images
+
+Records never appear in the DataStax Enterprise database table.
+
+Records never appear in the DataStax Enterprise (DSE) database table.
+The cause can be issues with node availability, transient errors that prevent writes due to consistency level, a schema change where a mapped column was removed from the target table, and so forth.
+
+[#_remediation_solution_section]
+== Remediation {#solution .section}
+
+Verify the following:
+
+* Check for WARN and ERROR messages in the Kafka Connect log.
+* Check for WARN and ERROR on the system.log on the DSE coordinator node.
+* Status of writes.
+See xref:../monitoring/kafkaMetrics.adoc[Monitoring DataStax Apache Kafka Connector].
+
+*Parent topic:* xref:../../kafka/kafkaTroubleshoot.adoc[Troubleshooting the DataStax Apache Kafka Connector]

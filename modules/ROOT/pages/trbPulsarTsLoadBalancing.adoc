@@ -1,0 +1,24 @@
+[#kafkaTsLoadingBalancing]
+= Loading balancing datacenter is not specified
+:imagesdir: _images
+
+DataStax Apache Kafka Connector fails to start because the load balancing DC is not configured.
+
+The following error message occurs when the load balancing datacenter (link:../configuration_reference/kafkaDseConnection.md#loadBalancing_localDc[loadBalancing.localDc]) is not set in the configuration file.
+
+----
+org.apache.kafka.common.config.ConfigException: Invalid value [127.0.0.2] for
+          configuration contactPoints: When contact points is provided, loadBalancing.localDc must
+          also be specified
+----
+
+[#_remediation_section]
+== Remediation { .section}
+
+The connector requires that you set the `loadBalancing.localDc`.
+DataStax Enterprise datacenter names are case-sensitive.
+
+Check the datacenter name in the cluster by running link:/en/dse/6.7/dse-admin/datastax_enterprise/tools/nodetool/toolsStatus.html[nodetool status] and verify that link:../configuration_reference/kafkaDseConnection.md#loadBalancing_localDc[loadBalancing.localDc] exactly matches.
+Datacenter names are case sensitive.
+
+*Parent topic:* xref:../../kafka/kafkaTroubleshoot.adoc[Troubleshooting the DataStax Apache Kafka Connector]

@@ -1,0 +1,22 @@
+[#kafkaTsConnectorNotFound]
+= Connector not found
+:imagesdir: _images
+
+DataStax Apache Kafka connector fails to start when registering a configuration with the worker.
+
+The DataStax Apache Kafka™ Connector fails to start when registering a configuration with the worker with the following error message:
+
+----
+Failed to find any class that implements Connector and which name matches
+          com.datastax.kafkaconnector.DseSinkConnector
+----
+
+[#_remediation_solution_section]
+== Remediation {#solution .section}
+
+Verify the following:
+
+* Entry for the DataStax Apache Kafka Connector JAR in the `plugin.path` setting of the connect-distributed.properties / connect-standalone.properties.
+* Verify that the connector jar exists and is readable.
+
+*Parent topic:* xref:../../kafka/kafkaTroubleshoot.adoc[Troubleshooting the DataStax Apache Kafka Connector]

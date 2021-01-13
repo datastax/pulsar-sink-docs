@@ -1,0 +1,28 @@
+[#kafkaTsRecordParsingFails]
+= Data parsing fails
+:imagesdir: _images
+
+Data conversion fails.
+
+When the data from the Kafka field is not compatible with the data type of the target link:../kafkaIntro.md#kafkaIntroduction[supported database] table column, the data conversion fails and a message is logged in the Kafka Connect log.
+
+Example error message when parsing a string value for a numeric column:
+
+[source,no-highlight]
+----
+java.lang.IllegalArgumentException: Could not parse 'jack'; accepted formats are: a valid
+          number (e.g. '1234.56'), a valid Java numeric format (e.g. '-123.45e6'), a valid date-time
+          pattern (e.g. '2018-10-17T18:37:52.704Z'), or a valid boolean word
+----
+
+[#_remediation_solution_section]
+== Remediation {#solution .section}
+
+Ensure that the Kafka fields are mapped to the correct database columns.
+The connector can not automatically convert varying types.
+If they do not match, consider changing your table schema to accommodate the Kafka field types.
+
+TIP: When adding or changing columns in a database table, ensure that the schema is fully propagated before continuing.
+Use link:/en/dse/6.7/dse-admin/datastax_enterprise/tools/nodetool/toolsDescribeRing.html[nodetool describering] to show the schema version.
+
+*Parent topic:* xref:../../kafka/kafkaTroubleshoot.adoc[Troubleshooting the DataStax Apache Kafka Connector]

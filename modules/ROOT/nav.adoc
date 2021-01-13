@@ -44,4 +44,12 @@
 *** xref:monPulsarWriteMetrics.adoc[]
 ** xref:monPulsarConnectMetrics.adoc[]
 * Troubleshooting
+** xref:trbPulsarTsConnectorNotFound.adoc[]
+** xref:trbPulsarTsRecordProcessing.adoc[]
+** xref:trbPulsarTsRecordFailsToWriteToTable.adoc[]
+** xref:trbPulsarTsLargeBatches.adoc[]
+** xref:trbPulsarTsRecordParsingFails.adoc[]
+** xref:trbPulsarTsMissingFields.adoc[]
+** xref:trbPulsarTsBindAddress.adoc[]
+** xref:trbPulsarTsLoadBalancing.adoc[]
 * Examples
