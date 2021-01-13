@@ -12,7 +12,7 @@ In addition to Apache Pulsar itself, Luna Streaming provides:
 
 * An installer that can stand up a dev or production cluster on bare metal or VMs without a pre-existing Kubernetes environment
 * A helm chart that can deploy and manage Pulsar on your current Kubernetes infrastructure
-* Cassandra, Elastic, Kinesis, Kafka, and JDBC connectors
+* Cassandra, Elastic, Kinesis, Pulsar, and JDBC connectors
 * A management dashboard
 * A monitoring and alerting system
 

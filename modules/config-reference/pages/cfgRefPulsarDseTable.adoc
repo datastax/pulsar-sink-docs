@@ -1,10 +1,10 @@
-[#_kafka_topic_to_table_settings_kafkacassandratable_reference]
-= Kafka topic-to-table settings
+[#_pulsar_topic_to_table_settings_pulsarcassandratable_reference]
+= Pulsar topic-to-table settings
 :imagesdir: _images
 
-Capture Kafka topics in the supported database by specifying a target keyspace, table, and then map the topic fields to table columns.
+Capture Pulsar topics in the supported database by specifying a target keyspace, table, and then map the topic fields to table columns.
 
-Capture Kafka topics in the link:../kafkaIntro.md#kafkaIntroduction[supported database] by specifying a target keyspace, table, and then map the topic fields to table columns in the name of the parameter.
+Capture Pulsar topics in the link:../pulsarIntro.md#pulsarIntroduction[supported database] by specifying a target keyspace, table, and then map the topic fields to table columns in the name of the parameter.
 
 [#_parameters_synopsis_section]
 == Parameters {#synopsis .section}
@@ -35,13 +35,13 @@ topic.topic\_name.keyspace\_name.table\_name
 
 where:
 
-* topic_name - Kafka topic name.
+* topic_name - Pulsar topic name.
 * keyspace_name - database keyspace where the table is located.
 * table_name - database table where data is written.
 
 mapping::
 Required, field-to-column mapping.
-See xref:../kafkaMapTopicTable.adoc[Mapping kafka topics to database tables].
+See xref:../pulsarMapTopicTable.adoc[Mapping pulsar topics to database tables].
 
 consistencyLevel::
 Query consistency level.
@@ -64,7 +64,7 @@ Default: `LOCAL_ONE`
 ....
 
 nullToUnset::
-Whether to treat nulls in Kafka as UNSET in DSE.
+Whether to treat nulls in Pulsar as UNSET in DSE.
 DataStax recommends using the default to avoid creating unnecessary tombstones.
 
  Default: `true`
@@ -73,7 +73,7 @@ ttl::
 Time-to-live.
 Set to the number of seconds before the data is automatically deleted from the DSE table.
 When you configure `topic.<topic-name>.<keyspace-name>.<table-name>.ttl`, all rows for that topic table will have this same `TTL` value.
-DataStax Kafka Connector appends `AND TTL <configured-ttl-value>` to the INSERT statement for those rows.
+DataStax Pulsar Connector appends `AND TTL <configured-ttl-value>` to the INSERT statement for those rows.
 
  Default: `-1` \( disabled \)
 

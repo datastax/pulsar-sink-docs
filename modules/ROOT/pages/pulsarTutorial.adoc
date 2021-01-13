@@ -1,116 +1,116 @@
-[#kafkaTutorial]
+[#pulsarTutorial]
 = Cycling comments example
 :imagesdir: _images
 
-Step-by-step implementation for test or demonstration environments running Apache Kafka and the target database on the same system.
+Step-by-step implementation for test or demonstration environments running Apache Pulsar and the target database on the same system.
 
 [#_before_you_begin_section]
 == Before you begin
 
-This example assumes that DSE and Apache Kafka™ are running on the localhost.
+This example assumes that DSE and Apache Pulsar™ are running on the localhost.
 Before you begin, install DSE version 5.0 or later on the same system where you plan set up the tutorial.
 See link:/en/install/6.8/install/installTOC.html[Installing DataStax Enterprise 6.8].
 
 The cycling comments provides a simple example of mapping a topic to a database table.
-The example assumes that Apache Kafka and the link:kafkaIntro.md#kafkaIntroduction[supported database] are located on the same server.
+The example assumes that Apache Pulsar and the link:pulsarIntro.md#pulsarIntroduction[supported database] are located on the same server.
 
-The example uses a Kafka topic `cyclingComments` that contains records with key-value pairs which are mapped to columns in the DSE table `cycling.comments`.
+The example uses a Pulsar topic `cyclingComments` that contains records with key-value pairs which are mapped to columns in the DSE table `cycling.comments`.
 
 image:pulsarTopicToTable.png[]
 
-[#kafkaTutorialSetup]
-== Setting up the cycling comments topics on Kafka
+[#pulsarTutorialSetup]
+== Setting up the cycling comments topics on Pulsar
 
-Install DataStax Apache Kafka Connector and configure the cycling.comments topic.
+Install DataStax Apache Pulsar Connector and configure the cycling.comments topic.
 
-Install DataStax Enterprise (DSE), Apache Kafka, and DataStax Apache Kafka™ Connector on the same system in a test or development environment.
-Set up a Kafka topic `CyclingComments` and the `cycling.comments` table.
-Configure DataStax Apache Kafka Connector and register it with a running worker.
+Install DataStax Enterprise (DSE), Apache Pulsar, and DataStax Apache Pulsar™ Connector on the same system in a test or development environment.
+Set up a Pulsar topic `CyclingComments` and the `cycling.comments` table.
+Configure DataStax Apache Pulsar Connector and register it with a running worker.
 
-TIP: For additional Kafka Connector examples, we recommend that you also visit our https://github.com/datastax/kafka-examples[GitHub] site.
+TIP: For additional Pulsar Connector examples, we recommend that you also visit our https://github.com/datastax/pulsar-examples[GitHub] site.
 Feel free to clone and modify any of the examples for your own purposes.
 There is no warranty or implied official support.
-However, the examples are a great starting point to show you various ways of using the DataStax Apache Kafka Connector.
+However, the examples are a great starting point to show you various ways of using the DataStax Apache Pulsar Connector.
 
-. Make directories for the DataStax Apache Kafka Connector and Apache Kafka distributions.
+. Make directories for the DataStax Apache Pulsar Connector and Apache Pulsar distributions.
 
  ```language-bash
- mkdir kafka && mkdir dseconnectortmp &
+ mkdir pulsar && mkdir dseconnectortmp &
  ```
 
-. Download and extract Apache Kafka from https://kafka.apache.org/quickstart:
-. Download and extract the latest DataStax Apache Kafka Connector from the DataStax https://downloads.datastax.com/#akc[downloads] site.
+. Download and extract Apache Pulsar from https://pulsar.apache.org/quickstart:
+. Download and extract the latest DataStax Apache Pulsar Connector from the DataStax https://downloads.datastax.com/#akc[downloads] site.
 The current version is 1.4.0.
-. Copy the DataStax Connector JAR to the Kafka plug-in directory.
+. Copy the DataStax Connector JAR to the Pulsar plug-in directory.
 
  ```language-bash
- mv dseconnectortmp/kafka-connect-cassandra-sink-1.4.0.jar kafka/libs/ &
+ mv dseconnectortmp/pulsar-connect-cassandra-sink-1.4.0.jar pulsar/libs/ &
  ```
 
-. In the kafka/config/connector-distributed.properties file, set the `plugin.path` to the fully qualified path to the DataStax Apache Kafka Connector JAR file.
+. In the pulsar/config/connector-distributed.properties file, set the `plugin.path` to the fully qualified path to the DataStax Apache Pulsar Connector JAR file.
 . To ease the setup of this tutorial, make a log directory and allow access to all.
 
  ```language-bash
- sudo -u root mkdir /var/log/kafka &&
- sudo -u root chmod 777 /var/log/kafka &
+ sudo -u root mkdir /var/log/pulsar &&
+ sudo -u root chmod 777 /var/log/pulsar &
  ```
 
-. Start Zookeeper and Kafka server with the default configuration:      -   Start Zookeeper:
+. Start Zookeeper and Pulsar server with the default configuration:      -   Start Zookeeper:
 +
 [source,language-bash]
 ----
-   kafka/bin/zookeeper-server-start.sh kafka/config/zookeeper.properties &> /var/log/kafka/zookeeper_start.log &
+   pulsar/bin/zookeeper-server-start.sh pulsar/config/zookeeper.properties &> /var/log/pulsar/zookeeper_start.log &
 ----
 
 ....
--   Start Kafka:
+-   Start Pulsar:
 
     ```language-bash
-    kafka/bin/kafka-server-start.sh kafka/config/server.properties &> /var/log/kafka/kafka_start.log &
+    pulsar/bin/pulsar-server-start.sh pulsar/config/server.properties &> /var/log/pulsar/pulsar_start.log &
     ```
 ....
 
-. Configure the Kafka distributed worker key and value converters to match the type of the example data (string).
+. Configure the Pulsar distributed worker key and value converters to match the type of the example data (string).
 1.
 Comment out the default converters and converter schema settings in the connect-distributed.properties file:
 +
 [source,language-bash]
 ----
-   sed -e '/key\.converter\=/s/^/#/g' -i kafka/config/connect-distributed.properties &
+   sed -e '/key\.converter\=/s/^/#/g' -i pulsar/config/connect-distributed.properties &
 ----
 +
 [source,language-bash]
 ----
-   sed -e '/value\.converter\=/s/^/#/g' -i kafka/config/connect-distributed.properties &
+   sed -e '/value\.converter\=/s/^/#/g' -i pulsar/config/connect-distributed.properties &
 ----
 +
 [source,language-bash]
 ----
-   sed -e '/key\.converter\.schemas\.enable\=/s/^/#/g' -i kafka/config/connect-distributed.properties &
+   sed -e '/key\.converter\.schemas\.enable\=/s/^/#/g' -i pulsar/config/connect-distributed.properties &
 ----
 +
 [source,language-bash]
 ----
-   sed -e '/value\.converter\.schemas\.enable\=/s/^/#/g' -i kafka/config/connect-distributed.properties &
+   sed -e '/value\.converter\.schemas\.enable\=/s/^/#/g' -i pulsar/config/connect-distributed.properties &
 ----
 
 ....
 2.   Add the string converter settings to the connect-distributed.properties file:
 
     ```no-highlight
-    echo 'key.converter=org.apache.kafka.connect.storage.StringConverter' >> kafka/config/connect-distributed.properties &
+    echo 'key.converter=org.apache.pulsar.connect.storage.StringConverter' >> pulsar/config/connect-distributed.properties &
     ```
 
     ```no-highlight
-    echo 'value.converter=org.apache.kafka.connect.storage.StringConverter' >> kafka/config/connect-distributed.properties &
+    echo 'value.converter=org.apache.pulsar.connect.storage.StringConverter' >> pulsar/config/connect-distributed.properties &
     ```
 
     ```no-highlight
-    echo 'key.converter.schemas.enable=false' >> kafka/config/connect-distributed.properties &
+    echo 'key.converter.schemas.enable=false' >> pulsar/config/connect-distributed.properties &
     ```
 
     ```no-highlight
-    echo 'value.converter.schemas.enable=false' >> kafka/config/connect-distributed.properties &
+    echo 'value.converter.schemas.enable=false' >> pulsar/config/connect-distributed.properties &
     ```
 ....
 
@@ -118,8 +118,8 @@ Comment out the default converters and converter schema settings in the connect-
 
 ....
 ```language-bash
-kafka/bin/connect-distributed.sh \
-kafka/config/connect-distributed.properties &> worker.log &
+pulsar/bin/connect-distributed.sh \
+pulsar/config/connect-distributed.properties &> worker.log &
 ```
 
 To verify that the worker is running, use the following command:
@@ -132,13 +132,13 @@ ps auwx | grep ConnectDistributed
 . Create the `CyclingComments` topic:
 
  ```language-bash
- kafka/bin/kafka-topics.sh --create --zookeeper localhost:2181 \
+ pulsar/bin/pulsar-topics.sh --create --zookeeper localhost:2181 \
  --replication-factor 1 \
  --partitions 1 \
  --topic CyclingComments &
  ```
 
-[#kafkaTutorialCqlTable]
+[#pulsarTutorialCqlTable]
 == Setting up CQL cycling keyspace and comments table
 
 Create a cycling keyspace with comments table on the DataStax Enterprise database.
@@ -171,15 +171,15 @@ Create a cycling keyspace with comments table on the DataStax Enterprise databas
    WITH CLUSTERING ORDER BY (created_at DESC);
  ```
 
-[#kafkaSettingUpDatastaxConnector]
+[#pulsarSettingUpDatastaxConnector]
 == Setting up DataStax Connector
 
-Copy and paste the DataStax Connector configuration from this example into a file on the Kafka server.
+Copy and paste the DataStax Connector configuration from this example into a file on the Pulsar server.
 
-. In the Kafka plug-in configuration directory, create a cycling-comments-sink.json configuration file:
+. In the Pulsar plug-in configuration directory, create a cycling-comments-sink.json configuration file:
 
  ```language-bash
- touch kafka/config/cycling-comments-sink.json
+ touch pulsar/config/cycling-comments-sink.json
  ```
 
 . Open the cycling-comments-sink.json file for editing.
@@ -189,7 +189,7 @@ Copy the following JSON configuration and paste it into the file:
  {
    "name": "cycling-comments-sink",
    "config": {
-     "connector.class": "com.datastax.kafkaconnector.DseSinkConnector",
+     "connector.class": "com.datastax.pulsarconnector.DseSinkConnector",
      "tasks.max": "1",
      "topics": "CyclingComments",
      "topic.CyclingComments.cycling.comments.mapping":
@@ -203,7 +203,7 @@ Copy the following JSON configuration and paste it into the file:
 
  ```language-bash
  nohup curl -X POST -H "Content-Type: application/json" \
- -d @kafka/config/cycling-comments-sink.json \
+ -d @pulsar/config/cycling-comments-sink.json \
  http://localhost:8083/connectors &>/dev/null &
  ```
 
@@ -213,23 +213,23 @@ Copy the following JSON configuration and paste it into the file:
  curl -X GET "http://127.0.0.1:8083/connectors/cycling-comments-sink/status"
  ```
 
-[#kafkaTutorialData]
-== Inserting data from a JSON file into the Kafka topic
+[#pulsarTutorialData]
+== Inserting data from a JSON file into the Pulsar topic
 
-Use the Apache Kafka producer to stream data into the cyclingComments topic.
+Use the Apache Pulsar producer to stream data into the cyclingComments topic.
 
-Use the Apache Kafka producer to stream data into the `cyclingComments` topic.
+Use the Apache Pulsar producer to stream data into the `cyclingComments` topic.
 
 . Create a directory for the example data:
 
  ```language-bash
- mkdir kafka_examples
+ mkdir pulsar_examples
  ```
 
 . Create a file for the example data:
 
  ```language-bash
- touch kafka_examples/data_all.json
+ touch pulsar_examples/data_all.json
  ```
 
 . Open the data_all.json file for editting.
@@ -270,25 +270,25 @@ Copy the following data and paste it into the file.
  ```
 
 . Save the changes and close the file.
-. Load the cycling comments data using the Kafka producer:
+. Load the cycling comments data using the Pulsar producer:
 
  ```language-bash
- kafka/bin/kafka-console-producer.sh \
+ pulsar/bin/pulsar-console-producer.sh \
  --broker-list localhost:9092 \
- --topic CyclingComments < kafka_examples/data_all.json &
+ --topic CyclingComments < pulsar_examples/data_all.json &
  ```
 
-[#kafkaTutorialVerifyingResults]
+[#pulsarTutorialVerifyingResults]
 == Verifying records processed and writes
 
-Ensure that the tutorial data was received by Kafka and records were processed by the connector.
+Ensure that the tutorial data was received by Pulsar and records were processed by the connector.
 
-Ensure that the tutorial data was received by Apache Kafka™ and records were processed by the DataStax Apache Kafka Connector.
+Ensure that the tutorial data was received by Apache Pulsar™ and records were processed by the DataStax Apache Pulsar Connector.
 
 . Get a list of all messages in the `cyclingComments` topic:
 
  ```language-bash
- kafka/bin/kafka-console-consumer.sh --bootstrap-server localhost:9092 \
+ pulsar/bin/pulsar-console-consumer.sh --bootstrap-server localhost:9092 \
  --topic CyclingComments --from-beginning > ~/CyclingComments-records.log &
  ```
 

@@ -1,10 +1,10 @@
-[#kafkaUpdateConfig]
-= Updating the DataStax Apache Kafka Connector configuration
+[#pulsarUpdateConfig]
+= Updating the DataStax Apache Pulsar Connector configuration
 :imagesdir: _images
 
 Change the configuration of a running connector.
 
-To update the configuration of an active DataStax Apache Kafka™ Connector, use the following Kafka Connect REST API command:
+To update the configuration of an active DataStax Apache Pulsar™ Connector, use the following Pulsar Connect REST API command:
 
 [source,language-bash]
 ----
@@ -14,12 +14,12 @@ curl -X PUT -H "Content-Type: application/json" -d @connector\_properties\_file 
 
 where
 
-* connector_properties_file - Specify the absolute path to the DataStax Apache Kafka® Connector configuration file.
+* connector_properties_file - Specify the absolute path to the DataStax Apache Pulsar® Connector configuration file.
 Samples are provided in the connector download.
-* worker_ip - The hostname or IP address of the Kafka Connect worker.
-* port - The listening port for the Kafka Connect REST API.
+* worker_ip - The hostname or IP address of the Pulsar Connect worker.
+* port - The listening port for the Pulsar Connect REST API.
 By default this service runs on _port_ 8083.
-* connector_name - DataStax Apache Kafka® Connector link:../configuration_reference/kafkaConnector.md#name[name].
+* connector_name - DataStax Apache Pulsar® Connector link:../configuration_reference/pulsarConnector.md#name[name].
 
 Example update configuration
 
@@ -40,7 +40,7 @@ Output:
 {
   "name": "cassandra-sink-distributed-example",
   "config": {
-    "connector.class": "com.datastax.kafkaconnector.DseSinkConnector",
+    "connector.class": "com.datastax.pulsarconnector.DseSinkConnector",
     "tasks.max": "5",
     "topics": "json-stream",
     "topic.json-stream.consistencyLevel": "LOCAL_QUORUM",

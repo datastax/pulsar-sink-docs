@@ -1,10 +1,10 @@
-[#kafkaTsLargeBatches]
+[#pulsarTsLargeBatches]
 = Writing fails because of mutation size
 :imagesdir: _images
 
-Batches from Kafka Connector are rejected when max size exceeded.
+Batches from Pulsar Connector are rejected when max size exceeded.
 
-The DataStax Apache Kafka Connector collects records to write to the DataStax Enterrpise database in CQL link:/en/dse/6.7/cql/cql/cql_reference/cql_commands/cqlBatch.html[BATCH] commands.
+The DataStax Apache Pulsar Connector collects records to write to the DataStax Enterrpise database in CQL link:/en/dse/6.7/cql/cql/cql_reference/cql_commands/cqlBatch.html[BATCH] commands.
 Data insertions and deletions in the records are known as mutations.
 The Connector is implemented to use single-partition batches that are submitted as one mutation operation.
 
@@ -31,7 +31,7 @@ If you set `max_mutation_size_in_kb` explicitly, also set `commitlog_segment_siz
 
 `2 * max_mutation_size_in_kb / 1024`
 
-You can decrease the batch size by lowering the number of records collected in each batch (link:../configuration_reference/kafkaDseConnection.md#maxNumberOfRecordsInBatch[maxNumberOfRecordsInBatch]).
+You can decrease the batch size by lowering the number of records collected in each batch (link:../configuration_reference/pulsarDseConnection.md#maxNumberOfRecordsInBatch[maxNumberOfRecordsInBatch]).
 The default is 32.
 
 If you cannot decrease the size of your batches, test whether increases to `max_mutation_size_in_kb` and `commitlog_segment_size_in_mb` result in batches completing successfully, without consuming too much RAM on the partition's node.
@@ -40,4 +40,4 @@ Also increase the DSE database batch threshold using link:/en/dse/6.7/dse-admin/
 Investigate why the mutations are larger than expected.
 Look for underlying issues with your client application, access patterns, and data model, because increasing the commitlog segment size is a limited fix.
 
-*Parent topic:* xref:../../kafka/kafkaTroubleshoot.adoc[Troubleshooting the DataStax Apache Kafka Connector]
+*Parent topic:* xref:../../pulsar/pulsarTroubleshoot.adoc[Troubleshooting the DataStax Apache Pulsar Connector]

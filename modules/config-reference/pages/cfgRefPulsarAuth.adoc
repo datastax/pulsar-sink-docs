@@ -1,4 +1,4 @@
-[#_using_the_datastax_connector_with_datastax_enterprise_authentication_kafkaauth_reference]
+[#_using_the_datastax_connector_with_datastax_enterprise_authentication_pulsarauth_reference]
 = Using the DataStax Connector with DataStax Enterprise authentication
 :imagesdir: _images
 
@@ -10,5 +10,5 @@ TIP: To verify that authentication is configured, check the following parameters
 
 * link:/en/dse/6.7/dse-admin/datastax_enterprise/config/configCassandra_yaml.html#configCassandra_yaml__authenticator[authenticator] of the cassandra.yaml
 * link:/en/dse/6.7/dse-admin/datastax_enterprise/config/configDseYaml.html#configDseYaml__authentication_options[authentication_options] of the dse.yaml
-* *xref:../../kafka/configuration_reference/kafkaAuthLdap.adoc[Internal or LDAP authentication]* + When the cluster has internal or LDAP authentication enabled, you should configure the username and password settings for the Kafka Connector.
-* *xref:../../kafka/configuration_reference/kafkaKerberos.adoc[Kerberos authentication]* + When the cluster has Kerberos authentication enabled configure Kerberos settings for DataStax Apache Kafka™ Connector.
+* *xref:../../pulsar/configuration_reference/pulsarAuthLdap.adoc[Internal or LDAP authentication]* + When the cluster has internal or LDAP authentication enabled, you should configure the username and password settings for the Pulsar Connector.
+* *xref:../../pulsar/configuration_reference/pulsarKerberos.adoc[Kerberos authentication]* + When the cluster has Kerberos authentication enabled configure Kerberos settings for DataStax Apache Pulsar™ Connector.

@@ -1,10 +1,10 @@
-[#kafkaRecordHeaderToTable]
-= Extract Kafka record header values
+[#pulsarRecordHeaderToTable]
+= Extract Pulsar record header values
 :imagesdir: _images
 
-Extract values from Kafka record header and write to the database table.
+Extract values from Pulsar record header and write to the database table.
 
-In the Kafka topic mapping, you can extract values from the record's header by using `header.header-field-name`, and write the values to a supported database table:
+In the Pulsar topic mapping, you can extract values from the record's header by using `header.header-field-name`, and write the values to a supported database table:
 
 * https://docs.astra.datastax.com/docs[DataStax Astra] cloud databases
 * DataStax Enterprise (DSE) 4.7 and later databases
@@ -19,6 +19,6 @@ topic.my_topic.my_keyspace.my_table.mapping=col1=key.f1, col2=value.f1, __ttl=va
 
 You cannot map the entire header.
 Use one or more individual mapping statements to extract the desired values and have them written to the database table.
-The Kafka record's header can have fields that are similar to `key.field-name` or `value.field-name`.
+The Pulsar record's header can have fields that are similar to `key.field-name` or `value.field-name`.
 
-For example, you may want to send the Kafka record with its key, value, and custom header information such as `trace_id` or another type of internal identifier, and save those values in your database table.
+For example, you may want to send the Pulsar record with its key, value, and custom header information such as `trace_id` or another type of internal identifier, and save those values in your database table.

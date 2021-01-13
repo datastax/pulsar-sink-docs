@@ -1,12 +1,12 @@
-[#_kerberos_authentication_kafkakerberos_reference]
+[#_kerberos_authentication_pulsarkerberos_reference]
 = Kerberos authentication
 :imagesdir: _images
 
-When the cluster has Kerberos authentication enabled configure Kerberos settings for DataStax Apache Kafka™ Connector.
+When the cluster has Kerberos authentication enabled configure Kerberos settings for DataStax Apache Pulsar™ Connector.
 
 When the cluster has Kerberos authentication enabled, configure these authentication settings.
 
-NOTE: When link:/en/dse/6.8/dse-admin/datastax_enterprise/config/configDseYaml.html#configDseYaml__authorizationOptions[authorization is enabled], the DataStax connector login role must have a minimum of `modify` privileges on tables receiving data from the DataStax Apache Kafka® Connector.
+NOTE: When link:/en/dse/6.8/dse-admin/datastax_enterprise/config/configDseYaml.html#configDseYaml__authorizationOptions[authorization is enabled], the DataStax connector login role must have a minimum of `modify` privileges on tables receiving data from the DataStax Apache Pulsar® Connector.
 
 [#_parameters_synopsis_section]
 == Parameters {#synopsis .section}
@@ -26,7 +26,7 @@ auth.provider:: Select the type of authentication provider configured for the Da
 -   **DSE** - Internal or LDAP authentication.
 -   **GSSAPI** - Supports SASL authentication to DSE clusters using the GSSAPI mechanism \(Kerberos authentication\)
 
-    **Note:** When using the GSSAPI, the Kafka Connect process requires that the Kerberos configuration file \([krb5.conf](../../glossary/gloss_krb5conf.md)\) location is provided in the `java.security.krb5.conf` system property at startup. See [Using the DataStax Apache Kafka Connector with Kerberos](../security/kafkaKerberosAuth.md).
+    **Note:** When using the GSSAPI, the Pulsar Connect process requires that the Kerberos configuration file \([krb5.conf](../../glossary/gloss_krb5conf.md)\) location is provided in the `java.security.krb5.conf` system property at startup. See [Using the DataStax Apache Pulsar Connector with Kerberos](../security/pulsarKerberosAuth.md).
 
 
 Default: `None`

@@ -1,15 +1,15 @@
-[#_ssl_encrypted_connection_kafkassl_reference]
+[#_ssl_encrypted_connection_pulsarssl_reference]
 = SSL encrypted connection
 :imagesdir: _images
 
-When the cluster has client encryption enabled configure the SSL keys and certificates for the DataStax Apache Kafka™ Connector.
+When the cluster has client encryption enabled configure the SSL keys and certificates for the DataStax Apache Pulsar™ Connector.
 
-When the cluster has client encryption enabled, configure the SSL keys and certificates for the DataStax Apache Kafka™ Connector.
+When the cluster has client encryption enabled, configure the SSL keys and certificates for the DataStax Apache Pulsar™ Connector.
 
 TIP: SSL encryption settings are configured in the link:/en/dse/6.7/dse-admin/datastax_enterprise/config/configCassandra_yaml.html#configCassandra_yaml__clientEncryptSection[Client-to-node encryption options].
 See link:/en/dse/6.7/dse-admin/datastax_enterprise/security/secSslTOC.html[Configuring SSL].
 
-NOTE: You cannot use this option if specifying the link:kafkaConnector.md#secure_ConnectBundle[cloud.secureConnectBundle] option for connecting to a DataStax Astra database.
+NOTE: You cannot use this option if specifying the link:pulsarConnector.md#secure_ConnectBundle[cloud.secureConnectBundle] option for connecting to a DataStax Astra database.
 
 [#_parameters_synopsis_section]
 == Parameters {#synopsis .section}

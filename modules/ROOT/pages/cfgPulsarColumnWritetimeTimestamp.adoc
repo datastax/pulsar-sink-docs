@@ -1,10 +1,10 @@
-[#kafkaColumnWritetimeTimestamp]
+[#pulsarColumnWritetimeTimestamp]
 = Specify writetime timestamp column
 :imagesdir: _images
 
-Optionally specify the column to use for the writetime timestamp when inserting records from Kafka into supported database tables.
+Optionally specify the column to use for the writetime timestamp when inserting records from Pulsar into supported database tables.
 
-In the Kafka topic mapping, you can optionally specify which column should be used to note the timestamp when the Kafka-produced record was inserted into any of the following:
+In the Pulsar topic mapping, you can optionally specify which column should be used to note the timestamp when the Pulsar-produced record was inserted into any of the following:
 
 * https://docs.astra.datastax.com/docs[DataStax Astra] cloud databases
 * DataStax Enterprise (DSE) 4.7 and later databases
@@ -17,8 +17,8 @@ The format is:
 topic.my_topic.my_ks.my_table.mapping=col1=key.f1, col2=value.f1, __timestamp=value.f2
 ----
 
-By default, the database internally tracks the `writetime` timestamp of records inserted from Kafka.
-However, this `__timestamp` feature in the mapping supports the scenario where the Kafka records have an explicit timestamp field that you want to use as a writetime for the database record produced by the connector.
+By default, the database internally tracks the `writetime` timestamp of records inserted from Pulsar.
+However, this `__timestamp` feature in the mapping supports the scenario where the Pulsar records have an explicit timestamp field that you want to use as a writetime for the database record produced by the connector.
 
 IMPORTANT: The column value that you use must be a *number*.
 

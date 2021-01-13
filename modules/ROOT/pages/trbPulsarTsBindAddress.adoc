@@ -1,4 +1,4 @@
-[#kafkaTsBindAddresse]
+[#pulsarTsBindAddresse]
 = Bind address already in use
 :imagesdir: _images
 
@@ -31,4 +31,4 @@ automat+ 30950  6.0 26.7 4839156 2190816 ?     Sl   Oct22 230:05
 
 Kill the other process or use a different port.
 
-*Parent topic:* xref:../../kafka/kafkaTroubleshoot.adoc[Troubleshooting the DataStax Apache Kafka Connector]
+*Parent topic:* xref:../../pulsar/pulsarTroubleshoot.adoc[Troubleshooting the DataStax Apache Pulsar Connector]

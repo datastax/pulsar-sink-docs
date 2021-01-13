@@ -1,10 +1,10 @@
-[#_displaying_the_datastax_connector_configuration_kafkadisplayconfig_task]
+[#_displaying_the_datastax_connector_configuration_pulsardisplayconfig_task]
 = Displaying the DataStax Connector configuration
 :imagesdir: _images
 
 Display configuration of a running connector.
 
-Use the Apache Kafka Connect REST API `config` command to show the configuration of a running DataStax Apache Kafka™ Connector:
+Use the Apache Pulsar Connect REST API `config` command to show the configuration of a running DataStax Apache Pulsar™ Connector:
 
 [source,language-bash]
 ----
@@ -13,10 +13,10 @@ curl -X GET "http://worker\_ip:port/connectors/connector\_name/config"
 
 where
 
-* worker_ip - The hostname or IP address of the Kafka Connect worker.
-* port - The listening port for the Kafka Connect REST API.
+* worker_ip - The hostname or IP address of the Pulsar Connect worker.
+* port - The listening port for the Pulsar Connect REST API.
 By default this service runs on _port_ 8083.
-* connector_name - DataStax Apache Kafka® Connector link:../configuration_reference/kafkaConnector.md#name[name].
+* connector_name - DataStax Apache Pulsar® Connector link:../configuration_reference/pulsarConnector.md#name[name].
 
 Example show configuration
 
@@ -36,7 +36,7 @@ Output:
 {
   "name": "cassandra-sink-distributed-example",
   "config": {
-    "connector.class": "com.datastax.kafkaconnector.DseSinkConnector",
+    "connector.class": "com.datastax.pulsarconnector.DseSinkConnector",
     "tasks.max": "5",
     "topics": "json-stream",
     "topic.json-stream.consistencyLevel": "LOCAL_QUORUM",

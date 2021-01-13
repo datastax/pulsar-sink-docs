@@ -1,12 +1,12 @@
-[#kafkaChangeSchema]
+[#pulsarChangeSchema]
 = Changing the topic or table schema
 :imagesdir: _images
 
 How to update the DataStax Connector when schema changes are required.
 
-How to update the DataStax Apache Kafka™ Connector when schema changes are required.
+How to update the DataStax Apache Pulsar™ Connector when schema changes are required.
 
-* *xref:../../kafka/operations/kafkaAddField.adoc[Adding a field to a Kafka Topic]* + Steps to change the Kafka Topic schema.
-* *xref:../../kafka/operations/kafkaRemoveField.adoc[Removing a field map]*
-* *xref:../../kafka/operations/kafkaAddTableColumn.adoc[Adding a column to the database table]* + Add a column to the database table to synchronize an existing field from a Kafka topic.
-* *xref:../../kafka/operations/kafkaRemoveColumn.adoc[Removing a Table Column from the mapping specification]* + Remove a database column from the schema.
+* *xref:../../pulsar/operations/pulsarAddField.adoc[Adding a field to a Pulsar Topic]* + Steps to change the Pulsar Topic schema.
+* *xref:../../pulsar/operations/pulsarRemoveField.adoc[Removing a field map]*
+* *xref:../../pulsar/operations/pulsarAddTableColumn.adoc[Adding a column to the database table]* + Add a column to the database table to synchronize an existing field from a Pulsar topic.
+* *xref:../../pulsar/operations/pulsarRemoveColumn.adoc[Removing a Table Column from the mapping specification]* + Remove a database column from the schema.

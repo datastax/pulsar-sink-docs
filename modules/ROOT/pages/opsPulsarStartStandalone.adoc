@@ -1,25 +1,25 @@
-[#_deploying_the_datastax_connector_in_standalone_mode_kafkastartstandalone_task]
+[#_deploying_the_datastax_connector_in_standalone_mode_pulsarstartstandalone_task]
 = Deploying the DataStax Connector in standalone mode
 :imagesdir: _images
 
-Run an instance of the DataStax Apache Kafka™ Connector on a worker in standalone mode.
+Run an instance of the DataStax Apache Pulsar™ Connector on a worker in standalone mode.
 
 DataStax recommends using standalone mode only for development and test environments.
-Standalone mode runs a single (standalone) instance of the DataStax Apache Kafka™ Connector on a Apache Kafka Connect worker.
+Standalone mode runs a single (standalone) instance of the DataStax Apache Pulsar™ Connector on a Apache Pulsar Connect worker.
 
 The DataStax Connector download package includes a thoroughly commented sample Java properties file (cassandra-sink-standalone.properties.sample).
 Use the sample file as a reference when configuring a standalone deployment.
 
-xref:../install/kafkaInstall.adoc[Download and install] the DataStax Apache Kafka Connector.
+xref:../install/pulsarInstall.adoc[Download and install] the DataStax Apache Pulsar Connector.
 
-. Configure the connection and topic to table settings in the dse-sink.properties file: See xref:../kafkaConfigToc.adoc[DataStax Apache Kafka Connector configuration parameter reference].
-. Start the DataStax Apache Kafka Connector with a standalone mode worker:
+. Configure the connection and topic to table settings in the dse-sink.properties file: See xref:../pulsarConfigToc.adoc[DataStax Apache Pulsar Connector configuration parameter reference].
+. Start the DataStax Apache Pulsar Connector with a standalone mode worker:
 
 ....
 ```language-bash
 bin/connect-standalone.sh worker.properties dse-sink.properties
 ```
 
--   worker.properties is the Apache Kafka worker configuration file.
+-   worker.properties is the Apache Pulsar worker configuration file.
 -   dse-sink.properties is the DataStax Connector configuration file.
 ....

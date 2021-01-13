@@ -1,23 +1,23 @@
-[#_enabling_java_management_extension_remote_connections_kafkaenablejmx_task]
+[#_enabling_java_management_extension_remote_connections_pulsarenablejmx_task]
 = Enabling Java Management Extension remote connections
 :imagesdir: _images
 
-Allow remote JMX connections to monitor DataStax Apache Kafka Connector activity.
+Allow remote JMX connections to monitor DataStax Apache Pulsar Connector activity.
 
-Allow remote JMX (Java Management Extension) connections to monitor DataStax Apache Kafka™ Connector activity.
+Allow remote JMX (Java Management Extension) connections to monitor DataStax Apache Pulsar™ Connector activity.
 
 To enable remote JMX connections:
 
 * *Production environment* -
  .. Enable security and authentication for remote JMX connections.
 See the https://docs.oracle.com/javase/8/docs/technotes/guides/management/agent.html[Java Documentation].
- .. add the following to the Kafka Connect worker startup script:
+ .. add the following to the Pulsar Connect worker startup script:
 +
 [source,no-highlight]
 ----
 export KAFKA_JMX_OPTS="-Dcom.sun.management.jmxremote=true -Dcom.sun.management.jmxremote.authenticate=true  -Dcom.sun.management.jmxremote.ssl=true -Djava.rmi.server.hostname=worker\_ip -Dcom.sun.management.jmxremote.port=custom\_port"
 ----
-* *Secured development and test environment* - Add the following to the Kafka Connect worker startup script (connect-standalone.sh /connect-distributed.sh):
+* *Secured development and test environment* - Add the following to the Pulsar Connect worker startup script (connect-standalone.sh /connect-distributed.sh):
 +
 [source,no-highlight]
 ----

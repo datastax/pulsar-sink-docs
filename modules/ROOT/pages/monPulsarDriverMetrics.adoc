@@ -1,4 +1,4 @@
-[#_write_requests_to_the_datastax_platform_kafkadrivermetrics_reference]
+[#_write_requests_to_the_datastax_platform_pulsardrivermetrics_reference]
 = Write requests to the DataStax platform
 :imagesdir: _images
 
@@ -11,12 +11,12 @@ The MBean path is:
 
 [source,no-highlight]
 ----
-objectName='com.datastax.kafkaconnector:connector=connector\_name,driver=driver,session=session\_id,name=cql-requests'
+objectName='com.datastax.pulsarconnector:connector=connector\_name,driver=driver,session=session\_id,name=cql-requests'
 ----
 
 where
 
-* connector_name - DataStax Apache Kafka® Connector link:../configuration_reference/kafkaConnector.md#name[name].
+* connector_name - DataStax Apache Pulsar® Connector link:../configuration_reference/pulsarConnector.md#name[name].
 * session_id - Internal session id used by the connector;
 for example: `s0`.
 
@@ -30,42 +30,42 @@ The following attributes make up the CQL request latency histogram:
 
 [source,no-highlight]
 ----
-objectName='com.datastax.kafkaconnector:connector=connector\_name,driver=driver,session=session\_id,name=cql-requests' attribute='50thPercentile'
+objectName='com.datastax.pulsarconnector:connector=connector\_name,driver=driver,session=session\_id,name=cql-requests' attribute='50thPercentile'
 ----
 
 75thPercentile:: The attribute is:
 
 [source,no-highlight]
 ----
-objectName='com.datastax.kafkaconnector:connector=connector\_name,driver=driver,session=session\_id,name=cql-requests' attribute='75thPercentile'
+objectName='com.datastax.pulsarconnector:connector=connector\_name,driver=driver,session=session\_id,name=cql-requests' attribute='75thPercentile'
 ----
 
 95thPercentile:: The attribute is:
 
 [source,no-highlight]
 ----
-objectName='com.datastax.kafkaconnector:connector=connector\_name,driver=driver,session=session\_id,name=cql-requests' attribute='95thPercentile'
+objectName='com.datastax.pulsarconnector:connector=connector\_name,driver=driver,session=session\_id,name=cql-requests' attribute='95thPercentile'
 ----
 
 98thPercentile:: The attribute is:
 
 [source,no-highlight]
 ----
-objectName='com.datastax.kafkaconnector:connector=connector\_name,driver=driver,session=session\_id,name=cql-requests' attribute='98thPercentile'
+objectName='com.datastax.pulsarconnector:connector=connector\_name,driver=driver,session=session\_id,name=cql-requests' attribute='98thPercentile'
 ----
 
 99thPercentile:: The attribute is:
 
 [source,no-highlight]
 ----
-objectName='com.datastax.kafkaconnector:connector=connector\_name,driver=driver,session=session\_id,name=cql-requests' attribute='99thPercentile'
+objectName='com.datastax.pulsarconnector:connector=connector\_name,driver=driver,session=session\_id,name=cql-requests' attribute='99thPercentile'
 ----
 
 999thPercentile:: The attribute is:
 
 [source,no-highlight]
 ----
-objectName='com.datastax.kafkaconnector:connector=connector\_name,driver=driver,session=session\_id,name=cql-requests' attribute='999thPercentile'
+objectName='com.datastax.pulsarconnector:connector=connector\_name,driver=driver,session=session\_id,name=cql-requests' attribute='999thPercentile'
 ----
 
 Throughput
@@ -79,7 +79,7 @@ the default is 32.
 MeanRate:: Average writes-per-second.
 
  ```no-highlight
- objectName='com.datastax.kafkaconnector:connector=connector\_name,driver=driver,session=session\_id,name=cql-requests' attribute='MeanRate''
+ objectName='com.datastax.pulsarconnector:connector=connector\_name,driver=driver,session=session\_id,name=cql-requests' attribute='MeanRate''
  ```
 
 Write count
@@ -90,10 +90,10 @@ Count:: Total number of write requests sent to the DataStax platform by the conn
 
 ....
 ```no-highlight
-objectName='com.datastax.kafkaconnector:connector=connector\_name,driver=driver,session=session\_id,name=cql-requests' attribute='Count'
+objectName='com.datastax.pulsarconnector:connector=connector\_name,driver=driver,session=session\_id,name=cql-requests' attribute='Count'
 ```
 
-**Tip:** The write count can differ from [recordCount](kafkaRecordCountMetrics.md) because the driver uses a batch statement that can include multiple records.
+**Tip:** The write count can differ from [recordCount](pulsarRecordCountMetrics.md) because the driver uses a batch statement that can include multiple records.
 ....
 
 ## CQL client timeouts { .section}
@@ -107,12 +107,12 @@ The MBean path is:
 
 [source,no-highlight]
 ----
-objectName='com.datastax.kafkaconnector:connector=connector\_name,driver=driver,session=session\_id,name=cql-client-timeouts'
+objectName='com.datastax.pulsarconnector:connector=connector\_name,driver=driver,session=session\_id,name=cql-client-timeouts'
 ----
 
 where
 
-* connector_name - DataStax Apache Kafka® Connector link:../configuration_reference/kafkaConnector.md#name[name].
+* connector_name - DataStax Apache Pulsar® Connector link:../configuration_reference/pulsarConnector.md#name[name].
 * session_id - Internal session id used by the connector;
 for example: `s0`.
 
@@ -121,5 +121,5 @@ The attribute is:
 Count:: Running total of the number of requests that timed out when communicating with a node.
 
  ```no-highlight
- objectName='com.datastax.kafkaconnector:connector=connector\_name,driver=driver,session=session\_id,name=cql-client-timeouts' attribute='Count'
+ objectName='com.datastax.pulsarconnector:connector=connector\_name,driver=driver,session=session\_id,name=cql-client-timeouts' attribute='Count'
  ```

@@ -1,13 +1,13 @@
-[#_removing_a_table_column_from_the_mapping_specification_kafkaremovecolumn_task]
+[#_removing_a_table_column_from_the_mapping_specification_pulsarremovecolumn_task]
 = Removing a Table Column from the mapping specification
 :imagesdir: _images
 
 Remove a database column from the schema.
 
-Remove a link:../kafkaIntro.md#kafkaIntroduction[supported database] table column.
+Remove a link:../pulsarIntro.md#pulsarIntroduction[supported database] table column.
 
 . Remove the field to column mapping from the configuration.
-See xref:../kafkaMapTopicTable.adoc[Mapping kafka topics to database tables].
+See xref:../pulsarMapTopicTable.adoc[Mapping pulsar topics to database tables].
 . On a database node, use the link:/en/dse/6.7/cql/cql/cql_reference/cql_commands/cqlAlterTable.html[ALTER TABLE] to remove the column from the table.
 
  **Tip:** You can only remove non-PRIMARY KEY columns.

@@ -1,8 +1,8 @@
-[#_verifying_data_is_captured_in_database_kafkaverifydata_task]
+[#_verifying_data_is_captured_in_database_pulsarverifydata_task]
 = Verifying data is captured in database
 :imagesdir: _images
 
-Verify that data from a mapped Kafka topic was written to the database table column.
+Verify that data from a mapped Pulsar topic was written to the database table column.
 
 When testing and certifying a data pipeline, verify that the expected data exists in the upstream system before the process begins and lands in the downstream system when the process concludes.
 
@@ -10,12 +10,12 @@ CAUTION:
 
 Both of these operations are resource-expensive and should not be run on live systems.
 
-. To verify that the expected amount of data exists in Kafka:      1.
+. To verify that the expected amount of data exists in Pulsar:      1.
 Create a log file that contains all records:
 +
 [source,language-bash]
 ----
-   bin/kafka-console-consumer.sh --bootstrap-server localhost:9092 \
+   bin/pulsar-console-consumer.sh --bootstrap-server localhost:9092 \
    --topic topic\_name --from-beginning > all-records.log &
 ----
 
@@ -27,7 +27,7 @@ Create a log file that contains all records:
     ```
 ....
 
-. To verify that the expected number of rows exist in the link:../kafkaIntro.md#kafkaIntroduction[supported database] table, use the DataStax Bulk Loader link:/en/dsbulk/doc/dsbulk/reference/countOptions.html[`dsbulk count`] command:
+. To verify that the expected number of rows exist in the link:../pulsarIntro.md#pulsarIntroduction[supported database] table, use the DataStax Bulk Loader link:/en/dsbulk/doc/dsbulk/reference/countOptions.html[`dsbulk count`] command:
 
  ```language-bash
  dsbulk count -h datastax\_IP -k keyspace\_name -t table\_name

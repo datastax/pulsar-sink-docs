@@ -2,14 +2,14 @@
 = Syntax to Create a new DataStax Connector
 :imagesdir: _images
 
-Kafka Connect REST API syntax used to create a new distributed DataStax Apache Kafka Connector.
+Pulsar Connect REST API syntax used to create a new distributed DataStax Apache Pulsar Connector.
 
-Kafka Connect REST API syntax used to create a new distributed DataStax Apache Kafka™ Connector.
+Pulsar Connect REST API syntax used to create a new distributed DataStax Apache Pulsar™ Connector.
 
 [#_syntax_syntax_section]
 == Syntax {#syntax .section}
 
-The following command starts a DataStax Apache Kafka™ Connector using the Kafka Connect REST API:
+The following command starts a DataStax Apache Pulsar™ Connector using the Pulsar Connect REST API:
 
 [source,language-bash]
 ----
@@ -18,10 +18,10 @@ curl -X POST -H "Content-Type: application/json" \
 "http://worker\_ip:port/connectors"
 ----
 
-* connector_properties_file - Specify the absolute path to the DataStax Apache Kafka® Connector configuration file.
+* connector_properties_file - Specify the absolute path to the DataStax Apache Pulsar® Connector configuration file.
 Samples are provided in the connector download.
-* worker_ip - The hostname or IP address of the Kafka Connect worker.
-* port - The listening port for the Kafka Connect REST API.
+* worker_ip - The hostname or IP address of the Pulsar Connect worker.
+* port - The listening port for the Pulsar Connect REST API.
 By default this service runs on _port_ 8083.
 
 [#_example_example_section]
@@ -44,7 +44,7 @@ Output:
 {
   "name": "cassandra-sink-distributed-example",
   "config": {
-    "connector.class": "com.datastax.kafkaconnector.DseSinkConnector",
+    "connector.class": "com.datastax.pulsarconnector.DseSinkConnector",
     "tasks.max": "5",
     "topics": "json-stream",
     "topic.json-stream.consistencyLevel": "LOCAL_QUORUM",

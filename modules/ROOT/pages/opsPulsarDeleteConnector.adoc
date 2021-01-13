@@ -1,10 +1,10 @@
-[#kafkaDeleteConnector]
-= Deleting the DataStax Apache Kafka Connector
+[#pulsarDeleteConnector]
+= Deleting the DataStax Apache Pulsar Connector
 :imagesdir: _images
 
-Remove the DataStax Apache Kafka™ Connector and all of its tasks.
+Remove the DataStax Apache Pulsar™ Connector and all of its tasks.
 
-To completely remove the DataStax Apache Kafka™ Connector and all of its tasks:
+To completely remove the DataStax Apache Pulsar™ Connector and all of its tasks:
 
 ----
 curl -X DELETE "http://worker\_ip:port/connectors/connector\_name"
@@ -12,10 +12,10 @@ curl -X DELETE "http://worker\_ip:port/connectors/connector\_name"
 
 where
 
-* worker_ip - The hostname or IP address of the Kafka Connect worker.
-* port - The listening port for the Kafka Connect REST API.
+* worker_ip - The hostname or IP address of the Pulsar Connect worker.
+* port - The listening port for the Pulsar Connect REST API.
 By default this service runs on _port_ 8083.
-* connector_name - DataStax Apache Kafka® Connector link:../configuration_reference/kafkaConnector.md#name[name].
+* connector_name - DataStax Apache Pulsar® Connector link:../configuration_reference/pulsarConnector.md#name[name].
 
 Example - delete connector
 

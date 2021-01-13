@@ -1,11 +1,11 @@
-[#_about_operating_and_maintaining_the_datastax_connector_kafkaaboutoperations_concept]
+[#_about_operating_and_maintaining_the_datastax_connector_pulsaraboutoperations_concept]
 = About operating and maintaining the DataStax Connector
 :imagesdir: _images
 
-Use the Kafka Connect REST API to operate and maintain the DataStax Connector.
+Use the Pulsar Connect REST API to operate and maintain the DataStax Connector.
 
-To operate and maintain the DataStax Apache Kafka™ Connector running in distributed mode use the Kafka Connect framework's built-in REST API.
+To operate and maintain the DataStax Apache Pulsar™ Connector running in distributed mode use the Pulsar Connect framework's built-in REST API.
 The API returns standard HTTP-compliant results and status.
 Only `application/json` as the request and response entity content-type is supported.
 
-For more, visit the https://kafka.apache.org/documentation/#connect_rest[Apache Kafka Connect REST API documentation].
+For more, visit the https://pulsar.apache.org/documentation/#connect_rest[Apache Pulsar Connect REST API documentation].

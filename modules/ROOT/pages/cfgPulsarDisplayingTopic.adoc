@@ -1,24 +1,24 @@
-[#_determining_topic_data_structure_kafkadisplayingtopic_task]
+[#_determining_topic_data_structure_pulsardisplayingtopic_task]
 = Determining topic data structure
 :imagesdir: _images
 
 Display messages to determine the data structure of the topic messages.
 
-One way to determine the format of pre-existing data in Kafka is to run the command line consumer and look at what is in the topic.
+One way to determine the format of pre-existing data in Pulsar is to run the command line consumer and look at what is in the topic.
 
-* To show Apache Kafka messages:
+* To show Apache Pulsar messages:
 
  ```language-bash
- bin/kafka-console-consumer.sh --bootstrap-server localhost:9092 \
+ bin/pulsar-console-consumer.sh --bootstrap-server localhost:9092 \
  --from-beginning --property print.key=true --max-messages 5 \
  --topic topic\_name
  ```
 
-* To show Confluent Kafka messages:      -   Messages other than Avro:
+* To show Confluent Pulsar messages:      -   Messages other than Avro:
 +
 [source,language-bash]
 ----
-   bin/kafka-console-consumer --bootstrap-server localhost:9092 \
+   bin/pulsar-console-consumer --bootstrap-server localhost:9092 \
    --from-beginning --property print.key=true --max-messages 5 \
    --topic topic\_name
 ----
@@ -27,10 +27,10 @@ One way to determine the format of pre-existing data in Kafka is to run the comm
 -   Avro messages
 
     ```language-bash
-    bin/kafka-avro-console-consumer --bootstrap-server localhost:9092 \
+    bin/pulsar-avro-console-consumer --bootstrap-server localhost:9092 \
     --from-beginning --property print.key=true --max-messages 5 \
     --topic topic\_name
     ```
 ....
 
-*Parent topic:* xref:../kafka/kafkaMapTopicTable.adoc[Mapping kafka topics to database tables]
+*Parent topic:* xref:../pulsar/pulsarMapTopicTable.adoc[Mapping pulsar topics to database tables]

@@ -1,10 +1,10 @@
-[#_datastax_connection_kafkadseconnection_reference]
+[#_datastax_connection_pulsardseconnection_reference]
 = DataStax connection
 :imagesdir: _images
 
 Configure the connection to the cluster.
 
-Configure the connection settings from Apache Kafka™ to the cluster.
+Configure the connection settings from Apache Pulsar™ to the cluster.
 
 [#_parameters_synopsis_section]
 == Parameters {#synopsis .section}
@@ -18,7 +18,7 @@ connectionPoolLocalSize:: Number of connections that driver maintains within a c
 contactPoints:: A comma-separated list of host names or IP addresses in square brackets.
 
 ....
-**Note:** When this setting is specified \(for example, the database is on a remote host\), the [loadBalancing.localDc](kafkaDseConnection.md#loadBalancing_localDc) is required.
+**Note:** When this setting is specified \(for example, the database is on a remote host\), the [loadBalancing.localDc](pulsarDseConnection.md#loadBalancing_localDc) is required.
 
 Default: `localhost`
 ....
@@ -26,7 +26,7 @@ Default: `localhost`
 loadBalancing.localDc:: The case-sensitive datacenter name for the driver to use for load balancing.
 
 ....
-**Note:** You cannot use this option if specifying the [cloud.secureConnectBundle](kafkaConnector.md#secure_ConnectBundle) option for connecting to a DataStax Astra database.
+**Note:** You cannot use this option if specifying the [cloud.secureConnectBundle](pulsarConnector.md#secure_ConnectBundle) option for connecting to a DataStax Astra database.
 
 Default: `""`
 ....
@@ -47,7 +47,7 @@ maxNumberOfRecordsInBatch:: Number of records to include in a write request to t
 
 jmx::
 Whether to enable metrics reporting using Java Management Extensions (JMX).
-See xref:../monitoring/kafkaMetrics.adoc[Monitoring DataStax Apache Kafka Connector].
+See xref:../monitoring/pulsarMetrics.adoc[Monitoring DataStax Apache Pulsar Connector].
 
  Default: `true`
 

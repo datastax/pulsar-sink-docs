@@ -1,51 +1,51 @@
-[#kafkaTsMissingFields]
+[#pulsarTsMissingFields]
 = Missing field error
 :imagesdir: _images
 
-If a Kafka record is missing fields that are set in the topic-table mapping data parsing fails.
+If a Pulsar record is missing fields that are set in the topic-table mapping data parsing fails.
 
-When the Kafka Connect log contains a missing field error message, check for the following issues:
+When the Pulsar Connect log contains a missing field error message, check for the following issues:
 
-* link:kafkaTsMissingFields.md#[Missing field error]
-* link:kafkaTsMissingFields.md#[Converter data type issue]
-* link:kafkaTsMissingFields.md#[Invalid JSON]
+* link:pulsarTsMissingFields.md#[Missing field error]
+* link:pulsarTsMissingFields.md#[Converter data type issue]
+* link:pulsarTsMissingFields.md#[Invalid JSON]
 
 For example, the log contains the following error message.
 
 [source,no-highlight]
 ----
-Error inserting/updating row for Kafka record … ConnectRecord{topic='inf1-src',kafkaPartition=0, key=null, value={set=[37, 96, 90], udt={udtmem2=90, udtmem1=47}}, ...}: Required field 'value.bigint' (mapped to column bigintcol) was missing from record. Pleaseremove it from the mapping.
+Error inserting/updating row for Pulsar record … ConnectRecord{topic='inf1-src',pulsarPartition=0, key=null, value={set=[37, 96, 90], udt={udtmem2=90, udtmem1=47}}, ...}: Required field 'value.bigint' (mapped to column bigintcol) was missing from record. Pleaseremove it from the mapping.
 ----
 
-*Parent topic:* xref:../../kafka/kafkaTroubleshoot.adoc[Troubleshooting the DataStax Apache Kafka Connector]
+*Parent topic:* xref:../../pulsar/pulsarTroubleshoot.adoc[Troubleshooting the DataStax Apache Pulsar Connector]
 
-[#kafkaTsMissingFieldFromRecord]
+[#pulsarTsMissingFieldFromRecord]
 == Field is missing from record
 
 All fields referenced in the mapping specification are required to process the record.
 
 All fields referenced in the mapping specification are required to process the record.
-If a Kafka record does not contain one or more fields that are set in the topic-table mapping, the data parsing fails and an error message is recorded in the Kafka Connect log.
+If a Pulsar record does not contain one or more fields that are set in the topic-table mapping, the data parsing fails and an error message is recorded in the Pulsar Connect log.
 
 For example, the log contains the following error message.
 
 [source,no-highlight]
 ----
-Error inserting/updating row for Kafka record … ConnectRecord{topic='inf1-src',kafkaPartition=0, key=null, value={set=[37, 96, 90], udt={udtmem2=90, udtmem1=47}}, ...}: Required field 'value.bigint' (mapped to column bigintcol) was missing from record. Pleaseremove it from the mapping.
+Error inserting/updating row for Pulsar record … ConnectRecord{topic='inf1-src',pulsarPartition=0, key=null, value={set=[37, 96, 90], udt={udtmem2=90, udtmem1=47}}, ...}: Required field 'value.bigint' (mapped to column bigintcol) was missing from record. Pleaseremove it from the mapping.
 ----
 
 [#_remediation_section]
 === Remediation { .section}
 
-Remove the field-column mapping from the connector configuration file or add the missing field it to the Kafka records.
+Remove the field-column mapping from the connector configuration file or add the missing field it to the Pulsar records.
 
-[#kafkaTsWrongConversion]
+[#pulsarTsWrongConversion]
 == Converter data type issue
 
 Missing fields reported when the connector uses the wrong convertor for the record data type.
 
-When the wrong converter is used, an error message reports missing fields and the fields are in the Kafka record.
-For example, if the `JsonConverter` is used to parse Kafka records that are actually strings.
+When the wrong converter is used, an error message reports missing fields and the fields are in the Pulsar record.
+For example, if the `JsonConverter` is used to parse Pulsar records that are actually strings.
 
 [#_remediation_section_2]
 === Remediation { .section}
@@ -54,11 +54,11 @@ Change the following in the connect-distributed.properties or connect-standalone
 
 [source,no-highlight]
 ----
-key.converter=org.apache.kafka.connect.storage.StringConverter
-value.converter=org.apache.kafka.connect.storage.StringConverter
+key.converter=org.apache.pulsar.connect.storage.StringConverter
+value.converter=org.apache.pulsar.connect.storage.StringConverter
 ----
 
-[#kafkaTsInvalidJson]
+[#pulsarTsInvalidJson]
 == Invalid JSON
 
 Kafak record contains invalid JSON and cannot be parsed.

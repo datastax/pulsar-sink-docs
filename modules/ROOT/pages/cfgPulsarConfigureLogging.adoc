@@ -1,18 +1,18 @@
-[#kafkaConfigureLogging]
-= Configure logging for Kafka Connector
+[#pulsarConfigureLogging]
+= Configure logging for Pulsar Connector
 :imagesdir: _images
 
-Configure logging for DataStax Apache Kafka Connector.
+Configure logging for DataStax Apache Pulsar Connector.
 
-There are two ways to configure logging for DataStax Apache Kafka™ Connector.
+There are two ways to configure logging for DataStax Apache Pulsar™ Connector.
 
-. Add an entry for `com.datastax.oss.kafka.sink` loggers in etc/kafka/connect-log4j.properties.
-This file is used automatically by Kafka Connector at startup.
+. Add an entry for `com.datastax.oss.pulsar.sink` loggers in etc/pulsar/connect-log4j.properties.
+This file is used automatically by Pulsar Connector at startup.
 For example, if you want to set the log level for this connector to `DEBUG`, you can add the following entry in the properties file:
 +
 [source,no-highlight]
 ----
-com.datastax.oss.kafka.sink=DEBUG
+com.datastax.oss.pulsar.sink=DEBUG
 ----
 +
 You can configure the setting to operate at lower granularity level.
@@ -20,11 +20,11 @@ Example:
 +
 [source,no-highlight]
 ----
-com.datastax.oss.kafka.sink.CassandraSinkTask=ERROR
+com.datastax.oss.pulsar.sink.CassandraSinkTask=ERROR
 ----
 
-. Or dynamically configure the loggers of your Kafka Connector.
-Once your Kafka Connect API is running, retrieve all dynamic logger configurations using a `curl` command.
+. Or dynamically configure the loggers of your Pulsar Connector.
+Once your Pulsar Connect API is running, retrieve all dynamic logger configurations using a `curl` command.
 (These examples specify `localhost`;
 provide the address of the running connect worker.)
 +
@@ -33,12 +33,12 @@ provide the address of the running connect worker.)
 curl -s http://localhost:8083/admin/loggers/ | jq
 ----
 +
-To dynamically set an `ERROR` log level for `com.datastax.oss.kafka.sink`, submit a `PUT` request via `curl`:
+To dynamically set an `ERROR` log level for `com.datastax.oss.pulsar.sink`, submit a `PUT` request via `curl`:
 +
 [source,language-bash]
 ----
 curl -s -X PUT -H "Content-Type:application/json" \
-      http://localhost:8083/admin/loggers/com.datastax.oss.kafka.sink \
+      http://localhost:8083/admin/loggers/com.datastax.oss.pulsar.sink \
       -d '{"level": "ERROR"}' \
       | jq '.'
 ----
@@ -47,15 +47,15 @@ When you retrieve loggers again, as in the following example, upper and lower le
 
 [source,language-bash]
 ----
-curl -s http://localhost:8083/admin/loggers/com.datastax.oss.kafka.sink | jq
+curl -s http://localhost:8083/admin/loggers/com.datastax.oss.pulsar.sink | jq
 ----
 
 [source,results]
 ----
-  "com.datastax.oss.kafka.sink": {
+  "com.datastax.oss.pulsar.sink": {
       "level": "ERROR"
   },
-  "com.datastax.oss.kafka.sink.CassandraSinkTask": {
+  "com.datastax.oss.pulsar.sink.CassandraSinkTask": {
       "level": "ERROR"
   },
 ----
@@ -66,7 +66,7 @@ Example:
 [source,language-bash]
 ----
 curl -s -X PUT -H "Content-Type:application/json" \
-  http://localhost:8083/admin/loggers/com.datastax.oss.kafka.sink.CassandraSinkTask \
+  http://localhost:8083/admin/loggers/com.datastax.oss.pulsar.sink.CassandraSinkTask \
   -d '{"level": "WARN"}' \
   | jq '.'
 ----

@@ -1,13 +1,13 @@
-[#kafkaTsLoadingBalancing]
+[#pulsarTsLoadingBalancing]
 = Loading balancing datacenter is not specified
 :imagesdir: _images
 
-DataStax Apache Kafka Connector fails to start because the load balancing DC is not configured.
+DataStax Apache Pulsar Connector fails to start because the load balancing DC is not configured.
 
-The following error message occurs when the load balancing datacenter (link:../configuration_reference/kafkaDseConnection.md#loadBalancing_localDc[loadBalancing.localDc]) is not set in the configuration file.
+The following error message occurs when the load balancing datacenter (link:../configuration_reference/pulsarDseConnection.md#loadBalancing_localDc[loadBalancing.localDc]) is not set in the configuration file.
 
 ----
-org.apache.kafka.common.config.ConfigException: Invalid value [127.0.0.2] for
+org.apache.pulsar.common.config.ConfigException: Invalid value [127.0.0.2] for
           configuration contactPoints: When contact points is provided, loadBalancing.localDc must
           also be specified
 ----
@@ -18,7 +18,7 @@ org.apache.kafka.common.config.ConfigException: Invalid value [127.0.0.2] for
 The connector requires that you set the `loadBalancing.localDc`.
 DataStax Enterprise datacenter names are case-sensitive.
 
-Check the datacenter name in the cluster by running link:/en/dse/6.7/dse-admin/datastax_enterprise/tools/nodetool/toolsStatus.html[nodetool status] and verify that link:../configuration_reference/kafkaDseConnection.md#loadBalancing_localDc[loadBalancing.localDc] exactly matches.
+Check the datacenter name in the cluster by running link:/en/dse/6.7/dse-admin/datastax_enterprise/tools/nodetool/toolsStatus.html[nodetool status] and verify that link:../configuration_reference/pulsarDseConnection.md#loadBalancing_localDc[loadBalancing.localDc] exactly matches.
 Datacenter names are case sensitive.
 
-*Parent topic:* xref:../../kafka/kafkaTroubleshoot.adoc[Troubleshooting the DataStax Apache Kafka Connector]
+*Parent topic:* xref:../../pulsar/pulsarTroubleshoot.adoc[Troubleshooting the DataStax Apache Pulsar Connector]

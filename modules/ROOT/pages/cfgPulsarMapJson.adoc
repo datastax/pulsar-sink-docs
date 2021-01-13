@@ -1,14 +1,14 @@
-[#_mapping_a_message_that_contain_json_fields_kafkamapjson_concept]
+[#_mapping_a_message_that_contain_json_fields_pulsarmapjson_concept]
 = Mapping a message that contain JSON fields
 :imagesdir: _images
 
 For JSON fields, map individual fields in the structure to columns.
 
 When the data format for the key or value is JSON, the connector mapping can include individual fields in the JSON structure.
-DataStax Apache Kafka™ supports JSON produced by both the `JsonSerializer` and `StringSerializer`;
+DataStax Apache Pulsar™ supports JSON produced by both the `JsonSerializer` and `StringSerializer`;
 mapping semantics are the same.
 
-NOTE: JSON records in Kafka can also have a schema associated with them.
+NOTE: JSON records in Pulsar can also have a schema associated with them.
 
-* *xref:../kafka/kafkaStringJson.adoc[Mapping a message that contains both basic and JSON fields]* + When the data format for the Kafka key or value is JSON, individual fields of that JSON structure can be specified in the connector mapping.
-* *xref:../kafka/kafkaJsonMessageSchema.adoc[Mapping JSON messages]* + Supports mapping JSON messages with or without a schema.
+* *xref:../pulsar/pulsarStringJson.adoc[Mapping a message that contains both basic and JSON fields]* + When the data format for the Pulsar key or value is JSON, individual fields of that JSON structure can be specified in the connector mapping.
+* *xref:../pulsar/pulsarJsonMessageSchema.adoc[Mapping JSON messages]* + Supports mapping JSON messages with or without a schema.

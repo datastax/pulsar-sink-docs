@@ -1,4 +1,4 @@
-[#kafkaTsRecordProcessing]
+[#pulsarTsRecordProcessing]
 = Verifying record processing
 :imagesdir: _images
 
@@ -10,7 +10,7 @@ Determine if the connector is processing records.
 To determine if the connector is running, check the log for commit offset messages.
 A commit offset message is logged every 10 seconds.
 It confirms that the instance (for example `cassandra-sink-2-0`) is running and processing records.
-The connector writes back to a Kafka offset topic to ensure that tasks continue where they left off after a rebalancing or restart.
+The connector writes back to a Pulsar offset topic to ensure that tasks continue where they left off after a rebalancing or restart.
 
 Example commit offset message:
 
@@ -26,7 +26,7 @@ INFO WorkerSinkTask{id=cassandra-sink-2-0} Committing offsets asynchronously usi
           tick-stream-json-8=OffsetAndMetadata{offset=6000000, metadata=''},
           tick-stream-json-7=OffsetAndMetadata{offset=7000000, metadata=''},
           tick-stream-json-9=OffsetAndMetadata{offset=8000000, metadata=''}}
-          (org.apache.kafka.connect.runtime.WorkerSinkTask:325)
+          (org.apache.pulsar.connect.runtime.WorkerSinkTask:325)
 ----
 
 [#_records_written_to_datastax_enterprise_database_recordswritten_section]
@@ -35,8 +35,8 @@ INFO WorkerSinkTask{id=cassandra-sink-2-0} Committing offsets asynchronously usi
 The connector uses the DataStax Enterprise (DSE) Java driver to send write requests to the corresponding tables.
 To verify the number of records processed:
 
-* The driver captures the stastics in the Kafka JMX MBeans.
-See xref:../monitoring/kafkaMetrics.adoc[Monitoring DataStax Apache Kafka Connector].
+* The driver captures the stastics in the Pulsar JMX MBeans.
+See xref:../monitoring/pulsarMetrics.adoc[Monitoring DataStax Apache Pulsar Connector].
 * On a DSE database node, use `cqlsh` to query the database table.
 
-*Parent topic:* xref:../../kafka/kafkaTroubleshoot.adoc[Troubleshooting the DataStax Apache Kafka Connector]
+*Parent topic:* xref:../../pulsar/pulsarTroubleshoot.adoc[Troubleshooting the DataStax Apache Pulsar Connector]

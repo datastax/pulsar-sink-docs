@@ -1,4 +1,4 @@
-[#_converting_date_and_times_for_a_topic_kafkadates_reference]
+[#_converting_date_and_times_for_a_topic_pulsardates_reference]
 = Converting date and times for a topic
 :imagesdir: _images
 
@@ -16,7 +16,7 @@ topic.topic\_name.codec.time=ISO_LOCAL_TIME
 topic.topic\_name.codec.unit=MILLISECONDS
 ----
 
-where topic_name is the name of the Apache Kafka™ topic.
+where topic_name is the name of the Apache Pulsar™ topic.
 
 [#_parameters_section]
 == Parameters { .section}
@@ -77,7 +77,7 @@ See https://docs.oracle.com/javase/8/docs/api/java/time/format/DateTimeFormatter
 
 Timezone example
 
-To write to a column with data type link:/en/dse/6.7/cql/cql/cql_reference/refDataTypes.html#refDataTypes__timestamp[timestamp], for the test Kafka topic string field that contains `2018-03-09T17:12:32.584+01:00[Europe/Paris]`, use the setting:
+To write to a column with data type link:/en/dse/6.7/cql/cql/cql_reference/refDataTypes.html#refDataTypes__timestamp[timestamp], for the test Pulsar topic string field that contains `2018-03-09T17:12:32.584+01:00[Europe/Paris]`, use the setting:
 
 [source,no-highlight]
 ----
@@ -86,7 +86,7 @@ topic.test.codec.timestamp=ISO_ZONED_DATE_TIME
 
 Date example
 
-To write to a column with type link:/en/dse/6.7/cql/cql/cql_reference/refDataTypes.html#refDataTypes__date[date] for a Kafka topic that contains a string field like "2018-04-12", use the setting:
+To write to a column with type link:/en/dse/6.7/cql/cql/cql_reference/refDataTypes.html#refDataTypes__date[date] for a Pulsar topic that contains a string field like "2018-04-12", use the setting:
 
 [source,no-highlight]
 ----
@@ -95,7 +95,7 @@ topic.test.codec.date="yyyy-MM-dd"
 
 Time example
 
-To write to a column with type link:/en/dse/6.7/cql/cql/cql_reference/refDataTypes.html#refDataTypes__time[time] for a Kafka topic string field like "10:15:30", use setting:
+To write to a column with type link:/en/dse/6.7/cql/cql/cql_reference/refDataTypes.html#refDataTypes__time[time] for a Pulsar topic string field like "10:15:30", use setting:
 
 [source,no-highlight]
 ----

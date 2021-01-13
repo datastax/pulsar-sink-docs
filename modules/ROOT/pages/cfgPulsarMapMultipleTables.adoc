@@ -1,4 +1,4 @@
-[#kafkaMapMultipleTables]
+[#pulsarMapMultipleTables]
 = Mapping a topic to multiple tables
 :imagesdir: _images
 

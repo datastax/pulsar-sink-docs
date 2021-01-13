@@ -1,17 +1,17 @@
 [#_about_the_datastax_apache_pulsar_connector_pulsarintro_concept]
-= About the DataStax Apache Kafka Connector
+= About the DataStax Apache Pulsar Connector
 :imagesdir: _images
 
-Explanation of how the Kafka Connector ingests topics to supported database tables.
+Explanation of how the Pulsar Connector ingests topics to supported database tables.
 
-DataStax Apache Kafka™ Connector is open-source software (OSS) installed in the Kafka Connect framework, and synchronizes records from a Kafka topic with table rows in the following supported databases:
+DataStax Apache Pulsar™ Connector is open-source software (OSS) installed in the Pulsar Connect framework, and synchronizes records from a Pulsar topic with table rows in the following supported databases:
 
 * https://docs.astra.datastax.com/docs[DataStax Astra] cloud databases
 * DataStax Enterprise (DSE) 4.7 and later databases
 * Open source Apache Cassandra® 2.1 and later databases
-* xref:pulsarArchitecture.adoc[] + Components of a DataStax Apache Kafka Connector implementation.
-* xref:pulsarHowMessages.adoc[] + Overview of the Apache Kafka™ topic data pipeline.
-* xref:pulsarAboutInstance.adoc[] + Data from the Kafka topic is written to the mapped platform's database table using a batch request containing multiple write statements.
+* xref:pulsarArchitecture.adoc[] + Components of a DataStax Apache Pulsar Connector implementation.
+* xref:pulsarHowMessages.adoc[] + Overview of the Apache Pulsar™ topic data pipeline.
+* xref:pulsarAboutInstance.adoc[] + Data from the Pulsar topic is written to the mapped platform's database table using a batch request containing multiple write statements.
 * xref:pulsarSizing.adoc[] + Vary depending on the workload and network capacity.
-* xref:pulsarCompatibility.adoc[] + Kafka and DataStax platform compatibility matrix.
-* xref:pulsarFeatures.adoc[] + Key features in DataStax Apache Kafka Connector.
+* xref:pulsarCompatibility.adoc[] + Pulsar and DataStax platform compatibility matrix.
+* xref:pulsarFeatures.adoc[] + Key features in DataStax Apache Pulsar Connector.

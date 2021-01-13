@@ -1,4 +1,4 @@
-[#kafkaMultTopicToTables]
+[#pulsarMultTopicToTables]
 = Multiple topics to multiple tables
 :imagesdir: _images
 
@@ -6,7 +6,7 @@ Ingest multiple topics and write to different tables using a single connector in
 
 The DataStax Connector allows for mapping multiple topics to multiple tables in a single connector instance.
 
-NOTE: Most Apache Kafka™ systems store all messages in the same format and Kafka Connect workers only support a single converter class for key and value.
+NOTE: Most Apache Pulsar™ systems store all messages in the same format and Pulsar Connect workers only support a single converter class for key and value.
 
 In the example `stocks_topic`, the key is a basic string and the value is regular JSON.
 

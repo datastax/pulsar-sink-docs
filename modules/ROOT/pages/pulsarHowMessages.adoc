@@ -1,10 +1,10 @@
-[#kafkaHowMessages]
-= How Apache Kafka messages are written
+[#pulsarHowMessages]
+= How Apache Pulsar messages are written
 :imagesdir: _images
 
-Overview of the Apache Kafka™ topic data pipeline.
+Overview of the Apache Pulsar™ topic data pipeline.
 
-Apache Kafka™ is a distributed streaming message queue.
+Apache Pulsar™ is a distributed streaming message queue.
 Producers publish messages to a topic, the broker stores them in the order received, and consumers (DataStax Connector) subscribe and read messages from the topic.
 
 image::images/messagelog.png[]
@@ -20,12 +20,12 @@ When the key is null, messages are distributed using the round-robin distributio
 The DataStax Connector reads messages using tasks;
 each task subscribes to a subset of partitions.
 Therefore, all messages on the same partition are pulled by the same task.
-image:images/partitionsKafka.png[]
+image:images/partitionsPulsar.png[]
 
 Topic partitions contain an ordered set of messages and each message in the partition has a unique offset.
-Kafka does not track which messages were read by a task or consumer.
+Pulsar does not track which messages were read by a task or consumer.
 Consumers must track their own location within each log;
 the Datastax Connector task store the offsets in `config.offset.topic`.
 In the event of a failure, the DataStax Connector task resumes reading from the last recorded location.
-By default, Kafka retains messages for seven days.
+By default, Pulsar retains messages for seven days.
 The retention setting is configured per topic.

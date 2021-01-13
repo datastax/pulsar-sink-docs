@@ -1,16 +1,16 @@
-[#kafkaMapAvroMessages]
+[#pulsarMapAvroMessages]
 = Mapping Avro messages
 :imagesdir: _images
 
 Supports mapping individual fields from a Avro format field.
 
-The DataStax Apache Kafka™ Connector supports mapping individual fields from https://avro.apache.org/docs/1.8.1/gettingstartedjava.html[Avro] formatted key or values.
+The DataStax Apache Pulsar™ Connector supports mapping individual fields from https://avro.apache.org/docs/1.8.1/gettingstartedjava.html[Avro] formatted key or values.
 
 In this example, the key is a basic string and the value is Avro format.
-The Kafka topic name is `users_topic` and have the following records:
+The Pulsar topic name is `users_topic` and have the following records:
 
-NOTE: The `kafka-avro-consumer` outputs the Avro field as JSON to the console.
-When Avro records are written to Kafka they are often done so using https://avro.apache.org/docs/1.8.1/api/java/org/apache/avro/generic/GenericRecord.html[GenericRecord] objects, which are fundamentally different than JSON.
+NOTE: The `pulsar-avro-consumer` outputs the Avro field as JSON to the console.
+When Avro records are written to Pulsar they are often done so using https://avro.apache.org/docs/1.8.1/api/java/org/apache/avro/generic/GenericRecord.html[GenericRecord] objects, which are fundamentally different than JSON.
 
 |key|value| |--|----| |user0| ```no-highlight {"`name`": "`chris`",  "`favorite_number`":14,  "`favorite_color`": "`blue`"}
 
@@ -101,4 +101,4 @@ Configure the connector and use the following map specification:
           favoritecolor=value.favorite_color”
 ----
 
-See the https://github.com/datastax/kafka-examples/tree/master/producers/src/main/java/avro[DataStax Kafka Examples] for more.
+See the https://github.com/datastax/pulsar-examples/tree/master/producers/src/main/java/avro[DataStax Pulsar Examples] for more.

@@ -1,10 +1,10 @@
-[#kafkaSettingJavaDriverConfig]
-= Pass Kafka Connector settings directly to the DataStax Java driver
+[#pulsarSettingJavaDriverConfig]
+= Pass Pulsar Connector settings directly to the DataStax Java driver
 :imagesdir: _images
 
-Pass Kafka Connector settings to DataStax Java driver.
+Pass Pulsar Connector settings to DataStax Java driver.
 
-In your DataStax Apache Kafka™ Connector configuration file, you can directly pass settings to the DataStax Java driver by using the `datastax-java-driver` prefix.
+In your DataStax Apache Pulsar™ Connector configuration file, you can directly pass settings to the DataStax Java driver by using the `datastax-java-driver` prefix.
 For example:
 
 [source,no-highlight]
@@ -12,18 +12,18 @@ For example:
 datastax-java-driver.basic.request.consistency=ALL
 ----
 
-[#_mapping_kafka_connector_settings_to_java_driver_properties_mappingconnectorsettingstojavadriverproperties_section]
-== Mapping Kafka Connector settings to Java driver properties {#mappingConnectorSettingsToJavaDriverProperties .section}
+[#_mapping_pulsar_connector_settings_to_java_driver_properties_mappingconnectorsettingstojavadriverproperties_section]
+== Mapping Pulsar Connector settings to Java driver properties {#mappingConnectorSettingsToJavaDriverProperties .section}
 
-The following table identifies functionally equivalent DataStax Apache Kafka Connector and DataStax Java driver settings.
+The following table identifies functionally equivalent DataStax Apache Pulsar Connector and DataStax Java driver settings.
 
-NOTE: If you define both in your configuration, the Kafka Connector setting take precedence over the `datastax-java-driver.property-name`.
-If you do not provide either in your configuration, Kafka Connector defaults are in effect.
+NOTE: If you define both in your configuration, the Pulsar Connector setting take precedence over the `datastax-java-driver.property-name`.
+If you do not provide either in your configuration, Pulsar Connector defaults are in effect.
 
-For information about the Java properties, refer to the link:/en/developer/java-driver-dse/2.3/manual/core/configuration/[DataStax Java driver documentation.] For information about the Kafka Connector settings, refer to xref:configuration_reference/kafkaDseConnection.adoc[DataStax connection].
+For information about the Java properties, refer to the link:/en/developer/java-driver-dse/2.3/manual/core/configuration/[DataStax Java driver documentation.] For information about the Pulsar Connector settings, refer to xref:configuration_reference/pulsarDseConnection.adoc[DataStax connection].
 
 |===
-| DataStax Apache Kafka Connector setting | Using datastax-java-driver prefix
+| DataStax Apache Pulsar Connector setting | Using datastax-java-driver prefix
 
 | `contactPoints`
 | `datastax-java-driver.basic.contact-points`
@@ -47,7 +47,7 @@ For information about the Java properties, refer to the link:/en/developer/java-
 | `datastax-java-driver.advanced.metrics.session.cql-requests.highest-latency`
 |===
 
-There is a difference between the Kafka Connector's `contactPoints` setting and the Java driver's `datastax-java-driver.basic.contact-points`.
+There is a difference between the Pulsar Connector's `contactPoints` setting and the Java driver's `datastax-java-driver.basic.contact-points`.
 For `contactPoints`, the value of the `port` is appended to every host provided by this setting.
 For `datastax-java-driver.basic.contact-points`, you must provide the fully qualified contact points (`host:port`).
 
@@ -59,10 +59,10 @@ Example:
 datastax-java-driver.basic.contact-points = 127.0.0.1:9042, 127.0.0.2:90
 ----
 
-[#_conversion_of_java_driver_properties_of_type_list_to_typesafe_config_kafkajavadriverpropertiestypelist_section]
-== Conversion of Java driver properties of type List to TypeSafe Config {#kafkaJavaDriverPropertiesTypeList .section}
+[#_conversion_of_java_driver_properties_of_type_list_to_typesafe_config_pulsarjavadriverpropertiestypelist_section]
+== Conversion of Java driver properties of type List to TypeSafe Config {#pulsarJavaDriverPropertiesTypeList .section}
 
-The following properties that are of type `List`, which you could pass into the driver from your Kafka Connector configuration via the `datastax-java-driver` prefix, are converted by the DataStax Java driver to the `TypeSafe Config` format.
+The following properties that are of type `List`, which you could pass into the driver from your Pulsar Connector configuration via the `datastax-java-driver` prefix, are converted by the DataStax Java driver to the `TypeSafe Config` format.
 
 * `datastax-java-driver.advanced.ssl-engine-factory.cipher-suites`
 * `datastax-java-driver.advanced.metrics.node.enabled`

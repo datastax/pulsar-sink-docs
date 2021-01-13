@@ -1,13 +1,13 @@
-[#_adding_a_field_to_a_kafka_topic_kafkaaddfield_task]
-= Adding a field to a Kafka Topic
+[#_adding_a_field_to_a_pulsar_topic_pulsaraddfield_task]
+= Adding a field to a Pulsar Topic
 :imagesdir: _images
 
-Steps to change the Kafka Topic schema.
+Steps to change the Pulsar Topic schema.
 
-Use these steps to write a new field to an existing link:../kafkaIntro.md#kafkaIntroduction[supported database] table column.
+Use these steps to write a new field to an existing link:../pulsarIntro.md#pulsarIntroduction[supported database] table column.
 
-. In the DataStax Apache Kafka Connector configuration file, add the field-to-column definition.
-See xref:../kafkaMapTopicTable.adoc[Mapping kafka topics to database tables].
+. In the DataStax Apache Pulsar Connector configuration file, add the field-to-column definition.
+See xref:../pulsarMapTopicTable.adoc[Mapping pulsar topics to database tables].
 . Update the configuration with the new settings.
-See xref:kafkaUpdateConfig.adoc[Updating the DataStax Apache Kafka Connector configuration].
-. Start the Kafka producer that had the schema change.
+See xref:pulsarUpdateConfig.adoc[Updating the DataStax Apache Pulsar Connector configuration].
+. Start the Pulsar producer that had the schema change.

@@ -1,8 +1,8 @@
-[#_removing_a_field_map_kafkaremovefield_task]
+[#_removing_a_field_map_pulsarremovefield_task]
 = Removing a field map
 :imagesdir: _images
 
-DataStax Apache Kafka™ Connector processing fails if any mapped Kafka topic fields are missing from the record.
+DataStax Apache Pulsar™ Connector processing fails if any mapped Pulsar topic fields are missing from the record.
 If a field is missing or if the schema change is known ahead, remove the topic-column mapping.
 
 WARNING: The database table schema has xref:../../glossary/gloss_primary_key.adoc[PRIMARY KEY] columns that uniquely identify and partition rows.
@@ -10,12 +10,12 @@ See link:/en/dse/6.8/cql/cql/ddl/dataModelingCQLTOC.html[CQL data modeling].
 A NULL is not allowed in a PRIMARY KEY column.
 Therefore, each `PRIMARY KEY` column must have a field-column map.
 
-. On a link:../kafkaIntro.md#kafkaIntroduction[supported database] node, use the CQLSH link:/en/dse/6.7/cql/cql/cql_reference/cqlsh_commands/cqlshDescribeTable.html[DESCRIBE TABLE] command to verify that the field is not a PRIMARY KEY (PK) column.
+. On a link:../pulsarIntro.md#pulsarIntroduction[supported database] node, use the CQLSH link:/en/dse/6.7/cql/cql/cql_reference/cqlsh_commands/cqlshDescribeTable.html[DESCRIBE TABLE] command to verify that the field is not a PRIMARY KEY (PK) column.
 
  **Note:** If the field is a PK column, map a different field to the column.
 
 . Remove the field to column mapping from the configuration.
-See xref:../kafkaMapTopicTable.adoc[Mapping kafka topics to database tables].
+See xref:../pulsarMapTopicTable.adoc[Mapping pulsar topics to database tables].
 . Update the configuration with the new settings.
-See xref:kafkaUpdateConfig.adoc[Updating the DataStax Apache Kafka Connector configuration].
-. Start the Kafka producer that had the schema change.
+See xref:pulsarUpdateConfig.adoc[Updating the DataStax Apache Pulsar Connector configuration].
+. Start the Pulsar producer that had the schema change.
