@@ -1,0 +1,45 @@
+[#_datastax_apache_kafka_connector_details_kafkaconnector_reference]
+= DataStax Apache Kafka Connector details {#kafkaConnector .reference}
+:imagesdir: _images
+
+Common Kafka connector parameters.
+
+Set the common DataStax Apache Kafka™ Connector parameters.
+See the https://kafka.apache.org/documentation/#connect_configuring[Configuring Connectors] section of the Apache Kafka documentation.
+
+[#_parameters_synopsis_section]
+== Parameters {#synopsis .section}
+
+[source,no-highlight]
+----
+name=dse-sink
+connector.class=com.datastax.kafkaconnector.DseSinkConnector
+tasks.max=1
+cloud.secureConnectBundle=/path/to/secure-connect-database\_name.zip
+----
+
+name:: Unique name for the connector.
+
+ Default: `cassandra-sink`
+
+connector.class:: DataStax connector Java class provided in the `kafka-connect-cassandra-sink-N.N.N.jar`
+
+ Default: `com.datastax.kafkaconnector.CassandraSinkConnector`
+
+tasks.max::
+Maximum number of tasks created for the connector instance.
+The connector can create fewer tasks if it cannot achieve this level of parallelism.
+
+....
+**Note:** Use additional Kafka Connect workers to scale the connector when more throughput is needed. For connector instances to split tasks, they must have the same `group.id`, which is configured in the connect-distributed.properties file. Parallelism is limited by the partitions of the Kafka topic.
+
+Default: `1`
+....
+
+cloud.secureConnectBundle::
+The full path to the secure connect bundle for your DataStax Astra database (secure-connect-database_name.zip).
+Download the xref:../../dscloud/astra/dscloudObtainingCredentials.adoc[secure connect bundle] from the DataStax Cloud console.
+
+ If this option is specified, you must also include the [auth.username](kafkaAuthLdap.md#username) and [auth.password](kafkaAuthLdap.md#password) for the database user.
+
+*Parent topic:* xref:../../kafka/kafkaConfigToc.adoc[DataStax Apache Kafka Connector configuration parameter reference]

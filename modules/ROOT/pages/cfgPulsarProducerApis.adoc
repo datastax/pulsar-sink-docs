@@ -1,0 +1,22 @@
+[#kafkaProducerApis]
+= Configuring the worker to convert serialized bytes
+:imagesdir: _images
+
+Configure the worker to deserialize messages using the converter that corresponds to the producer's serializer.
+
+Configure the worker that runs DataStax Apache Kafka™ Connector to deserialize Kafka messages using the correct converter.
+Typically, all producers and streams use the same serialization definition to write messages.
+
+Apache Kafka provides several APIs for publishing data.
+Each API provides several different options for message structure and serialization.
+
+Apache Kafka APIs for publishing data include:
+
+* Kafka Producer API.
+See https://kafka.apache.org/21/javadoc/index.html?org/apache/kafka/clients/producer/KafkaProducer.html[Apache Kafka Java Doc for the Producer Classes].
+* Kafka Source Connectors.
+See https://kafka.apache.org/documentation.html#connectapi[Apache Kafka Documentation on the Connect API].
+* Kafka Streams.
+See https://kafka.apache.org/documentation.html#streamsapi[Apache Kafka Documentation on the Streams API] / KSQL.
+
+*Parent topic:* xref:../kafka/kafkaConfigTasksTOC.adoc[Configuring the DataStax Apache Kafka Connector]

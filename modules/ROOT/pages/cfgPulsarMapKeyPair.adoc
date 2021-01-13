@@ -1,0 +1,90 @@
+[#_mapping_basic_messages_to_table_columns_kafkamapkeypair_task]
+= Mapping basic messages to table columns {#kafkaMapKeyPair .task}
+:imagesdir: _images
+
+Create a topic-table map for Kafka messages that only contain a key and value in each record.
+
+When messages are created using a Basic or primitive serializer, the message contains a key-value pair.
+Map the key and value to table columns.
+Ensure that the data types of the message field are compatible with the data type of the target column.
+
+For example, the Kafka world topic (`world_topic`) contains 5 records with a key-value pair in each.
+The key is an integer and the value is text.
+
+image::images/basicMessage.png[]
+
+Table requirements
+
+Ensure the following when mapping fields to columns:
+
+* Data in the Kafka field is compatible with the database table column link:/en/dse/6.8/cql/cql/cql_reference/refDataTypes.html[data type].
+* Kafka field mapped to a database xref:../glossary/gloss_primary_key.adoc[primary key] (PK) column always contains data.
+Null values are not allowed in PK columns.
+
+. Verify that the correct converter is set in the link:kafkaWorkerConfig.md#key_converter[key.converter] and link:kafkaWorkerConfig.md#value_converter[value.converter] of the `connect-distributed.properties` file.
+. Set up the link:kafkaIntro.md#kafkaIntroduction[supported database] table.
+1.
+Create the keyspace.
+Ensure that keyspace is replicated to a datacenter that is set in the DataStax Apache Kafka Connector link:configuration_reference/kafkaDseConnection.md#contactPoints[contactPoints] parameter.
+For example, create the world_keyspace:
++
+[source,language-bash]
+----
+   cqlsh -e "CREATE KEYSPACE world_keyspace WITH replication = {'class': 'NetworkTopologyStrategy','Cassandra': 1};"
+----
++
+NOTE: The datacenter name is case sensitive.
+Use link:/en/dse/6.8/dse-dev/datastax_enterprise/tools/nodetool/toolsRing.html[nodetool ring] to get a list of datacenters.
+
+....
+2.   Create the table. For example, create the world\_table:
+
+    ```language-bash
+    cqlsh -e "CREATE TABLE world_table (recordid int PRIMARY KEY, continent text);"
+    ```
+
+3.   Verify that all nodes have the same schema version using [nodetool describering](/en/dse/6.8/dse-admin/datastax_enterprise/tools/nodetool/toolsDescribeRing.html). Replace keyspace\_name:
+
+    ```language-bash
+    nodetool describering -- keyspace\_name
+    ```
+....
+
+. In the DataStax Apache Kafka Connector configuration file:
+
+....
+1.   Add the topic name to [topics](configuration_reference/kafkaDseTable.md#topics).
+2.   Define the topic-to-table map [prefix](configuration_reference/kafkaDseTable.md#prefix).
+3.   Define the [field-to-column map](configuration_reference/kafkaDseTable.md#mapping).
+Example configurations for `world_topic` to `world_table` using the minimum required settings:
+
+**Note:** See [DataStax Apache Kafka Connector configuration parameter reference](kafkaConfigToc.md) for additional parameters. When the [contactPoints](configuration_reference/kafkaDseConnection.md#contactPoints) parameter is missing, the `localhost`; this assumes the database is co-located on the DataStax Apache Kafka Connector node.
+
+-   JSON for distributed mode:
+
+    ```no-highlight
+    {
+      "name": "world-sink",
+      "config": {
+        "connector.class": "com.datastax.kafkaconnector.DseSinkConnector",
+        "tasks.max": "1",
+        "topics": "world_topic",
+        "topic.world_topic.world_keyspace.world_table.mapping”: “recordid=key, continent=value"
+      }
+    }
+    ```
+
+-   Properties file for standalone mode:
+
+    ```no-highlight
+    name=world-sink
+    connector.class=com.datastax.kafkaconnector.DseSinkConnector
+    tasks.max=1
+    topics=world_topic
+    topic.world_topic.world_keyspace.world_table.mapping = recordid=key, continent=value
+    ```
+....
+
+. xref:operations/kafkaUpdateConfig.adoc[Update configuration on a running worker] or xref:operations/kafkaStartStop.adoc[deploy the DataStax Connector for the first time].
+
+*Parent topic:* xref:../kafka/kafkaMapTopicTable.adoc[Mapping kafka topics to database tables]

@@ -1,0 +1,64 @@
+[#_datastax_connection_kafkadseconnection_reference]
+= DataStax connection {#kafkaDseConnection .reference}
+:imagesdir: _images
+
+Configure the connection to the cluster.
+
+Configure the connection settings from Apache Kafka™ to the cluster.
+
+[#_parameters_synopsis_section]
+== Parameters {#synopsis .section}
+
+`{#java-connection-settings .no-highlight} connectionPoolLocalSize=4 contactPoints=[dse\_host\_list] loadBalancing.localDc=datacenter\_name #port=9042 #maxConcurrentRequests=500 #maxNumberOfRecordsInBatch=32 #queryExecutionTimeout=30 #jmx=true #compression=None `
+
+connectionPoolLocalSize:: Number of connections that driver maintains within a connection pool to each node in the local datacenter.
+
+ Default: `4`
+
+contactPoints:: A comma-separated list of host names or IP addresses in square brackets.
+
+....
+**Note:** When this setting is specified \(for example, the database is on a remote host\), the [loadBalancing.localDc](kafkaDseConnection.md#loadBalancing_localDc) is required.
+
+Default: `localhost`
+....
+
+loadBalancing.localDc:: The case-sensitive datacenter name for the driver to use for load balancing.
+
+....
+**Note:** You cannot use this option if specifying the [cloud.secureConnectBundle](kafkaConnector.md#secure_ConnectBundle) option for connecting to a DataStax Astra database.
+
+Default: `""`
+....
+
+port::
+DSE native transport port.
+See link:/en/dse/6.7/dse-admin/datastax_enterprise/config/configCassandra_yaml.html#configCassandra_yaml__native_transport_port[native_transport_port].
+
+ Default: `9042`
+
+maxConcurrentRequests:: Maximum number of requests to send to DSE at the same time.
+
+ Default: `500`
+
+maxNumberOfRecordsInBatch:: Number of records to include in a write request to the database table.
+
+ Default: `32`
+
+jmx::
+Whether to enable metrics reporting using Java Management Extensions (JMX).
+See xref:../monitoring/kafkaMetrics.adoc[Monitoring DataStax Apache Kafka Connector].
+
+ Default: `true`
+
+compression::
+Compression algorithm to use when issuing requests to the database server.
+Valid values are `None`, `Snappy`, and `LZ4`, which is applied per connector instance.
+
+ Default: `None`
+
+queryExecutionTimeout:: CQL statement execution timeout, in seconds.
+
+ Default: `30`
+
+*Parent topic:* xref:../../kafka/kafkaConfigToc.adoc[DataStax Apache Kafka Connector configuration parameter reference]

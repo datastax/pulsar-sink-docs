@@ -1,0 +1,36 @@
+[#kafkaColumnWritetimeTimestamp]
+= Specify writetime timestamp column
+:imagesdir: _images
+
+Optionally specify the column to use for the writetime timestamp when inserting records from Kafka into supported database tables.
+
+In the Kafka topic mapping, you can optionally specify which column should be used to note the timestamp when the Kafka-produced record was inserted into any of the following:
+
+* https://docs.astra.datastax.com/docs[DataStax Astra] cloud databases
+* DataStax Enterprise (DSE) 4.7 and later databases
+* Open source Apache Cassandra® 2.1 and later databases
+
+The mapping setting provides a special property, `__timestamp`.
+The format is:
+
+----
+topic.my_topic.my_ks.my_table.mapping=col1=key.f1, col2=value.f1, __timestamp=value.f2
+----
+
+By default, the database internally tracks the `writetime` timestamp of records inserted from Kafka.
+However, this `__timestamp` feature in the mapping supports the scenario where the Kafka records have an explicit timestamp field that you want to use as a writetime for the database record produced by the connector.
+
+IMPORTANT: The column value that you use must be a *number*.
+
+When you map the `__timestamp` value, you may also want to specify the `timeUnit` of the provided timestamp.
+The default is `MICROSECONDS`.
+For example, if your column used as the timestamp is in a different format (for example `SECONDS`) set it to `SECONDS`.
+The connector will automatically transform it to the database's proper numeric timestamp format;
+that is, to `MICROSECONDS`.
+Example:
+
+----
+topic.my_topic.my_ks.my_table.timestampTimeUnit=SECONDS
+----
+
+*Parent topic:* xref:../kafka/kafkaConfigTasksTOC.adoc[Configuring the DataStax Apache Kafka Connector]

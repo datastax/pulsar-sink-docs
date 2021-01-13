@@ -1,0 +1,39 @@
+[#_configure_error_handling_kafkaconfigureerrorhandling_reference]
+= Configure error handling {#kafkaConfigureErrorHandling .reference}
+:imagesdir: _images
+
+Specifies whether Kafka Connector should continue processing records even if an error occurred.
+
+DataStax Apache Kafka™ Connector provides an optional parameter, `ignoreErrors`.
+When set to `true`, it allows the connector to continue processing records even after an error occurred on the prior record.
+
+ignoreErrors:: Use `ignoreErrors` settings to ignore specific types or all runtime errors, depending on the setting you choose.
+
+....
+|Value|Meaning|Notes|
+|-----|-------|-----|
+|`false`|No errors are ignored|Deprecated - equivalent to `NONE`|
+|`true`|Only driver errors are ignored|Deprecated - equivalent to `DRIVER`|
+|`NONE`|No errors are ignored; default behavior| |
+|`ALL`|All errors are ignored| |
+|`DRIVER`|Only driver errors are ignored| |
+
+If you set `ignoreErrors` to any value other than `false`, any erroneous record is logged once and the next record is picked up by the Kafka Connector automatically.
+....
+
+:   If you decide to use `ignoreErrors`, there are two ways to deploy the Kafka Connector:
+
+. In standalone mode for development or test environments only, you can specify `ignoreErrors=value` in your customized version of the cassandra-sink-standalone.properties.sample file.
+. In distributed mode for production environments, you can specify `"ignoreErrors": value` in your customized version of the cassandra-sink-distributed.json.sample JSON file.
+
+:   Because the Kafka Connector runs in the Kafka Connect Worker JVM, all of the logging entries go to the Kafka Connect Worker logs.
+For example, to pipe the worker process to the background and write the log entries to worker.log:
+
+[source,language-bash]
+----
+./connect-distributed.sh connect-distributed.properties &> worker.log &
+----
+
+ Default: `NONE`.
+
+*Parent topic:* xref:../kafka/kafkaConfigToc.adoc[DataStax Apache Kafka Connector configuration parameter reference]
