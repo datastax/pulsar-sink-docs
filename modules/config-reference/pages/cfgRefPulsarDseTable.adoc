@@ -4,7 +4,7 @@
 
 Capture Pulsar topics in the supported database by specifying a target keyspace, table, and then map the topic fields to table columns.
 
-Capture Pulsar topics in the link:../pulsarIntro.md#pulsarIntroduction[supported database] by specifying a target keyspace, table, and then map the topic fields to table columns in the name of the parameter.
+Capture Pulsar topics in the link:index.adoc[supported database] by specifying a target keyspace, table, and then map the topic fields to table columns in the name of the parameter.
 
 [#_parameters_synopsis_section]
 == Parameters {#synopsis .section}
@@ -13,9 +13,9 @@ Use the following syntax for standalone properties file:
 
 [source,no-highlight]
 ----
-topics=topic\_list
-prefix.mapping=mapping\_specification
-prefix.consistencyLevel=WRITE\_CONSISTENCY\_LEVEL
+topics=topic_list
+prefix.mapping=mapping_specification
+prefix.consistencyLevel=WRITE_CONSISTENCY_LEVEL
 prefix.ttl=seconds
 prefix.nullToUnset=true
 prefix.deletesEnabled=true
@@ -41,25 +41,25 @@ where:
 
 mapping::
 Required, field-to-column mapping.
-See xref:../pulsarMapTopicTable.adoc[Mapping pulsar topics to database tables].
+See xref:ROOT:cfgPulsarMapTopicTable.adoc[].
 
 consistencyLevel::
 Query consistency level.
 DSE settings are:
++
+-   https://docs.datastax.com/en/dse/6.8/dse-arch/datastax_enterprise/dbInternals/dbIntConfigConsistency.html#dbIntConfigConsistency__all[ALL]
+-   https://docs.datastax.com/en/dse/6.8/dse-arch/datastax_enterprise/dbInternals/dbIntConfigConsistency.html#dbIntConfigConsistency__each_quorum[EACH QUORUM]
+-   https://docs.datastax.com/en/dse/6.8/dse-arch/datastax_enterprise/dbInternals/dbIntConfigConsistency.html#dbIntConfigConsistency__quorum[QUORUM]
+-   https://docs.datastax.com/en/dse/6.8/dse-arch/datastax_enterprise/dbInternals/dbIntConfigConsistency.html#dbIntConfigConsistency__local_quorum[LOCAL_QUORUM]
+-   https://docs.datastax.com/en/dse/6.8/dse-arch/datastax_enterprise/dbInternals/dbIntConfigConsistency.html#dbIntConfigConsistency__one[ONE]
+-   https://docs.datastax.com/en/dse/6.8/dse-arch/datastax_enterprise/dbInternals/dbIntConfigConsistency.html#dbIntConfigConsistency__two[TWO]
+-   https://docs.datastax.com/en/dse/6.8/dse-arch/datastax_enterprise/dbInternals/dbIntConfigConsistency.html#dbIntConfigConsistency__three[THREE]
+-   https://docs.datastax.com/en/dse/6.8/dse-arch/datastax_enterprise/dbInternals/dbIntConfigConsistency.html#dbIntConfigConsistency__local_one[LOCAL\_ONE] (default)
+-   https://docs.datastax.com/en/dse/6.8/dse-arch/datastax_enterprise/dbInternals/dbIntConfigConsistency.html#dbIntConfigConsistency__any[ANY]
+
+See https://docs.datastax.com/en/dse/6.8/dse-arch/datastax_enterprise/dbInternals/dbIntAboutDataConsistency.html[How are consistent read and write operations handled?]
 
 ....
--   [ALL](/en/dse/6.7/dse-arch/datastax_enterprise/dbInternals/dbIntConfigConsistency.html#dbIntConfigConsistency__all)
--   [EACH QUORUM](/en/dse/6.7/dse-arch/datastax_enterprise/dbInternals/dbIntConfigConsistency.html#dbIntConfigConsistency__each_quorum)
--   [QUORUM](/en/dse/6.7/dse-arch/datastax_enterprise/dbInternals/dbIntConfigConsistency.html#dbIntConfigConsistency__quorum)
--   [LOCAL\_QUORUM](/en/dse/6.7/dse-arch/datastax_enterprise/dbInternals/dbIntConfigConsistency.html#dbIntConfigConsistency__local_quorum)
--   [ONE](/en/dse/6.7/dse-arch/datastax_enterprise/dbInternals/dbIntConfigConsistency.html#dbIntConfigConsistency__one)
--   [TWO](/en/dse/6.7/dse-arch/datastax_enterprise/dbInternals/dbIntConfigConsistency.html#dbIntConfigConsistency__two)
--   [THREE](/en/dse/6.7/dse-arch/datastax_enterprise/dbInternals/dbIntConfigConsistency.html#dbIntConfigConsistency__three)
--   [LOCAL\_ONE](/en/dse/6.7/dse-arch/datastax_enterprise/dbInternals/dbIntConfigConsistency.html#dbIntConfigConsistency__local_one) \(default\)
--   [ANY](/en/dse/6.7/dse-arch/datastax_enterprise/dbInternals/dbIntConfigConsistency.html#dbIntConfigConsistency__any)
-
-See [How are consistent read and write operations handled?](/en/dse/6.7/dse-arch/datastax_enterprise/dbInternals/dbIntAboutDataConsistency.html)
-
 Default: `LOCAL_ONE`
 ....
 
@@ -78,7 +78,7 @@ DataStax Pulsar Connector appends `AND TTL <configured-ttl-value>` to the INSERT
  Default: `-1` \( disabled \)
 
 deletesEnabled:: When enabled, treat records that after mapping would result in only non-null values for primary key columns as deletes, rather than inserting/updating nulls for all regular columns.
-
++
 NOTE: Only triggers if the setting is enabled and the mapping specification contains all DSE table columns.
 
  Default: `true`

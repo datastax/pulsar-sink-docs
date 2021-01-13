@@ -73,7 +73,7 @@ codec.locale:: Locale to use for locale-sensitive conversions.
 See https://docs.oracle.com/javase/8/docs/api/java/time/format/DateTimeFormatter.html[DateTimeFormatter documentation] for additional options.
 
 [#_examples_example_section]
-== Examples {#example .section}
+== Examples
 
 Timezone example
 

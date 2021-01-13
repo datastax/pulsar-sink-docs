@@ -18,20 +18,18 @@ auth.password=password
 ----
 
 auth.provider:: Select the type of authentication provider configured for the DataStax cluster.
-
-....
 -   **None** - No authentication.
 -   **DSE** - Internal or LDAP authentication.
 -   **GSSAPI** - Supports SASL authentication to DSE clusters using the GSSAPI mechanism \(Kerberos authentication\)
++
+NOTE: When using the GSSAPI, the Pulsar Connect process requires that the Kerberos configuration file \([krb5.conf](../../glossary/gloss_krb5conf.md)\) location is provided in the `java.security.krb5.conf` system property at startup. See [Using the DataStax Apache Pulsar Connector with Kerberos](../security/pulsarKerberosAuth.md).
 
-    **Note:** When using the GSSAPI, the Pulsar Connect process requires that the Kerberos configuration file \([krb5.conf](../../glossary/gloss_krb5conf.md)\) location is provided in the `java.security.krb5.conf` system property at startup. See [Using the DataStax Apache Pulsar Connector with Kerberos](../security/pulsarKerberosAuth.md).
-
-
+....
 Default: `None`
 ....
 
 auth.username:: DSE login role name or LDAP username.Astra database username.
-
- **Note:** When [authorization is enabled](/en/dse/6.8/dse-admin/datastax_enterprise/config/configDseYaml.html#configDseYaml__authorizationOptions), the DataStax connector login role must have a minimum of `modify` privileges on tables receiving data from the DataStax Apache Pulsar® Connector.
++
+NOTE: When [authorization is enabled](https://docs.datastax.comen/dse/6.8//dse-admin/datastax_enterprise/config/configDseYaml.html#configDseYaml__authorizationOptions), the DataStax connector login role must have a minimum of `modify` privileges on tables receiving data from the DataStax Apache Pulsar® Connector.
 
 auth.password:: Login role or LDAP password.Astra database password for the specified username.

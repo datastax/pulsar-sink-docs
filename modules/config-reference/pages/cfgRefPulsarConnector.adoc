@@ -40,4 +40,4 @@ cloud.secureConnectBundle::
 The full path to the secure connect bundle for your DataStax Astra database (secure-connect-database_name.zip).
 Download the xref:../../dscloud/astra/dscloudObtainingCredentials.adoc[secure connect bundle] from the DataStax Cloud console.
 
- If this option is specified, you must also include the [auth.username](pulsarAuthLdap.md#username) and [auth.password](pulsarAuthLdap.md#password) for the database user.
+ If this option is specified, you must also include the auth.username and auth.password for the database user.

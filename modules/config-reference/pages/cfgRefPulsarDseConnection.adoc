@@ -7,27 +7,37 @@ Configure the connection to the cluster.
 Configure the connection settings from Apache Pulsar™ to the cluster.
 
 [#_parameters_synopsis_section]
-== Parameters {#synopsis .section}
+== Parameters
 
-`{#java-connection-settings .no-highlight} connectionPoolLocalSize=4 contactPoints=[dse\_host\_list] loadBalancing.localDc=datacenter\_name #port=9042 #maxConcurrentRequests=500 #maxNumberOfRecordsInBatch=32 #queryExecutionTimeout=30 #jmx=true #compression=None `
+[source,yaml]
+----
+ connectionPoolLocalSize=4 c
+ ontactPoints=[dse_host_list] 
+ loadBalancing.localDc=datacenter_name 
+ #port=9042 #maxConcurrentRequests=500 
+ #maxNumberOfRecordsInBatch=32 
+ #queryExecutionTimeout=30 
+ #jmx=true #compression=None
+----
 
 connectionPoolLocalSize:: Number of connections that driver maintains within a connection pool to each node in the local datacenter.
 
  Default: `4`
 
 contactPoints:: A comma-separated list of host names or IP addresses in square brackets.
-
++
+NOTE: When this setting is specified \(for example, the database is on a remote host\), the [loadBalancing.localDc](pulsarDseConnection.md#loadBalancing_localDc) is required.
++
 ....
-**Note:** When this setting is specified \(for example, the database is on a remote host\), the [loadBalancing.localDc](pulsarDseConnection.md#loadBalancing_localDc) is required.
 
 Default: `localhost`
 ....
 
 loadBalancing.localDc:: The case-sensitive datacenter name for the driver to use for load balancing.
-
++
+NOTE: You cannot use this option if specifying the [cloud.secureConnectBundle](pulsarConnector.md#secure_ConnectBundle) option for connecting to a DataStax Astra database.
++
 ....
-**Note:** You cannot use this option if specifying the [cloud.secureConnectBundle](pulsarConnector.md#secure_ConnectBundle) option for connecting to a DataStax Astra database.
-
 Default: `""`
 ....
 
