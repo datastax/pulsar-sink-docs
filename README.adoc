@@ -1,12 +1,8 @@
-= DataStax Apache Pulsar Connector documentation
+= DataStax Pulsar Connector documentation
 
-This repo contains the source files for the DataStax Apache Pulsar Connector documentation. The project is also known as `pulsar-sink`.
+This repo contains the source files for the Pulsar Connector documentation.
 
 The docs are written in asciidoc and use Antora to generate the output.
-
-Utlimate deployment target is TBD, but anticipating:
-
-https://docs.datastax.com/en/pulsar-sink/docs/
 
 == Dependencies
 

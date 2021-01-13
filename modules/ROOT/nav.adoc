@@ -1,4 +1,1 @@
 * xref:faqs.adoc[]
-* xref:quickstart-helm-installs.adoc[]
-* xref:quickstart-server-installs.adoc[]
-* xref:pulsar-monitor.adoc[]

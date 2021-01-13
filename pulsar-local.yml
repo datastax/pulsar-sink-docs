@@ -1,6 +1,6 @@
 site:
-  title: DataStax Luna Streaming Documentation
-  url: /docs/luna
+  title: DataStax Pulsar Connector Documentation
+  url: /docs/pulsar-connector
   start_page: streaming::index.adoc
 
 content:
