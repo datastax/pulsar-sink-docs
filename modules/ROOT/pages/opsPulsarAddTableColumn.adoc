@@ -1,0 +1,15 @@
+[#_adding_a_column_to_the_database_table_kafkaaddtablecolumn_task]
+= Adding a column to the database table
+:imagesdir: _images
+
+Add a column to the database table to synchronize an existing field from a Kafka topic.
+
+Add a column to the link:../kafkaIntro.md#kafkaIntroduction[supported database] table to synchronize an existing field from a Kafka topic.
+
+. On a database node, use link:/en/dse/6.7/cql/cql/cql_reference/cql_commands/cqlAlterTable.html[ALTER TABLE] to add the column to the table.
+. Confirm that the schema change has been pushed to all nodes using link:/en/dse/6.7/dse-admin/datastax_enterprise/tools/nodetool/toolsDescribeCluster.html[nodetool describecluster].
+
+ **Important:** Data synchronization may fail if the schema change is inconsistent across the cluster.
+
+. In the DataStax Apache Kafka Connector configuration file, add the field-to-column definition.
+See xref:../kafkaMapTopicTable.adoc[Mapping kafka topics to database tables].

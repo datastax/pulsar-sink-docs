@@ -30,5 +30,3 @@ DataStax Kafka Connector appends `AND TTL <configured-ttl-value>` to the INSERT 
 
 NOTE: When doing dynamic configuration, if the `ttl` field value is negative, an error is thrown during the insert of the record into a database table.
 However, because the Kafka connector is a streaming system, DataStax Apache Kafka Connector resorts to inserting the record without the `ttl` value.
-
-*Parent topic:* xref:../kafka/kafkaConfigTasksTOC.adoc[Configuring the DataStax Apache Kafka Connector]

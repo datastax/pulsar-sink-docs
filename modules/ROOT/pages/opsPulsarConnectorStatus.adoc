@@ -1,0 +1,68 @@
+[#kafkaConnectorStatus]
+= Getting the DataStax Connector status
+:imagesdir: _images
+
+Displaying the status.
+
+To display the status of the DataStax Apache Kafka™ Connector and all tasks that are running.
+The state of the tasks can be RUNNING, PAUSED, FAILED, or UNASSIGNED.
+
+[source,language-bash]
+----
+curl -X GET \
+"http://worker\_ip:port/connectors/connector\_name/status"
+----
+
+where
+
+* worker_ip - The hostname or IP address of the Kafka Connect worker.
+* port - The listening port for the Kafka Connect REST API.
+By default this service runs on _port_ 8083.
+* connector_name - DataStax Apache Kafka® Connector link:../configuration_reference/kafkaConnector.md#name[name].
+
+Example
+
+[source,language-bash]
+----
+curl -X GET "http://127.0.0.1:8083/connectors/cassandra-sink-distributed-example/status"
+----
+
+[source,results]
+----
+Output:
+{
+  "name": "cassandra-sink-distributed-example",
+  "connector": {
+    "state": "RUNNING",
+    "worker_id": "127.0.0.1:8083"
+  },
+  "tasks": [
+    {
+      "state": "RUNNING",
+      "id": 0,
+      "worker_id": "127.0.0.1:8083"
+    },
+    {
+      "state": "RUNNING",
+      "id": 1,
+      "worker_id": "127.0.0.1:8083"
+    },
+    {
+      "state": "RUNNING",
+      "id": 2,
+      "worker_id": "127.0.0.1:8083"
+    },
+    {
+      "state": "RUNNING",
+      "id": 3,
+      "worker_id": "127.0.0.1:8083"
+    },
+    {
+      "state": "RUNNING",
+      "id": 4,
+      "worker_id": "127.0.0.1:8083"
+    }
+  ],
+  "type": "sink"
+}
+----

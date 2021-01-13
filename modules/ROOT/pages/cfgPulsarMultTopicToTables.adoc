@@ -132,5 +132,3 @@ In the connector configuration, add the following settings:
 “topic.baseball_topic.baseball_keyspace.baseball_table.mapping”:
    “team=key, number=value.number, firstname=value.firstname, lastname=value.lastname, street=value.street, city=value.city”
 ----
-
-*Parent topic:* xref:../kafka/kafkaMapTopicTable.adoc[Mapping kafka topics to database tables]

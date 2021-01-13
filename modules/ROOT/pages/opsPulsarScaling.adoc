@@ -1,0 +1,10 @@
+[#kafkaScaling]
+= Scaling the DataStax Connector
+:imagesdir: _images
+
+Respond to increases or decreases in workload.
+
+Increase or decrease throughput capicity by scaling the DataStax Apache Kafka™ Connector horizontally.
+
+* *xref:../../kafka/operations/kafkaScaleUp.adoc[Scaling up by adding workers]* + Increase workload throughput by adding additional workers.
+* *xref:../../kafka/operations/kafkaScaleDown.adoc[Scaling down by removing workers]* + Decrease throughput by running the DataStax Connector on fewer workers.

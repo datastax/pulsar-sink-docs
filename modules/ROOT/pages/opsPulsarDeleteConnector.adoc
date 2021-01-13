@@ -1,0 +1,26 @@
+[#kafkaDeleteConnector]
+= Deleting the DataStax Apache Kafka Connector
+:imagesdir: _images
+
+Remove the DataStax Apache Kafka™ Connector and all of its tasks.
+
+To completely remove the DataStax Apache Kafka™ Connector and all of its tasks:
+
+----
+curl -X DELETE "http://worker\_ip:port/connectors/connector\_name"
+----
+
+where
+
+* worker_ip - The hostname or IP address of the Kafka Connect worker.
+* port - The listening port for the Kafka Connect REST API.
+By default this service runs on _port_ 8083.
+* connector_name - DataStax Apache Kafka® Connector link:../configuration_reference/kafkaConnector.md#name[name].
+
+Example - delete connector
+
+----
+curl -X DELETE "http://localhost:8083/connectors/cassandra-sink-distributed-example"
+----
+
+TIP: On success there is no output for this command.

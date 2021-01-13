@@ -1,5 +1,5 @@
 [#_mapping_basic_messages_to_table_columns_kafkamapkeypair_task]
-= Mapping basic messages to table columns {#kafkaMapKeyPair .task}
+= Mapping basic messages to table columns
 :imagesdir: _images
 
 Create a topic-table map for Kafka messages that only contain a key and value in each record.
@@ -86,5 +86,3 @@ Example configurations for `world_topic` to `world_table` using the minimum requ
 ....
 
 . xref:operations/kafkaUpdateConfig.adoc[Update configuration on a running worker] or xref:operations/kafkaStartStop.adoc[deploy the DataStax Connector for the first time].
-
-*Parent topic:* xref:../kafka/kafkaMapTopicTable.adoc[Mapping kafka topics to database tables]

@@ -1,0 +1,59 @@
+[#kakfkaStartSyntax]
+= Syntax to Create a new DataStax Connector
+:imagesdir: _images
+
+Kafka Connect REST API syntax used to create a new distributed DataStax Apache Kafka Connector.
+
+Kafka Connect REST API syntax used to create a new distributed DataStax Apache Kafka™ Connector.
+
+[#_syntax_syntax_section]
+== Syntax {#syntax .section}
+
+The following command starts a DataStax Apache Kafka™ Connector using the Kafka Connect REST API:
+
+[source,language-bash]
+----
+curl -X POST -H "Content-Type: application/json" \
+-d @connector\_properties\_file \
+"http://worker\_ip:port/connectors"
+----
+
+* connector_properties_file - Specify the absolute path to the DataStax Apache Kafka® Connector configuration file.
+Samples are provided in the connector download.
+* worker_ip - The hostname or IP address of the Kafka Connect worker.
+* port - The listening port for the Kafka Connect REST API.
+By default this service runs on _port_ 8083.
+
+[#_example_example_section]
+== Example {#example .section}
+
+Create or start a connector using a configuration file named dse-sink.json:
+
+[source,language-bash]
+----
+curl -X POST -H "Content-Type: application/json" \
+-d @dse-sink.json "http://localhost:8083/connectors"
+----
+
+If the instance is successfully created a message like the following displays:
+
+[source,results]
+----
+
+Output:
+{
+  "name": "cassandra-sink-distributed-example",
+  "config": {
+    "connector.class": "com.datastax.kafkaconnector.DseSinkConnector",
+    "tasks.max": "5",
+    "topics": "json-stream",
+    "topic.json-stream.consistencyLevel": "LOCAL_QUORUM",
+    "contactPoints": "localhost",
+    "loadBalancing.localDc": "Cassandra",
+    "topic.json-stream.ks.tbl.mapping": "symbol=value.symbol, ts=value.ts, exchange=value.exchange, industry=value.industry, name=value.name, value=value.value",
+    "name": "cassandra-sink-distributed-example"
+  },
+  "tasks": [],
+  "type": null
+}
+----

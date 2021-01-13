@@ -1,0 +1,72 @@
+[#_displaying_the_datastax_connector_configuration_kafkadisplayconfig_task]
+= Displaying the DataStax Connector configuration
+:imagesdir: _images
+
+Display configuration of a running connector.
+
+Use the Apache Kafka Connect REST API `config` command to show the configuration of a running DataStax Apache Kafka™ Connector:
+
+[source,language-bash]
+----
+curl -X GET "http://worker\_ip:port/connectors/connector\_name/config"
+----
+
+where
+
+* worker_ip - The hostname or IP address of the Kafka Connect worker.
+* port - The listening port for the Kafka Connect REST API.
+By default this service runs on _port_ 8083.
+* connector_name - DataStax Apache Kafka® Connector link:../configuration_reference/kafkaConnector.md#name[name].
+
+Example show configuration
+
+To display the configuration of `cassandra-sink-dstributed-examples:`
+
+[source,language-bash]
+----
+curl -X GET \
+"http://localhost:8083/connectors/cassandra-sink-distributed-example/config"
+----
+
+The results show in JSON format:
+
+[source,results]
+----
+Output:
+{
+  "name": "cassandra-sink-distributed-example",
+  "config": {
+    "connector.class": "com.datastax.kafkaconnector.DseSinkConnector",
+    "tasks.max": "5",
+    "topics": "json-stream",
+    "topic.json-stream.consistencyLevel": "LOCAL_QUORUM",
+    "contactPoints": "127.0.0.1",
+    "loadBalancing.localDc": "Cassandra",
+    "topic.json-stream.ks.tbl.mapping": "symbol=value.symbol, ts=value.ts, exchange=value.exchange, industry=value.industry, name=value.name, value=value.value",
+    "name": "cassandra-sink-distributed-example"
+  },
+  "tasks": [
+    {
+      "connector": "cassandra-sink-distributed-example",
+      "task": 0
+    },
+    {
+      "connector": "cassandra-sink-distributed-example",
+      "task": 1
+    },
+    {
+      "connector": "cassandra-sink-distributed-example",
+      "task": 2
+    },
+    {
+      "connector": "cassandra-sink-distributed-example",
+      "task": 3
+    },
+    {
+      "connector": "cassandra-sink-distributed-example",
+      "task": 4
+    }
+  ],
+  "type": "sink"
+}
+----

@@ -47,5 +47,3 @@ it will not override fields of UDT that have a null value (or are not present) i
 The behavior of the Update versus Override is defined via the `nullToUnset` parameter.
 See its description in xref:configuration_reference/kafkaDseTable.adoc[Kafka topic-to-table settings].
 For related information about Kafka maps and UDTs, see xref:kafkaMapUdt.adoc[Mapping messages to table that has a User Defined Type].
-
-*Parent topic:* xref:../kafka/kafkaMapTopicTable.adoc[Mapping kafka topics to database tables]

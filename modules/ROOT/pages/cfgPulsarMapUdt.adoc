@@ -68,5 +68,3 @@ Configure the connector settings and use the following for the map specification
 “topic.stocks_topic.stocks_keyspace.stocks_udt_table.mapping”:
     “name=key,stocks=value”
 ----
-
-*Parent topic:* xref:../kafka/kafkaMapTopicTable.adoc[Mapping kafka topics to database tables]

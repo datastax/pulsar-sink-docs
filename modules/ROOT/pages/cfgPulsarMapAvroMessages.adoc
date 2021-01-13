@@ -102,5 +102,3 @@ Configure the connector and use the following map specification:
 ----
 
 See the https://github.com/datastax/kafka-examples/tree/master/producers/src/main/java/avro[DataStax Kafka Examples] for more.
-
-*Parent topic:* xref:../kafka/kafkaMapTopicTable.adoc[Mapping kafka topics to database tables]

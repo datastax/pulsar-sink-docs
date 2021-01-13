@@ -1,5 +1,5 @@
 [#_mapping_a_message_that_contain_json_fields_kafkamapjson_concept]
-= Mapping a message that contain JSON fields {#kafkaMapJson .concept}
+= Mapping a message that contain JSON fields
 :imagesdir: _images
 
 For JSON fields, map individual fields in the structure to columns.
@@ -12,5 +12,3 @@ NOTE: JSON records in Kafka can also have a schema associated with them.
 
 * *xref:../kafka/kafkaStringJson.adoc[Mapping a message that contains both basic and JSON fields]* + When the data format for the Kafka key or value is JSON, individual fields of that JSON structure can be specified in the connector mapping.
 * *xref:../kafka/kafkaJsonMessageSchema.adoc[Mapping JSON messages]* + Supports mapping JSON messages with or without a schema.
-
-*Parent topic:* xref:../kafka/kafkaMapTopicTable.adoc[Mapping kafka topics to database tables]

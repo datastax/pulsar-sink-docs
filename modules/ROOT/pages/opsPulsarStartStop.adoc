@@ -1,0 +1,13 @@
+[#kafkaStartStop]
+= Deploying the DataStax Connector
+:imagesdir: _images
+
+Start the connector from the Kafka installation directory.
+
+DataStax Apache Kafka™ Connector and the Apache Kafka Connect framework are stateless.
+Safely deploy instances of the DataStax Connector in containers and orchestrate through services such as Kubernetes.
+
+There are two modes in the Kafka Connect framework for deploying connectors.
+
+* *xref:../../kafka/operations/kafkaStartStandalone.adoc[Deploying the DataStax Connector in standalone mode]* + Run an instance of the DataStax Apache Kafka™ Connector on a worker in standalone mode.
+* *xref:../../kafka/operations/kafkaStartDistributedMode.adoc[Start the DataStax Connector in distributed mode]* + Run an instance of the connector with a worker in distributed mode.

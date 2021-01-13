@@ -18,5 +18,3 @@ See https://kafka.apache.org/21/javadoc/index.html?org/apache/kafka/clients/prod
 See https://kafka.apache.org/documentation.html#connectapi[Apache Kafka Documentation on the Connect API].
 * Kafka Streams.
 See https://kafka.apache.org/documentation.html#streamsapi[Apache Kafka Documentation on the Streams API] / KSQL.
-
-*Parent topic:* xref:../kafka/kafkaConfigTasksTOC.adoc[Configuring the DataStax Apache Kafka Connector]

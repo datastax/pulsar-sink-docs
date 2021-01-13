@@ -50,5 +50,3 @@ If there is an insertion of a value that is `null`, such as:
 ----
 
 In this scenario, the called `now()` function is ignored, and the record is deleted.
-
-*Parent topic:* xref:../kafka/kafkaMapTopicTable.adoc[Mapping kafka topics to database tables]

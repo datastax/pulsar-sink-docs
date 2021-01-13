@@ -1,0 +1,32 @@
+[#_scaling_down_by_removing_workers_kafkascaledown_task]
+= Scaling down by removing workers
+:imagesdir: _images
+
+Decrease throughput by running the DataStax Connector on fewer workers.
+
+To remove workers from a Kafka Connect Worker group, simply stop the worker.
+The Kafka Connect framework automatically scales down and rebalances the tasks amongst the alive workers.
+
+TIP: The DataStax Apache Kafka Connector framework automatically rebalances the load when workers are added by reallocating the tasks among the workers.
+
+. Find the PID of the worker process.
+
+....
+```language-bash
+ps auwx | grep ConnectDistributed
+```
+
+Example out:
+
+```results
+automat+ 20689  9.6 10.3 4635620 846012 pts/2  Sl   00:36   0:16 /usr/lib/jvm/jdk1.8.0_151/bin/java
+...
+org.apache.kafka.connect.cli.ConnectDistributed kafka/config/connect-distributed.properties
+```
+....
+
+. Kill the process.
+
+ ```language-bash
+ kill 20689
+ ```

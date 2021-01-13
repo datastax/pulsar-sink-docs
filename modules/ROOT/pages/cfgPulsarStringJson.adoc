@@ -1,5 +1,5 @@
 [#_mapping_a_message_that_contains_both_basic_and_json_fields_kafkastringjson_task]
-= Mapping a message that contains both basic and JSON fields {#kafkaStringJson .task}
+= Mapping a message that contains both basic and JSON fields
 :imagesdir: _images
 
 When the data format for the Kafka key or value is JSON, individual fields of that JSON structure can be specified in the connector mapping.
@@ -127,5 +127,3 @@ Example configurations for `stocks_topic` to `stocks_table` using the minimum re
 ....
 
 . xref:operations/kafkaUpdateConfig.adoc[Update configuration on a running worker] or xref:operations/kafkaStartStop.adoc[deploy the DataStax Connector for the first time].
-
-*Parent topic:* xref:../kafka/kafkaMapJson.adoc[Mapping a message that contain JSON fields]

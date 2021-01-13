@@ -1,0 +1,76 @@
+[#kafkaUpdateConfig]
+= Updating the DataStax Apache Kafka Connector configuration
+:imagesdir: _images
+
+Change the configuration of a running connector.
+
+To update the configuration of an active DataStax Apache Kafka™ Connector, use the following Kafka Connect REST API command:
+
+[source,language-bash]
+----
+curl -X PUT -H "Content-Type: application/json" -d @connector\_properties\_file \
+          "http://worker\_ip:port/connectors/connector\_name/config"
+----
+
+where
+
+* connector_properties_file - Specify the absolute path to the DataStax Apache Kafka® Connector configuration file.
+Samples are provided in the connector download.
+* worker_ip - The hostname or IP address of the Kafka Connect worker.
+* port - The listening port for the Kafka Connect REST API.
+By default this service runs on _port_ 8083.
+* connector_name - DataStax Apache Kafka® Connector link:../configuration_reference/kafkaConnector.md#name[name].
+
+Example update configuration
+
+Provide a new configuration for an existing connector:
+
+[source,language-bash]
+----
+curl -X PUT -H "Content-Type: application/json" -d @dse-sink.json \
+            "http://localhost:8083/connectors/cassandra-sink-distributed-example/config"
+----
+
+The configuration displays and is pushed to the connector tasks:
+
+[source,results]
+----
+
+Output:
+{
+  "name": "cassandra-sink-distributed-example",
+  "config": {
+    "connector.class": "com.datastax.kafkaconnector.DseSinkConnector",
+    "tasks.max": "5",
+    "topics": "json-stream",
+    "topic.json-stream.consistencyLevel": "LOCAL_QUORUM",
+    "contactPoints": "localhost",
+    "loadBalancing.localDc": "Cassandra",
+    "topic.json-stream.ks.tbl.mapping": "symbol=value.symbol, ts=value.ts, exchange=value.exchange, industry=value.industry, name=value.name, value=value.value",
+    "name": "cassandra-sink-distributed-example"
+  },
+  "tasks": [
+    {
+      "connector": "cassandra-sink-distributed-example",
+      "task": 0
+    },
+    {
+      "connector": "cassandra-sink-distributed-example",
+      "task": 1
+    },
+    {
+      "connector": "cassandra-sink-distributed-example",
+      "task": 2
+    },
+    {
+      "connector": "cassandra-sink-distributed-example",
+      "task": 3
+    },
+    {
+      "connector": "cassandra-sink-distributed-example",
+      "task": 4
+    }
+  ],
+  "type": "sink"
+}
+----

@@ -1,0 +1,49 @@
+[#_start_the_datastax_connector_in_distributed_mode_kafkastartdistributedmode_task]
+= Start the DataStax Connector in distributed mode
+:imagesdir: _images
+
+Run an instance of the connector with a worker in distributed mode.
+
+Use distributed mode with multiple workers in production environments to allow multiple instances of the DataStax Apache Kafka™ Connector to run as a group on one or more workers.
+Distributed mode automatically balances workload, allows dynamic scale up or down, and offers fault tolerance for active tasks, configuration, and offset commit data.
+
+The DataStax Connector download package contains a sample distributed mode sample configuration file (cassandra-sink-distributed.json.sample).
+
+TIP: See the Apache Kafka documentation for https://docs.confluent.io/current/connect/userguide.html#distributed-mode[Distributed mode].
+
+. xref:../install/kafkaInstall.adoc[Download and install] the DataStax Apache Kafka Connector.
+. Configure the distributed worker configuration file connect-distributed.properties to fit your needs.
+Usehttps://github.com/datastax/kafka-examples/blob/master/producers/src/main/java/json/connect-distributed-json.properties[this example] from DataStax as a starting point.
++
+Specify the converter for the `key.converter` and `value.converter` properties that matches the form of your Kafka data.
+See https://docs.confluent.io/current/connect/userguide.html#configuring-converters[Configuring converters] in the Confluent documentation for more information on these properties.
+
+. From the directory where you installed Apache Kafka, start the distributed worker:
+
+....
+```language-bash
+bin/connect-distributed.sh config/connect-distributed.properties
+```
+
+The worker startup process outputs a large number of informational messages. The following message displays after the process completes:
+
+```no-highlight
+[2019-10-13 19:49:25,385] INFO Finished starting connectors and tasks (org.apache.kafka.connect.runtime.distributed.DistributedHerder:852)
+```
+....
+
+. Register the connector configuration with the distributed worker:
+
+....
+```language-bash
+curl -X POST -H "Content-Type: application/json" -d @dse-sink.json "http://ip:port/connectors"
+```
+
+ip and port are the IP address and port number of the Kafka worker.
+
+Use the same port as the `rest.port` parameter set in connect-distributed.properties. The default port is 8083.
+
+**Note:** You configured the dse-sink.json or dse-sink.properties file when installing the DataStax Apache Kafka Connector.
+....
+
+* *xref:../../kafka/operations/kafkaStartSyntax.adoc[Syntax to Create a new DataStax Connector]* + Kafka Connect REST API syntax used to create a new distributed DataStax Apache Kafka Connector.

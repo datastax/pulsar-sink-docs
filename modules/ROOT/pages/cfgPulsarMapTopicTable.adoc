@@ -1,5 +1,5 @@
 [#_mapping_kafka_topics_to_database_tables_kafkamaptopictable_concept]
-= Mapping kafka topics to database tables {#kafkaMapTopicTable .concept}
+= Mapping kafka topics to database tables
 :imagesdir: _images
 
 Simple but powerful syntax for mapping Kafka fields to suppported database table columns.
@@ -27,5 +27,3 @@ DataStax Apache Kafka Connector supports topic-to-table mappings with the follow
 * *xref:../kafka/kafkaSelectiveUpdateMapsAndUdts.adoc[Selectively update maps and UDTs based on Kafka fields]* + Selectively update maps and UDTs based on Kafka fields.
 * *xref:../kafka/kafkaCqlQuery.adoc[Provide CQL queries in mappings]* + Provide CQL queries when new record arrives on the Kafka topic.
 * *xref:../kafka/kafkaNowFunction.adoc[The now() function in mappings]* + You can use the now() function in mappings.
-
-*Parent topic:* xref:../kafka/kafkaConfigTasksTOC.adoc[Configuring the DataStax Apache Kafka Connector]

@@ -1,5 +1,5 @@
 [#_mapping_json_messages_kafkajsonmessageschema_task]
-= Mapping JSON messages {#kafkaJsonMessageSchema .task}
+= Mapping JSON messages
 :imagesdir: _images
 
 Supports mapping JSON messages with or without a schema.
@@ -107,5 +107,3 @@ Example configurations for `stocks_topic` to `stocks_table` using the minimum re
 ....
 
 . xref:operations/kafkaUpdateConfig.adoc[Update configuration on a running worker] or xref:operations/kafkaStartStop.adoc[deploy the DataStax Connector for the first time].
-
-*Parent topic:* xref:../kafka/kafkaMapJson.adoc[Mapping a message that contain JSON fields]

@@ -11,5 +11,3 @@ Example - Kafka topic named `my-topic` has 10 partitions and the connector group
 The maximum unit of parallelism in this environment would be 10 because each partitions cannot be subdivided among the tasks.
 
 NOTE: Use additional Apache Kafka™ Connect workers to scale the connector if greater throughput is needed.
-
-*Parent topic:* xref:../kafka/kafkaConfigTasksTOC.adoc[Configuring the DataStax Apache Kafka Connector]

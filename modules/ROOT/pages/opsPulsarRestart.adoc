@@ -1,0 +1,32 @@
+[#kafkaRestart]
+= Restarting the DataStax Connector
+:imagesdir: _images
+
+Restart the DataStax Apache Kafka™ Connector .
+
+To restart a DataStax Apache Kafka™ Connector that was previously running, use the following Kafka Connect REST API command:
+
+NOTE: Restarting the connector will not restart tasks.
+If a task fails and then a change is made to correct the issue, use the xref:kafkaRestartTasks.adoc[Restart Task] command to rerun the task.
+
+[source,language-bash]
+----
+curl -X POST "http://worker\_ip:rest\_port/connectors/connector\_name/restart"
+----
+
+where
+
+* worker_ip - The hostname or IP address of the Kafka Connect worker.
+* port - The listening port for the Kafka Connect REST API.
+By default this service runs on _port_ 8083.
+* connector_name - DataStax Apache Kafka® Connector link:../configuration_reference/kafkaConnector.md#name[name].
+
+Example restart
+
+Restarting `cassandra-sink-distributed-example`:
+
+----
+curl -X POST “http://localhost:8083/connectors/cassandra-sink-distributed-example/restart"
+----
+
+TIP: On success there is no output for this command.

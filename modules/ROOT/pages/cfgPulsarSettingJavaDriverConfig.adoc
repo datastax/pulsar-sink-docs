@@ -80,5 +80,3 @@ datastax-java-driver.advanced.metrics.session.enabled.1=b
 ----
 
 For more information, refer to the link:/en/developer/java-driver/4.3/manual/core/configuration/reference/[Java driver reference configuration] topic.
-
-*Parent topic:* xref:../kafka/kafkaConfigTasksTOC.adoc[Configuring the DataStax Apache Kafka Connector]

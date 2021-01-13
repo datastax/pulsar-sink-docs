@@ -22,5 +22,3 @@ Use one or more individual mapping statements to extract the desired values and 
 The Kafka record's header can have fields that are similar to `key.field-name` or `value.field-name`.
 
 For example, you may want to send the Kafka record with its key, value, and custom header information such as `trace_id` or another type of internal identifier, and save those values in your database table.
-
-*Parent topic:* xref:../kafka/kafkaMapTopicTable.adoc[Mapping kafka topics to database tables]

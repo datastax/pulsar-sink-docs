@@ -32,5 +32,3 @@ Example:
 ----
 topic.my_topic.my_ks.my_table.timestampTimeUnit=SECONDS
 ----
-
-*Parent topic:* xref:../kafka/kafkaConfigTasksTOC.adoc[Configuring the DataStax Apache Kafka Connector]

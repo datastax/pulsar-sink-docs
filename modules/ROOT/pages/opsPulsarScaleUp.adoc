@@ -1,0 +1,45 @@
+[#_scaling_up_by_adding_workers_kafkascaleup_task]
+= Scaling up by adding workers
+:imagesdir: _images
+
+Increase workload throughput by adding additional workers.
+
+To increase throughput, accommodate the workload, or increase fault tolerance, scale Kafka Connect workers horizontally.
+
+TIP: The DataStax Apache Kafka Connector framework automatically rebalances the load when workers are added by reallocating the tasks among the workers.
+
+Provision a system with Apache Kafka and install the DataStax Apache Kafka Connector.
+Refer to link:/en/kafka/doc/kafka/install/kafkaInstall.html[Installing the DataStax Apache Kafka Connector].
+
+NOTE: Kafka Connect is packaged with the Apache and Confluent Kafka distributions.
+
+. The configuration setting for the new worker must match the worker configuration of the group which this worker will join.
+Verify that the following settings in `connect-distributed.properties`:
+bootstrap.servers:: A list of host/port pairs to use for establishing the initial connection to the Kafka cluster.
+
+group.id:: Unique name for the Kafka Connect worker group.
+
++
+NOTE: Must not conflict with other consumer group IDs.
+key.converter:: Specifies the format of the data for the key in Kafka and how to translate it into Connect data.
+
+value.converter:: Specifies the format of the data for the value in Kafka and how to translate it into Connect data.
+
+key.converter.schemas.enable::
+`true` if the Kafka records have a defined schema for the key;
+otherwise `false`.
+
+config.storage.topic::
+Topic to use for storing connector and task configurations;
+note that this should be a single partition, highly replicated, and compacted topic.
+
+offset.storage.topic::
+Topic to use for storing offsets.
+This topic should have many partitions and be replicated and compacted.
+
+status.storage.topic::
+Topic to use for storing statuses.
+This topic can have multiple partitions and should be replicated and compacted.
+. Verify that the `plugin.path` includes the location of the connector.
+. Start the worker.
+See xref:opsPulsarStartDistributedMode.adoc[].

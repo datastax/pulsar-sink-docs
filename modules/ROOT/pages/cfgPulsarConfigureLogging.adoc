@@ -70,5 +70,3 @@ curl -s -X PUT -H "Content-Type:application/json" \
   -d '{"level": "WARN"}' \
   | jq '.'
 ----
-
-*Parent topic:* xref:../kafka/kafkaConfigTasksTOC.adoc[Configuring the DataStax Apache Kafka Connector]

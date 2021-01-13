@@ -1,0 +1,22 @@
+[#_kafka_datastax_compatibility_kafkacompatibility_concept]
+= Kafka-DataStax compatibility
+:imagesdir: _images
+
+Kafka and DataStax platform compatibility matrix.
+
+The DataStax Apache Kafka™ Connector can stream data to:
+
+* https://docs.astra.datastax.com/docs[DataStax Astra] cloud databases
+* DataStax Enterprise (DSE) 4.7 and later databases
+* Open source Apache Cassandra® 2.1 and later databases
+
+[#_supported_kafka_data_structures_kafkastructuretypes_section]
+== Supported Kafka data structures {#kafkaStructureTypes .section}
+
+Ingest data from Kafka topics with records in the following data structures:
+
+* Primitive type values, such as integer or string
+* Complex field values in record types:
+ ** JSON formatted string
+ ** xref:../glossary/gloss_kafka_struct.adoc[Kafka Struct]
+ ** Avro

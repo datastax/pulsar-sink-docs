@@ -35,5 +35,3 @@ topic.my_topic.my_ks.my_table.query=UPDATE ks.tbl SET somelist = somelist + [:ne
 topic.my_topic.my_ks.my_table.query=DELETE FROM ks.tbl WHERE pkey = :pkey AND ccol = :ccol;
 topic.my_topic.my_ks.my_table.query=DELETE FROM ks.tbl WHERE pkey = :pkey AND ccol > :ccol1 AND ccol <= :ccol2;
 ----
-
-*Parent topic:* xref:../kafka/kafkaMapTopicTable.adoc[Mapping kafka topics to database tables]

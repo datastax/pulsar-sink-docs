@@ -1,5 +1,5 @@
 [#_configure_error_handling_kafkaconfigureerrorhandling_reference]
-= Configure error handling {#kafkaConfigureErrorHandling .reference}
+= Configure error handling
 :imagesdir: _images
 
 Specifies whether Kafka Connector should continue processing records even if an error occurred.
@@ -35,5 +35,3 @@ For example, to pipe the worker process to the background and write the log entr
 ----
 
  Default: `NONE`.
-
-*Parent topic:* xref:../kafka/kafkaConfigToc.adoc[DataStax Apache Kafka Connector configuration parameter reference]
