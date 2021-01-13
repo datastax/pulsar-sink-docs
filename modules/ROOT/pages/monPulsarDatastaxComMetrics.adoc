@@ -1,0 +1,14 @@
+[#kafkaDatastaxComMetrics]
+= DataStax Kafka Connector metrics
+:imagesdir: _images
+
+Use JMX to monitor the DataStax Kafka Connector.
+
+Metrics for requests sent by the DataStax Apache Kafka™ Connector instance are written to Java Management Extension MBeans under the namespace: `com.datastax.kafkaconnector`.
+
+NOTE: To capture these metrics, the link:../configuration_reference/kafkaDseConnection.md#jmx[jmx] parameter must be set to `true` in the DataStax Apache Kafka® Connector configuration file.
+
+* *xref:../../kafka/monitoring/kafkaRecordCountMetrics.adoc[Metrics for the processed Kafka topic records]* + Running total and averages of the Kafka topic records processed by the DataStax Kafka Connector.
+* *xref:../../kafka/monitoring/kafkaMetricsFailed.adoc[Failed Kafka topic record metrics]* + Running total or moving averages of Kafka topic records that could not be processed by a DataStax Apache Kafka Connector instance.
+* *xref:../../kafka/monitoring/kafkaDriverMetrics.adoc[Write requests to the DataStax platform]* + Sessions details and write request metrics
+* *xref:../../kafka/monitoring/kafkaWriteMetrics.adoc[DataStax Apache Kafka Connector - Batch size metrics]* + Write statistics for each mapping of a Kafka topic to a database table.

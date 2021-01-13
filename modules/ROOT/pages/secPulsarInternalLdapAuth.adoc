@@ -1,0 +1,24 @@
+[#_using_internal_or_ldap_authentication_kafkainternalldapauth_task]
+= Using internal or LDAP authentication
+:imagesdir: _images
+
+Authenticate the DataStax Apache Kafka Connector session using internal or LDAP authentication.
+
+Authenticate the DataStax Apache Kafka™ Connector session using internal or LDAP authentication.
+When the cluster has internal or LDAP authentication enabled, configure the user name and password settings for DataStax Apache Kafka™ Connector.
+This task also requires a login role for the DataStax Apache Kafka™ Connector with access to the mapped tables.
+
+. Verify whether your cluster has internal or LDAP authentication enabled.
+Refer to the link:/en/dse/6.7/dse-admin/datastax_enterprise/config/configDseYaml.html#configDseYaml__authenticationOptions[authentication options] in the dse.yaml file.
+Authentication options for the DSE Authenticator allow you to use multiple schemes for authentication simultanelously in a DataStax Enterprise cluster.
+. Additional authenticator configuration is required in dse.yaml when the authorization option in cassandra.yaml is set to `com.datastax.bdp.cassandra.auth.DseAuthorizer`.
+When authorization is enabled, the DataStax Apache Kafka Connector login role must have a minimum of `modify` privileges on tables receiving data from the DataStax Apache Kafka Connector.
+For details, refer to the link:/en/dse/6.7/dse-admin/datastax_enterprise/config/configCassandra_yaml.html#configCassandra_yaml__authenticator[authorization] options.
+. In dse.yaml, there are options to configure LDAP security when the authenticator option in cassandra.yaml is set to `com.datastax.bdp.cassandra.auth.DseAuthenticator`.
+When not set, LDAP authentication is not used.
+The default in dse.yaml is that this setting is commented out (false).
+For details, refer to link:/en/security/6.7/security/secLDAPScheme.html[Defining an LDAP scheme].
+. Internal and LDAP schemes can also be used for role management.
+Refer to the link:/en/dse/6.7/dse-admin/datastax_enterprise/config/configDseYaml.html#configDseYaml__role_management_options[role management] options.
+. Set the relevant auth parameters in dse.yaml for `auth.provider`, `auth.username` (the login role name or LDAP username), and `auth.password`.
+See xref:../configuration_reference/kafkaAuthLdap.adoc[parameters].

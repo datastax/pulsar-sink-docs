@@ -1,0 +1,135 @@
+[#_datastax_apache_kafka_connector_batch_size_metrics_kafkawritemetrics_reference]
+= DataStax Apache Kafka Connector - Batch size metrics
+:imagesdir: _images
+
+Write statistics for each mapping of a Kafka topic to a database table.
+
+The DataStax Apache Kafka™ Connector records metrics for each Kafka topic that is synchronized with a link:../kafkaIntro.md#kafkaIntroduction[supported database] table.
+The metric corresponds to a topic mapping.
+See xref:../kafkaMapTopicTable.adoc[Mapping kafka topics to database tables].
+
+Two related metrics are provided:
+
+* `batchSize`
+* `batchSizeInBytes`
+
+The Mbean paths are:
+
+* {blank}
++
+----
+objectName='com.datastax.kafkaconnector:connector=connector\_name,topic=topic\_name,keyspace=keyspace\_name,
+ table=table\_name,name=batchSize'
+----
+
+* {blank}
++
+----
+objectName='com.datastax.kafkaconnector:connector=connector\_name,topic=topic\_name,keyspace=keyspace\_name,
+ table=table\_name,name=batchSizeInBytes'
+----
+
+where the variables above correspond to settings in the connector configuration file:
+
+* connector_name - DataStax Apache Kafka® Connector link:../configuration_reference/kafkaConnector.md#name[name].
+* topic_name is Kafka link:../configuration_reference/kafkaDseTable.md#prefix[prefix].
+* keyspace_name is the case-sensitive database link:../configuration_reference/kafkaDseTable.md#DseKeyspaceName[keyspace name].
+* table_name is the case-sensitive database link:../configuration_reference/kafkaDseTable.md#DseTableName[table name].
+
+[#_about_the_batch_metrics_batchsize_section]
+== About the batch metrics {#batchsize .section}
+
+The `batchSize` metric returns the number of statements in the CQL batch used to write records to the database.
+The connector default limit is 32.
+See link:../configuration_reference/kafkaDseConnection.md#maxNumberOfRecordsInBatch[maxNumberOfRecordsInBatch].
+
+The `batchSizeInBytes` metric is a histogram with the calculated size of every batch statement.
+The calculated value is saved in bytes.
+You can retrieve the distribution of values of every batch statement.
+The algorithm used to calculate batch size evaluates the data size contained in the given statement.
+The data size is the total number of bytes required to encode all the bound variables contained in the statement.
+
+If the limit is consistently hit, then increasing the batch size value can result in better Kafka Connector throughput if the database nodes can handle the added pressure of larger CQL batch statements.
+When increasing link:../configuration_reference/kafkaDseConnection.md#maxNumberOfRecordsInBatch[maxNumberOfRecordsInBatch], ensure that the batch size does not exceed the maximum allowed by link:/en/dse/6.7/dse-admin/datastax_enterprise/config/configCassandra_yaml.html#configCassandra_yaml__batch_size_fail_threshold_in_kb[batch_size_fail_threshold_in_kb].
+See xref:../troubleshooting/kafkaTsLargeBatches.adoc[Writing fails because of mutation size] for details.
+
+[#_attributes_for_batchsize_and_batchsizeinbytes_section]
+== Attributes for batchSize and batchSizeInBytes { .section}
+
+The attributes are:
+
+Mean:: The mean average number of write requests per batch statement.
+
+ ```no-highlight
+ objectName='com.datastax.kafkaconnector:connector=connector\_name,topic=topic\_name,keyspace=keyspace\_name,
+  table=table\_name,name=batchSize' attribute='Mean'
+ ```
+
+:   The mean average size in bytes of write requests per batch statement.
+
+ ```no-highlight
+ objectName='com.datastax.kafkaconnector:connector=connector\_name,topic=topic\_name,keyspace=keyspace\_name,
+  table=table\_name,name=batchSizeInBytes' attribute='Mean'
+ ```
+
+Count:: Running number total of all batch sizes.
+
+ ```no-highlight
+ objectName='com.datastax.kafkaconnector:connector=connector\_name,topic=topic\_name,keyspace=keyspace\_name,
+  table=table\_name,name=batchSize' attribute='Count'
+ ```
+
+:   Running total of all batch sizes in bytes.
+
+ ```no-highlight
+ objectName='com.datastax.kafkaconnector:connector=connector\_name,topic=topic\_name,keyspace=keyspace\_name,
+  table=table\_name,name=batchSizeInBytes' attribute='Count'
+ ```
+
+50thPercentile::
++
+[source,no-highlight]
+----
+objectName='com.datastax.kafkaconnector:connector=connector\_name,topic=topic\_name,keyspace=keyspace\_name,
+ table=table\_name,name=batchSize' attribute='50thPercentile'
+---- [source,no-highlight] ---- objectName='com.datastax.kafkaconnector:connector=connector\_name,topic=topic\_name,keyspace=keyspace\_name,  table=table\_name,name=batchSizeInBytes' attribute='50thPercentile' ----
+
+75thPercentile::
++
+[source,no-highlight]
+----
+objectName='com.datastax.kafkaconnector:connector=connector\_name,topic=topic\_name,keyspace=keyspace\_name,
+ table=table\_name,name=batchSize' attribute='75thPercentile'
+---- [source,no-highlight] ---- objectName='com.datastax.kafkaconnector:connector=connector\_name,topic=topic\_name,keyspace=keyspace\_name,  table=table\_name,name=batchSizeInBytes' attribute='75thPercentile' ----
+
+95thPercentile::
++
+[source,no-highlight]
+----
+objectName='com.datastax.kafkaconnector:connector=connector\_name,topic=topic\_name,keyspace=keyspace\_name,
+table=table\_name,name=batchSize' attribute='95thPercentile'
+---- [source,no-highlight] ---- objectName='com.datastax.kafkaconnector:connector=connector\_name,topic=topic\_name,keyspace=keyspace\_name,  table=table\_name,name=batchSizeInBytes' attribute='95thPercentile' ----
+
+98thPercentile::
++
+[source,no-highlight]
+----
+objectName='com.datastax.kafkaconnector:connector=connector\_name,topic=topic\_name,keyspace=keyspace\_name,
+ table=table\_name,name=batchSize' attribute='98thPercentile'
+---- [source,no-highlight] ---- objectName='com.datastax.kafkaconnector:connector=connector\_name,topic=topic\_name,keyspace=keyspace\_name,  table=table\_name,name=batchSizeInBytes' attribute='98thPercentile' ----
+
+99thPercentile::
++
+[source,no-highlight]
+----
+objectName='com.datastax.kafkaconnector:connector=connector\_name,topic=topic\_name,keyspace=keyspace\_name,
+ table=table\_name,name=batchSize' attribute='99thPercentile'
+---- [source,no-highlight] ---- objectName='com.datastax.kafkaconnector:connector=connector\_name,topic=topic\_name,keyspace=keyspace\_name,  table=table\_name,name=batchSizeInBytes' attribute='99thPercentile' ----
+
+999thPercentile::
++
+[source,no-highlight]
+----
+objectName='com.datastax.kafkaconnector:connector=connector\_name,topic=topic\_name,keyspace=keyspace\_name,
+ table=table\_name,name=batchSize' attribute='999thPercentile'
+---- [source,no-highlight] ---- objectName='com.datastax.kafkaconnector:connector=connector\_name,topic=topic\_name,keyspace=keyspace\_name,  table=table\_name,name=batchSizeInBytes' attribute='999thPercentile' ----

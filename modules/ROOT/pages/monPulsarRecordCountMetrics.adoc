@@ -1,0 +1,70 @@
+[#kafkaRecordCountMetrics]
+= Metrics for the processed Kafka topic records
+:imagesdir: _images
+
+Running total and averages of the Kafka topic records processed by the DataStax Kafka Connector.
+
+Use the Record Count MBeans to monitor the total number of Apache Kafka™ records processed by the DataStax Connector.
+
+NOTE: To capture these metrics, the link:../configuration_reference/kafkaDseConnection.md#jmx[jmx] parameter must be set to `true` in the DataStax Apache Kafka® Connector configuration file.
+
+Count:: Running total of records processed.
+
+....
+```no-highlight
+objectName='com.datastax.kafkaconnector:connector=connector\_name,name=topic.keyspace.table.recordCount' attribute='Count'
+```
+
+where
+
+-   connector\_name - DataStax Apache Kafka® Connector [name](../configuration_reference/kafkaConnector.md#name).
+....
+
+MeanRate:: Average number of records processed since the connector was created.
+
+....
+```no-highlight
+objectName='com.datastax.kafkaconnector:connector=connector\_name,name=topic.keyspace.table.recordCount' attribute='MeanRate'
+```
+
+where
+
+-   connector\_name - DataStax Apache Kafka® Connector [name](../configuration_reference/kafkaConnector.md#name).
+....
+
+OneMinuteRate:: Moving average of records processed in the last minute.
+
+....
+```no-highlight
+objectName='com.datastax.kafkaconnector:connector=connector\_name,name=topic.keyspace.table.recordCount' attribute='OneMinuteRate'
+```
+
+where
+
+-   connector\_name - DataStax Apache Kafka® Connector [name](../configuration_reference/kafkaConnector.md#name).
+....
+
+FiveMinuteRate:: Moving average of records processed in the last five minutes.
+
+....
+```no-highlight
+objectName='com.datastax.kafkaconnector:connector=connector\_name,name=topic.keyspace.table.recordCount' attribute='FiveMinuteRate'
+
+```
+
+where
+
+-   connector\_name - DataStax Apache Kafka® Connector [name](../configuration_reference/kafkaConnector.md#name).
+....
+
+FifteenMinuteRate:: Moving average of records processed in the last fifteen minutes.
+
+....
+```no-highlight
+objectName='com.datastax.kafkaconnector:connector=connector\_name,name=topic.keyspace.table.recordCount' attribute='FifteenMinuteRate'
+```
+
+where
+
+-   connector\_name - DataStax Apache Kafka® Connector [name](../configuration_reference/kafkaConnector.md#name).
+....

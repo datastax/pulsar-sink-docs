@@ -31,6 +31,17 @@
 ** xref:opsPulsarDeleteConnector.adoc[]
 ** xref:opsPulsarConnectorStatus.adoc[]
 * Security
+** xref:secPulsarKerberosAuth.adoc[]
+*** xref:secPulsarKerberosConfigFile.adoc[]
+*** xref:secPulsarKerberosTicket.adoc[]
+** xref:secPulsarInternalLdapAuth.adoc[]
 * Monitoring
+** xref:monPulsarEnableJmx.adoc[]
+** xref:monPulsarDatastaxComMetrics.adoc[]
+*** xref:monPulsarRecordCountMetrics.adoc[]
+*** xref:monPulsarMetricsFailed.adoc[]
+*** xref:monPulsarDriverMetrics.adoc[]
+*** xref:monPulsarWriteMetrics.adoc[]
+** xref:monPulsarConnectMetrics.adoc[]
 * Troubleshooting
 * Examples
