@@ -1,5 +1,5 @@
 [#_kafka_topic_to_table_settings_kafkacassandratable_reference]
-= Kafka topic-to-table settings {#kafkaCassandraTable .reference}
+= Kafka topic-to-table settings
 :imagesdir: _images
 
 Capture Kafka topics in the supported database by specifying a target keyspace, table, and then map the topic fields to table columns.
@@ -82,5 +82,3 @@ deletesEnabled:: When enabled, treat records that after mapping would result in 
 NOTE: Only triggers if the setting is enabled and the mapping specification contains all DSE table columns.
 
  Default: `true`
-
-*Parent topic:* xref:../../kafka/kafkaConfigToc.adoc[DataStax Apache Kafka Connector configuration parameter reference]

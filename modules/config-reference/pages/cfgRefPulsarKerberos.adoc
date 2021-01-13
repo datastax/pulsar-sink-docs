@@ -1,5 +1,5 @@
 [#_kerberos_authentication_kafkakerberos_reference]
-= Kerberos authentication {#kafkaKerberos .reference}
+= Kerberos authentication
 :imagesdir: _images
 
 When the cluster has Kerberos authentication enabled configure Kerberos settings for DataStax Apache Kafka™ Connector.
@@ -42,5 +42,3 @@ Prevents the connector from arbitrarily choosing one.
 auth.gssapi.service:: SASL service name to use for GSSAPI provider authentication.
 
  Default: `dse`
-
-*Parent topic:* xref:../../kafka/configuration_reference/kafkaAuth.adoc[Using the DataStax Connector with DataStax Enterprise authentication]

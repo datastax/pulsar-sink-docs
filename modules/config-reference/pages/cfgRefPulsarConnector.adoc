@@ -1,5 +1,5 @@
 [#_datastax_apache_kafka_connector_details_kafkaconnector_reference]
-= DataStax Apache Kafka Connector details {#kafkaConnector .reference}
+= DataStax Apache Kafka Connector details
 :imagesdir: _images
 
 Common Kafka connector parameters.
@@ -41,5 +41,3 @@ The full path to the secure connect bundle for your DataStax Astra database (sec
 Download the xref:../../dscloud/astra/dscloudObtainingCredentials.adoc[secure connect bundle] from the DataStax Cloud console.
 
  If this option is specified, you must also include the [auth.username](kafkaAuthLdap.md#username) and [auth.password](kafkaAuthLdap.md#password) for the database user.
-
-*Parent topic:* xref:../../kafka/kafkaConfigToc.adoc[DataStax Apache Kafka Connector configuration parameter reference]

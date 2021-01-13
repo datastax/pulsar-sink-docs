@@ -1,5 +1,5 @@
 [#_ssl_encrypted_connection_kafkassl_reference]
-= SSL encrypted connection {#kafkaSsl .reference}
+= SSL encrypted connection
 :imagesdir: _images
 
 When the cluster has client encryption enabled configure the SSL keys and certificates for the DataStax Apache Kafka™ Connector.
@@ -68,5 +68,3 @@ ssl.openssl.privateKey:: Path to the private key file, when using OpenSSL.
 ssl.truststore.password:: Truststore password.
 
 ssl.truststore.path:: Path to the truststore file.
-
-*Parent topic:* xref:../../kafka/kafkaConfigToc.adoc[DataStax Apache Kafka Connector configuration parameter reference]

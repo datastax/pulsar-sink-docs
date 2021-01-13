@@ -1,5 +1,5 @@
 [#_datastax_connection_kafkadseconnection_reference]
-= DataStax connection {#kafkaDseConnection .reference}
+= DataStax connection
 :imagesdir: _images
 
 Configure the connection to the cluster.
@@ -60,5 +60,3 @@ Valid values are `None`, `Snappy`, and `LZ4`, which is applied per connector ins
 queryExecutionTimeout:: CQL statement execution timeout, in seconds.
 
  Default: `30`
-
-*Parent topic:* xref:../../kafka/kafkaConfigToc.adoc[DataStax Apache Kafka Connector configuration parameter reference]

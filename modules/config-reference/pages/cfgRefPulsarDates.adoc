@@ -1,5 +1,5 @@
 [#_converting_date_and_times_for_a_topic_kafkadates_reference]
-= Converting date and times for a topic {#kafkaDates .reference}
+= Converting date and times for a topic
 :imagesdir: _images
 
 Configure date and time conversion parameters for each topic.
@@ -101,5 +101,3 @@ To write to a column with type link:/en/dse/6.7/cql/cql/cql_reference/refDataTyp
 ----
 topic.test.codec.time=ISO_LOCAL_TIME
 ----
-
-*Parent topic:* xref:../../kafka/kafkaConfigToc.adoc[DataStax Apache Kafka Connector configuration parameter reference]

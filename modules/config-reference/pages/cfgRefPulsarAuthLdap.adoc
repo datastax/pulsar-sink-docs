@@ -1,5 +1,5 @@
 [#_internal_or_ldap_authentication_kafkaauthldap_reference]
-= Internal or LDAP authentication {#kafkaAuthLdap .reference}
+= Internal or LDAP authentication
 :imagesdir: _images
 
 When the cluster has internal or LDAP authentication enabled, you should configure the username and password settings for the Kafka Connector.
@@ -35,5 +35,3 @@ auth.username:: DSE login role name or LDAP username.Astra database username.
  **Note:** When [authorization is enabled](/en/dse/6.8/dse-admin/datastax_enterprise/config/configDseYaml.html#configDseYaml__authorizationOptions), the DataStax connector login role must have a minimum of `modify` privileges on tables receiving data from the DataStax Apache Kafka® Connector.
 
 auth.password:: Login role or LDAP password.Astra database password for the specified username.
-
-*Parent topic:* xref:../../kafka/configuration_reference/kafkaAuth.adoc[Using the DataStax Connector with DataStax Enterprise authentication]
