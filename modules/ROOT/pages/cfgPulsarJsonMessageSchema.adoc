@@ -2,8 +2,6 @@
 = Mapping JSON messages
 :imagesdir: _images
 
-Supports mapping JSON messages with or without a schema.
-
 The DataStax Apache Pulsar™ Connector supports mapping JSON messages with or without a schema.
 In this example, the key is regular JSON without schema.
 The value is also JSON but contains a schema and a payload.
@@ -32,11 +30,9 @@ The type of the payload is Map and the connector is able to access the individua
 
 See the https://github.com/datastax/pulsar-examples/tree/master/producers/src/main/java/json[DataStax Pulsar Examples] for a full example.
 
-. Verify that the correct converter is set in the link:pulsarWorkerConfig.md#key_converter[key.converter] and link:pulsarWorkerConfig.md#value_converter[value.converter] of the `connect-distributed.properties` file.
-. Set up the link:pulsarIntro.md#pulsarIntroduction[supported database] table.
-1.
-Create the keyspace.
-Ensure that keyspace is replicated to a datacenter that is set in the DataStax Apache Pulsar Connector link:configuration_reference/pulsarDseConnection.md#contactPoints[contactPoints] parameter.
+. Set up the xref:index.adoc[supported database] table.
+. Create the keyspace.
+Ensure that keyspace is replicated to a datacenter that is set in the DataStax Apache Pulsar Connector xref:config-reference:cfgRefPulsarDseConnection.md#contactPoints[contactPoints] parameter.
 For example, create the `stocks_keyspace`:
 +
 [source,language-bash]
@@ -47,12 +43,12 @@ For example, create the `stocks_keyspace`:
 ----
 +
 NOTE: The datacenter name is case sensitive.
-Use link:/en/dse/6.8/dse-dev/datastax_enterprise/tools/nodetool/toolsRing.html[nodetool ring] to get a list of datacenters.
+Use link:https://docs.datastax.com/en/dse/6.8/dse-dev/datastax_enterprise/tools/nodetool/toolsRing.html[nodetool ring] to get a list of datacenters.
 
-....
-2.   Create the table. For example, create the `stocks_table`:
-
-    ```language-bash
+. Create the table. For example, create the `stocks_table`:
++
+[source,language-bash]
+----
     cqlsh -e "CREATE TABLE stocks_keyspace.stocks_table ( \
       symbol text, \
       ts timestamp, \
@@ -61,26 +57,27 @@ Use link:/en/dse/6.8/dse-dev/datastax_enterprise/tools/nodetool/toolsRing.html[n
       name text, \
       value double, \
       PRIMARY KEY (symbol, ts));"
-    ```
+----
 
-3.   Verify that all nodes have the same schema version using [nodetool describering](/en/dse/6.8/dse-admin/datastax_enterprise/tools/nodetool/toolsDescribeRing.html). Replace keyspace\_name:
-
-    ```language-bash
+. Verify that all nodes have the same schema version using link:https://docs.datastax.com/en/dse/6.8/dse-admin/datastax_enterprise/tools/nodetool/toolsDescribeRing.html[nodetool describering]. Replace keyspace\_name:
++
+[source,language-bash]
+----
     nodetool describering -- keyspace\_name
-    ```
-....
+----
 
 . In the DataStax Apache Pulsar Connector configuration file:
 
-....
-1.   Add the topic name to [topics](configuration_reference/pulsarDseTable.md#topics).
-2.   Define the topic-to-table map [prefix](configuration_reference/pulsarDseTable.md#prefix).
-3.   Define the [field-to-column map](configuration_reference/pulsarDseTable.md#mapping).
+.. Add the topic name to xref:cfgPulsarDseTable.adoc[topics].
+.. Define the topic-to-table map xref:config-reference:cfgRefPulsarDseTable.adoc[prefix].
+.. Define the xref:config-reference:cfgRefPulsarDseTable.adoc[field-to-column map].
++
 Example configurations for `stocks_topic` to `stocks_table` using the minimum required settings:
 
 -   JSON for distributed mode:
-
-    ```no-highlight
++
+[source,no-highlight]
+----
     {
       "name": "stocks-sink",
       "config": {
@@ -91,19 +88,19 @@ Example configurations for `stocks_topic` to `stocks_table` using the minimum re
         “symbol=value.symbol, ts=value.dateTime, exchange=value.exchange, industry=value.industry, name=key.name, value=value.value”
       }
     }
-    ```
-
+----
++
 -   Properties file for standalone mode:
-
-    ```no-highlight
++
+[source,no-highlight]
+----
     name=stocks-sink
     connector.class=com.datastax.pulsarconnector.DseSinkConnector
     tasks.max=1
     topics=stocks_topic
     topic.stocks_topic.stocks_keyspace.stocks_table.mapping = symbol=value.symbol,ts=value.dateTime,exchange=value.exchange,industry=value.industry,name=key.name,value=value.value
-    ```
-
-**Note:** See [DataStax Apache Pulsar Connector configuration parameter reference](pulsarConfigToc.md) for additional parameters. When the [contactPoints](configuration_reference/pulsarDseConnection.md#contactPoints) parameter is missing, the `localhost`; this assumes the database is co-located on the DataStax Apache Pulsar Connector node.
-....
-
-. xref:operations/pulsarUpdateConfig.adoc[Update configuration on a running worker] or xref:operations/pulsarStartStop.adoc[deploy the DataStax Connector for the first time].
+----
++
+NOTE: When the xref:config-reference:cfgRefPulsarDseConnection.md[contactPoints] parameter is missing, the `localhost`; this assumes the database is co-located on the DataStax Apache Pulsar Connector node.
++
+. Update configuration on a running worker or deploy the DataStax Connector for the first time.

@@ -2,17 +2,16 @@
 = Determining topic data structure
 :imagesdir: _images
 
-Display messages to determine the data structure of the topic messages.
-
 One way to determine the format of pre-existing data in Pulsar is to run the command line consumer and look at what is in the topic.
 
 * To show Apache Pulsar messages:
-
- ```language-bash
++
+[source,language-bash]
+----
  bin/pulsar-console-consumer.sh --bootstrap-server localhost:9092 \
  --from-beginning --property print.key=true --max-messages 5 \
  --topic topic\_name
- ```
+----
 
 * To show Confluent Pulsar messages:      -   Messages other than Avro:
 +
@@ -23,14 +22,11 @@ One way to determine the format of pre-existing data in Pulsar is to run the com
    --topic topic\_name
 ----
 
-....
--   Avro messages
-
-    ```language-bash
+* Avro messages
++
+[source,language-bash]
+----
     bin/pulsar-avro-console-consumer --bootstrap-server localhost:9092 \
     --from-beginning --property print.key=true --max-messages 5 \
     --topic topic\_name
-    ```
-....
-
-*Parent topic:* xref:../pulsar/pulsarMapTopicTable.adoc[Mapping pulsar topics to database tables]
+----

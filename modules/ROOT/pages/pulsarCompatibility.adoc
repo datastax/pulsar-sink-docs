@@ -2,8 +2,6 @@
 = Pulsar-DataStax compatibility
 :imagesdir: _images
 
-Pulsar and DataStax platform compatibility matrix.
-
 The DataStax Apache Pulsar™ Connector can stream data to:
 
 * https://docs.astra.datastax.com/docs[DataStax Astra] cloud databases
@@ -11,12 +9,12 @@ The DataStax Apache Pulsar™ Connector can stream data to:
 * Open source Apache Cassandra® 2.1 and later databases
 
 [#_supported_pulsar_data_structures_pulsarstructuretypes_section]
-== Supported Pulsar data structures {#pulsarStructureTypes .section}
+== Supported Pulsar data structures
 
 Ingest data from Pulsar topics with records in the following data structures:
 
 * Primitive type values, such as integer or string
 * Complex field values in record types:
  ** JSON formatted string
- ** xref:../glossary/gloss_pulsar_struct.adoc[Pulsar Struct]
+ ** Pulsar Struct
  ** Avro

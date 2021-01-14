@@ -2,17 +2,16 @@
 = Bind address already in use
 :imagesdir: _images
 
-When another process is already using the port.
-
 The following error occurs if the listening port is already in use on the system:
 
+[source,no-highlight]
 ----
 WARN FAILED org.eclipse.jetty.server.Server@34fe326d: java.net.BindException: Address
           already in use
 ----
 
 [#_remediation_solution_section]
-== Remediation {#solution .section}
+== Remediation
 
 To verify, run:
 
@@ -30,5 +29,3 @@ automat+ 30950  6.0 26.7 4839156 2190816 ?     Sl   Oct22 230:05
 ----
 
 Kill the other process or use a different port.
-
-*Parent topic:* xref:../../pulsar/pulsarTroubleshoot.adoc[Troubleshooting the DataStax Apache Pulsar Connector]

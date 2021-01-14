@@ -2,8 +2,6 @@
 = Specify writetime timestamp column
 :imagesdir: _images
 
-Optionally specify the column to use for the writetime timestamp when inserting records from Pulsar into supported database tables.
-
 In the Pulsar topic mapping, you can optionally specify which column should be used to note the timestamp when the Pulsar-produced record was inserted into any of the following:
 
 * https://docs.astra.datastax.com/docs[DataStax Astra] cloud databases
@@ -13,6 +11,7 @@ In the Pulsar topic mapping, you can optionally specify which column should be u
 The mapping setting provides a special property, `__timestamp`.
 The format is:
 
+[source,no-highlight]
 ----
 topic.my_topic.my_ks.my_table.mapping=col1=key.f1, col2=value.f1, __timestamp=value.f2
 ----
@@ -29,6 +28,7 @@ The connector will automatically transform it to the database's proper numeric t
 that is, to `MICROSECONDS`.
 Example:
 
+[source,no-highlight]
 ----
 topic.my_topic.my_ks.my_table.timestampTimeUnit=SECONDS
 ----

@@ -2,14 +2,12 @@
 = Understanding the architecture
 :imagesdir: _images
 
-Components of a DataStax Apache Pulsar Connector implementation.
-
 The DataStax Apache Pulsar™ Connector is deployed on the Pulsar Connect Worker nodes and runs within the worker JVM.
 The Pulsar Connect Worker Framework handles automatic rebalancing of tasks when new nodes are added and also ships with a built-in REST API for operator actions.
 Running the connector in this framework enables multiple DataStax connector instances to share the load and to scale horizontally when run in Distributed Mode.
 The diagram below shows how the DataStax Apache Pulsar Connector fits into the Pulsar ecosystem.
 
-image::images/pulsarOverview.png[]
+image::pulsarOverview.png[]
 
 The environment is comprised of the following components:
 

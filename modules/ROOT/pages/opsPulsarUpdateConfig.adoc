@@ -2,8 +2,6 @@
 = Updating the DataStax Apache Pulsar Connector configuration
 :imagesdir: _images
 
-Change the configuration of a running connector.
-
 To update the configuration of an active DataStax Apache Pulsar™ Connector, use the following Pulsar Connect REST API command:
 
 [source,language-bash]
@@ -19,7 +17,7 @@ Samples are provided in the connector download.
 * worker_ip - The hostname or IP address of the Pulsar Connect worker.
 * port - The listening port for the Pulsar Connect REST API.
 By default this service runs on _port_ 8083.
-* connector_name - DataStax Apache Pulsar® Connector link:../configuration_reference/pulsarConnector.md#name[name].
+* connector_name - DataStax Apache Pulsar® Connector xref:config-reference:cfgRefPulsarConnector.md#name[name].
 
 Example update configuration
 
@@ -35,7 +33,6 @@ The configuration displays and is pushed to the connector tasks:
 
 [source,results]
 ----
-
 Output:
 {
   "name": "cassandra-sink-distributed-example",

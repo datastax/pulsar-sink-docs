@@ -2,8 +2,6 @@
 = Extract Pulsar record header values
 :imagesdir: _images
 
-Extract values from Pulsar record header and write to the database table.
-
 In the Pulsar topic mapping, you can extract values from the record's header by using `header.header-field-name`, and write the values to a supported database table:
 
 * https://docs.astra.datastax.com/docs[DataStax Astra] cloud databases
@@ -12,6 +10,7 @@ In the Pulsar topic mapping, you can extract values from the record's header by 
 
 For example:
 
+[source,no-highlight]
 ----
 topic.my_topic.my_keyspace.my_table.mapping=col1=key.f1, col2=value.f1, __ttl=value.f2, __timestamp=value.f3,
         col3=header.f4

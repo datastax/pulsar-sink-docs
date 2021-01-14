@@ -2,12 +2,10 @@
 = Syntax to Create a new DataStax Connector
 :imagesdir: _images
 
-Pulsar Connect REST API syntax used to create a new distributed DataStax Apache Pulsar Connector.
-
 Pulsar Connect REST API syntax used to create a new distributed DataStax Apache Pulsar™ Connector.
 
 [#_syntax_syntax_section]
-== Syntax {#syntax .section}
+== Syntax
 
 The following command starts a DataStax Apache Pulsar™ Connector using the Pulsar Connect REST API:
 
@@ -25,7 +23,7 @@ Samples are provided in the connector download.
 By default this service runs on _port_ 8083.
 
 [#_example_example_section]
-== Example {#example .section}
+== Example
 
 Create or start a connector using a configuration file named dse-sink.json:
 
@@ -39,7 +37,6 @@ If the instance is successfully created a message like the following displays:
 
 [source,results]
 ----
-
 Output:
 {
   "name": "cassandra-sink-distributed-example",

@@ -2,8 +2,6 @@
 = Pass Pulsar Connector settings directly to the DataStax Java driver
 :imagesdir: _images
 
-Pass Pulsar Connector settings to DataStax Java driver.
-
 In your DataStax Apache Pulsar™ Connector configuration file, you can directly pass settings to the DataStax Java driver by using the `datastax-java-driver` prefix.
 For example:
 
@@ -13,14 +11,14 @@ datastax-java-driver.basic.request.consistency=ALL
 ----
 
 [#_mapping_pulsar_connector_settings_to_java_driver_properties_mappingconnectorsettingstojavadriverproperties_section]
-== Mapping Pulsar Connector settings to Java driver properties {#mappingConnectorSettingsToJavaDriverProperties .section}
+== Mapping Pulsar Connector settings to Java driver properties
 
 The following table identifies functionally equivalent DataStax Apache Pulsar Connector and DataStax Java driver settings.
 
 NOTE: If you define both in your configuration, the Pulsar Connector setting take precedence over the `datastax-java-driver.property-name`.
 If you do not provide either in your configuration, Pulsar Connector defaults are in effect.
 
-For information about the Java properties, refer to the link:/en/developer/java-driver-dse/2.3/manual/core/configuration/[DataStax Java driver documentation.] For information about the Pulsar Connector settings, refer to xref:configuration_reference/pulsarDseConnection.adoc[DataStax connection].
+For information about the Java properties, refer to the link:https://docs.datastax.com/en/developer/java-driver-dse/2.3/manual/core/configuration/[DataStax Java driver documentation.] For information about the Pulsar Connector settings, refer to xref:config-reference:cfgRefPulsarDseConnection.adoc[].
 
 |===
 | DataStax Apache Pulsar Connector setting | Using datastax-java-driver prefix
@@ -60,7 +58,7 @@ datastax-java-driver.basic.contact-points = 127.0.0.1:9042, 127.0.0.2:90
 ----
 
 [#_conversion_of_java_driver_properties_of_type_list_to_typesafe_config_pulsarjavadriverpropertiestypelist_section]
-== Conversion of Java driver properties of type List to TypeSafe Config {#pulsarJavaDriverPropertiesTypeList .section}
+== Conversion of Java driver properties of type List to TypeSafe Config
 
 The following properties that are of type `List`, which you could pass into the driver from your Pulsar Connector configuration via the `datastax-java-driver` prefix, are converted by the DataStax Java driver to the `TypeSafe Config` format.
 
@@ -79,4 +77,4 @@ datastax-java-driver.advanced.metrics.session.enabled.0=a
 datastax-java-driver.advanced.metrics.session.enabled.1=b
 ----
 
-For more information, refer to the link:/en/developer/java-driver/4.3/manual/core/configuration/reference/[Java driver reference configuration] topic.
+For more information, refer to the link:https://docs.datastax.com/en/developer/java-driver/4.3/manual/core/configuration/reference/[Java driver reference configuration] topic.

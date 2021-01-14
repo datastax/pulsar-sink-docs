@@ -2,13 +2,11 @@
 = Missing field error
 :imagesdir: _images
 
-If a Pulsar record is missing fields that are set in the topic-table mapping data parsing fails.
-
 When the Pulsar Connect log contains a missing field error message, check for the following issues:
 
-* link:pulsarTsMissingFields.md#[Missing field error]
-* link:pulsarTsMissingFields.md#[Converter data type issue]
-* link:pulsarTsMissingFields.md#[Invalid JSON]
+* Missing field error
+* Converter data type issue
+* Invalid JSON
 
 For example, the log contains the following error message.
 
@@ -16,8 +14,6 @@ For example, the log contains the following error message.
 ----
 Error inserting/updating row for Pulsar record … ConnectRecord{topic='inf1-src',pulsarPartition=0, key=null, value={set=[37, 96, 90], udt={udtmem2=90, udtmem1=47}}, ...}: Required field 'value.bigint' (mapped to column bigintcol) was missing from record. Pleaseremove it from the mapping.
 ----
-
-*Parent topic:* xref:../../pulsar/pulsarTroubleshoot.adoc[Troubleshooting the DataStax Apache Pulsar Connector]
 
 [#pulsarTsMissingFieldFromRecord]
 == Field is missing from record
@@ -35,7 +31,7 @@ Error inserting/updating row for Pulsar record … ConnectRecord{topic='inf1-src
 ----
 
 [#_remediation_section]
-=== Remediation { .section}
+=== Remediation
 
 Remove the field-column mapping from the connector configuration file or add the missing field it to the Pulsar records.
 
@@ -48,7 +44,7 @@ When the wrong converter is used, an error message reports missing fields and th
 For example, if the `JsonConverter` is used to parse Pulsar records that are actually strings.
 
 [#_remediation_section_2]
-=== Remediation { .section}
+=== Remediation
 
 Change the following in the connect-distributed.properties or connect-standalone .properties files:
 
@@ -61,11 +57,11 @@ value.converter=org.apache.pulsar.connect.storage.StringConverter
 [#pulsarTsInvalidJson]
 == Invalid JSON
 
-Kafak record contains invalid JSON and cannot be parsed.
+Pulsar record contains invalid JSON and cannot be parsed.
 
 If the raw value is not valid JSON, the record cannot be parsed.
 
 [#_remediation_solution_section]
-=== Remediation {#solution .section}
+=== Remediation
 
 Use a JSON validator to make sure that the JSON records are valid.

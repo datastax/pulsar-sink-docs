@@ -1,10 +1,8 @@
 [#pulsarScaling]
-= Scaling the DataStax Connector
+= Scaling the DataStax Pulsar Connector
 :imagesdir: _images
 
-Respond to increases or decreases in workload.
+Increase or decrease throughput capacity by scaling the DataStax Apache Pulsar™ Connector horizontally.
 
-Increase or decrease throughput capicity by scaling the DataStax Apache Pulsar™ Connector horizontally.
-
-* *xref:../../pulsar/operations/pulsarScaleUp.adoc[Scaling up by adding workers]* + Increase workload throughput by adding additional workers.
-* *xref:../../pulsar/operations/pulsarScaleDown.adoc[Scaling down by removing workers]* + Decrease throughput by running the DataStax Connector on fewer workers.
+* xref:opsPulsarScaleUp.adoc[] Increase workload throughput by adding additional workers.
+* xref:opsPulsarScaleDown.adoc[] Decrease throughput by running the DataStax Connector on fewer workers.

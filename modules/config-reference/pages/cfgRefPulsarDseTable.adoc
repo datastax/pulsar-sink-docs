@@ -2,12 +2,10 @@
 = Pulsar topic-to-table settings
 :imagesdir: _images
 
-Capture Pulsar topics in the supported database by specifying a target keyspace, table, and then map the topic fields to table columns.
-
 Capture Pulsar topics in the link:index.adoc[supported database] by specifying a target keyspace, table, and then map the topic fields to table columns in the name of the parameter.
 
 [#_parameters_synopsis_section]
-== Parameters {#synopsis .section}
+== Parameters
 
 Use the following syntax for standalone properties file:
 

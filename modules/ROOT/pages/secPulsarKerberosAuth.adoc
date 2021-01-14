@@ -2,8 +2,6 @@
 = Using the DataStax Apache Pulsar Connector with Kerberos
 :imagesdir: _images
 
-Authenticate the DataStax Apache Pulsar Connector session using Kerberos.
-
 When connecting to a cluster that has Kerberos enabled, set up the following:
 
 * Service accounts:
@@ -17,12 +15,12 @@ See link:/en/dse/6.7/dse-admin/datastax_enterprise/security/secDataPermission.ht
 * On the *Pulsar Connect* nodes:
  ** Install `kinit`.
 This utility obtains and caches Kerberos tickets used for authentication.
-See https://web.mit.edu/kerberos/krb5-latest/doc/admin/install_clients.html[*Installing and configuring UNIX client machines*].
+See https://web.mit.edu/kerberos/krb5-latest/doc/admin/install_clients.html[Installing and configuring UNIX client machines].
  ** Setup krb5.conf, which identifies the KDS (key distribution server), Kerberos administration server, and contains other settings.
 Required for Kerberos client tools, such as `kinit`.
-See https://web.mit.edu/kerberos/krb5-latest/doc/admin/install_clients.html#client-machine-configuration-files[*Client machine configuration files*].
+See https://web.mit.edu/kerberos/krb5-latest/doc/admin/install_clients.html#client-machine-configuration-files[Client machine configuration files].
  ** Create a keytab file.
 A keytab file contains a certificate that allows the connector to obtain credentials without re-entering the password each time it initiates session with the cluster.
  ** Set Kerberos parameters in the DataStax Connector configuration file.
-* *xref:../../pulsar/security/pulsarKerberosConfigFile.adoc[Using an alternate location for the Kerberos files]* + When using a location other than /etc for the `krb5.conf` file, add the custom path to Pulsar Connect and Kerberos environment variables.
-* *xref:../../pulsar/security/pulsarKerberosTicket.adoc[Using a Kerberos ticket cache to authenticate connector running on a stand-alone worker]* + Authenticate the DataStax Connector session using a Kerberos ticket with a worker that is running in stand-alone mode.
+* xref:secPulsarKerberosConfigFile.adoc[] When using a location other than /etc for the `krb5.conf` file, add the custom path to Pulsar Connect and Kerberos environment variables.
+* xref:secPulsarKerberosTicket.adoc[] Authenticate the DataStax Connector session using a Kerberos ticket with a worker that is running in stand-alone mode.

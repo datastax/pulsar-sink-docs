@@ -2,8 +2,6 @@
 = Configuring the worker to convert serialized bytes
 :imagesdir: _images
 
-Configure the worker to deserialize messages using the converter that corresponds to the producer's serializer.
-
 Configure the worker that runs DataStax Apache Pulsar™ Connector to deserialize Pulsar messages using the correct converter.
 Typically, all producers and streams use the same serialization definition to write messages.
 

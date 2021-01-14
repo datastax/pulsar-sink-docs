@@ -2,13 +2,11 @@
 = DataStax Apache Pulsar Connector details
 :imagesdir: _images
 
-Common Pulsar connector parameters.
-
 Set the common DataStax Apache Pulsar™ Connector parameters.
 See the https://pulsar.apache.org/documentation/#connect_configuring[Configuring Connectors] section of the Apache Pulsar documentation.
 
 [#_parameters_synopsis_section]
-== Parameters {#synopsis .section}
+== Parameters
 
 [source,no-highlight]
 ----
@@ -19,25 +17,23 @@ cloud.secureConnectBundle=/path/to/secure-connect-database\_name.zip
 ----
 
 name:: Unique name for the connector.
-
- Default: `cassandra-sink`
++
+Default: `cassandra-sink`
 
 connector.class:: DataStax connector Java class provided in the `pulsar-connect-cassandra-sink-N.N.N.jar`
-
- Default: `com.datastax.pulsarconnector.CassandraSinkConnector`
++
+Default: `com.datastax.pulsarconnector.CassandraSinkConnector`
 
 tasks.max::
 Maximum number of tasks created for the connector instance.
 The connector can create fewer tasks if it cannot achieve this level of parallelism.
-
-....
-**Note:** Use additional Pulsar Connect workers to scale the connector when more throughput is needed. For connector instances to split tasks, they must have the same `group.id`, which is configured in the connect-distributed.properties file. Parallelism is limited by the partitions of the Pulsar topic.
-
++
+NOTE: Use additional Pulsar Connect workers to scale the connector when more throughput is needed. For connector instances to split tasks, they must have the same `group.id`, which is configured in the connect-distributed.properties file. Parallelism is limited by the partitions of the Pulsar topic.
++
 Default: `1`
-....
 
 cloud.secureConnectBundle::
 The full path to the secure connect bundle for your DataStax Astra database (secure-connect-database_name.zip).
-Download the xref:../../dscloud/astra/dscloudObtainingCredentials.adoc[secure connect bundle] from the DataStax Cloud console.
-
- If this option is specified, you must also include the auth.username and auth.password for the database user.
+Download the secure connect bundle from the DataStax Cloud console.
++
+If this option is specified, you must also include the auth.username and auth.password for the database user.

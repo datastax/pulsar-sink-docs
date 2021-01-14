@@ -2,11 +2,10 @@
 = Resuming the DataStax Apache Pulsar Connector
 :imagesdir: _images
 
-After a pause resume the DataStax Apache Pulsar™ Connector .
-
 After a pause, resume the DataStax Apache Pulsar™ Connector operations.
 To start running the connector again, use the following Pulsar Connect REST API command:
 
+[source,language-bash]
 ----
 curl -X PUT "http://worker\_ip:port/connectors/connector\_name/resume”
 ----
@@ -16,10 +15,11 @@ where
 * worker_ip - The hostname or IP address of the Pulsar Connect worker.
 * port - The listening port for the Pulsar Connect REST API.
 By default this service runs on _port_ 8083.
-* connector_name - DataStax Apache Pulsar® Connector link:../configuration_reference/pulsarConnector.md#name[name].
+* connector_name - DataStax Apache Pulsar® Connector xref:config-reference:cfgRefPulsarConnector.adoc[name].
 
 Example - resume
 
+[source,language-bash]
 ----
 curl -X PUT "http://localhost:8083/connectors/cassandra-sink-distributed-example/resume”
 ----

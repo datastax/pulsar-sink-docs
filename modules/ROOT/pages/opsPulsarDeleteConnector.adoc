@@ -2,10 +2,9 @@
 = Deleting the DataStax Apache Pulsar Connector
 :imagesdir: _images
 
-Remove the DataStax Apache Pulsar™ Connector and all of its tasks.
-
 To completely remove the DataStax Apache Pulsar™ Connector and all of its tasks:
 
+[source,language-bash]
 ----
 curl -X DELETE "http://worker\_ip:port/connectors/connector\_name"
 ----
@@ -15,10 +14,11 @@ where
 * worker_ip - The hostname or IP address of the Pulsar Connect worker.
 * port - The listening port for the Pulsar Connect REST API.
 By default this service runs on _port_ 8083.
-* connector_name - DataStax Apache Pulsar® Connector link:../configuration_reference/pulsarConnector.md#name[name].
+* connector_name - DataStax Apache Pulsar® Connector xref:config-reference:cfgRefpulsarConnector.adoc[name].
 
 Example - delete connector
 
+[source,language-bash]
 ----
 curl -X DELETE "http://localhost:8083/connectors/cassandra-sink-distributed-example"
 ----

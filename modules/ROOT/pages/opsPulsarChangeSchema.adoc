@@ -2,11 +2,9 @@
 = Changing the topic or table schema
 :imagesdir: _images
 
-How to update the DataStax Connector when schema changes are required.
-
 How to update the DataStax Apache Pulsar™ Connector when schema changes are required.
 
-* *xref:../../pulsar/operations/pulsarAddField.adoc[Adding a field to a Pulsar Topic]* + Steps to change the Pulsar Topic schema.
-* *xref:../../pulsar/operations/pulsarRemoveField.adoc[Removing a field map]*
-* *xref:../../pulsar/operations/pulsarAddTableColumn.adoc[Adding a column to the database table]* + Add a column to the database table to synchronize an existing field from a Pulsar topic.
-* *xref:../../pulsar/operations/pulsarRemoveColumn.adoc[Removing a Table Column from the mapping specification]* + Remove a database column from the schema.
+* xref:opsPulsarAddField.adoc[] Steps to change the Pulsar Topic schema.
+* xref:opsPulsarRemoveField.adoc[]
+* xref:opsPulsarAddTableColumn.adoc[] Add a column to the database table to synchronize an existing field from a Pulsar topic.
+* xref:opsPulsarRemoveColumn.adoc[] Remove a database column from the schema.

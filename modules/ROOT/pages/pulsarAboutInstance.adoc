@@ -2,8 +2,6 @@
 = How data is written to the target platform
 :imagesdir: _images
 
-Data from the Pulsar topic is written to the mapped platform's database table using a batch request containing multiple write statements.
-
 The Pulsar Connect workers run one or more instances of the DataStax Apache Pulsar™ Connector.
 Each instance of the DataStax Apache Pulsar Connector creates a single session with the cluster.
 Data is pulled from the Pulsar topic and written to the mapped table using a CQL batch that contains multiple write statements.
@@ -19,9 +17,9 @@ A single connector instance can process records from multiple Pulsar topics and 
 
 A map specification binds a Pulsar topic field to a table column.
 Fields that are omitted from the specification are not included in the write request.
-Fields with null values are written to the database as `UNSET` (see link:configuration_reference/pulsarDseTable.md#nullToUnset[nullToUnset]).
+Fields with null values are written to the database as `UNSET` (see xref:config-reference:cfgRefPulsarDseTable.md[nullToUnset]).
 To ensure proper ordering, all records are written using the Pulsar record timestamp.
 
-image::images/pulsarTopicsto2Tables.png[]
+image::pulsarTopicsto2Tables.png[]
 
 Use multiple connectors when different global connect settings are required for different scenarios, such as writing to different clusters or datacenters.

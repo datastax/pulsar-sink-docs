@@ -7,8 +7,6 @@ Use the Apache Pulsar™ Connect Framework Java Management Extensions (JMX) metr
 TIP: This section covers a limited subset of the available JMX metrics.
 See https://pulsar.apache.org/documentation/#connect_monitoring[Apache Pulsar Connect monitoring] for a detailed reference.
 
-*Parent topic:* xref:../../pulsar/monitoring/pulsarMetrics.adoc[Monitoring DataStax Apache Pulsar Connector]
-
 [#pulsarConsumerMetrics]
 == Pulsar Connect - Consumer metrics
 
@@ -19,10 +17,11 @@ Monitor the rate at which messages are pulled by the worker running the DataStax
 TIP: See Apache Pulsar https://pulsar.apache.org/documentation/#new_consumer_monitoring[consumer metrics] documentation.
 
 [#_fetch_manager_metrics_section]
-=== Fetch manager metrics { .section}
+=== Fetch manager metrics
 
 Use the fetch manager MBean to monitor the rate messages are pulled from the topic:
 
+[source,no-highlight]
 ----
 pulsar.consumer:type=consumer-fetch-manager-metrics,client-id=([-.w]+)
 ----
@@ -33,28 +32,29 @@ records-lag::
 Number of records for any partition in this window.
 An increasing value over time is a good indication that the consumer group is not keeping up with the producers.
 
-....
-```
+[source,no-highlight]
+----
 objectName='pulsar.consumer:type=consumer-fetch-manager-metrics,client-id=id' attribute='records-lag-max'
-```
+----
 
 where the id is typically a number assigned to the worker by the Pulsar Connect.
-....
+
 
 records-consumed-rate:: The average number of records consumed per second.
 
-....
-```
+[source,no-highlight]
+----
 objectName='pulsar.consumer:type=consumer-fetch-manager-metrics,client-id=datastax\_connector\_id' attribute=records-consumed-rate'
-```
+----
 
 where the id is typically a number assigned to the worker by the Pulsar Connect.
-....
 
-### Stream metrics { .section}
+
+=== Stream metrics
 
 Monitor the attribute values of the Connection Stream MBean:
 
+[source,no-highlight]
 ----
 pulsar.consumer:type=consumer-node-metrics,client-id=([-.\w]+),node-id=([0-9]+)
 ----
@@ -63,24 +63,24 @@ Attributes:
 
 incoming-byte-rate:: Bytes per second read from all sockets by the worker.
 
-....
-```
+[source,no-highlight]
+----
 objectName='pulsar.consumer:type=consumer-fetch-manager-metrics,client-id=datastax\_connector\_id' attribute='incoming-byte-rate'
-```
+----
 
 where the id is typically a number assigned to the worker by the Pulsar Connect.
-....
 
-## Pulsar Connect - Connector metrics {#pulsarConnectorMetrics}
+
+== Pulsar Connect - Connector metrics
 
 Number of records accessed across the number of partitions by the DataStax Apache Pulsar Connector.
 
 Monitor the number of records pulled by each DataStax Apache Pulsar™ Connector task.
 
-TIP: link:../configuration_reference/pulsarConnector.md#tasks_max[tasks.max] sets the maximum number of tasks the DataStax Connector can run.
+TIP: link:config-reference/cfgRefPulsarConnector.adoc[tasks.max] sets the maximum number of tasks the DataStax Connector can run.
 
 [#_sink_task_metrics_sink_task_metrics_section]
-=== Sink Task metrics {#sink_task_metrics .section}
+=== Sink Task metrics
 
 Use the Pulsar Connect Sink Task metrics to get information on the number of Pulsar records and partitions.
 
@@ -93,14 +93,16 @@ Use an asterisk to display all tasks or specify a task number..
 
 sink-record-read-total:: The total number of records polled by this task, measured since the task was last restarted.
 
- ```no-highlight
+[source,no-highlight]
+----
  objectName='pulsar.connect:type=sink-task-metrics,connector=*,task=*' attribute='sink-record-read-total'
- ```
+----
 
 partition-count::
 The number of topic partitions assigned to this task.
 Shows how the partitions are balance amongst the tasks.
 
- ```no-highlight
+[source,no-highlight]
+----
  objectName='pulsar.connect:type=sink-task-metrics,connector=*,task=*' attribute='partition-count'
- ```
+----

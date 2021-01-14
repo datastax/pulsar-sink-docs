@@ -2,20 +2,25 @@
 = Multiple topics to multiple tables
 :imagesdir: _images
 
-Ingest multiple topics and write to different tables using a single connector instance.
-
 The DataStax Connector allows for mapping multiple topics to multiple tables in a single connector instance.
 
 NOTE: Most Apache Pulsar™ systems store all messages in the same format and Pulsar Connect workers only support a single converter class for key and value.
 
 In the example `stocks_topic`, the key is a basic string and the value is regular JSON.
 
-|key|value| |--|:---| |APPLE| ```no-highlight {"symbol":"APPL", "value":208, "exchange":"NASDAQ", "industry":"TECH", "ts":"2018-11-26T19:26:27.483"}
+[cols="a,a"]
+|===
+|key|value
 
+|APPLE| 
+[source,no-highlight]
+---- 
+{"symbol":"APPL", "value":208, "exchange":"NASDAQ", "industry":"TECH", "ts":"2018-11-26T19:26:27.483"}
 ----
 
- |
-|EXXON MOBIL| ```no-highlight
+|EXXON MOBIL| 
+[source,no-highlight]
+----
 {"symbol":"M",
 "value":80,
 "exchange":"NYSE",
@@ -23,12 +28,15 @@ In the example `stocks_topic`, the key is a basic string and the value is regula
 "ts":"2018-11-26T19:26:27.483"}
 ----
 
-| |GENERAL MOTORS| ```no-highlight {"symbol":"GM", "value":38, "exchange":"NYSE", "industry":"AUTO", "ts":"2018-11-26T19:26:27.483"}
-
+|GENERAL MOTORS| 
+[source,no-highlight]
+---- 
+{"symbol":"GM", "value":38, "exchange":"NYSE", "industry":"AUTO", "ts":"2018-11-26T19:26:27.483"}
 ----
 
- |
-|AT&T| ```no-highlight
+|AT&T| 
+[source,no-highlight]
+----
 {"symbol":"AT&T",
 "value":33,
 "exchange":"NYSE",
@@ -36,17 +44,22 @@ In the example `stocks_topic`, the key is a basic string and the value is regula
 "ts":"2018-11-26T19:26:27.483"}
 ----
 
-| |FORD MOTOR| ```no-highlight {"symbol":"F", "value":10, "exchange":"NYSE", "industry":"AUTO", "ts":"2018-11-26T19:26:27.483"}
-
+|FORD MOTOR| 
+[source,no-highlight]
+---- 
+{"symbol":"F", "value":10, "exchange":"NYSE", "industry":"AUTO", "ts":"2018-11-26T19:26:27.483"}
 ----
-
- |
+|===
 
 And `baseball_topic` has the same structure, basic key and JSON value.
 
-|key|value|
-|---|-----|
-|redsox| ```no-highlight
+[cols="a,a"]
+|===
+|key|value
+
+|redsox| 
+[source,no-highlight]
+----
 {"number":50,
 "firstname":"mookie",
 "lastname":"betts",
@@ -54,12 +67,15 @@ And `baseball_topic` has the same structure, basic key and JSON value.
 "city":"boston"}
 ----
 
-| |redsox| ```no-highlight {"number":28, "firstname":"jd", "lastname":"martinez", "street":"4 yawkey way", "city":"boston"}
-
+|redsox| 
+[source,no-highlight]
+---- 
+{"number":28, "firstname":"jd", "lastname":"martinez", "street":"4 yawkey way", "city":"boston"}
 ----
 
- |
-|redsox| ```no-highlight
+|redsox| 
+[source,no-highlight]
+----
 {"number":16,
 "firstname":"andrew",
 "lastname":"benintendi",
@@ -67,20 +83,21 @@ And `baseball_topic` has the same structure, basic key and JSON value.
 "city":"boston"}
 ----
 
-| |redsox| ```no-highlight {"number":41, "firstname":"chris", "lastname":"sale", "street":"4 yawkey way", "city":"boston"}
-
+|redsox| 
+[source,no-highlight]
+---- 
+{"number":41, "firstname":"chris", "lastname":"sale", "street":"4 yawkey way", "city":"boston"}
 ----
 
- |
-|redsox| ```no-highlight
+|redsox| 
+[source,no-highlight]
+----
 {"number":24,
 "firstname":"david",
 "lastname":"price",
 "street":"4 yawkey way",
 "city":"boston"}
 ----
-
-|===
 |===
 
 Map the topics into different keyspaces and tables, `stocks_keyspace.stocks_table` and `baseball_keyspace.baseball_table`.

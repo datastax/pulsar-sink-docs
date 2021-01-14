@@ -5,7 +5,7 @@
 Sessions details and write request metrics
 
 [#_cql_requests_cql_requests_section]
-== CQL requests {#cql_requests .section}
+== CQL requests
 
 The MBean path is:
 
@@ -27,48 +27,48 @@ The latency histogram uses a snapshot of data from the most recent 30 second int
 The following attributes make up the CQL request latency histogram:
 
 50thPercentile:: The attribute is:
-
++
 [source,no-highlight]
 ----
 objectName='com.datastax.pulsarconnector:connector=connector\_name,driver=driver,session=session\_id,name=cql-requests' attribute='50thPercentile'
 ----
 
 75thPercentile:: The attribute is:
-
++
 [source,no-highlight]
 ----
 objectName='com.datastax.pulsarconnector:connector=connector\_name,driver=driver,session=session\_id,name=cql-requests' attribute='75thPercentile'
 ----
 
 95thPercentile:: The attribute is:
-
++
 [source,no-highlight]
 ----
 objectName='com.datastax.pulsarconnector:connector=connector\_name,driver=driver,session=session\_id,name=cql-requests' attribute='95thPercentile'
 ----
 
 98thPercentile:: The attribute is:
-
++
 [source,no-highlight]
 ----
 objectName='com.datastax.pulsarconnector:connector=connector\_name,driver=driver,session=session\_id,name=cql-requests' attribute='98thPercentile'
 ----
 
 99thPercentile:: The attribute is:
-
++
 [source,no-highlight]
 ----
 objectName='com.datastax.pulsarconnector:connector=connector\_name,driver=driver,session=session\_id,name=cql-requests' attribute='99thPercentile'
 ----
 
 999thPercentile:: The attribute is:
-
++
 [source,no-highlight]
 ----
 objectName='com.datastax.pulsarconnector:connector=connector\_name,driver=driver,session=session\_id,name=cql-requests' attribute='999thPercentile'
 ----
 
-Throughput
+== Throughput
 
 Throughput metrics measured by the connector instance when writing to the DataStax platform.
 The measurements are writes per second (not records per second).
@@ -77,26 +77,27 @@ Multiple records are included single batch;
 the default is 32.
 
 MeanRate:: Average writes-per-second.
++
+[source,no-highlight]
+----
+objectName='com.datastax.pulsarconnector:connector=connector_name,driver=driver,session=session_id,name=cql-requests' attribute='MeanRate''
+----
 
- ```no-highlight
- objectName='com.datastax.pulsarconnector:connector=connector\_name,driver=driver,session=session\_id,name=cql-requests' attribute='MeanRate''
- ```
-
-Write count
+== Write count
 
 Running total of batched write requests sent by the connector to the DataStax platform.
 
 Count:: Total number of write requests sent to the DataStax platform by the connector.
++
+[source,no-highlight]
+----
+objectName='com.datastax.pulsarconnector:connector=connector_name,driver=driver,session=session_id,name=cql-requests' attribute='Count'
+----
 
-....
-```no-highlight
-objectName='com.datastax.pulsarconnector:connector=connector\_name,driver=driver,session=session\_id,name=cql-requests' attribute='Count'
-```
+TIP: The write count can differ from xref:monPulsarRecordCountMetrics.adoc[recordCount] because the driver uses a batch statement that can include multiple records.
 
-**Tip:** The write count can differ from [recordCount](pulsarRecordCountMetrics.md) because the driver uses a batch statement that can include multiple records.
-....
 
-## CQL client timeouts { .section}
+== CQL client timeouts
 
 The `cql-client-timeouts` MBean provides the number of timeouts that occur when writing to the DataStax platform.
 
@@ -119,7 +120,8 @@ for example: `s0`.
 The attribute is:
 
 Count:: Running total of the number of requests that timed out when communicating with a node.
-
- ```no-highlight
++
+[source,no-highlight]
+----
  objectName='com.datastax.pulsarconnector:connector=connector\_name,driver=driver,session=session\_id,name=cql-client-timeouts' attribute='Count'
- ```
+----

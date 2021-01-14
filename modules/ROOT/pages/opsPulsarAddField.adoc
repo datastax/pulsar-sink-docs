@@ -2,12 +2,10 @@
 = Adding a field to a Pulsar Topic
 :imagesdir: _images
 
-Steps to change the Pulsar Topic schema.
-
 Use these steps to write a new field to an existing link:../pulsarIntro.md#pulsarIntroduction[supported database] table column.
 
 . In the DataStax Apache Pulsar Connector configuration file, add the field-to-column definition.
-See xref:../pulsarMapTopicTable.adoc[Mapping pulsar topics to database tables].
+See xref:cfgPulsarMapTopicTable.adoc[].
 . Update the configuration with the new settings.
-See xref:pulsarUpdateConfig.adoc[Updating the DataStax Apache Pulsar Connector configuration].
+See xref:opsPulsarUpdateConfig.adoc[].
 . Start the Pulsar producer that had the schema change.

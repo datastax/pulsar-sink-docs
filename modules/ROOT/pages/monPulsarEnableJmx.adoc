@@ -2,29 +2,33 @@
 = Enabling Java Management Extension remote connections
 :imagesdir: _images
 
-Allow remote JMX connections to monitor DataStax Apache Pulsar Connector activity.
-
 Allow remote JMX (Java Management Extension) connections to monitor DataStax Apache Pulsar™ Connector activity.
 
 To enable remote JMX connections:
 
-* *Production environment* -
- .. Enable security and authentication for remote JMX connections.
+== Production environment
+. Enable security and authentication for remote JMX connections.
 See the https://docs.oracle.com/javase/8/docs/technotes/guides/management/agent.html[Java Documentation].
- .. add the following to the Pulsar Connect worker startup script:
+. Add the following to the Pulsar Connect worker startup script:
 +
 [source,no-highlight]
 ----
 export KAFKA_JMX_OPTS="-Dcom.sun.management.jmxremote=true -Dcom.sun.management.jmxremote.authenticate=true  -Dcom.sun.management.jmxremote.ssl=true -Djava.rmi.server.hostname=worker\_ip -Dcom.sun.management.jmxremote.port=custom\_port"
 ----
-* *Secured development and test environment* - Add the following to the Pulsar Connect worker startup script (connect-standalone.sh /connect-distributed.sh):
-+
+
+== Secured development and test environment
+
+Add the following to the Pulsar Connect worker startup script (connect-standalone.sh /connect-distributed.sh):
+
 [source,no-highlight]
 ----
 export KAFKA_JMX_OPTS="-Dcom.sun.management.jmxremote=true -Dcom.sun.management.jmxremote.authenticate=false  -Dcom.sun.management.jmxremote.ssl=false -Djava.rmi.server.hostname=worker\_ip -Dcom.sun.management.jmxremote.port=custom\_port"
 ----
-+
+
 where
 
- ** worker_ip - Hostname or IP address of the worker running the DataStax Connector.
- ** custom_port - JMX port of the worker running the DataStax Connector.
+[source,no-highlight]
+----
+** worker_ip - Hostname or IP address of the worker running the DataStax Connector.
+** custom_port - JMX port of the worker running the DataStax Connector.
+----

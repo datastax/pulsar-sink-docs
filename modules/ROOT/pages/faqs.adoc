@@ -2,20 +2,3 @@
 
 If you're new to DataStax Luna Streaming and its Apache Pulsar enhancements, these FAQs are for you.
 
-What is DataStax Luna Streaming?::
-
-DataStax Luna Streaming is a new Kubernetes-based distribution of Apache Pulsar, based on the technology that https://kesque.com/[Kesque] built to run its Pulsar-as-a-service.
-
-What components and features are provided by Luna Streaming?::
-
-In addition to Apache Pulsar itself, Luna Streaming provides:
-
-* An installer that can stand up a dev or production cluster on bare metal or VMs without a pre-existing Kubernetes environment
-* A helm chart that can deploy and manage Pulsar on your current Kubernetes infrastructure
-* Cassandra, Elastic, Kinesis, Pulsar, and JDBC connectors
-* A management dashboard
-* A monitoring and alerting system
-
-On which version of Pulsar is Luna Streaming based?::
-
-Luna Streaming is based on Apache Pulsar 2.6.2 plus updates, including commits from DataStax contributors. 

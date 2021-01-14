@@ -2,42 +2,59 @@
 = Mapping a topic to multiple tables
 :imagesdir: _images
 
-Ingest a single topic into multiple tables using a single connector instance.
-
 The DataStax Connector allows for mapping a single topic to multiple tables for a single connector instance.
 
 In the example `stocks_topic`, the key is a basic string and the value is regular JSON.
 
-|key|value| |--|:---| |APPLE| ```no-highlight {"symbol":"APPL", "value":208, "exchange":"NASDAQ", "industry":"TECH", "ts":"2018-11-26T19:26:27.483"}
+[cols="a,a"]
+|===
+|key|value
 
+|
+APPLE
+|
+[source,no-highlight]
 ----
-
- |
-|EXXON MOBIL| ```no-highlight
+{"symbol":"APPL", "value":208, "exchange":"NASDAQ", "industry":"TECH", "ts":"2018-11-26T19:26:27.483"}
+----
+|
+EXXON MOBIL
+|
+[source,no-highlight]
+----
 {"symbol":"M",
 "value":80,
 "exchange":"NYSE",
 "industry":"ENERGY",
 "ts":"2018-11-26T19:26:27.483"}
 ----
-
-| |GENERAL MOTORS| ```no-highlight {"symbol":"GM", "value":38, "exchange":"NYSE", "industry":"AUTO", "ts":"2018-11-26T19:26:27.483"}
-
+|
+GENERAL MOTORS
+|
+[source,no-highlight]
 ----
-
- |
-|AT&T| ```no-highlight
+{"symbol":"GM", "value":38, "exchange":"NYSE", "industry":"AUTO", "ts":"2018-11-26T19:26:27.483"}
+----
+|
+AT&T
+| 
+[source,no-highlight]
+----
 {"symbol":"AT&T",
 "value":33,
 "exchange":"NYSE",
 "industry":"TELECOM",
 "ts":"2018-11-26T19:26:27.483"}
 ----
-
-| |FORD MOTOR| `no-highlight {"symbol":"F", "value":10, "exchange":"NYSE", "industry":"AUTO", "ts":"2018-11-26T19:26:27.483"} `
-
+|
+FORD MOTOR
+|
+[source,no-highlight]
+----
+{"symbol":"F", "value":10, "exchange":"NYSE", "industry":"AUTO", "ts":"2018-11-26T19:26:27.483"} 
+----
 |===
-|===
+
 
 In the DataStax keyspace `stocks_keyspace`, create three different tables that optimized with different schemas.
 

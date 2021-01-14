@@ -2,16 +2,13 @@
 = Verifying data is captured in database
 :imagesdir: _images
 
-Verify that data from a mapped Pulsar topic was written to the database table column.
-
 When testing and certifying a data pipeline, verify that the expected data exists in the upstream system before the process begins and lands in the downstream system when the process concludes.
 
-CAUTION:
+CAUTION: Both of these operations are resource-expensive and should not be run on live systems.
 
-Both of these operations are resource-expensive and should not be run on live systems.
+To verify that the expected amount of data exists in Pulsar:
 
-. To verify that the expected amount of data exists in Pulsar:      1.
-Create a log file that contains all records:
+. Create a log file that contains all records:
 +
 [source,language-bash]
 ----
@@ -19,17 +16,17 @@ Create a log file that contains all records:
    --topic topic\_name --from-beginning > all-records.log &
 ----
 
-....
-2.   Count the number of records that are in the file.
-
-    ```language-bash
+. Count the number of records that are in the file.
++
+[source,language-bash]
+----
     cat all-records.log | wc -l
-    ```
-....
+----
 
-. To verify that the expected number of rows exist in the link:../pulsarIntro.md#pulsarIntroduction[supported database] table, use the DataStax Bulk Loader link:/en/dsbulk/doc/dsbulk/reference/countOptions.html[`dsbulk count`] command:
-
- ```language-bash
+. To verify that the expected number of rows exist in the xref:index.adoc[supported database] table, use the DataStax Bulk Loader link:https://docs.datastax.com/en/dsbulk/doc/dsbulk/reference/countOptions.html[`dsbulk count`] command:
++
+[source,language-bash]
+----
  dsbulk count -h datastax\_IP -k keyspace\_name -t table\_name
- ```
+----
  

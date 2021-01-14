@@ -2,13 +2,9 @@
 = Selectively update maps and UDTs based on Pulsar fields
 :imagesdir: _images
 
-Selectively update maps and UDTs based on Pulsar fields.
+In the Pulsar topic mapping, you can selectively update maps and User Defined Types (UDTs) based on whether Pulsar fields have present values. That is, any value other than `null`.
 
-In the Pulsar topic mapping, you can selectively update maps and User Defined Types (UDTs) based on whether Pulsar fields have present values.
-That is, any value other than `null`.
-
-The goal is to minimize tombstones in the database.
-If Maps or UDTs are in the database table that the Pulsar Connector is configured to write to, in order to minimize tombstones, you can use the CQL command `UPDATE` to only update the fields present in the Pulsar record if the `nullToUnset` parameter is set to `true`.
+The goal is to minimize tombstones in the database. If Maps or UDTs are in the database table that the Pulsar Connector is configured to write to, in order to minimize tombstones, you can use the CQL command `UPDATE` to only update the fields present in the Pulsar record if the `nullToUnset` parameter is set to `true`.
 
 To do so, you can leverage the query parameter with the `udtColNotFrozen` keyword.
 The UDT field definition must be not frozen.
@@ -45,5 +41,5 @@ UPDATE ks.table set udtColNotFrozen.udtmem1=:udtcol1, udtColNotFrozen.udtmem2=:u
 When the new record arrives, DataStax Apache Pulsar™ Connector sets only the not null fields;
 it will not override fields of UDT that have a null value (or are not present) in the Pulsar record, assuming `nullToUnset` is set to `true`.
 The behavior of the Update versus Override is defined via the `nullToUnset` parameter.
-See its description in xref:configuration_reference/pulsarDseTable.adoc[Pulsar topic-to-table settings].
-For related information about Pulsar maps and UDTs, see xref:pulsarMapUdt.adoc[Mapping messages to table that has a User Defined Type].
+See its description in xref:config-reference:cfgRefPulsarDseTable.adoc[].
+For related information about Pulsar maps and UDTs, see xref:cfgPulsarMapUdt.adoc[].

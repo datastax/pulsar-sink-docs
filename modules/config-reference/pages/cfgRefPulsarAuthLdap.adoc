@@ -2,13 +2,11 @@
 = Internal or LDAP authentication
 :imagesdir: _images
 
-When the cluster has internal or LDAP authentication enabled, you should configure the username and password settings for the Pulsar Connector.
-
 When the cluster has internal or LDAP authentication enabled, configure the user name and password settings for DataStax Apache Pulsar™ Connector.
 A login role for the connector with access to the mapped tables is also required.
 
 [#_parameters_synopsis_section]
-== Parameters {#synopsis .section}
+== Parameters
 
 [source,no-highlight]
 ----
@@ -22,11 +20,9 @@ auth.provider:: Select the type of authentication provider configured for the Da
 -   **DSE** - Internal or LDAP authentication.
 -   **GSSAPI** - Supports SASL authentication to DSE clusters using the GSSAPI mechanism \(Kerberos authentication\)
 +
-NOTE: When using the GSSAPI, the Pulsar Connect process requires that the Kerberos configuration file \([krb5.conf](../../glossary/gloss_krb5conf.md)\) location is provided in the `java.security.krb5.conf` system property at startup. See [Using the DataStax Apache Pulsar Connector with Kerberos](../security/pulsarKerberosAuth.md).
-
-....
+NOTE: When using the GSSAPI, the Pulsar Connect process requires that the Kerberos configuration file `krb5.conf` location is provided in the `java.security.krb5.conf` system property at startup. See xref:secPulsarKerberosAuth.adoc[].
++
 Default: `None`
-....
 
 auth.username:: DSE login role name or LDAP username.Astra database username.
 +

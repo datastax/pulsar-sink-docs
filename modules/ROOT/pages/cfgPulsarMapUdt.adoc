@@ -2,19 +2,24 @@
 = Mapping messages to table that has a User Defined Type
 :imagesdir: _images
 
-Write complex types directly into User-defined Types (UDT).
-
-The DataStax Apache Pulsar Connector processes JSON, Avro, and complex types, such as Pulsar https://docs.confluent.io/current/clients/confluent-pulsar-dotnet/api/Confluent.Pulsar.html#structs[Structs] or maps, directly into a link:/en/dse/6.7/cql/cql/cql_using/useAlterType.html[user-defined type] column in the link:pulsarIntro.md#pulsarIntroduction[supported database].
+The DataStax Apache Pulsar Connector processes JSON, Avro, and complex types, such as Pulsar https://docs.confluent.io/current/clients/confluent-pulsar-dotnet/api/Confluent.Pulsar.html#structs[Structs] or maps, directly into a link:https://docs.datastax.com/en/dse/6.7/cql/cql/cql_using/useAlterType.html[user-defined type] column in the link:index.adoc[].
 The Pulsar message embedded field names and the UDT field names must match.
 
 In the example `stocks_topic`, the key is a basic string and the value is regular JSON.
 
-|key|value| |--|:---| |APPLE| ```no-highlight {"symbol":"APPL", "value":208, "exchange":"NASDAQ", "industry":"TECH", "ts":"2018-11-26T19:26:27.483"}
+[cols="a,a"]
+|===
+|key|value
 
+|APPLE| 
+[source,no-highlight]
+---- 
+{"symbol":"APPL", "value":208, "exchange":"NASDAQ", "industry":"TECH", "ts":"2018-11-26T19:26:27.483"}
 ----
 
- |
-|EXXON MOBIL| ```no-highlight
+|EXXON MOBIL| 
+[source,no-highlight]
+----
 {"symbol":"M",
 "value":80,
 "exchange":"NYSE",
@@ -22,12 +27,15 @@ In the example `stocks_topic`, the key is a basic string and the value is regula
 "ts":"2018-11-26T19:26:27.483"}
 ----
 
-| |GENERAL MOTORS| ```no-highlight {"symbol":"GM", "value":38, "exchange":"NYSE", "industry":"AUTO", "ts":"2018-11-26T19:26:27.483"}
-
+|GENERAL MOTORS| 
+[source,no-highlight]
+---- 
+{"symbol":"GM", "value":38, "exchange":"NYSE", "industry":"AUTO", "ts":"2018-11-26T19:26:27.483"}
 ----
 
- |
-|AT&T| ```no-highlight
+|AT&T| 
+[source,no-highlight]
+----
 {"symbol":"AT&T",
 "value":33,
 "exchange":"NYSE",
@@ -35,15 +43,16 @@ In the example `stocks_topic`, the key is a basic string and the value is regula
 "ts":"2018-11-26T19:26:27.483"}
 ----
 
-| |FORD MOTOR| ```no-highlight {"symbol":"F", "value":10, "exchange":"NYSE", "industry":"AUTO", "ts":"2018-11-26T19:26:27.483"}
-
+|FORD MOTOR| 
+[source,no-highlight]
+---- 
+{"symbol":"F", "value":10, "exchange":"NYSE", "industry":"AUTO", "ts":"2018-11-26T19:26:27.483"}
 ----
-
- |
 
 The DataStax keyspace name is `stocks_keyspace`. In the stocks keyspace create the user defined type, `stocks_type`:
 
-```language-cql
+[source,language-cql]
+----
 CREATE TYPE stocks_keyspace.stocks_type (
     symbol text,
     ts timestamp,
@@ -51,6 +60,7 @@ CREATE TYPE stocks_keyspace.stocks_type (
     industry text,
     value double);
 ----
+|===
 
 Define a table named `stocks_udt_table` that has a column for the primitive string field `name` and a second column that uses the type, `stocks_type`:
 

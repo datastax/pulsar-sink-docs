@@ -2,8 +2,6 @@
 = Displaying the DataStax Connector configuration
 :imagesdir: _images
 
-Display configuration of a running connector.
-
 Use the Apache Pulsar Connect REST API `config` command to show the configuration of a running DataStax Apache Pulsar™ Connector:
 
 [source,language-bash]
@@ -16,7 +14,7 @@ where
 * worker_ip - The hostname or IP address of the Pulsar Connect worker.
 * port - The listening port for the Pulsar Connect REST API.
 By default this service runs on _port_ 8083.
-* connector_name - DataStax Apache Pulsar® Connector link:../configuration_reference/pulsarConnector.md#name[name].
+* connector_name - DataStax Apache Pulsar® Connector xref:config-reference:cfgRefPulsarConnector.adoc[name].
 
 Example show configuration
 

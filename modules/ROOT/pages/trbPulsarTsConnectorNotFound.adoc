@@ -2,21 +2,18 @@
 = Connector not found
 :imagesdir: _images
 
-DataStax Apache Pulsar connector fails to start when registering a configuration with the worker.
-
 The DataStax Apache Pulsar™ Connector fails to start when registering a configuration with the worker with the following error message:
 
+[source,no-highlight]
 ----
 Failed to find any class that implements Connector and which name matches
           com.datastax.pulsarconnector.DseSinkConnector
 ----
 
 [#_remediation_solution_section]
-== Remediation {#solution .section}
+== Remediation
 
 Verify the following:
 
 * Entry for the DataStax Apache Pulsar Connector JAR in the `plugin.path` setting of the connect-distributed.properties / connect-standalone.properties.
 * Verify that the connector jar exists and is readable.
-
-*Parent topic:* xref:../../pulsar/pulsarTroubleshoot.adoc[Troubleshooting the DataStax Apache Pulsar Connector]

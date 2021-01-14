@@ -2,11 +2,9 @@
 = DataStax Apache Pulsar Connector - Batch size metrics
 :imagesdir: _images
 
-Write statistics for each mapping of a Pulsar topic to a database table.
-
-The DataStax Apache Pulsar™ Connector records metrics for each Pulsar topic that is synchronized with a link:../pulsarIntro.md#pulsarIntroduction[supported database] table.
+The DataStax Apache Pulsar™ Connector records metrics for each Pulsar topic that is synchronized with a xref:index.adoc[supported database] table.
 The metric corresponds to a topic mapping.
-See xref:../pulsarMapTopicTable.adoc[Mapping pulsar topics to database tables].
+See xref:cfgMapPulsarMapTopicTable.adoc[].
 
 Two related metrics are provided:
 
@@ -17,31 +15,33 @@ The Mbean paths are:
 
 * {blank}
 +
+[source,no-highlight]
 ----
-objectName='com.datastax.pulsarconnector:connector=connector\_name,topic=topic\_name,keyspace=keyspace\_name,
+objectName='com.datastax.pulsarconnector:connector=connector\_name,topic=topic\_name,keyspace=keyspace_name,
  table=table\_name,name=batchSize'
 ----
 
 * {blank}
 +
+[source,no-highlight]
 ----
-objectName='com.datastax.pulsarconnector:connector=connector\_name,topic=topic\_name,keyspace=keyspace\_name,
+objectName='com.datastax.pulsarconnector:connector=connector_name,topic=topic\_name,keyspace=keyspace_name,
  table=table\_name,name=batchSizeInBytes'
 ----
 
 where the variables above correspond to settings in the connector configuration file:
 
-* connector_name - DataStax Apache Pulsar® Connector link:../configuration_reference/pulsarConnector.md#name[name].
-* topic_name is Pulsar link:../configuration_reference/pulsarDseTable.md#prefix[prefix].
-* keyspace_name is the case-sensitive database link:../configuration_reference/pulsarDseTable.md#DseKeyspaceName[keyspace name].
-* table_name is the case-sensitive database link:../configuration_reference/pulsarDseTable.md#DseTableName[table name].
+* connector_name - DataStax Apache Pulsar® Connector xref:config-reference:cfgRefPulsarConnector.adoc[name].
+* topic_name is Pulsar xref:config-reference:cfgRefPulsarDseTable.adoc[prefix].
+* keyspace_name is the case-sensitive database xref:config-reference:cfgRefPulsarDseTable.adoc[keyspace name].
+* table_name is the case-sensitive database xref:config-reference:cfgRefPulsarDseTable.adoc[table name].
 
 [#_about_the_batch_metrics_batchsize_section]
-== About the batch metrics {#batchsize .section}
+== About the batch metrics
 
 The `batchSize` metric returns the number of statements in the CQL batch used to write records to the database.
 The connector default limit is 32.
-See link:../configuration_reference/pulsarDseConnection.md#maxNumberOfRecordsInBatch[maxNumberOfRecordsInBatch].
+See xref:config-reference:cfgRefPulsarDseConnection.adoc[maxNumberOfRecordsInBatch].
 
 The `batchSizeInBytes` metric is a histogram with the calculated size of every batch statement.
 The calculated value is saved in bytes.
@@ -50,41 +50,45 @@ The algorithm used to calculate batch size evaluates the data size contained in 
 The data size is the total number of bytes required to encode all the bound variables contained in the statement.
 
 If the limit is consistently hit, then increasing the batch size value can result in better Pulsar Connector throughput if the database nodes can handle the added pressure of larger CQL batch statements.
-When increasing link:../configuration_reference/pulsarDseConnection.md#maxNumberOfRecordsInBatch[maxNumberOfRecordsInBatch], ensure that the batch size does not exceed the maximum allowed by link:/en/dse/6.7/dse-admin/datastax_enterprise/config/configCassandra_yaml.html#configCassandra_yaml__batch_size_fail_threshold_in_kb[batch_size_fail_threshold_in_kb].
-See xref:../troubleshooting/pulsarTsLargeBatches.adoc[Writing fails because of mutation size] for details.
+When increasing xref:config-reference:cfgRefPulsarDseConnection.adoc[maxNumberOfRecordsInBatch], ensure that the batch size does not exceed the maximum allowed by link:https://docs.datastax.com/en/dse/6.8/dse-admin/datastax_enterprise/config/configCassandra_yaml.html#configCassandra_yaml__batch_size_fail_threshold_in_kb[batch_size_fail_threshold_in_kb].
+See xref:trbPulsarTsLargeBatches.adoc[] for details.
 
 [#_attributes_for_batchsize_and_batchsizeinbytes_section]
-== Attributes for batchSize and batchSizeInBytes { .section}
+== Attributes for batchSize and batchSizeInBytes
 
 The attributes are:
 
 Mean:: The mean average number of write requests per batch statement.
-
- ```no-highlight
++
+[source,no-highlight]
+----
  objectName='com.datastax.pulsarconnector:connector=connector\_name,topic=topic\_name,keyspace=keyspace\_name,
   table=table\_name,name=batchSize' attribute='Mean'
- ```
-
-:   The mean average size in bytes of write requests per batch statement.
-
- ```no-highlight
+----
++
+The mean average size in bytes of write requests per batch statement.
++
+[source,no-highlight]
+----
  objectName='com.datastax.pulsarconnector:connector=connector\_name,topic=topic\_name,keyspace=keyspace\_name,
   table=table\_name,name=batchSizeInBytes' attribute='Mean'
- ```
+----
 
 Count:: Running number total of all batch sizes.
-
- ```no-highlight
++
+[source,no-highlight]
+----
  objectName='com.datastax.pulsarconnector:connector=connector\_name,topic=topic\_name,keyspace=keyspace\_name,
   table=table\_name,name=batchSize' attribute='Count'
- ```
-
-:   Running total of all batch sizes in bytes.
-
- ```no-highlight
+----
++
+Running total of all batch sizes in bytes.
++
+[source,no-highlight]
+----
  objectName='com.datastax.pulsarconnector:connector=connector\_name,topic=topic\_name,keyspace=keyspace\_name,
   table=table\_name,name=batchSizeInBytes' attribute='Count'
- ```
+----
 
 50thPercentile::
 +
@@ -92,7 +96,12 @@ Count:: Running number total of all batch sizes.
 ----
 objectName='com.datastax.pulsarconnector:connector=connector\_name,topic=topic\_name,keyspace=keyspace\_name,
  table=table\_name,name=batchSize' attribute='50thPercentile'
----- [source,no-highlight] ---- objectName='com.datastax.pulsarconnector:connector=connector\_name,topic=topic\_name,keyspace=keyspace\_name,  table=table\_name,name=batchSizeInBytes' attribute='50thPercentile' ----
+---- 
++
+[source,no-highlight] 
+---- 
+objectName='com.datastax.pulsarconnector:connector=connector\_name,topic=topic\_name,keyspace=keyspace\_name,  table=table\_name,name=batchSizeInBytes' attribute='50thPercentile' 
+----
 
 75thPercentile::
 +
@@ -100,7 +109,12 @@ objectName='com.datastax.pulsarconnector:connector=connector\_name,topic=topic\_
 ----
 objectName='com.datastax.pulsarconnector:connector=connector\_name,topic=topic\_name,keyspace=keyspace\_name,
  table=table\_name,name=batchSize' attribute='75thPercentile'
----- [source,no-highlight] ---- objectName='com.datastax.pulsarconnector:connector=connector\_name,topic=topic\_name,keyspace=keyspace\_name,  table=table\_name,name=batchSizeInBytes' attribute='75thPercentile' ----
+---- 
++
+[source,no-highlight] 
+---- 
+objectName='com.datastax.pulsarconnector:connector=connector\_name,topic=topic\_name,keyspace=keyspace\_name,  table=table\_name,name=batchSizeInBytes' attribute='75thPercentile' 
+----
 
 95thPercentile::
 +
@@ -108,7 +122,12 @@ objectName='com.datastax.pulsarconnector:connector=connector\_name,topic=topic\_
 ----
 objectName='com.datastax.pulsarconnector:connector=connector\_name,topic=topic\_name,keyspace=keyspace\_name,
 table=table\_name,name=batchSize' attribute='95thPercentile'
----- [source,no-highlight] ---- objectName='com.datastax.pulsarconnector:connector=connector\_name,topic=topic\_name,keyspace=keyspace\_name,  table=table\_name,name=batchSizeInBytes' attribute='95thPercentile' ----
+---- 
++
+[source,no-highlight] 
+---- 
+objectName='com.datastax.pulsarconnector:connector=connector\_name,topic=topic\_name,keyspace=keyspace\_name,  table=table\_name,name=batchSizeInBytes' attribute='95thPercentile' 
+----
 
 98thPercentile::
 +
@@ -116,7 +135,12 @@ table=table\_name,name=batchSize' attribute='95thPercentile'
 ----
 objectName='com.datastax.pulsarconnector:connector=connector\_name,topic=topic\_name,keyspace=keyspace\_name,
  table=table\_name,name=batchSize' attribute='98thPercentile'
----- [source,no-highlight] ---- objectName='com.datastax.pulsarconnector:connector=connector\_name,topic=topic\_name,keyspace=keyspace\_name,  table=table\_name,name=batchSizeInBytes' attribute='98thPercentile' ----
+---- 
++
+[source,no-highlight] 
+---- 
+objectName='com.datastax.pulsarconnector:connector=connector\_name,topic=topic\_name,keyspace=keyspace\_name,  table=table\_name,name=batchSizeInBytes' attribute='98thPercentile' 
+----
 
 99thPercentile::
 +
@@ -124,7 +148,12 @@ objectName='com.datastax.pulsarconnector:connector=connector\_name,topic=topic\_
 ----
 objectName='com.datastax.pulsarconnector:connector=connector\_name,topic=topic\_name,keyspace=keyspace\_name,
  table=table\_name,name=batchSize' attribute='99thPercentile'
----- [source,no-highlight] ---- objectName='com.datastax.pulsarconnector:connector=connector\_name,topic=topic\_name,keyspace=keyspace\_name,  table=table\_name,name=batchSizeInBytes' attribute='99thPercentile' ----
+---- 
++
+[source,no-highlight] 
+---- 
+objectName='com.datastax.pulsarconnector:connector=connector\_name,topic=topic\_name,keyspace=keyspace\_name,  table=table\_name,name=batchSizeInBytes' attribute='99thPercentile' 
+----
 
 999thPercentile::
 +
@@ -132,4 +161,9 @@ objectName='com.datastax.pulsarconnector:connector=connector\_name,topic=topic\_
 ----
 objectName='com.datastax.pulsarconnector:connector=connector\_name,topic=topic\_name,keyspace=keyspace\_name,
  table=table\_name,name=batchSize' attribute='999thPercentile'
----- [source,no-highlight] ---- objectName='com.datastax.pulsarconnector:connector=connector\_name,topic=topic\_name,keyspace=keyspace\_name,  table=table\_name,name=batchSizeInBytes' attribute='999thPercentile' ----
+---- 
++
+[source,no-highlight] 
+---- 
+objectName='com.datastax.pulsarconnector:connector=connector\_name,topic=topic\_name,keyspace=keyspace\_name,  table=table\_name,name=batchSizeInBytes' attribute='999thPercentile' 
+----

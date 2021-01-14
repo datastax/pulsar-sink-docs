@@ -2,8 +2,6 @@
 = Mapping Avro messages
 :imagesdir: _images
 
-Supports mapping individual fields from a Avro format field.
-
 The DataStax Apache Pulsar™ Connector supports mapping individual fields from https://avro.apache.org/docs/1.8.1/gettingstartedjava.html[Avro] formatted key or values.
 
 In this example, the key is a basic string and the value is Avro format.
@@ -12,38 +10,26 @@ The Pulsar topic name is `users_topic` and have the following records:
 NOTE: The `pulsar-avro-consumer` outputs the Avro field as JSON to the console.
 When Avro records are written to Pulsar they are often done so using https://avro.apache.org/docs/1.8.1/api/java/org/apache/avro/generic/GenericRecord.html[GenericRecord] objects, which are fundamentally different than JSON.
 
-|key|value| |--|----| |user0| ```no-highlight {"`name`": "`chris`",  "`favorite_number`":14,  "`favorite_color`": "`blue`"}
+|===
+| key| value
 
-----
-
- |
-|user1| ```no-highlight
-{“name”: “jack”,
+|user0|
+`{"`name`": "`chris`",  "`favorite_number`":14,  "`favorite_color`": "`blue`"}``
+|user1|
+`{“name”: “jack”,
 “favorite_number”:56,
-“favorite_color”: “pink”}
-----
-
-| |user2| ```no-highlight {"`name`": "`shereen`", + "`favorite_number`":7, + "`favorite_color`": "`black`"}
-
-----
-
- |
-|user3| ```no-highlight
-{“name”: “kimberly”,
+“favorite_color”: “pink”}``
+|user2|
+`{"`name`": "`shereen`", + "`favorite_number`":7, + "`favorite_color`": "`black`"}``
+|user3| 
+`{“name”: “kimberly”,
 “favorite_number”:11,
-“favorite_color”: “orange”}
-----
-
-| |user4| ```no-highlight {"`name`": "`taryn`", + "`favorite_number`":37, + "`favorite_color`": "`green`"}
-
-----
-
- |
+“favorite_color”: “orange”}``
+|user4| 
+`{"`name`": "`taryn`", + "`favorite_number`":37, + "`favorite_color`": "`green`"}``
 
 The value field uses the following Avro Schema:
-
-```no-highlight
-{
+`{
  "namespace": "example.avro",
  "type": "record",
  "name": "user",
@@ -51,9 +37,8 @@ The value field uses the following Avro Schema:
      {"name": "name", "type": "string"},
      {"name": "favorite_number",  "type": “int”},
      {"name": "favorite_color", "type": “string”}
- ]
-}
-----
+ ]`
+|===
 
 The DataStax keyspace name is `users_keyspace` and table is `users_table`.
 

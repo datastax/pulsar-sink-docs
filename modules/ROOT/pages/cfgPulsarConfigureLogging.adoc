@@ -2,11 +2,9 @@
 = Configure logging for Pulsar Connector
 :imagesdir: _images
 
-Configure logging for DataStax Apache Pulsar Connector.
-
 There are two ways to configure logging for DataStax Apache Pulsar™ Connector.
 
-. Add an entry for `com.datastax.oss.pulsar.sink` loggers in etc/pulsar/connect-log4j.properties.
+. Add an entry for `com.datastax.oss.pulsar.sink` loggers in `etc/pulsar/connect-log4j.properties`.
 This file is used automatically by Pulsar Connector at startup.
 For example, if you want to set the log level for this connector to `DEBUG`, you can add the following entry in the properties file:
 +

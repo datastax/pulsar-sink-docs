@@ -2,8 +2,6 @@
 = System requirements
 :imagesdir: _images
 
-Vary depending on the workload and network capacity.
-
 The system requirements for DataStax Apache Pulsar™ Connector depends on the workload and network capacity.
 The factors include characteristics of the Pulsar topic and the cluster data models and volume.
 DataStax recommends testing with realistic data flows before committing to an instance type for the connector.
@@ -16,7 +14,7 @@ Memory pressure is influenced by:
 * Number of records pulled at the same time;
 where the maximum is set by the workers `consumer.max.poll.records` parameter.
 * Number of simultaneous tasks run by the connector;
-See xref:../pulsarConfigTasksMax.adoc[Configuring parallelism].
+See xref:cfgPulsarConfigTasksMax.adoc[].
 
 DataStax Apache Pulsar Connector needs adequate network capacity for the payload.
 This includes the connections from Pulsar Servers to the target platform.

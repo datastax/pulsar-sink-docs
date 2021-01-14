@@ -2,12 +2,10 @@
 = Configuring parallelism
 :imagesdir: _images
 
-Adjusting the number of tasks, simultaneous writes, and batch size.
-
 In order for workers to split DataStax Apache Pulsar™ connector tasks, the workers must have the same `group.id` in the `connect-distributed.properties` file.
 The parallelism is limited by the partitions for the given Pulsar topic.
 
-Example - Pulsar topic named `my-topic` has 10 partitions and the connector group is configured to have link:configuration_reference/pulsarConnector.md#tasks_max[20 tasks].
+Example - Pulsar topic named `my-topic` has 10 partitions and the connector group is configured to have link:config-reference:cfgRefPulsarConnector.adoc[20 tasks].
 The maximum unit of parallelism in this environment would be 10 because each partitions cannot be subdivided among the tasks.
 
 NOTE: Use additional Apache Pulsar™ Connect workers to scale the connector if greater throughput is needed.

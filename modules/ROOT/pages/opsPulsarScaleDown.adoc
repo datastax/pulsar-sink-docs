@@ -10,23 +10,24 @@ The Pulsar Connect framework automatically scales down and rebalances the tasks 
 TIP: The DataStax Apache Pulsar Connector framework automatically rebalances the load when workers are added by reallocating the tasks among the workers.
 
 . Find the PID of the worker process.
-
-....
-```language-bash
++
+[source,language-bash]
+----
 ps auwx | grep ConnectDistributed
-```
-
+----
++
 Example out:
-
-```results
++
+[source,results]
+----
 automat+ 20689  9.6 10.3 4635620 846012 pts/2  Sl   00:36   0:16 /usr/lib/jvm/jdk1.8.0_151/bin/java
 ...
 org.apache.pulsar.connect.cli.ConnectDistributed pulsar/config/connect-distributed.properties
-```
-....
+----
 
 . Kill the process.
-
- ```language-bash
++
+[source,language-bash]
+----
  kill 20689
- ```
+----

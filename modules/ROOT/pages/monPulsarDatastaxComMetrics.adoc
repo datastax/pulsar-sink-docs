@@ -2,13 +2,11 @@
 = DataStax Pulsar Connector metrics
 :imagesdir: _images
 
-Use JMX to monitor the DataStax Pulsar Connector.
-
 Metrics for requests sent by the DataStax Apache Pulsar™ Connector instance are written to Java Management Extension MBeans under the namespace: `com.datastax.pulsarconnector`.
 
-NOTE: To capture these metrics, the link:../configuration_reference/pulsarDseConnection.md#jmx[jmx] parameter must be set to `true` in the DataStax Apache Pulsar® Connector configuration file.
+NOTE: To capture these metrics, the link:config-reference:cfgRefPulsarDseConnection.md#jmx[jmx] parameter must be set to `true` in the DataStax Apache Pulsar® Connector configuration file.
 
-* *xref:../../pulsar/monitoring/pulsarRecordCountMetrics.adoc[Metrics for the processed Pulsar topic records]* + Running total and averages of the Pulsar topic records processed by the DataStax Pulsar Connector.
-* *xref:../../pulsar/monitoring/pulsarMetricsFailed.adoc[Failed Pulsar topic record metrics]* + Running total or moving averages of Pulsar topic records that could not be processed by a DataStax Apache Pulsar Connector instance.
-* *xref:../../pulsar/monitoring/pulsarDriverMetrics.adoc[Write requests to the DataStax platform]* + Sessions details and write request metrics
-* *xref:../../pulsar/monitoring/pulsarWriteMetrics.adoc[DataStax Apache Pulsar Connector - Batch size metrics]* + Write statistics for each mapping of a Pulsar topic to a database table.
+* xref:monPulsarRecordCountMetrics.adoc[] Running total and averages of the Pulsar topic records processed by the DataStax Pulsar Connector.
+* xref:monPulsarMetricsFailed.adoc[] Running total or moving averages of Pulsar topic records that could not be processed by a DataStax Apache Pulsar Connector instance.
+* *xref:monPulsarDriverMetrics.adoc[] Sessions details and write request metrics
+* *xref:monPulsarWriteMetrics.adoc[] Write statistics for each mapping of a Pulsar topic to a database table.

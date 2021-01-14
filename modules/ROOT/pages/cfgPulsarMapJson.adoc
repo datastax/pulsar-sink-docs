@@ -2,13 +2,11 @@
 = Mapping a message that contain JSON fields
 :imagesdir: _images
 
-For JSON fields, map individual fields in the structure to columns.
-
 When the data format for the key or value is JSON, the connector mapping can include individual fields in the JSON structure.
 DataStax Apache Pulsar™ supports JSON produced by both the `JsonSerializer` and `StringSerializer`;
 mapping semantics are the same.
 
 NOTE: JSON records in Pulsar can also have a schema associated with them.
 
-* *xref:../pulsar/pulsarStringJson.adoc[Mapping a message that contains both basic and JSON fields]* + When the data format for the Pulsar key or value is JSON, individual fields of that JSON structure can be specified in the connector mapping.
-* *xref:../pulsar/pulsarJsonMessageSchema.adoc[Mapping JSON messages]* + Supports mapping JSON messages with or without a schema.
+* xref:cfgPulsarStringJson.adoc[] When the data format for the Pulsar key or value is JSON, individual fields of that JSON structure can be specified in the connector mapping.
+* xref:cfgPulsarJsonMessageSchema.adoc[] Supports mapping JSON messages with or without a schema.

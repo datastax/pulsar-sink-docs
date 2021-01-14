@@ -2,9 +2,7 @@
 = Data parsing fails
 :imagesdir: _images
 
-Data conversion fails.
-
-When the data from the Pulsar field is not compatible with the data type of the target link:../pulsarIntro.md#pulsarIntroduction[supported database] table column, the data conversion fails and a message is logged in the Pulsar Connect log.
+When the data from the Pulsar field is not compatible with the data type of the target xref:index.adoc[supported database] table column, the data conversion fails and a message is logged in the Pulsar Connect log.
 
 Example error message when parsing a string value for a numeric column:
 
@@ -16,13 +14,11 @@ java.lang.IllegalArgumentException: Could not parse 'jack'; accepted formats are
 ----
 
 [#_remediation_solution_section]
-== Remediation {#solution .section}
+== Remediation
 
 Ensure that the Pulsar fields are mapped to the correct database columns.
 The connector can not automatically convert varying types.
 If they do not match, consider changing your table schema to accommodate the Pulsar field types.
 
 TIP: When adding or changing columns in a database table, ensure that the schema is fully propagated before continuing.
-Use link:/en/dse/6.7/dse-admin/datastax_enterprise/tools/nodetool/toolsDescribeRing.html[nodetool describering] to show the schema version.
-
-*Parent topic:* xref:../../pulsar/pulsarTroubleshoot.adoc[Troubleshooting the DataStax Apache Pulsar Connector]
+Use link:https://docs.datastax.com/en/dse/6.8/dse-admin/datastax_enterprise/tools/nodetool/toolsDescribeRing.html[nodetool describering] to show the schema version.
