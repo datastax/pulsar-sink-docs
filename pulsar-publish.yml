@@ -4,6 +4,7 @@ site:
   start_page: connector::index.adoc
 
 content:
+  edit_url: '{web_url}/tree/main/{path}'
   sources:
   - url: .
     branches: HEAD
