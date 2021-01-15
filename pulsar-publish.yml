@@ -4,7 +4,7 @@ site:
   start_page: connector::index.adoc
 
 content:
-  edit_url: '{web_url}/tree/main/{path}'
+  edit_url: 'https://github.com/riptano/pulsar-sink-docs/blob/main/{path}'
   sources:
   - url: .
     branches: HEAD
