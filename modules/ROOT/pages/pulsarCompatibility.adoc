@@ -13,8 +13,9 @@ The DataStax Apache Pulsar™ Connector can stream data to:
 
 Ingest data from Pulsar topics with records in the following data structures:
 
-* Primitive type values, such as integer or string
+* Primitive string values
 * Complex field values in record types:
- ** JSON formatted string
- ** Pulsar Struct
  ** Avro
+ ** JSON formatted string with JSON schema
+ ** JSON formatted string inside a schemaless topic
+ 
