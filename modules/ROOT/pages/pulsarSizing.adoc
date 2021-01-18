@@ -12,12 +12,12 @@ Memory pressure is influenced by:
 
 * Record size of Pulsar topics
 * Number of records pulled at the same time;
-where the maximum is set by the workers `consumer.max.poll.records` parameter.
+where the maximum is set by the workers `batchSize` parameter.
 * Number of simultaneous tasks run by the connector;
 See xref:cfgPulsarConfigTasksMax.adoc[].
 
 DataStax Apache Pulsar Connector needs adequate network capacity for the payload.
 This includes the connections from Pulsar Servers to the target platform.
-Scale the connector horizontally by adding additional workers in distributed mode to increase overall throughput.
+Scale the connector horizontally by adding additional workers to increase overall throughput.
 
 TIP: The DataStax Apache Pulsar Connector framework automatically rebalances the load when workers are added by reallocating the tasks among the workers.
