@@ -23,8 +23,7 @@ image:partitionsPulsar.png[]
 
 Topic partitions contain an ordered set of messages and each message in the partition has a unique offset.
 Pulsar does not track which messages were read by a task or consumer.
-Consumers must track their own location within each log;
-the Datastax Connector task store the offsets in `config.offset.topic`.
+Consumers must track their own location within each log, this is done automatically by Pulsar IO runtime.
 In the event of a failure, the DataStax Connector task resumes reading from the last recorded location.
-By default, Pulsar retains messages for seven days.
-The retention setting is configured per topic.
+By default, Pulsar retains messages until there is an active subscription that has not consumed them.
+The retention setting is configured per topic, namespace or system wise.
