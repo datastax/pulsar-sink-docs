@@ -32,6 +32,7 @@
 **** xref:cfgRefPulsarKerberos.adoc[]
 *** xref:cfgRefPulsarSsl.adoc[]
 *** xref:cfgPulsarConfigureErrorHandling.adoc[]
+////
 * Operations
 ** xref:opsPulsarAboutOperations.adoc[]
 ** xref:opsPulsarStartStop.adoc[]
@@ -46,6 +47,7 @@
 ** xref:opsPulsarUpdateConfig.adoc[]
 ** xref:opsPulsarDeleteConnector.adoc[]
 ** xref:opsPulsarConnectorStatus.adoc[]
+////
 * Security
 ** xref:secPulsarKerberosAuth.adoc[]
 *** xref:secPulsarKerberosConfigFile.adoc[]
@@ -53,18 +55,13 @@
 ** xref:secPulsarInternalLdapAuth.adoc[]
 * Monitoring
 ** xref:monPulsarEnableJmx.adoc[]
-** xref:monPulsarDatastaxComMetrics.adoc[]
 *** xref:monPulsarRecordCountMetrics.adoc[]
 *** xref:monPulsarMetricsFailed.adoc[]
 *** xref:monPulsarDriverMetrics.adoc[]
 *** xref:monPulsarWriteMetrics.adoc[]
 ** xref:monPulsarConnectMetrics.adoc[]
 * Troubleshooting
-** xref:trbPulsarTsConnectorNotFound.adoc[]
-** xref:trbPulsarTsRecordProcessing.adoc[]
 ** xref:trbPulsarTsRecordFailsToWriteToTable.adoc[]
 ** xref:trbPulsarTsLargeBatches.adoc[]
 ** xref:trbPulsarTsRecordParsingFails.adoc[]
-** xref:trbPulsarTsMissingFields.adoc[]
-** xref:trbPulsarTsBindAddress.adoc[]
 ** xref:trbPulsarTsLoadBalancing.adoc[]
