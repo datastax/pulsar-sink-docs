@@ -9,9 +9,5 @@ DataStax Apache Pulsar™ Connector is open-source software (OSS) installed in t
 * Open source Apache Cassandra® 2.1 and later databases
 
 == Topics
-* xref:pulsarArchitecture.adoc[] Components of a DataStax Apache Pulsar Connector implementation.
-* xref:pulsarHowMessages.adoc[] Overview of the Apache Pulsar™ topic data pipeline.
-* xref:pulsarAboutInstance.adoc[] Data from the Pulsar topic is written to the mapped platform's database table using a batch request containing multiple write statements.
-* xref:pulsarSizing.adoc[] Vary depending on the workload and network capacity.
 * xref:pulsarCompatibility.adoc[] Pulsar and DataStax platform compatibility matrix.
 * xref:pulsarFeatures.adoc[] Key features in DataStax Apache Pulsar Connector.

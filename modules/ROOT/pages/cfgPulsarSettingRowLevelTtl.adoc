@@ -8,7 +8,11 @@ The format is:
 
 [source,no-highlight]
 ----
-topic.my_topic.my_ks.my_table.mapping=col1=key.f1, col2=value.f1, __ttl=value.f2
+topic:
+  my_topic:
+    my_ks:
+      my_table:
+        mapping: 'col1=key.f1, col2=value.f1, __ttl=value.f2'
 ----
 
 When you specify a `ttl` value to be used while inserting the record, by mapping __ttl or .ttl static configuration, you can further specify a `timeUnit`.
@@ -19,13 +23,17 @@ The transformation also applies for static .ttl field configuration:
 
 [source,no-highlight]
 ----
-topic.my_topic.my_ks.my_table.ttlTimeUnit=SECONDS
+topic:
+  my_topic:
+    my_ks:
+      my_table:
+        ttlTimeUnit: SECONDS
 ----
 
-If the `ttl` is provided via mapping, such as `topic.my_topic.my_ks.my_table.mapping=__ttl=value.f2`, and by the .ttl static configuration (`topic.my_topic.my_ks.my_table.ttl=86400`) the `ttl` value from the mapping takes precedence and is used.
+If the `ttl` is provided via mapping, such as `mapping: '__ttl=value.f2'`, and by the `ttl` static configuration (`ttl: 86400`) the `ttl` value from the mapping takes precedence and is used.
 If you set `ttl` in both resources, DataStax Apache Pulsar Connector writes a warning message in the log file.
 
-When you configure `topic.<topic-name>.<keyspace-name>.<table-name>.ttl`, all rows for that topic table will have this same `TTL` value.
+When you configure `ttl`, all rows for that topic table will have this same `TTL` value.
 DataStax Pulsar Connector appends `AND TTL <configured-ttl-value>` to the INSERT statement for those rows.
 
 NOTE: When doing dynamic configuration, if the `ttl` field value is negative, an error is thrown during the insert of the record into a database table.

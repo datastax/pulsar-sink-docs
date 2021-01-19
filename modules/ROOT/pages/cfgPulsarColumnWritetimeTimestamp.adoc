@@ -11,9 +11,13 @@ In the Pulsar topic mapping, you can optionally specify which column should be u
 The mapping setting provides a special property, `__timestamp`.
 The format is:
 
-[source,no-highlight]
+[source,language-yaml]
 ----
-topic.my_topic.my_ks.my_table.mapping=col1=key.f1, col2=value.f1, __timestamp=value.f2
+topic:
+  my_topic:
+    my_ks:
+      my_table:
+        mapping: 'col1=key.f1, col2=value.f1, __timestamp=value.f2'
 ----
 
 By default, the database internally tracks the `writetime` timestamp of records inserted from Pulsar.
@@ -28,7 +32,11 @@ The connector will automatically transform it to the database's proper numeric t
 that is, to `MICROSECONDS`.
 Example:
 
-[source,no-highlight]
+[source,language-yaml]
 ----
-topic.my_topic.my_ks.my_table.timestampTimeUnit=SECONDS
+topic:
+  my_topic:
+    my_ks:
+      my_table:
+        timestampTimeUnit: SECONDS
 ----

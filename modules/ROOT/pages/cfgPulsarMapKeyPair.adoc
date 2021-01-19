@@ -9,25 +9,22 @@ Ensure that the data types of the message field are compatible with the data typ
 For example, the Pulsar world topic (`world_topic`) contains 5 records with a key-value pair in each.
 The key is an integer and the value is text.
 
-image::basicMessage.png[]
-
 == Table requirements
 
 . Ensure the following when mapping fields to columns:
 +
 * Data in the Pulsar field is compatible with the database table column link:https://docs.datastax.com/en/dse/6.8/cql/cql/cql_reference/refDataTypes.html[data type].
-* Pulsar field mapped to a database xref:../glossary/gloss_primary_key.adoc[primary key] (PK) column always contains data.
+* Pulsar field mapped to a database primary key (PK) column always contains data.
 Null values are not allowed in PK columns.
 
-. Verify that the correct converter is set in the link:pulsarWorkerConfig.md#key_converter[key.converter] and link:pulsarWorkerConfig.md#value_converter[value.converter] of the `connect-distributed.properties` file.
-. Set up the link:pulsarIntro.md#pulsarIntroduction[supported database] table.
+. Set up the link:index.adoc[supported database] table.
 . Create the keyspace.
-Ensure that keyspace is replicated to a datacenter that is set in the DataStax Apache Pulsar Connector link:configuration_reference/pulsarDseConnection.md#contactPoints[contactPoints] parameter.
+Ensure that keyspace is replicated to a datacenter that is set in the DataStax Apache Pulsar Connector xref:cfgRefPulsarDseConnection.md[contactPoints] parameter.
 For example, create the world_keyspace:
 +
 [source,language-bash]
 ----
-   cqlsh -e "CREATE KEYSPACE world_keyspace WITH replication = {'class': 'NetworkTopologyStrategy','Cassandra': 1};"
+cqlsh -e "CREATE KEYSPACE world_keyspace WITH replication = {'class': 'NetworkTopologyStrategy','Cassandra': 1};"
 ----
 +
 NOTE: The datacenter name is case sensitive.
@@ -37,14 +34,14 @@ Use link:https://docs.datastax.com/en/dse/6.8/dse-dev/datastax_enterprise/tools/
 +
 [source,language-bash]
 ----
-    cqlsh -e "CREATE TABLE world_table (recordid int PRIMARY KEY, continent text);"
+cqlsh -e "CREATE TABLE world_table (recordid int PRIMARY KEY, continent text);"
 ----
 
-. Verify that all nodes have the same schema version using [nodetool describering](https://docs.datastax.com/en/dse/6.8/dse-admin/datastax_enterprise/tools/nodetool/toolsDescribeRing.html). Replace keyspace\_name:
+. Verify that all nodes have the same schema version using [nodetool describering](https://docs.datastax.com/en/dse/6.8/dse-admin/datastax_enterprise/tools/nodetool/toolsDescribeRing.html). Replace keyspace_name:
 +
 [source,language-bash]
 ----
-    nodetool describering -- keyspace\_name
+nodetool describering -- keyspace_name
 ----
 
 . In the DataStax Apache Pulsar Connector configuration file:
@@ -54,32 +51,15 @@ Use link:https://docs.datastax.com/en/dse/6.8/dse-dev/datastax_enterprise/tools/
 +
 Example configurations for `world_topic` to `world_table` using the minimum required settings:
 +
-NOTE: When the xref:cfgRefPulsarDseConnection.adoc[contactPoints] parameter is missing, the `localhost`; this assumes the database is co-located on the DataStax Apache Pulsar Connector node.
-+
--   JSON for distributed mode:
-+
-[source,no-highlight]
+[source,language-yaml]
 ----
-    {
-      "name": "world-sink",
-      "config": {
-        "connector.class": "com.datastax.pulsarconnector.DseSinkConnector",
-        "tasks.max": "1",
-        "topics": "world_topic",
-        "topic.world_topic.world_keyspace.world_table.mapping”: “recordid=key, continent=value"
-      }
-    }
+name: world-sink
+connector.class: com.datastax.pulsarconnector.DseSinkConnector
+tasks.max: 1
+topics: world_topic
+topic:
+  world_topic:
+    world_keyspace:
+      world_table:
+        mapping: 'recordid=key, continent=value'
 ----
-+
--   Properties file for standalone mode:
-+
-[source,no-highlight]
-----
-    name=world-sink
-    connector.class=com.datastax.pulsarconnector.DseSinkConnector
-    tasks.max=1
-    topics=world_topic
-    topic.world_topic.world_keyspace.world_table.mapping = recordid=key, continent=value
-----
-+
-. xref:opsPulsarUpdateConfig.adoc[] or xref:opsPulsarStartStop.adoc[].

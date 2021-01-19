@@ -2,7 +2,7 @@
 = Mapping messages to table that has a User Defined Type
 :imagesdir: _images
 
-The DataStax Apache Pulsar Connector processes JSON, Avro, and complex types, such as Pulsar https://docs.confluent.io/current/clients/confluent-pulsar-dotnet/api/Confluent.Pulsar.html#structs[Structs] or maps, directly into a link:https://docs.datastax.com/en/dse/6.7/cql/cql/cql_using/useAlterType.html[user-defined type] column in the link:index.adoc[].
+The DataStax Apache Pulsar Connector processes JSON, Avro, and complex types directly into a link:https://docs.datastax.com/en/dse/6.7/cql/cql/cql_using/useAlterType.html[user-defined type] column in the xref:index.adoc[].
 The Pulsar message embedded field names and the UDT field names must match.
 
 In the example `stocks_topic`, the key is a basic string and the value is regular JSON.
@@ -73,8 +73,11 @@ CREATE TABLE stocks_keyspace.stocks_table (
 
 Configure the connector settings and use the following for the map specification:
 
-[source,no-highlight]
+[source,language-yaml]
 ----
-“topic.stocks_topic.stocks_keyspace.stocks_udt_table.mapping”:
-    “name=key,stocks=value”
+topic:
+    stocks_topic:
+        stocks_keyspace:
+            stocks_udt_table:
+                mapping: 'name=key,stocks=value'
 ----

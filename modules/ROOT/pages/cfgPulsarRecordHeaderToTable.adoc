@@ -12,8 +12,11 @@ For example:
 
 [source,no-highlight]
 ----
-topic.my_topic.my_keyspace.my_table.mapping=col1=key.f1, col2=value.f1, __ttl=value.f2, __timestamp=value.f3,
-        col3=header.f4
+topic:
+  my_topic
+    my_keyspace:
+      my_table:
+        mapping: 'col1=key.f1, col2=value.f1, __ttl=value.f2, __timestamp=value.f3, col3=header.f4'
 ----
 
 You cannot map the entire header.

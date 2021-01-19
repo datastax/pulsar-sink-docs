@@ -8,20 +8,21 @@ When set to `true`, it allows the connector to continue processing records even 
 ignoreErrors:: Use `ignoreErrors` settings to ignore specific types or all runtime errors, depending on the setting you choose.
 +
 |===
-|Value|Meaning|Notes|
-|`false`|No errors are ignored|Deprecated - equivalent to `NONE`|
-|`true`|Only driver errors are ignored|Deprecated - equivalent to `DRIVER`|
-|`NONE`|No errors are ignored; default behavior| |
-|`ALL`|All errors are ignored| |
-|`DRIVER`|Only driver errors are ignored| |
+|Value|Meaning|Notes
+
+|`false`|No errors are ignored|Deprecated - equivalent to `NONE`
+|`true`|Only driver errors are ignored|Deprecated - equivalent to `DRIVER`
+|`NONE`|No errors are ignored; default behavior| 
+|`ALL`|All errors are ignored| 
+|`DRIVER`|Only driver errors are ignored| 
 |===
 +
 If you set `ignoreErrors` to any value other than `false`, any erroneous record is logged once and the next record is picked up by the Pulsar Connector automatically.
 +
 If you decide to use `ignoreErrors`, there are two ways to deploy the Pulsar Connector:
 
-. In standalone mode for development or test environments only, you can specify `ignoreErrors=value` in your customized version of the cassandra-sink-standalone.properties.sample file.
-. In distributed mode for production environments, you can specify `"ignoreErrors": value` in your customized version of the cassandra-sink-distributed.json.sample JSON file.
+. In standalone mode for development or test environments only, you can specify `ignoreErrors=value` in your customized version of the `cassandra-sink-standalone.properties.sample` file.
+. In distributed mode for production environments, you can specify `"ignoreErrors": value` in your customized version of the `cassandra-sink-distributed.json.sample` JSON file.
 
 Because the Pulsar Connector runs in the Pulsar Connect Worker JVM, all of the logging entries go to the Pulsar Connect Worker logs.
 For example, to pipe the worker process to the background and write the log entries to worker.log:

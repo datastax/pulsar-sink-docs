@@ -7,9 +7,13 @@ It returns `TIMEUUID`, which is documented in the link:https://docs.datastax.com
 
 For example:
 
-[source,no-highlight]
+[source,language-yaml]
 ----
-"topic.my_topic.my_ks.my_table.mapping": "col1=now()"
+topic:
+  my_topic:
+    my_ks:
+      my_table:
+        mapping: 'col1=now()''
 ----
 
 In this example, you must create `col1` in a CQL table with the following definition:
@@ -21,9 +25,13 @@ col1 timeuuid
 
 You can use the `now()` function for mapping of multiple database columns:
 
-[source,no-highlight]
+[source,language-yaml]
 ----
-"topic.my_topic.my_ks.my_table.mapping": "col1=now(), col2=now(), col3=now()"
+topic:
+  my_topic:
+    my_ks:
+      my_table:
+        mapping: 'col1=now(), col2=now(), col3=now()''
 ----
 
 In the example above, each occurrence of `now()` is evaluated and return a different `TIMEUUID`.

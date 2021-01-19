@@ -4,13 +4,15 @@
 
 One way to determine the format of pre-existing data in Pulsar is to run the command line consumer and look at what is in the topic.
 
+link:https://pulsar.apache.org/docs/en/admin-api-topics/[]
+
 * To show Apache Pulsar messages:
 +
 [source,language-bash]
 ----
  bin/pulsar-console-consumer.sh --bootstrap-server localhost:9092 \
  --from-beginning --property print.key=true --max-messages 5 \
- --topic topic\_name
+ --topic topic_name
 ----
 
 * To show Confluent Pulsar messages:      -   Messages other than Avro:
@@ -19,7 +21,7 @@ One way to determine the format of pre-existing data in Pulsar is to run the com
 ----
    bin/pulsar-console-consumer --bootstrap-server localhost:9092 \
    --from-beginning --property print.key=true --max-messages 5 \
-   --topic topic\_name
+   --topic topic_name
 ----
 
 * Avro messages
@@ -28,5 +30,5 @@ One way to determine the format of pre-existing data in Pulsar is to run the com
 ----
     bin/pulsar-avro-console-consumer --bootstrap-server localhost:9092 \
     --from-beginning --property print.key=true --max-messages 5 \
-    --topic topic\_name
+    --topic topic_name
 ----

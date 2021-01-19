@@ -1,4 +1,0 @@
-= Pulsar Connector FAQs
-
-If you're new to DataStax Luna Streaming and its Apache Pulsar enhancements, these FAQs are for you.
-
