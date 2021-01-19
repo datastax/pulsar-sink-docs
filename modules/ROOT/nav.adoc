@@ -32,7 +32,6 @@
 **** xref:cfgRefPulsarKerberos.adoc[]
 *** xref:cfgRefPulsarSsl.adoc[]
 *** xref:cfgPulsarConfigureErrorHandling.adoc[]
-////
 * Operations
 ** xref:opsPulsarAboutOperations.adoc[]
 ** xref:opsPulsarStartStop.adoc[]
@@ -47,7 +46,6 @@
 ** xref:opsPulsarUpdateConfig.adoc[]
 ** xref:opsPulsarDeleteConnector.adoc[]
 ** xref:opsPulsarConnectorStatus.adoc[]
-////
 * Security
 ** xref:secPulsarKerberosAuth.adoc[]
 *** xref:secPulsarKerberosConfigFile.adoc[]
