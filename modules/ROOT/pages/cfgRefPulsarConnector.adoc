@@ -8,12 +8,12 @@ See the https://pulsar.apache.org/documentation/#connect_configuring[Configuring
 [#_parameters_synopsis_section]
 == Parameters
 
-[source,no-highlight]
+[source,language-yaml]
 ----
 name=dse-sink
 connector.class=com.datastax.pulsarconnector.DseSinkConnector
 tasks.max=1
-cloud.secureConnectBundle=/path/to/secure-connect-database\_name.zip
+cloud.secureConnectBundle=/path/to/secure-connect-database_name.zip
 ----
 
 name:: Unique name for the connector.

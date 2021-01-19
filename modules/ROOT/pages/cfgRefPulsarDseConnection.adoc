@@ -9,13 +9,15 @@ Configure the connection settings from Apache Pulsar™ to the cluster.
 
 [source,language-yaml]
 ----
- connectionPoolLocalSize=4 c
- contactPoints=[dse_host_list] 
- loadBalancing.localDc=datacenter_name 
- #port=9042 #maxConcurrentRequests=500 
- #maxNumberOfRecordsInBatch=32 
- #queryExecutionTimeout=30 
- #jmx=true #compression=None
+ connectionPoolLocalSize: 4
+ contactPoints: [dse_host_list] 
+ loadBalancing.localDc: datacenter_name 
+ port: 9042 
+ maxConcurrentRequests: 500 
+ maxNumberOfRecordsInBatch: 32 
+ queryExecutionTimeout: 30 
+ jmx: true 
+ compression: None
 ----
 
 connectionPoolLocalSize:: Number of connections that driver maintains within a connection pool to each node in the local datacenter.

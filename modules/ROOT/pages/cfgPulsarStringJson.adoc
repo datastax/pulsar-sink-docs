@@ -65,7 +65,7 @@ Null values are not allowed in PK columns.
 . Verify that the correct converter is set in the link:pulsarWorkerConfig.md#key_converter[key.converter] and link:pulsarWorkerConfig.md#value_converter[value.converter] of the `connect-distributed.properties` file.
 . Set up the link:pulsarIntro.md#pulsarIntroduction[supported database] table.
 . Create the keyspace.
-Ensure that keyspace is replicated to a datacenter that is set in the DataStax Apache Pulsar Connector link:config-reference:cfgRefPulsarDseConnection.md[contactPoints] parameter.
+Ensure that keyspace is replicated to a datacenter that is set in the DataStax Apache Pulsar Connector link:cfgRefPulsarDseConnection.md[contactPoints] parameter.
 For example, create the `stocks_keyspace`:
 +
 [source,language-bash]
@@ -106,7 +106,7 @@ Use link:https://docs.datastax.com/en/dse/6.8/dse-dev/datastax_enterprise/tools/
 +
 Example configurations for `stocks_topic` to `stocks_table` using the minimum required settings:
 +
-NOTE: When the xref:config-reference:cfgRefPulsarDseConnection.md#contactPoints[contactPoints] parameter is missing, the `localhost`; this assumes the database is co-located on the DataStax Apache Pulsar Connector node.
+NOTE: When the xref:cfgRefPulsarDseConnection.md#contactPoints[contactPoints] parameter is missing, the `localhost`; this assumes the database is co-located on the DataStax Apache Pulsar Connector node.
 
 -   JSON for distributed mode:
 +

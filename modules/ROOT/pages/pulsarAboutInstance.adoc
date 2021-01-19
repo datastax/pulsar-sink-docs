@@ -17,7 +17,7 @@ A single connector instance can process records from multiple Pulsar topics and 
 
 A map specification binds a Pulsar topic field to a table column.
 Fields that are omitted from the specification are not included in the write request.
-Fields with null values are written to the database as `UNSET` (see xref:config-reference:cfgRefPulsarDseTable.md[nullToUnset]).
+Fields with null values are written to the database as `UNSET` (see xref:cfgRefPulsarDseTable.md[nullToUnset]).
 To ensure proper ordering, all records are written using the Pulsar record timestamp.
 
 image::pulsarTopicsto2Tables.png[]

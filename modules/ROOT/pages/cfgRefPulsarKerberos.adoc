@@ -9,15 +9,17 @@ NOTE: When link:https://docs.datastax.comen/dse/6.8//dse-admin/datastax_enterpri
 [#_parameters_synopsis_section]
 == Parameters
 
-[source,no-highlight]
+[source,language-yaml]
 ----
-auth.provider=GSSAPI
-auth.gssapi.keyTab=path\_to\_keytab
-auth.gssapi.principal=connectorPrincipal/hostname@EXAMPLE.com
-auth.gssapi.service=dse
+auth:
+  provider: GSSAPI
+  gssapi:
+    keyTab: path_to_keytab
+    principal: connectorPrincipal/hostname@EXAMPLE.com
+    service: dse
 ----
 
-auth.provider:: Select the type of authentication provider configured for the DataStax cluster.
+provider:: Select the type of authentication provider configured for the DataStax cluster.
 +
 -   **None** - No authentication.
 -   **DSE** - Internal or LDAP authentication.
@@ -28,12 +30,12 @@ NOTE: When using the GSSAPI, the Pulsar Connect process requires that the Kerber
 Default: `None`
 
 
-auth.gssapi.keyTab:: Path to the Kerberos key tab file.
+keyTab:: Path to the Kerberos key tab file.
 
-auth.gssapi.principal:: Kerberos principal name.
+principal:: Kerberos principal name.
 Specifying the principal explicitly to the connector is required if there are multiple principals that have valid tickets in the ticket cache.
 Prevents the connector from arbitrarily choosing one.
 
-auth.gssapi.service:: SASL service name to use for GSSAPI provider authentication.
+service:: SASL service name to use for GSSAPI provider authentication.
 +
 Default: `dse`

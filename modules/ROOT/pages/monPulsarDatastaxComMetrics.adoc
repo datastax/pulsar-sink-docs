@@ -4,7 +4,7 @@
 
 Metrics for requests sent by the DataStax Apache Pulsar™ Connector instance are written to Java Management Extension MBeans under the namespace: `com.datastax.pulsarconnector`.
 
-NOTE: To capture these metrics, the link:config-reference:cfgRefPulsarDseConnection.md#jmx[jmx] parameter must be set to `true` in the DataStax Apache Pulsar® Connector configuration file.
+NOTE: To capture these metrics, the link:cfgRefPulsarDseConnection.md#jmx[jmx] parameter must be set to `true` in the DataStax Apache Pulsar® Connector configuration file.
 
 * xref:monPulsarRecordCountMetrics.adoc[] Running total and averages of the Pulsar topic records processed by the DataStax Pulsar Connector.
 * xref:monPulsarMetricsFailed.adoc[] Running total or moving averages of Pulsar topic records that could not be processed by a DataStax Apache Pulsar Connector instance.

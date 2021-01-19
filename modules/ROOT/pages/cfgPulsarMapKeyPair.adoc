@@ -48,13 +48,13 @@ Use link:https://docs.datastax.com/en/dse/6.8/dse-dev/datastax_enterprise/tools/
 ----
 
 . In the DataStax Apache Pulsar Connector configuration file:
-.. Add the topic name to xref:config-reference:cfgRefPulsarDseTable.adpc[topics].
-.. Define the topic-to-table map xref:config-reference:cfgRefPulsarDseTable.adoc[prefix].
-.. Define the xref:config-reference:cfgRefPulsarDseTable.adoc[field-to-column map].
+.. Add the topic name to xref:cfgRefPulsarDseTable.adpc[topics].
+.. Define the topic-to-table map xref:cfgRefPulsarDseTable.adoc[prefix].
+.. Define the xref:cfgRefPulsarDseTable.adoc[field-to-column map].
 +
 Example configurations for `world_topic` to `world_table` using the minimum required settings:
 +
-NOTE: When the xref:config-reference:cfgRefPulsarDseConnection.adoc[contactPoints] parameter is missing, the `localhost`; this assumes the database is co-located on the DataStax Apache Pulsar Connector node.
+NOTE: When the xref:cfgRefPulsarDseConnection.adoc[contactPoints] parameter is missing, the `localhost`; this assumes the database is co-located on the DataStax Apache Pulsar Connector node.
 +
 -   JSON for distributed mode:
 +

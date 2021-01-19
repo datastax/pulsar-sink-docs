@@ -8,14 +8,15 @@ A login role for the connector with access to the mapped tables is also required
 [#_parameters_synopsis_section]
 == Parameters
 
-[source,no-highlight]
+[source,language-yaml]
 ----
-auth.provider=DSE
-auth.username=login\_role
-auth.password=password
+auth:
+  provider: DSE
+  username: login_role
+  password: password
 ----
 
-auth.provider:: Select the type of authentication provider configured for the DataStax cluster.
+provider:: Select the type of authentication provider configured for the DataStax cluster.
 -   **None** - No authentication.
 -   **DSE** - Internal or LDAP authentication.
 -   **GSSAPI** - Supports SASL authentication to DSE clusters using the GSSAPI mechanism \(Kerberos authentication\)
@@ -24,8 +25,8 @@ NOTE: When using the GSSAPI, the Pulsar Connect process requires that the Kerber
 +
 Default: `None`
 
-auth.username:: DSE login role name or LDAP username.Astra database username.
+username:: DSE login role name or LDAP username.Astra database username.
 +
 NOTE: When [authorization is enabled](https://docs.datastax.comen/dse/6.8//dse-admin/datastax_enterprise/config/configDseYaml.html#configDseYaml__authorizationOptions), the DataStax connector login role must have a minimum of `modify` privileges on tables receiving data from the DataStax Apache Pulsar® Connector.
 
-auth.password:: Login role or LDAP password.Astra database password for the specified username.
+password:: Login role or LDAP password.Astra database password for the specified username.

@@ -4,14 +4,17 @@
 
 Use the following syntax to configure date and time conversion parameters for each topic.
 
-[source,no-highlight]
+[source,language-yaml]
 ----
-topic.topic\_name.codec.locale=en_US
-topic.topic\_name.codec.timeZone=UTC
-topic.topic\_name.codec.timestamp=CQL_TIMESTAMP
-topic.topic\_name.codec.date=ISO_LOCAL_DATE
-topic.topic\_name.codec.time=ISO_LOCAL_TIME
-topic.topic\_name.codec.unit=MILLISECONDS
+topic:
+  topic_name:
+    codec:
+      locale: en_US
+      timeZone: UTC
+      timestamp: CQL_TIMESTAMP
+      date: ISO_LOCAL_DATE
+      time: ISO_LOCAL_TIME
+      unit: MILLISECONDS
 ----
 
 where topic_name is the name of the Apache Pulsar™ topic.
@@ -24,7 +27,7 @@ These settings apply per topic.
 
 NOTE: Date and time settings support any public static field in `java.time.format.DateTimeFormatter` as an option.
 
-codec.timestamp:: The temporal pattern to use for string-to-CQL timestamp conversion, the choices are:
+timestamp:: The temporal pattern to use for string-to-CQL timestamp conversion, the choices are:
 +
 * Date-time pattern such as `yyyy-MM-dd HH:mm:ss`.
 * Pre-defined formatter such as `ISO_ZONED_DATE_TIME` or `ISO_INSTANT`.
@@ -32,14 +35,14 @@ codec.timestamp:: The temporal pattern to use for string-to-CQL timestamp conver
 +
 Default: `CQL_TIMESTAMP`
 
-codec.date:: The temporal pattern to use for string-to-CQL date conversion.
+date:: The temporal pattern to use for string-to-CQL date conversion.
 +
 -   Date-time pattern such as `yyyy-MM-dd`.
 -   Pre-defined formatter such as `ISO_LOCAL_DATE`.
 +
 Default: `ISO_LOCAL_DATE`
 
-codec.time::
+time::
 The temporal pattern to use for string-to-CQL time conversion.
 Valid choices:
 +
@@ -48,17 +51,17 @@ Valid choices:
 +
 Default: `ISO_LOCAL_TIME`
 
-codec.unit::
+unit::
 If the input is a string containing only digits that cannot be parsed using the `codec.timestamp` format, the specified time unit is applied to the parsed value.
 All TimeUnit enum constants are valid choices.
 +
 Default: `MILLISECONDS`
 
-codec.timeZone:: The time zone to use for temporal conversions that do not convey any explicit time zone information.
+timeZone:: The time zone to use for temporal conversions that do not convey any explicit time zone information.
 +
 Default: `UTC`
 
-codec.locale:: Locale to use for locale-sensitive conversions.
+locale:: Locale to use for locale-sensitive conversions.
 +
 Default: `en_US`
 +
@@ -71,25 +74,34 @@ Timezone example
 
 To write to a column with data type link:https://docs.datastax.com/en/dse/6.8/cql/cql/cql_reference/refDataTypes.html#refDataTypes__timestamp[timestamp], for the test Pulsar topic string field that contains `2018-03-09T17:12:32.584+01:00[Europe/Paris]`, use the setting:
 
-[source,no-highlight]
+[source,language-yaml]
 ----
-topic.test.codec.timestamp=ISO_ZONED_DATE_TIME
+topic:
+  test:
+    codec:
+      timestamp: ISO_ZONED_DATE_TIME
 ----
 
 Date example
 
 To write to a column with type link:https://docs.datastax.com/en/dse/6.8/cql/cql/cql_reference/refDataTypes.html#refDataTypes__date[date] for a Pulsar topic that contains a string field like "2018-04-12", use the setting:
 
-[source,no-highlight]
+[source,language-yaml]
 ----
-topic.test.codec.date="yyyy-MM-dd"
+topic:
+  test:
+    codec:
+      date: "yyyy-MM-dd"
 ----
 
 Time example
 
 To write to a column with type link:https://docs.datastax.com/en/dse/6.8/cql/cql/cql_reference/refDataTypes.html#refDataTypes__time[time] for a Pulsar topic string field like "10:15:30", use setting:
 
-[source,no-highlight]
+[source,language-yaml]
 ----
-topic.test.codec.time=ISO_LOCAL_TIME
+topic:
+  test:
+    codec:
+      time: ISO_LOCAL_TIME
 ----

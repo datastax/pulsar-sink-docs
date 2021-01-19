@@ -12,30 +12,24 @@ NOTE: You cannot use this option if specifying the link:pulsarConnector.md#secur
 [#_parameters_synopsis_section]
 == Parameters
 
-[source,no-highlight]
+[source,language-yaml]
 ----
-ssl.provider=None
-ssl.cipherSuites=
-ssl.hostnameValidation=true
-ssl.keystore.password=
-
-# Path to the keystore file.
-#ssl.keystore.path=
-
-# Truststore password.
-#ssl.truststore.password=
-
-# Path to the truststore file.
-#ssl.truststore.path=
-
-# Path to the SSL certificate file, when using OpenSSL.
-#ssl.openssl.keyCertChain=
-
-# Path to the private key file, when using OpenSSL.
-#ssl.openssl.privateKey=
+ssl:
+  provider: None
+  cipherSuites:
+  hostnameValidation: true
+  keystore:
+    password:
+    path:
+  truststore:
+    password:
+    path:
+  openssl:
+    keyCertChain:
+    privateKey:
 ----
 
-ssl.provider::
+provider::
 SSL provider to use, if any.
 Valid choices:
 -   None
@@ -44,23 +38,22 @@ Valid choices:
 +
 Defaults to None
 
-ssl.hostnameValidation:: Whether to validate node hostnames when using SSL.
+hostnameValidation:: Whether to validate node hostnames when using SSL.
 +
 Defaults to true
 
-ssl.cipherSuites::
-The cipher suites to enable.
+cipherSuites:: The cipher suites to enable.
 +
 Defaults to none, resulting in a "minimal quality of service" according to JDK documentation.
 
-ssl.keystore.password:: Keystore password.
+keystore: password:: Keystore password.
 
-ssl.keystore.path:: Path to the keystore file.
+keystore: path:: Path to the keystore file.
 
-ssl.openssl.keyCertChain:: Path to the SSL certificate file, when using OpenSSL.
+openssl: keyCertChain:: Path to the SSL certificate file, when using OpenSSL.
 
-ssl.openssl.privateKey:: Path to the private key file, when using OpenSSL.
+openssl: privateKey:: Path to the private key file, when using OpenSSL.
 
-ssl.truststore.password:: Truststore password.
+truststore: password:: Truststore password.
 
-ssl.truststore.path:: Path to the truststore file.
+truststore: path:: Path to the truststore file.

@@ -31,17 +31,17 @@ objectName='com.datastax.pulsarconnector:connector=connector_name,topic=topic\_n
 
 where the variables above correspond to settings in the connector configuration file:
 
-* connector_name - DataStax Apache Pulsar® Connector xref:config-reference:cfgRefPulsarConnector.adoc[name].
-* topic_name is Pulsar xref:config-reference:cfgRefPulsarDseTable.adoc[prefix].
-* keyspace_name is the case-sensitive database xref:config-reference:cfgRefPulsarDseTable.adoc[keyspace name].
-* table_name is the case-sensitive database xref:config-reference:cfgRefPulsarDseTable.adoc[table name].
+* connector_name - DataStax Apache Pulsar® Connector xref:cfgRefPulsarConnector.adoc[name].
+* topic_name is Pulsar xref:cfgRefPulsarDseTable.adoc[prefix].
+* keyspace_name is the case-sensitive database xref:cfgRefPulsarDseTable.adoc[keyspace name].
+* table_name is the case-sensitive database xref:cfgRefPulsarDseTable.adoc[table name].
 
 [#_about_the_batch_metrics_batchsize_section]
 == About the batch metrics
 
 The `batchSize` metric returns the number of statements in the CQL batch used to write records to the database.
 The connector default limit is 32.
-See xref:config-reference:cfgRefPulsarDseConnection.adoc[maxNumberOfRecordsInBatch].
+See xref:cfgRefPulsarDseConnection.adoc[maxNumberOfRecordsInBatch].
 
 The `batchSizeInBytes` metric is a histogram with the calculated size of every batch statement.
 The calculated value is saved in bytes.
@@ -50,7 +50,7 @@ The algorithm used to calculate batch size evaluates the data size contained in 
 The data size is the total number of bytes required to encode all the bound variables contained in the statement.
 
 If the limit is consistently hit, then increasing the batch size value can result in better Pulsar Connector throughput if the database nodes can handle the added pressure of larger CQL batch statements.
-When increasing xref:config-reference:cfgRefPulsarDseConnection.adoc[maxNumberOfRecordsInBatch], ensure that the batch size does not exceed the maximum allowed by link:https://docs.datastax.com/en/dse/6.8/dse-admin/datastax_enterprise/config/configCassandra_yaml.html#configCassandra_yaml__batch_size_fail_threshold_in_kb[batch_size_fail_threshold_in_kb].
+When increasing xref:cfgRefPulsarDseConnection.adoc[maxNumberOfRecordsInBatch], ensure that the batch size does not exceed the maximum allowed by link:https://docs.datastax.com/en/dse/6.8/dse-admin/datastax_enterprise/config/configCassandra_yaml.html#configCassandra_yaml__batch_size_fail_threshold_in_kb[batch_size_fail_threshold_in_kb].
 See xref:trbPulsarTsLargeBatches.adoc[] for details.
 
 [#_attributes_for_batchsize_and_batchsizeinbytes_section]

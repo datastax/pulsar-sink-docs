@@ -14,9 +14,9 @@ where
 * worker_ip - The hostname or IP address of the Pulsar Connect worker.
 * port - The listening port for the Pulsar Connect REST API.
 By default this service runs on _port_ 8083.
-* connector_name - DataStax Apache Pulsar® Connector xref:config-reference:cfgRefPulsarConnector.adoc[name].
+* connector_name - DataStax Apache Pulsar® Connector xref:cfgRefPulsarConnector.adoc[name].
 * task_id - Integer identifying the task.
-The maximum number of tasks a connector can use is set by xref:config-reference:cfgRefPulsarConnector.adoc[tasks.max].
+The maximum number of tasks a connector can use is set by xref:cfgRefPulsarConnector.adoc[tasks.max].
 
 Example restart task
 

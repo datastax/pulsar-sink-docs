@@ -4,7 +4,7 @@
 
 Use the Record Count MBeans to monitor the total number of Apache Pulsar™ records processed by the DataStax Connector.
 
-NOTE: To capture these metrics, the xref:config-reference:cfgRefPulsarDseConnection.adoc[jmx] parameter must be set to `true` in the DataStax Apache Pulsar® Connector configuration file.
+NOTE: To capture these metrics, the xref:cfgRefPulsarDseConnection.adoc[jmx] parameter must be set to `true` in the DataStax Apache Pulsar® Connector configuration file.
 
 Count:: Running total of records processed.
 +
