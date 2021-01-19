@@ -9,59 +9,54 @@ The supported operating systems are Linux and macOS.
 [#_supported_apache_pulsar_versions_pulsarsupportedversions_section]
 == Supported Apache Pulsar versions
 
-Install the DataStax Apache Pulsar® Connector on any of following versions:
-
-* Confluent 3.2 and higher
-* Apache Pulsar 0.10.2 and higher
+Install the DataStax Apache Pulsar® Connector on Apache Pulsar 2.6.2.
 
 IMPORTANT: https://www.apache.org/licenses/LICENSE-2.0[Apache-2.0 license agreement].
 By downloading this DataStax product, you agree to the terms of the open-source Apache-2.0 license agreement.
 
 Perform the following steps on a Pulsar Connect node:
 
-. Download the tar file from the https://downloads.datastax.com/#akc[DataStax downloads site].
+. Download the tar file from the https://downloads.datastax.com/#apc[DataStax downloads site].
 If you agree, enable the *Terms* checkbox and click the download icon.
 
 . Extract the files:
 +
 [source,language-bash]
 ----
-tar zxf pulsar-connect-cassandra-sink-1.4.0.tar.gz
+tar zxf cassandra-enhanced-pulsar-sink-1.4.0.tar.gz
 ----
 +
-The following files are unpacked into a directory such as `pulsar-connect-cassandra-sink-1.4.0`.
+The following files are unpacked into a directory such as `cassandra-enhanced-pulsar-sink-1.4.0`:
 +
 [source,no-highlight]
 ----
 LICENSE.txt
 README.md
 THIRD-PARTY.txt
-conf/cassandra-sink-distributed.json.sample
-conf/cassandra-sink-standalone.properties.sample
-pulsar-connect-cassandra-sink-1.4.0.jar
+conf/example.yml
+cassandra-enhanced-pulsar-sink-1.4.0.nar
 ----
 
-. Configured the DataStax connector JAR using one of the following methods:      -   Move the DataStax connector JAR to the Pulsar plugins directory:
+. Configure the DataStax Apache Pulsar Connector NAR by using one of the following methods:      -   Move the DataStax connector NAR to the Pulsar plugins directory:
 +
 [source,language-bash]
 ----
-mv installation_location/pulsar-connect-cassandra-sink-1.4.0.jar pulsar_plugins_dir
+mv installation_location/cassandra-enhanced-pulsar-sink-1.4.0.nar pulsar_plugins_dir
 ----
 +
--   Configure the path to the JAR:
+-   Configure the path to the NAR:
 +
-Apache Pulsar 0.11.x and later - Specify the JAR location in the `plugin.path` parameter in the `connect-standalone.properties` or `connect-distributed.properties` file that is passed to the worker start-up scripts. Example:
+Apache Pulsar 2.6.2 - Specify the NAR location in the `plugin.path` parameter in the `connect-standalone.properties` or `connect-distributed.properties` file that is passed to the worker start-up scripts. Example:
 +
 [source,no-highlight]
 ----
-plugin.path=install_location/pulsar-connect-cassandra-sink-1.4.0.jar
+plugin.path=install_location/cassandra-enhanced-pulsar-sink-1.4.0.nar
 ----
 +
-NOTE: Confluent 3.3 and later are supported.
 
-. Copy the sample configuration file from `pulsar-connect-cassandra-sink-1.4.0/conf/` to the Pulsar configuration directory, which is typically the `config` or etc directory.
+. Copy the sample example.yml configuration file from `cassandra-enhanced-pulsar-sink-1.4.00/conf/` to the Pulsar configuration directory, which is typically the `config` or etc directory.
 +
-DataStax provides the following sample files in the conf directory of the connector distribution package:
+DataStax provides the following sample file in the conf directory of the Pulsar Connector distribution package:
 +
 -   cassandra-sink-standalone.properties.sample for standalone mode. It is a Java properties file that contains all settings with descriptions. Settings with a default value are commented out.
 -   cassandra-sink-distributed.json.sample for distributed mode. This file is in JSON format and contains all settings, which are enumerated and active. To use the default values, remove settings from the configuration file. JSON does not support comments. 
