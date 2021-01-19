@@ -45,7 +45,7 @@ pulsar-connect-cassandra-sink-1.4.0.jar
 +
 [source,language-bash]
 ----
-mv installation\_location/pulsar-connect-cassandra-sink-1.4.0.jar pulsar\_plugins\_dir
+mv installation_location/pulsar-connect-cassandra-sink-1.4.0.jar pulsar_plugins_dir
 ----
 +
 -   Configure the path to the JAR:
@@ -54,7 +54,7 @@ Apache Pulsar 0.11.x and later - Specify the JAR location in the `plugin.path` p
 +
 [source,no-highlight]
 ----
-plugin.path=install\_location/pulsar-connect-cassandra-sink-1.4.0.jar
+plugin.path=install_location/pulsar-connect-cassandra-sink-1.4.0.jar
 ----
 +
 NOTE: Confluent 3.3 and later are supported.

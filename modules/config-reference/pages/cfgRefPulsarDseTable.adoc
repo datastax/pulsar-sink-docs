@@ -28,7 +28,7 @@ Define the parameter prefix using the following syntax:
 
 [source,no-highlight]
 ----
-topic.topic\_name.keyspace\_name.table\_name
+topic.topic_name.keyspace_name.table_name
 ----
 
 where:
@@ -73,10 +73,10 @@ Set to the number of seconds before the data is automatically deleted from the D
 When you configure `topic.<topic-name>.<keyspace-name>.<table-name>.ttl`, all rows for that topic table will have this same `TTL` value.
 DataStax Pulsar Connector appends `AND TTL <configured-ttl-value>` to the INSERT statement for those rows.
 
- Default: `-1` \( disabled \)
+Default: `-1` (disabled)
 
 deletesEnabled:: When enabled, treat records that after mapping would result in only non-null values for primary key columns as deletes, rather than inserting/updating nulls for all regular columns.
 +
 NOTE: Only triggers if the setting is enabled and the mapping specification contains all DSE table columns.
 
- Default: `true`
+Default: `true`
