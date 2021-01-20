@@ -1,6 +1,3 @@
 = Scaling the DataStax Pulsar Connector
 
-Increase or decrease throughput capacity by scaling the DataStax Apache Pulsar™ Connector horizontally.
-
-* xref:opsPulsarScaleUp.adoc[] Increase workload throughput by adding additional workers.
-* xref:opsPulsarScaleDown.adoc[] Decrease throughput by running the DataStax Connector on fewer workers.
+Use the Apache Pulsar administration tool to increase or decrease the number of sink instances to run using the parallelism factor. 

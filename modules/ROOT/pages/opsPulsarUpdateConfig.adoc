@@ -1,69 +1,101 @@
 = Updating the DataStax Apache Pulsar Connector configuration
 
-To update the configuration of an active DataStax Apache Pulsar™ Connector, use the following Pulsar Connect REST API command:
+To update the configuration of an active DataStax Apache Pulsar™ Connector sink, use the  Apache Pulsar `pulsar-admin sinks update` command:
 
 [source,language-bash]
 ----
-curl -X PUT -H "Content-Type: application/json" -d @connector\_properties\_file \
-          "http://worker\_ip:port/connectors/connector\_name/config"
+pulsar-admin sinks update --name sink_name [options]
 ----
 
 where
 
-* connector_properties_file - Specify the absolute path to the DataStax Apache Pulsar® Connector configuration file.
-Samples are provided in the connector download.
-* worker_ip - The hostname or IP address of the Pulsar Connect worker.
-* port - The listening port for the Pulsar Connect REST API.
-By default this service runs on _port_ 8083.
-* connector_name - DataStax Apache Pulsar® Connector xref:cfgRefPulsarConnector.md#name[name].
+* sink-name - The sink name associated with the DataStax Pulsar Connector.
+* [options] - Apache Pulsar configuration options. For a complete list, see link:http://pulsar.apache.org/tools/pulsar-admin/2.7.0-SNAPSHOT/#-em-update-em--25[pulsar-admin sinks update]
 
-Example update configuration
+Example configuration update
 
-Provide a new configuration for an existing connector:
+Increase a sink's parallelism factor to 3:
 
 [source,language-bash]
 ----
-curl -X PUT -H "Content-Type: application/json" -d @dse-sink.json \
-            "http://localhost:8083/connectors/cassandra-sink-distributed-example/config"
+bin/pulsar-admin sinks update --name dse-sink-kv --parallelism 3
+"Updated successfully"
 ----
 
-The configuration displays and is pushed to the connector tasks:
+View the updated sink configuration:
 
-[source,results]
+[source,language-bash]
 ----
-Output:
+bin/pulsar-admin sinks get --name dse-sink-kv
 {
-  "config": {
-    "tasks.max": "5",
-    "topics": "json-stream",
-    "topic.json-stream.consistencyLevel": "LOCAL_QUORUM",
-    "contactPoints": "localhost",
-    "loadBalancing.localDc": "Cassandra",
-    "topic.json-stream.ks.tbl.mapping": "symbol=value.symbol, ts=value.ts, exchange=value.exchange, industry=value.industry, name=value.name, value=value.value",
-    "name": "cassandra-sink-distributed-example"
-  },
-  "tasks": [
-    {
-      "connector": "cassandra-sink-distributed-example",
-      "task": 0
-    },
-    {
-      "connector": "cassandra-sink-distributed-example",
-      "task": 1
-    },
-    {
-      "connector": "cassandra-sink-distributed-example",
-      "task": 2
-    },
-    {
-      "connector": "cassandra-sink-distributed-example",
-      "task": 3
-    },
-    {
-      "connector": "cassandra-sink-distributed-example",
-      "task": 4
+  "tenant": "public",
+  "namespace": "default",
+  "name": "cass-sink-kv",
+  "className": "com.datastax.oss.sink.pulsar.StringCassandraSinkTask",
+  "inputSpecs": {
+    "persistent://public/default/example_topic": {
+      "isRegexPattern": false,
+      "schemaProperties": {},
+      "consumerProperties": {}
     }
-  ],
-  "type": "sink"
+  },
+  "configs": {
+    "loadBalancing.localDc": "Cassandra",
+    "queryExecutionTimeout": 30,
+    "auth": {
+      "provider": "None",
+      "gssapi": {
+        "service": "dse"
+      }
+    },
+    "tasks.max": 1,
+    "topics": "example_topic",
+    "contactPoints": "localhost",
+    "batchFlushTimeoutMs": 1000,
+    "maxConcurrentRequests": 500,
+    "ignoreErrors": "None",
+    "ssl": {
+      "provider": "None",
+      "hostnameValidation": true,
+      "keystore": {},
+      "openssl": {},
+      "truststore": {}
+    },
+    "verbose": false,
+    "connectionPoolLocalSize": 4,
+    "jmx": true,
+    "port": 9042,
+    "maxNumberOfRecordsInBatch": 32,
+    "topic": {
+      "example_topic": {
+        "pulsar_qs": {
+          "pulsar_kv": {
+            "mapping": "key\u003dkey,content\u003dvalue",
+            "consistencyLevel": "LOCAL_ONE",
+            "ttl": -1,
+            "ttlTimeUnit": "SECONDS",
+            "timestampTimeUnit": "MICROSECONDS",
+            "nullToUnset": true,
+            "deletesEnabled": true
+          }
+        },
+        "codec": {
+          "locale": "en_US",
+          "timeZone": "UTC",
+          "timestamp": "CQL_TIMESTAMP",
+          "date": "ISO_LOCAL_DATE",
+          "time": "ISO_LOCAL_TIME",
+          "unit": "MILLISECONDS"
+        }
+      }
+    },
+    "batchSize": 3000,
+    "compression": "None"
+  },
+  "parallelism": 3,
+  "processingGuarantees": "ATLEAST_ONCE",
+  "retainOrdering": false,
+  "autoAck": true,
+  "archive": "builtin://cassandra-enhanced"
 }
 ----

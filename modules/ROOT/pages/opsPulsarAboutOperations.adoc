@@ -1,5 +1,7 @@
 = About operating and maintaining the DataStax Connector
 
-To operate and maintain the DataStax Apache Pulsar™ Connector running in distributed mode use the Pulsar Connect framework's built-in REST API. The API returns standard HTTP-compliant results and status. Only `application/json` as the request and response entity content-type is supported.
+To operate and maintain the DataStax Apache Pulsar™ Connector use the Pulsar Pulsar adminstration tool, `pulsar-admin` in concert with the Apache Pulsar REST Administration API.
 
-For more, visit the https://pulsar.apache.org/documentation/#connect_rest[Apache Pulsar Connect REST API documentation].
+For more information on `pulsar-admin`, see link:http://pulsar.apache.org/tools/pulsar-admin/2.7.0-SNAPSHOT/#topics[Apache Pulsar Admin Tool Documentation].
+
+For more information on the Apache Pulsar REST Administration API, see link:https://pulsar.apache.org/admin-rest-api/?version=2.7.0[Apache Pulsar REST Administration API].

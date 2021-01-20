@@ -1,64 +1,43 @@
 = Getting the DataStax Connector status
 
-To display the status of the DataStax Apache Pulsar™ Connector and all tasks that are running.
-The state of the tasks can be RUNNING, PAUSED, FAILED, or UNASSIGNED.
+Use the Pulsar administration tool `sinks status` command to display the status of the DataStax Apache Pulsar™ Connector.
 
 [source,language-bash]
 ----
-curl -X GET \
-"http://worker_ip:port/connectors/connector_name/status"
+bin/pulsar-admin sinks status --name sink-name
 ----
 
 where
 
-* worker_ip - The hostname or IP address of the Pulsar Connect worker.
-* port - The listening port for the Pulsar Connect REST API.
-By default this service runs on _port_ 8083.
-* connector_name - DataStax Apache Pulsar® Connector xref:cfgRefPulsarConnector.adoc[name].
+* sink-name - The sink name associated with the DataStax Pulsar Connector.
 
 Example
 
 [source,language-bash]
 ----
-curl -X GET "http://127.0.0.1:8083/connectors/cassandra-sink-distributed-example/status"
+bin/pulsar-admin sinks status --name cass-sink-kv
 ----
 
 [source,results]
 ----
-Output:
 {
-  "name": "cassandra-sink-distributed-example",
-  "connector": {
-    "state": "RUNNING",
-    "worker_id": "127.0.0.1:8083"
-  },
-  "tasks": [
-    {
-      "state": "RUNNING",
-      "id": 0,
-      "worker_id": "127.0.0.1:8083"
-    },
-    {
-      "state": "RUNNING",
-      "id": 1,
-      "worker_id": "127.0.0.1:8083"
-    },
-    {
-      "state": "RUNNING",
-      "id": 2,
-      "worker_id": "127.0.0.1:8083"
-    },
-    {
-      "state": "RUNNING",
-      "id": 3,
-      "worker_id": "127.0.0.1:8083"
-    },
-    {
-      "state": "RUNNING",
-      "id": 4,
-      "worker_id": "127.0.0.1:8083"
+  "numInstances" : 1,
+  "numRunning" : 1,
+  "instances" : [ {
+    "instanceId" : 0,
+    "status" : {
+      "running" : true,
+      "error" : "",
+      "numRestarts" : 0,
+      "numReadFromPulsar" : 0,
+      "numSystemExceptions" : 0,
+      "latestSystemExceptions" : [ ],
+      "numSinkExceptions" : 0,
+      "latestSinkExceptions" : [ ],
+      "numWrittenToSink" : 0,
+      "lastReceivedTime" : 0,
+      "workerId" : "c-standalone-fw-localhost-8080"
     }
-  ],
-  "type": "sink"
+  } ]
 }
 ----

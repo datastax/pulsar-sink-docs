@@ -2,7 +2,7 @@
 
 How to update the DataStax Apache Pulsar™ Connector when schema changes are required.
 
-* xref:opsPulsarAddField.adoc[] Steps to change the Pulsar Topic schema.
-* xref:opsPulsarRemoveField.adoc[]
+* xref:opsPulsarAddField.adoc[] Add a field Pulsar Topic schema.
+* xref:opsPulsarRemoveField.adoc[] Remove a field from a Pulsar Topic.
 * xref:opsPulsarAddTableColumn.adoc[] Add a column to the database table to synchronize an existing field from a Pulsar topic.
 * xref:opsPulsarRemoveColumn.adoc[] Remove a database column from the schema.

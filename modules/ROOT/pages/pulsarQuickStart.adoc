@@ -173,7 +173,7 @@ configs:
 [source,language-bash]
 ----
 bin/pulsar-admin sinks create \
-	--name cass-sink-kv \
+	--name dse-sink-kv \
 	--classname com.datastax.oss.sink.pulsar.StringCassandraSinkTask \
 	--sink-config-file conf/qs.yml \
 	--sink-type cassandra-enhanced \

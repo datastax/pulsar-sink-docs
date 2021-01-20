@@ -1,6 +1,6 @@
 = Adding a field to a Pulsar Topic
 
-Use these steps to write a new field to an existing link:../pulsarIntro.md#pulsarIntroduction[supported database] table column.
+Use these steps to write a new field to an existing xref:index.adoc[supported database] table column.
 
 . In the DataStax Apache Pulsar Connector configuration file, add the field-to-column definition.
 See xref:cfgPulsarMapTopicTable.adoc[].

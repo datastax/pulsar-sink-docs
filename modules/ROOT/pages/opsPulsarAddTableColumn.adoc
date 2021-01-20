@@ -5,7 +5,7 @@ Add a column to the xref:index.adoc[supported database] table to synchronize an 
 . On a database node, use link:https://docs.datastax.com/en/dse/6.8/cql/cql/cql_reference/cql_commands/cqlAlterTable.html[ALTER TABLE] to add the column to the table.
 . Confirm that the schema change has been pushed to all nodes using link:https://docs.datastax.com/en/dse/6.8/dse-admin/datastax_enterprise/tools/nodetool/toolsDescribeCluster.html[nodetool describecluster].
 +
-IMPORTANT: Data synchronization may fail if the schema change is inconsistent across the cluster.
+IMPORTANT: Data synchronization may fail if the schema change is inconsistent across the entire cluster.
 
 . In the DataStax Apache Pulsar Connector configuration file, add the field-to-column definition.
 See xref:cfgPulsarMapTopicTable.adoc[].
