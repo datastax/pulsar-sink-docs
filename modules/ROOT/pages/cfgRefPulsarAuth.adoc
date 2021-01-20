@@ -1,4 +1,3 @@
-[#_using_the_datastax_connector_with_datastax_enterprise_authentication_pulsarauth_reference]
 = Using the DataStax Connector with DataStax Enterprise authentication
 :imagesdir: _images
 

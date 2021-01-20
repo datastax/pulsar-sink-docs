@@ -1,4 +1,3 @@
-[#pulsarColumnWritetimeTimestamp]
 = Specify writetime timestamp column
 :imagesdir: _images
 

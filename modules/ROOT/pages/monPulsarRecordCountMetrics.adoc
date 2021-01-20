@@ -1,4 +1,3 @@
-[#pulsarRecordCountMetrics]
 = Metrics for the processed Pulsar topic records
 :imagesdir: _images
 

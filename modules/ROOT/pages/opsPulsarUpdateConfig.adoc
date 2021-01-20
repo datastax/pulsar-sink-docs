@@ -1,4 +1,3 @@
-[#pulsarUpdateConfig]
 = Updating the DataStax Apache Pulsar Connector configuration
 :imagesdir: _images
 

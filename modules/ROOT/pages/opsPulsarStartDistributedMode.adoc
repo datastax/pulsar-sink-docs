@@ -1,4 +1,3 @@
-[#_start_the_datastax_connector_in_distributed_mode_pulsarstartdistributedmode_task]
 = Start the DataStax Connector in distributed mode
 :imagesdir: _images
 
@@ -9,9 +8,8 @@ The DataStax Connector download package contains a sample distributed mode sampl
 
 TIP: See the Apache Pulsar documentation for https://docs.confluent.io/current/connect/userguide.html#distributed-mode[Distributed mode].
 
-. xref:pulsarInstall.adoc[] the DataStax Apache Pulsar Connector.
+. xref:pulsarInstall.adoc[Download and install] the DataStax Apache Pulsar Connector.
 . Configure the distributed worker configuration file connect-distributed.properties to fit your needs.
-Use link:https://github.com/datastax/pulsar-examples/blob/master/producers/src/main/java/json/connect-distributed-json.properties[this example] from DataStax as a starting point.
 +
 Specify the converter for the `key.converter` and `value.converter` properties that matches the form of your Pulsar data.
 See link:https://docs.confluent.io/current/connect/userguide.html#configuring-converters[Configuring converters] in the Confluent documentation for more information on these properties.

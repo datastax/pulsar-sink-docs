@@ -1,4 +1,3 @@
-[#_enabling_java_management_extension_remote_connections_pulsarenablejmx_task]
 = Enabling Java Management Extension remote connections
 :imagesdir: _images
 

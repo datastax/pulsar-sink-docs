@@ -1,4 +1,3 @@
-[#pulsarSelectiveUpdateMapsAndUdts]
 = Selectively update maps and UDTs based on Pulsar fields
 :imagesdir: _images
 

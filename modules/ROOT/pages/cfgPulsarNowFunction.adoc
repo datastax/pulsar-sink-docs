@@ -1,4 +1,3 @@
-[#pulsarNowFunction]
 = The now() function in mappings
 :imagesdir: _images
 

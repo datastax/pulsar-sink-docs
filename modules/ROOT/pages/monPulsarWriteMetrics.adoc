@@ -1,4 +1,3 @@
-[#_datastax_apache_pulsar_connector_batch_size_metrics_pulsarwritemetrics_reference]
 = DataStax Apache Pulsar Connector - Batch size metrics
 :imagesdir: _images
 
@@ -36,7 +35,6 @@ where the variables above correspond to settings in the connector configuration 
 * keyspace_name is the case-sensitive database xref:cfgRefPulsarDseTable.adoc[keyspace name].
 * table_name is the case-sensitive database xref:cfgRefPulsarDseTable.adoc[table name].
 
-[#_about_the_batch_metrics_batchsize_section]
 == About the batch metrics
 
 The `batchSize` metric returns the number of statements in the CQL batch used to write records to the database.
@@ -53,7 +51,6 @@ If the limit is consistently hit, then increasing the batch size value can resul
 When increasing xref:cfgRefPulsarDseConnection.adoc[maxNumberOfRecordsInBatch], ensure that the batch size does not exceed the maximum allowed by link:https://docs.datastax.com/en/dse/6.8/dse-admin/datastax_enterprise/config/configCassandra_yaml.html#configCassandra_yaml__batch_size_fail_threshold_in_kb[batch_size_fail_threshold_in_kb].
 See xref:trbPulsarTsLargeBatches.adoc[] for details.
 
-[#_attributes_for_batchsize_and_batchsizeinbytes_section]
 == Attributes for batchSize and batchSizeInBytes
 
 The attributes are:

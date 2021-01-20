@@ -1,4 +1,3 @@
-[#pulsarTsRecordParsingFails]
 = Data parsing fails
 :imagesdir: _images
 
@@ -13,7 +12,6 @@ java.lang.IllegalArgumentException: Could not parse 'jack'; accepted formats are
           pattern (e.g. '2018-10-17T18:37:52.704Z'), or a valid boolean word
 ----
 
-[#_remediation_solution_section]
 == Remediation
 
 Ensure that the Pulsar fields are mapped to the correct database columns.

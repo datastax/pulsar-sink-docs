@@ -1,4 +1,3 @@
-[#_adding_a_column_to_the_database_table_pulsaraddtablecolumn_task]
 = Adding a column to the database table
 :imagesdir: _images
 

@@ -1,4 +1,3 @@
-[#_mapping_json_messages_pulsarjsonmessageschema_task]
 = Mapping JSON messages
 :imagesdir: _images
 

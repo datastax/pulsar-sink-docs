@@ -1,4 +1,3 @@
-[#_determining_topic_data_structure_pulsardisplayingtopic_task]
 = Determining topic data structure
 :imagesdir: _images
 

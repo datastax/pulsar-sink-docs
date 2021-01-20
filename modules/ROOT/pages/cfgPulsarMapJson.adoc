@@ -1,4 +1,3 @@
-[#_mapping_a_message_that_contain_json_fields_pulsarmapjson_concept]
 = Mapping a message that contain JSON fields
 :imagesdir: _images
 

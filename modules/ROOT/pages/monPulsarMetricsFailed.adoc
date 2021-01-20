@@ -1,4 +1,3 @@
-[#pulsarMetricsFailed]
 = Failed Pulsar topic record metrics
 :imagesdir: _images
 
@@ -24,7 +23,6 @@ which is the majority case.
 The `failedRecordsWithUnknownTopic` Mbean is incremented when Pulsar Connector was not able to detect the Pulsar topic that was associated with a failed record;
 this is an edge case.
 
-[#_failed_record_metric_attributes_pulsarmetricsattributesfailedrecords_section]
 == Failed Record Metric Attributes
 
 Count:: Running total of the number of failed records encountered by the connector instance:

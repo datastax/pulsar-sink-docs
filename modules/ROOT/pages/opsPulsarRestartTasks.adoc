@@ -1,4 +1,3 @@
-[#pulsarRestartTasks]
 = Restart tasks
 :imagesdir: _images
 

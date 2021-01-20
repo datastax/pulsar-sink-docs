@@ -1,4 +1,3 @@
-[#_datastax_apache_pulsar_connector_details_pulsarconnector_reference]
 = DataStax Apache Pulsar Connector details
 :imagesdir: _images
 
@@ -10,19 +9,9 @@ See the https://pulsar.apache.org/documentation/#connect_configuring[Configuring
 
 [source,language-yaml]
 ----
-name=dse-sink
-connector.class=com.datastax.pulsarconnector.DseSinkConnector
 tasks.max=1
 cloud.secureConnectBundle=/path/to/secure-connect-database_name.zip
 ----
-
-name:: Unique name for the connector.
-+
-Default: `cassandra-sink`
-
-connector.class:: DataStax connector Java class provided in the `pulsar-connect-cassandra-sink-N.N.N.jar`
-+
-Default: `com.datastax.pulsarconnector.CassandraSinkConnector`
 
 tasks.max::
 Maximum number of tasks created for the connector instance.

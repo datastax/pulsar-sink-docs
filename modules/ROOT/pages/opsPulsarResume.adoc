@@ -1,4 +1,3 @@
-[#pulsarResume]
 = Resuming the DataStax Apache Pulsar Connector
 :imagesdir: _images
 

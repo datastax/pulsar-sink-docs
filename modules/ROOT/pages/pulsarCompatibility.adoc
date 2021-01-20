@@ -1,4 +1,3 @@
-[#_pulsar_datastax_compatibility_pulsarcompatibility_concept]
 = Pulsar-DataStax compatibility
 :imagesdir: _images
 

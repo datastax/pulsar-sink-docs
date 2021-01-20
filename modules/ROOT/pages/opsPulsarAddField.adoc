@@ -1,4 +1,3 @@
-[#_adding_a_field_to_a_pulsar_topic_pulsaraddfield_task]
 = Adding a field to a Pulsar Topic
 :imagesdir: _images
 

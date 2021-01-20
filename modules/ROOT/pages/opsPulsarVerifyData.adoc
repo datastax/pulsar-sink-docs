@@ -1,4 +1,3 @@
-[#_verifying_data_is_captured_in_database_pulsarverifydata_task]
 = Verifying data is captured in database
 :imagesdir: _images
 

@@ -1,4 +1,3 @@
-[#_using_a_kerberos_ticket_cache_to_authenticate_connector_running_on_a_stand_alone_worker_pulsarkerberosticket_task]
 = Using a Kerberos ticket cache to authenticate connector running on a stand-alone worker
 :imagesdir: _images
 

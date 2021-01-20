@@ -1,4 +1,3 @@
-[#_about_operating_and_maintaining_the_datastax_connector_pulsaraboutoperations_concept]
 = About operating and maintaining the DataStax Connector
 :imagesdir: _images
 

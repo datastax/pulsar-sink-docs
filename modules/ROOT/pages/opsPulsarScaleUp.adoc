@@ -1,4 +1,3 @@
-[#_scaling_up_by_adding_workers_pulsarscaleup_task]
 = Scaling up by adding workers
 :imagesdir: _images
 

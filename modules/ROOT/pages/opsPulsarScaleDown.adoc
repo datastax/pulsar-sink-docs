@@ -1,4 +1,3 @@
-[#_scaling_down_by_removing_workers_pulsarscaledown_task]
 = Scaling down by removing workers
 :imagesdir: _images
 

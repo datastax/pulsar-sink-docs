@@ -1,4 +1,3 @@
-[#_mapping_basic_messages_to_table_columns_pulsarmapkeypair_task]
 = Mapping basic messages to table columns
 :imagesdir: _images
 
@@ -53,8 +52,6 @@ Example configurations for `world_topic` to `world_table` using the minimum requ
 +
 [source,language-yaml]
 ----
-name: world-sink
-connector.class: com.datastax.pulsarconnector.DseSinkConnector
 tasks.max: 1
 topics: world_topic
 topic:

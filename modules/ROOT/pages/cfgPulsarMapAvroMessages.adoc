@@ -1,4 +1,3 @@
-[#pulsarMapAvroMessages]
 = Mapping Avro messages
 :imagesdir: _images
 

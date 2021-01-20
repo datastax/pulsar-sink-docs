@@ -1,4 +1,3 @@
-[#pulsarMapUdt]
 = Mapping messages to table that has a User Defined Type
 :imagesdir: _images
 

@@ -1,4 +1,3 @@
-[#pulsarTsLargeBatches]
 = Writing fails because of mutation size
 :imagesdir: _images
 
@@ -15,7 +14,6 @@ For example:
 Mutation of 28087887 bytes is too large for the maximum size of 16777216
 ----
 
-[#_remediation_solution_section]
 == Remediation
 
 Before making any changes, understand the relationship between the link:https://docs.datastax.com/en/dse/6.8/dse-admin/datastax_enterprise/config/configCassandra_yaml.html#configCassandra_yaml__max_mutation_size_in_kb[max_mutation_size_in_kb] and link:https://docs.datastax.com/en/dse/6.7/dse-admin/datastax_enterprise/config/configCassandra_yaml.html#configCassandra_yaml__commitlog_segment_size_in_mb[commitlog_segment_size_in_mb] settings.

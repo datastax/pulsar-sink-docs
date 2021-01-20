@@ -1,4 +1,3 @@
-[#_displaying_the_datastax_connector_configuration_pulsardisplayconfig_task]
 = Displaying the DataStax Connector configuration
 :imagesdir: _images
 

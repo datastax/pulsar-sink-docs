@@ -1,4 +1,3 @@
-[#_using_the_datastax_apache_pulsar_connector_with_kerberos_pulsarkerberosauth_concept]
 = Using the DataStax Apache Pulsar Connector with Kerberos
 :imagesdir: _images
 

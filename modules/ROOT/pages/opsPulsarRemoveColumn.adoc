@@ -1,4 +1,3 @@
-[#_removing_a_table_column_from_the_mapping_specification_pulsarremovecolumn_task]
 = Removing a Table Column from the mapping specification
 :imagesdir: _images
 

@@ -1,4 +1,3 @@
-[#pulsarCqlQuery]
 = Provide CQL queries in mappings
 :imagesdir: _images
 

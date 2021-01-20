@@ -1,4 +1,3 @@
-[#pulsarChangeSchema]
 = Changing the topic or table schema
 :imagesdir: _images
 

@@ -1,4 +1,3 @@
-[#_internal_or_ldap_authentication_pulsarauthldap_reference]
 = Internal or LDAP authentication
 :imagesdir: _images
 

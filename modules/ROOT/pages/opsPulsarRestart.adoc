@@ -1,4 +1,3 @@
-[#pulsarRestart]
 = Restarting the DataStax Connector
 :imagesdir: _images
 

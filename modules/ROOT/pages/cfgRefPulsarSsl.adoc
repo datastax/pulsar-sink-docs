@@ -1,4 +1,3 @@
-[#_ssl_encrypted_connection_pulsarssl_reference]
 = SSL encrypted connection
 :imagesdir: _images
 
@@ -9,7 +8,6 @@ See link:https://docs.datastax.comen/dse/6.8//dse-admin/datastax_enterprise/secu
 
 NOTE: You cannot use this option if specifying the link:pulsarConnector.md#secure_ConnectBundle[cloud.secureConnectBundle] option for connecting to a DataStax Astra database.
 
-[#_parameters_synopsis_section]
 == Parameters
 
 [source,language-yaml]

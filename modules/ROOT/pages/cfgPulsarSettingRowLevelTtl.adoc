@@ -1,4 +1,3 @@
-[#pulsarSettingRowLevelTtl]
 = Setting row-level TTL values from Pulsar fields
 :imagesdir: _images
 

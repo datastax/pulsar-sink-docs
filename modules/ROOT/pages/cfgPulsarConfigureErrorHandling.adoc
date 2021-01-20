@@ -1,4 +1,3 @@
-[#_configure_error_handling_pulsarconfigureerrorhandling_reference]
 = Configure error handling
 :imagesdir: _images
 

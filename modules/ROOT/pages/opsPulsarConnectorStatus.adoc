@@ -1,4 +1,3 @@
-[#pulsarConnectorStatus]
 = Getting the DataStax Connector status
 :imagesdir: _images
 

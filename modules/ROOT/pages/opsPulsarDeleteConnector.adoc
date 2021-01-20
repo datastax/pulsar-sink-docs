@@ -1,4 +1,3 @@
-[#pulsarDeleteConnector]
 = Deleting the DataStax Apache Pulsar Connector
 :imagesdir: _images
 

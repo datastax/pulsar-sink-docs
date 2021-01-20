@@ -1,4 +1,3 @@
-[#_converting_date_and_times_for_a_topic_pulsardates_reference]
 = Converting date and times for a topic
 :imagesdir: _images
 
@@ -67,7 +66,6 @@ Default: `en_US`
 +
 See https://docs.oracle.com/javase/8/docs/api/java/time/format/DateTimeFormatter.html[DateTimeFormatter documentation] for additional options.
 
-[#_examples_example_section]
 == Examples
 
 Timezone example

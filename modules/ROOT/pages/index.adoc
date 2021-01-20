@@ -1,4 +1,3 @@
-[#_about_the_datastax_apache_pulsar_connector_pulsarintro_concept]
 = About the DataStax Apache Pulsar Connector
 :imagesdir: _images
 
@@ -11,3 +10,4 @@ DataStax Apache Pulsar™ Connector is open-source software (OSS) installed in t
 == Topics
 * xref:pulsarCompatibility.adoc[] Pulsar and DataStax platform compatibility matrix.
 * xref:pulsarFeatures.adoc[] Key features in DataStax Apache Pulsar Connector.
+* xref:pulsarQuickStart.adoc[] A quick introduction connecting Pulsar to DataStax Enterprise using the DataStax Pulsar Connector.

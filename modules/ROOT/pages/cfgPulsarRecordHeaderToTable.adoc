@@ -1,4 +1,3 @@
-[#pulsarRecordHeaderToTable]
 = Extract Pulsar record header values
 :imagesdir: _images
 

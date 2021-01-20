@@ -1,4 +1,3 @@
-[#_mapping_a_message_that_contains_both_basic_and_json_fields_pulsarstringjson_task]
 = Mapping a message that contains both basic and JSON fields
 :imagesdir: _images
 

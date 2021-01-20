@@ -1,10 +1,8 @@
-[#_write_requests_to_the_datastax_platform_pulsardrivermetrics_reference]
 = Write requests to the DataStax platform
 :imagesdir: _images
 
 Sessions details and write request metrics
 
-[#_cql_requests_cql_requests_section]
 == CQL requests
 
 The MBean path is:

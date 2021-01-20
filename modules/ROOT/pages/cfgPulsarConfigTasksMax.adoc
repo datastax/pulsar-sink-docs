@@ -1,4 +1,3 @@
-[#pulsarConfigTasksMax]
 = Configuring parallelism
 :imagesdir: _images
 

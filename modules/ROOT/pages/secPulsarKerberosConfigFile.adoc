@@ -1,4 +1,3 @@
-[#_using_an_alternate_location_for_the_kerberos_files_pulsarkerberosconfigfile_task]
 = Using an alternate location for the Kerberos files
 :imagesdir: _images
 

@@ -1,4 +1,3 @@
-[#pulsarScaling]
 = Scaling the DataStax Pulsar Connector
 :imagesdir: _images
 

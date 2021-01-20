@@ -1,4 +1,3 @@
-[#pulsarTsLoadingBalancing]
 = Loading balancing datacenter is not specified
 :imagesdir: _images
 
@@ -11,7 +10,6 @@ org.apache.pulsar.common.config.ConfigException: Invalid value [127.0.0.2] for
           also be specified
 ----
 
-[#_remediation_section]
 == Remediation
 
 The connector requires that you set the `loadBalancing.localDc`.

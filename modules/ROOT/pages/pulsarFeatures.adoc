@@ -1,32 +1,27 @@
-[#_features_pulsarfeatures_concept]
 = Features
 :imagesdir: _images
 
 DataStax Apache Pulsar™ Connector is the bridge that allows data to move from Apache Pulsar to Apache Cassandra® or DataStax xref:pulsarCompatibility.adoc[supported] database tables in event-driven architectures.
 Known in the Pulsar Connect framework as a sink, the key features of this connector are its performance, flexibility, security, and visibility.
 
-[#_flexibility_pulsarfeaturesflexibility_section]
 == Flexibility
 
 The design of this sink considers the varying data structures that are found in Apache Pulsar, and the selective mapping functionality in the DataStax Apache Pulsar Connector allows the user to specify the Pulsar fields that should be written to the database columns.
 This allows for a single connector instance to read from multiple Apache Pulsar topics and write to many database tables, thereby removing the burden of managing several connector instances.
 Whether the Apache Pulsar data is in Avro, JSON, or string format, the DataStax Apache Pulsar Connector extends advanced parsing to account for the wide range of data inputs.
 
-[#_security_pulsarfeaturessecurity_section]
 == Security
 
 One of the core value propositions of DataStax databases is enterprise-grade security.
 With built-in SSL, LDAP/Active Directory, and Kerberos integration, DataStax provides the tools needed to achieve strict compliance regulations for the connection from client to server.
 These security features are also included in the DataStax Apache Pulsar Connector, ensuring that the connection between the connector and the data store is secure.
 
-[#_visibility_pulsarfeaturesvisibility_section]
 == Visibility
 
 In complex distributed environments, environments are bound to hit points of failure.
 DataStax products account for these error scenarios and all of the intelligence of the DataStax Drivers is applied in the DataStax Apache Pulsar Connector.
 Additionally, there are metrics included that give the operator visibility into the failure rate and latency indicators as the messages pass from Pulsar to DataStax databases.
 
-[#_highlights_of_the_key_features_pulsarfeatureshighlights_section]
 == Highlights of the key features
 
 |===

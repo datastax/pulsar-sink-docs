@@ -1,4 +1,4 @@
-= Installing DataStax Apache Pulsar Connector
+= Pulsar Connector single instance quick start
 :imagesdir: _images
 
 Install DataStax Apache Pulsar™ Connector from the DataStax distribution tar file using an account that has write access to the Pulsar configuration directory.
