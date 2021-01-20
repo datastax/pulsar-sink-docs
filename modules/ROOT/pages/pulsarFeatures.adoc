@@ -1,5 +1,4 @@
 = Features
-:imagesdir: _images
 
 DataStax Apache Pulsar™ Connector is the bridge that allows data to move from Apache Pulsar to Apache Cassandra® or DataStax xref:pulsarCompatibility.adoc[supported] database tables in event-driven architectures.
 Known in the Pulsar Connect framework as a sink, the key features of this connector are its performance, flexibility, security, and visibility.

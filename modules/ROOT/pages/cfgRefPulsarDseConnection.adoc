@@ -1,5 +1,4 @@
 = DataStax connection
-:imagesdir: _images
 
 Configure the connection settings from Apache Pulsar™ to the cluster.
 

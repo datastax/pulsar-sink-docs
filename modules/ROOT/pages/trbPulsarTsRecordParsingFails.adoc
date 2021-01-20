@@ -1,5 +1,4 @@
 = Data parsing fails
-:imagesdir: _images
 
 When the data from the Pulsar field is not compatible with the data type of the target xref:index.adoc[supported database] table column, the data conversion fails and a message is logged in the Pulsar Connect log.
 

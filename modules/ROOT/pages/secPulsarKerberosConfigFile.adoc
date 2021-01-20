@@ -1,5 +1,4 @@
 = Using an alternate location for the Kerberos files
-:imagesdir: _images
 
 When using a location other than /etc for the xref:../../glossary/gloss_krb5conf.adoc[krb5.conf] file, add the custom path to Pulsar Connect and Kerberos environment variables.
 If the Kerberos configuration file is not available on the system, get it from the Kerberos system administrator.

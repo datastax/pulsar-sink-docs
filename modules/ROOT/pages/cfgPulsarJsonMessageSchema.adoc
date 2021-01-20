@@ -1,5 +1,4 @@
 = Mapping JSON messages
-:imagesdir: _images
 
 The DataStax Apache Pulsar™ Connector supports mapping JSON messages with or without a schema.
 In this example, the key is regular JSON without schema.

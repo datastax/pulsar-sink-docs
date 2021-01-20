@@ -1,5 +1,4 @@
 = Loading balancing datacenter is not specified
-:imagesdir: _images
 
 The following error message occurs when the load balancing datacenter (xref:cfgRefPulsarDseConnection.adoc[loadBalancing.localDc]) is not set in the configuration file.
 

@@ -1,5 +1,4 @@
 = About the DataStax Apache Pulsar Connector
-:imagesdir: _images
 
 DataStax Apache Pulsar™ Connector is open-source software (OSS) installed in the Pulsar Connect framework, and synchronizes records from a Pulsar topic with table rows in the following supported databases:
 

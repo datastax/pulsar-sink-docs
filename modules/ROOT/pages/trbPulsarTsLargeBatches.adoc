@@ -1,5 +1,4 @@
 = Writing fails because of mutation size
-:imagesdir: _images
 
 The DataStax Apache Pulsar Connector collects records to write to the DataStax Enterrpise database in CQL link:https://docs.datastax.com/en/dse/6.8/cql/cql/cql_reference/cql_commands/cqlBatch.html[BATCH] commands.
 Data insertions and deletions in the records are known as mutations.

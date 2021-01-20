@@ -1,5 +1,4 @@
 = SSL encrypted connection
-:imagesdir: _images
 
 When the cluster has client encryption enabled, configure the SSL keys and certificates for the DataStax Apache Pulsar™ Connector.
 

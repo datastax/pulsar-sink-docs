@@ -1,5 +1,4 @@
 = Metrics for the processed Pulsar topic records
-:imagesdir: _images
 
 Use the Record Count MBeans to monitor the total number of Apache Pulsar™ records processed by the DataStax Connector.
 

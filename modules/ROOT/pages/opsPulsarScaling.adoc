@@ -1,5 +1,4 @@
 = Scaling the DataStax Pulsar Connector
-:imagesdir: _images
 
 Increase or decrease throughput capacity by scaling the DataStax Apache Pulsar™ Connector horizontally.
 

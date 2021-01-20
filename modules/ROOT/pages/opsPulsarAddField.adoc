@@ -1,5 +1,4 @@
 = Adding a field to a Pulsar Topic
-:imagesdir: _images
 
 Use these steps to write a new field to an existing link:../pulsarIntro.md#pulsarIntroduction[supported database] table column.
 

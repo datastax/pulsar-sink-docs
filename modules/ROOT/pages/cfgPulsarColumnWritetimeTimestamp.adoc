@@ -1,5 +1,4 @@
 = Specify writetime timestamp column
-:imagesdir: _images
 
 In the Pulsar topic mapping, you can optionally specify which column should be used to note the timestamp when the Pulsar-produced record was inserted into any of the following:
 

@@ -1,5 +1,4 @@
 = Using the DataStax Connector with DataStax Enterprise authentication
-:imagesdir: _images
 
 When authentication is enabled, provide credentials for internal authentication, LDAP, or location of the Kerberos keytab file.
 

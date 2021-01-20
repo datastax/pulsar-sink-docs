@@ -1,5 +1,4 @@
 = Mapping basic messages to table columns
-:imagesdir: _images
 
 When messages are created using a Basic or primitive serializer, the message contains a key-value pair.
 Map the key and value to table columns.

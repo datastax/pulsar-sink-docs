@@ -1,5 +1,4 @@
 = Extract Pulsar record header values
-:imagesdir: _images
 
 In the Pulsar topic mapping, you can extract values from the record's header by using `header.header-field-name`, and write the values to a supported database table:
 

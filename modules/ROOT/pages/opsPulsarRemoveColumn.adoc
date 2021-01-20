@@ -1,5 +1,4 @@
 = Removing a Table Column from the mapping specification
-:imagesdir: _images
 
 Remove a xref:index.adoc[supported database] table column.
 

@@ -1,5 +1,4 @@
 = Changing the topic or table schema
-:imagesdir: _images
 
 How to update the DataStax Apache Pulsar™ Connector when schema changes are required.
 

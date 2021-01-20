@@ -1,5 +1,4 @@
 = Verifying data is captured in database
-:imagesdir: _images
 
 When testing and certifying a data pipeline, verify that the expected data exists in the upstream system before the process begins and lands in the downstream system when the process concludes.
 

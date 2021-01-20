@@ -1,5 +1,4 @@
 = Resuming the DataStax Apache Pulsar Connector
-:imagesdir: _images
 
 After a pause, resume the DataStax Apache Pulsar™ Connector operations.
 To start running the connector again, use the following Pulsar Connect REST API command:

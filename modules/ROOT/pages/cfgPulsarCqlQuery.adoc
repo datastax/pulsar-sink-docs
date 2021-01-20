@@ -1,5 +1,4 @@
 = Provide CQL queries in mappings
-:imagesdir: _images
 
 In the Pulsar topic mapping, you can optionally provide a CQL query that should run when the new record arrives on the Pulsar topic.
 

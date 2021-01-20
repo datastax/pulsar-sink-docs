@@ -1,5 +1,4 @@
 = Scaling up by adding workers
-:imagesdir: _images
 
 To increase throughput, accommodate the workload, or increase fault tolerance, scale Pulsar Connect workers horizontally.
 

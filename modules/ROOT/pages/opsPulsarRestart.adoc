@@ -1,5 +1,4 @@
 = Restarting the DataStax Connector
-:imagesdir: _images
 
 To restart a DataStax Apache Pulsar™ Connector that was previously running, use the following Pulsar Connect REST API command:
 

@@ -1,5 +1,4 @@
 = Configure error handling
-:imagesdir: _images
 
 DataStax Apache Pulsar™ Connector provides an optional parameter, `ignoreErrors`.
 When set to `true`, it allows the connector to continue processing records even after an error occurred on the prior record.

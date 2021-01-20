@@ -1,5 +1,4 @@
 = Using a Kerberos ticket cache to authenticate connector running on a stand-alone worker
-:imagesdir: _images
 
 Authenticate the DataStax Apache Pulsar™ Connector session using a Kerberos ticket with a worker that is running in stand-alone mode.
 

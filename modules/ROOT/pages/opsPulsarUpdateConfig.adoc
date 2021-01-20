@@ -1,5 +1,4 @@
 = Updating the DataStax Apache Pulsar Connector configuration
-:imagesdir: _images
 
 To update the configuration of an active DataStax Apache Pulsar™ Connector, use the following Pulsar Connect REST API command:
 

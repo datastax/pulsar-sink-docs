@@ -1,5 +1,4 @@
 = Mapping messages to table that has a User Defined Type
-:imagesdir: _images
 
 The DataStax Apache Pulsar Connector processes JSON, Avro, and complex types directly into a link:https://docs.datastax.com/en/dse/6.7/cql/cql/cql_using/useAlterType.html[user-defined type] column in the xref:index.adoc[].
 The Pulsar message embedded field names and the UDT field names must match.

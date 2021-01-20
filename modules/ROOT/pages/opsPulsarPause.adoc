@@ -1,5 +1,4 @@
 = Pausing the DataStax Apache Pulsar Connector
-:imagesdir: _images
 
 When performing routine maintenance, pause the DataStax Connector to prevent errors and then xref:opsPulsarPause.adoc[resume] it once the maintenance is complete.
 Pause stops the tasks that the DataStax Connector is running without removing the configuration from the worker.

@@ -1,5 +1,4 @@
 = Multiple topics to multiple tables
-:imagesdir: _images
 
 The DataStax Connector allows for mapping multiple topics to multiple tables in a single connector instance.
 

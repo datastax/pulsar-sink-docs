@@ -1,5 +1,4 @@
 = Pulsar-DataStax compatibility
-:imagesdir: _images
 
 The DataStax Apache Pulsar™ Connector can stream data to:
 

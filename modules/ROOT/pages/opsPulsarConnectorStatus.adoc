@@ -1,5 +1,4 @@
 = Getting the DataStax Connector status
-:imagesdir: _images
 
 To display the status of the DataStax Apache Pulsar™ Connector and all tasks that are running.
 The state of the tasks can be RUNNING, PAUSED, FAILED, or UNASSIGNED.

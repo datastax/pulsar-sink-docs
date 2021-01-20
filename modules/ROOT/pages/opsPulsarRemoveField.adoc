@@ -1,5 +1,4 @@
 = Removing a field map
-:imagesdir: _images
 
 DataStax Apache Pulsar™ Connector processing fails if any mapped Pulsar topic fields are missing from the record.
 If a field is missing or if the schema change is known ahead, remove the topic-column mapping.

@@ -1,5 +1,4 @@
 = Displaying the DataStax Connector configuration
-:imagesdir: _images
 
 Use the Apache Pulsar Connect REST API `config` command to show the configuration of a running DataStax Apache Pulsar™ Connector:
 

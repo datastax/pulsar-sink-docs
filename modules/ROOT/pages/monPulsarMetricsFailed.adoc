@@ -1,5 +1,4 @@
 = Failed Pulsar topic record metrics
-:imagesdir: _images
 
 You can use DataStax Apache Pulsar™ Connector metrics to return a running total, or moving averages per a specified rate, of Pulsar topic records that the connector instance failed to process because the mapping could not be interpreted.
 

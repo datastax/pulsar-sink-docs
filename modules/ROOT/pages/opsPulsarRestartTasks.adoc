@@ -1,5 +1,4 @@
 = Restart tasks
-:imagesdir: _images
 
 Use the Pulsar Connect REST API to restart tasks:
 

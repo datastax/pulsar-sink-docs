@@ -1,5 +1,4 @@
 = Start the DataStax Connector in distributed mode
-:imagesdir: _images
 
 Use distributed mode with multiple workers in production environments to allow multiple instances of the DataStax Apache Pulsar™ Connector to run as a group on one or more workers.
 Distributed mode automatically balances workload, allows dynamic scale up or down, and offers fault tolerance for active tasks, configuration, and offset commit data.

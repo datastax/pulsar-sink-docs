@@ -1,5 +1,4 @@
 = Syntax to Create a new DataStax Connector
-:imagesdir: _images
 
 Pulsar Connect REST API syntax used to create a new distributed DataStax Apache Pulsar™ Connector.
 

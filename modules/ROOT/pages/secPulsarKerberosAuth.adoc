@@ -1,5 +1,4 @@
 = Using the DataStax Apache Pulsar Connector with Kerberos
-:imagesdir: _images
 
 When connecting to a cluster that has Kerberos enabled, set up the following:
 

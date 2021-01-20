@@ -1,5 +1,4 @@
 = Adding a column to the database table
-:imagesdir: _images
 
 Add a column to the xref:index.adoc[supported database] table to synchronize an existing field from a Pulsar topic.
 

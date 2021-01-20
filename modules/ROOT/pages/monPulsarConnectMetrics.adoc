@@ -1,5 +1,4 @@
 = Pulsar Connect metrics
-:imagesdir: _images
 
 Use the Apache Pulsar™ Connect Framework Java Management Extensions (JMX) metrics to monitor the DataStax Apache Pulsar Connector consumption of topics.
 

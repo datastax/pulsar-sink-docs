@@ -1,5 +1,4 @@
 = DataStax Apache Pulsar Connector details
-:imagesdir: _images
 
 Set the common DataStax Apache Pulsar™ Connector parameters.
 See the https://pulsar.apache.org/documentation/#connect_configuring[Configuring Connectors] section of the Apache Pulsar documentation.

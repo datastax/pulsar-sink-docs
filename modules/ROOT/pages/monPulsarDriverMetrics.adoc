@@ -1,5 +1,4 @@
 = Write requests to the DataStax platform
-:imagesdir: _images
 
 Sessions details and write request metrics
 

@@ -1,5 +1,4 @@
 = Kerberos authentication
-:imagesdir: _images
 
 When the cluster has Kerberos authentication enabled, configure these authentication settings.
 

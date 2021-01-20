@@ -1,5 +1,4 @@
 = Scaling down by removing workers
-:imagesdir: _images
 
 Decrease throughput by running the DataStax Connector on fewer workers.
 

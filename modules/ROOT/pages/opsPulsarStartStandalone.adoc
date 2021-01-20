@@ -1,5 +1,4 @@
 = Deploying the DataStax Connector in standalone mode
-:imagesdir: _images
 
 DataStax recommends using standalone mode only for development and test environments.
 Standalone mode runs a single (standalone) instance of the DataStax Apache Pulsar™ Connector on a Apache Pulsar Connect worker.

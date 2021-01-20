@@ -1,5 +1,4 @@
 = DataStax Apache Pulsar Connector - Batch size metrics
-:imagesdir: _images
 
 The DataStax Apache Pulsar™ Connector records metrics for each Pulsar topic that is synchronized with a xref:index.adoc[supported database] table.
 The metric corresponds to a topic mapping.

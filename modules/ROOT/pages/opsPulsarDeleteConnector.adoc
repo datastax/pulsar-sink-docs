@@ -1,5 +1,4 @@
 = Deleting the DataStax Apache Pulsar Connector
-:imagesdir: _images
 
 To completely remove the DataStax Apache Pulsar™ Connector and all of its tasks:
 

@@ -1,5 +1,4 @@
 = About operating and maintaining the DataStax Connector
-:imagesdir: _images
 
 To operate and maintain the DataStax Apache Pulsar™ Connector running in distributed mode use the Pulsar Connect framework's built-in REST API. The API returns standard HTTP-compliant results and status. Only `application/json` as the request and response entity content-type is supported.
 

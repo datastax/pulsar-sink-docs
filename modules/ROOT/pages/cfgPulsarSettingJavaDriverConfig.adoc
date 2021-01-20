@@ -1,5 +1,4 @@
 = Pass Pulsar Connector settings directly to the DataStax Java driver
-:imagesdir: _images
 
 In your DataStax Apache Pulsar™ Connector configuration file, you can directly pass settings to the DataStax Java driver by using the `datastax-java-driver` prefix.
 For example:

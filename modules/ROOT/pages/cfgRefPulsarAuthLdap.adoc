@@ -1,5 +1,4 @@
 = Internal or LDAP authentication
-:imagesdir: _images
 
 When the cluster has internal or LDAP authentication enabled, configure the user name and password settings for DataStax Apache Pulsar™ Connector.
 A login role for the connector with access to the mapped tables is also required.

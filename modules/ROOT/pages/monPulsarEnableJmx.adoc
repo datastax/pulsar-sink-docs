@@ -1,5 +1,4 @@
 = Enabling Java Management Extension remote connections
-:imagesdir: _images
 
 Allow remote JMX (Java Management Extension) connections to monitor DataStax Apache Pulsar™ Connector activity.
 
