@@ -35,7 +35,6 @@
 *** xref:cfgPulsarConfigureErrorHandling.adoc[]
 * Operations
 ** xref:opsPulsarAboutOperations.adoc[]
-** xref:opsPulsarStartStop.adoc[]
 ** xref:opsPulsarScaling.adoc[]
 ** xref:opsPulsarChangeSchema.adoc[]
 ** xref:opsPulsarRestart.adoc[]
