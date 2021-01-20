@@ -4,6 +4,7 @@
 ** xref:pulsarFeatures.adoc[]
 * Pulsar Connector release notes
 * xref:pulsarInstall.adoc[]
+* xref:pulsarQuickStart.adoc[]
 * Configuration
 ** xref:cfgPulsarConfigTasksMax.adoc[]
 ** xref:cfgPulsarColumnWritetimeTimestamp.adoc[]
