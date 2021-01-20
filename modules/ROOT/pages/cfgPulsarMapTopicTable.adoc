@@ -15,7 +15,6 @@ DataStax Apache Pulsar Connector supports topic-to-table mappings with the follo
 * xref:cfgPulsarMapKeyPair.adoc[] Create a topic-table map for Pulsar messages that only contain a key and value in each record.
 * xref:cfgPulsarMapJson.adoc[] For JSON fields, map individual fields in the structure to columns.
 * xref:cfgPulsarMapAvroMessages.adoc[] Supports mapping individual fields from a Avro format field.
-* xref:cfgPulsarStruct.adoc[] Mapping a record with a key and Apache Pulsar™ Struct value.
 * xref:cfgPulsarRecordHeaderToTable.adoc[] Extract values from Pulsar record header and write to the database table.
 * xref:cfgPulsarMapUdt.adoc[] Write complex types directly into User-defined Types (UDT).
 * xref:cfgPulsarMapMultipleTables.adoc[] Ingest a single topic into multiple tables using a single connector instance.
