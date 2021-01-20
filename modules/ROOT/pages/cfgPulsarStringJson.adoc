@@ -103,8 +103,6 @@ Example configurations for `stocks_topic` to `stocks_table` using the minimum re
 +
 [source,language-yaml]
 ---- 
-name: stocks-sink
-connector.class: com.datastax.pulsarconnector.DseSinkConnector
 tasks.max: 1
 topics: stocks_topic
 topic

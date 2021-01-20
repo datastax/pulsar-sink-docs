@@ -31,9 +31,7 @@ The results show in JSON format:
 ----
 Output:
 {
-  "name": "cassandra-sink-distributed-example",
   "config": {
-    "connector.class": "com.datastax.pulsarconnector.DseSinkConnector",
     "tasks.max": "5",
     "topics": "json-stream",
     "topic.json-stream.consistencyLevel": "LOCAL_QUORUM",
