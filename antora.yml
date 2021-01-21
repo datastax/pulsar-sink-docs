@@ -1,4 +1,4 @@
-name: pulsar-connector
+name: connector
 title: DataStax Pulsar Connector Documentation
 version: 1.4
 display_version: 1.4
