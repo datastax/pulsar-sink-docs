@@ -1,6 +1,6 @@
 = About the DataStax Apache Pulsar Connector
 
-DataStax Apache Pulsar™ Connector is open-source software (OSS) installed in the Pulsar Connect framework, and synchronizes records from a Pulsar topic with table rows in the following supported databases:
+DataStax Apache Pulsar™ Connector is open-source software (OSS) installed in the Pulsar IO framework, and synchronizes records from a Pulsar topic with table rows in the following supported databases:
 
 * https://docs.astra.datastax.com/docs[DataStax Astra] cloud databases
 * DataStax Enterprise (DSE) 4.7 and later databases
