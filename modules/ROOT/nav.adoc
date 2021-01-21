@@ -47,13 +47,7 @@
 *** xref:secPulsarKerberosConfigFile.adoc[]
 *** xref:secPulsarKerberosTicket.adoc[]
 ** xref:secPulsarInternalLdapAuth.adoc[]
-* Monitoring
-** xref:monPulsarEnableJmx.adoc[]
-*** xref:monPulsarRecordCountMetrics.adoc[]
-*** xref:monPulsarMetricsFailed.adoc[]
-*** xref:monPulsarDriverMetrics.adoc[]
-*** xref:monPulsarWriteMetrics.adoc[]
-** xref:monPulsarConnectMetrics.adoc[]
+* xref:monPulsarConnectMetrics.adoc[]
 * Troubleshooting
 ** xref:trbPulsarTsRecordFailsToWriteToTable.adoc[]
 ** xref:trbPulsarTsLargeBatches.adoc[]
