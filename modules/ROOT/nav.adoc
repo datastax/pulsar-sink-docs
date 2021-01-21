@@ -1,7 +1,5 @@
 * xref:index.adoc[]
 ** xref:pulsarSizing.adoc[]
-** xref:pulsarCompatibility.adoc[]
-** xref:pulsarFeatures.adoc[]
 * Pulsar Connector release notes
 * xref:pulsarInstall.adoc[]
 * xref:pulsarQuickStart.adoc[]

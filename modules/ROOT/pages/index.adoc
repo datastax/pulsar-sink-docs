@@ -1,12 +1,34 @@
 = About the DataStax Apache Pulsar Connector
 
-DataStax Apache Pulsar™ Connector is open-source software (OSS) installed in the Pulsar IO framework, and synchronizes records from a Pulsar topic with table rows in the following supported databases:
+DataStax Apache Pulsar™ Connector is open-source software (OSS) installed in the Pulsar IO framework, and synchronizes records from a Pulsar topic with table rows in DataStax Enterprise (DSE) and Cassandra databases.
+
+== Key Features
+
+* Flexibility in mapping Apache Pulsar messages to DSE and Cassandra tables.
+* Enterprise grade security support including built-in SSL, LDAP/Active Directory, and Kerberos integration.
+* Consumes all Apache Pulsar primitives including primitives, JSON and Avro formats.
+* Flexible time/date formatting.
+* Configurable consistency level.
+* Row-level Time-to-Live (TTL).
+* Distributed mode, high availability (HA) support.
+* Standalone mode support for development.
+
+== Supported databases
 
 * https://docs.astra.datastax.com/docs[DataStax Astra] cloud databases
 * DataStax Enterprise (DSE) 4.7 and later databases
 * Open source Apache Cassandra® 2.1 and later databases
 
-== Topics
-* xref:pulsarCompatibility.adoc[] Pulsar and DataStax platform compatibility matrix.
-* xref:pulsarFeatures.adoc[] Key features in DataStax Apache Pulsar Connector.
+== Supported Pulsar data structures
+
+Ingest data from Pulsar topics with records in the following data structures:
+
+* Primitive string values
+* Complex field values in record types:
+ ** Avro
+ ** JSON formatted string with JSON schema
+ ** JSON formatted string inside a schemaless topic
+
+== Getting started
+
 * xref:pulsarQuickStart.adoc[] A quick introduction connecting Pulsar to DataStax Enterprise using the DataStax Pulsar Connector.
