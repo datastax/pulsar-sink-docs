@@ -1,7 +1,7 @@
 site:
   title: DataStax Pulsar Connector Documentation
-  url: http://docs.datastax.com/en/pulsar-connector
-  start_page: connector::index.adoc
+  url: http://docs.datastax.com/en
+  start_page: pulsar-connector::index.adoc
 
 content:
   edit_url: 'https://github.com/riptano/pulsar-sink-docs/blob/main/{path}'
@@ -13,7 +13,3 @@ ui:
   bundle:
     url: https://github.com/riptano/antora-ui-pulsar-sink/raw/main/releases/download/v0.1/ui-bundle.zip
     snapshot: true
-
-asciidoc:
-  attributes:
-    source-highlighter: highlightjs
