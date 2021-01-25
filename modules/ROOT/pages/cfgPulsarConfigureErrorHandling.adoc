@@ -17,17 +17,4 @@ ignoreErrors:: Use `ignoreErrors` settings to ignore specific types or all runti
 +
 If you set `ignoreErrors` to any value other than `false`, any erroneous record is logged once and the next record is picked up by the Pulsar Connector automatically.
 +
-If you decide to use `ignoreErrors`, there are two ways to deploy the Pulsar Connector:
-
-. In standalone mode for development or test environments only, you can specify `ignoreErrors=value` in your customized version of the `cassandra-sink-standalone.properties.sample` file.
-. In distributed mode for production environments, you can specify `"ignoreErrors": value` in your customized version of the `cassandra-sink-distributed.json.sample` JSON file.
-
-Because the Pulsar Connector runs in the Pulsar Connect Worker JVM, all of the logging entries go to the Pulsar Connect Worker logs.
-For example, to pipe the worker process to the background and write the log entries to worker.log:
-
-[source,language-bash]
-----
-./connect-distributed.sh connect-distributed.properties &> worker.log &
-----
-
- Default: `NONE`.
+Default: `NONE`.

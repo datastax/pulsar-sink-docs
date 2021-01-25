@@ -1,6 +1,6 @@
 = Using the DataStax Connector with DataStax Enterprise authentication
 
-When authentication is enabled, provide credentials for internal authentication, LDAP, or location of the Kerberos keytab file.
+When authentication is enabled, provide credentials for internal authentication or LDAP.
 
 When link:https://docs.datastax.com/en/dse/6.8/dse-admin/datastax_enterprise/security/secAuthTOC.html[authentication] is enabled, provide credentials for internal authentication, LDAP, or location of the Kerberos keytab file.
 
@@ -9,4 +9,3 @@ TIP: To verify that authentication is configured, check the following parameters
 * link:https://docs.datastax.com/en/dse/6.8/dse-admin/datastax_enterprise/config/configCassandra_yaml.html#configCassandra_yaml__authenticator[authenticator] of the `cassandra.yaml`
 * link:https://docs.datastax.com/en/dse/6.8/dse-admin/datastax_enterprise/config/configDseYaml.html#configDseYaml__authentication_options[authentication_options] of the `dse.yaml`
 * xref:cfgRefPulsarAuthLdap.adoc[] When the cluster has internal or LDAP authentication enabled, you should configure the username and password settings for the Pulsar Connector.
-* xref:cfgRefPulsarKerberos.adoc[] When the cluster has Kerberos authentication enabled configure Kerberos settings for DataStax Apache Pulsar™ Connector.

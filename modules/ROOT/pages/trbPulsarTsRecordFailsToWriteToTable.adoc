@@ -5,8 +5,20 @@ The cause can be issues with node availability, transient errors that prevent wr
 
 == Remediation
 
-Verify the following:
+. Change the DataStax Apache Pulsar Connector  `verbose` option to `true` in your sink configuration file:
++
+[source,language-yaml]
+----
+configs:
+  verbose: true
+----
 
-* Check for WARN and ERROR messages in the Pulsar Connect log.
-* Check for WARN and ERROR on the system.log on the DSE coordinator node.
-* Status of writes.
+. Reload the sink configuration file:
++
+[source,language-yaml]
+----
+bin/pulsar-admin sinks update --name cass-sink-kv --sinkConfigFile conf/qs.yml
+"Updated successfully" 
+----
+
+. Check for `WARN` and `ERROR` entries in the output log.

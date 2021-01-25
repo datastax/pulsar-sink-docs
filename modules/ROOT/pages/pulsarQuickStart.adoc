@@ -114,7 +114,6 @@ configs:
   verbose: false
   batchSize: 3000
   batchFlushTimeoutMs: 1000
-  tasks.max: 1
   topics: example_topic
   contactPoints: localhost
   loadBalancing.localDc: Cassandra

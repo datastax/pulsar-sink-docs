@@ -34,11 +34,10 @@ topic:
 
 In the example above, each occurrence of `now()` is evaluated and return a different `TIMEUUID`.
 
-[#_behavior_of_now_with_delete_records_section]
 == Behavior of now() with DELETE records
 
-When the value of a record arrives to DataStax Apache Pulsar Connector instance, it could be a `DELETE`, assuming `deletesEnabled` is `true`;
-see xref:cfgPulsarDseTable.adoc[].
+When the value of a record arrives to DataStax Apache Pulsar Connector instance, it could be a `DELETE`, assuming `deletesEnabled` is `true`; see xref:cfgRefPulsarDseTable.adoc[].
+
 For example, consider a case where a user has mapping and used the `now()` function:
 
 [source,no-highlight]

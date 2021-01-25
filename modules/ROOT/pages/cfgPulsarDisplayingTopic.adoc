@@ -1,32 +1,31 @@
 = Determining topic data structure
 
-One way to determine the format of pre-existing data in Pulsar is to run the command line consumer and look at what is in the topic.
+You can use the `pulsar-client` command line client to examine the structure of Pulsar messages for a topic.
 
-link:https://pulsar.apache.org/docs/en/admin-api-topics/[]
+link:https://pulsar.apache.org/docs/en/reference-cli-tools/#consume/[]
 
-* To show Apache Pulsar messages:
-+
+To show Apache Pulsar messages:
+
 [source,language-bash]
 ----
- bin/pulsar-console-consumer.sh --bootstrap-server localhost:9092 \
- --from-beginning --property print.key=true --max-messages 5 \
- --topic topic_name
+ bin/pulsar-client consume topic_name -s "subscription_name"
 ----
 
-* To show Confluent Pulsar messages:      -   Messages other than Avro:
-+
-[source,language-bash]
+where
+
+topic_name:: Name of the Pulsar topic receiving the messages.
+
+subscription_name:: Arbitrary name for the consumer subscription.
+
+You'll see the message data when a message is received:
+
+[source,no-highlight]
 ----
-   bin/pulsar-console-consumer --bootstrap-server localhost:9092 \
-   --from-beginning --property print.key=true --max-messages 5 \
-   --topic topic_name
+----- got message -----
+key:[My key], properties:[], content:My content
 ----
 
-* Avro messages
-+
-[source,language-bash]
-----
-    bin/pulsar-avro-console-consumer --bootstrap-server localhost:9092 \
-    --from-beginning --property print.key=true --max-messages 5 \
-    --topic topic_name
-----
+in this case:
+
+* *Key*: My key
+* *Content*: My content

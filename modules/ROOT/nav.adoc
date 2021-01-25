@@ -1,6 +1,6 @@
 * xref:index.adoc[]
 ** xref:pulsarSizing.adoc[]
-* Pulsar Connector release notes
+* link:https://github.com/chrislatimer/release-notes/blob/master/DataStax_Apache_Pulsar_Connector_1.4_Release_Notes.md[Pulsar Connector release notes]
 * xref:pulsarInstall.adoc[]
 * xref:pulsarQuickStart.adoc[]
 * Configuration
@@ -28,7 +28,6 @@
 *** xref:cfgRefPulsarDates.adoc[]
 *** xref:cfgRefPulsarAuth.adoc[]
 **** xref:cfgRefPulsarAuthLdap.adoc[]
-**** xref:cfgRefPulsarKerberos.adoc[]
 *** xref:cfgRefPulsarSsl.adoc[]
 *** xref:cfgPulsarConfigureErrorHandling.adoc[]
 * Operations
@@ -41,9 +40,6 @@
 ** xref:opsPulsarDeleteConnector.adoc[]
 ** xref:opsPulsarConnectorStatus.adoc[]
 * Security
-** xref:secPulsarKerberosAuth.adoc[]
-*** xref:secPulsarKerberosConfigFile.adoc[]
-*** xref:secPulsarKerberosTicket.adoc[]
 ** xref:secPulsarInternalLdapAuth.adoc[]
 * xref:monPulsarConnectMetrics.adoc[]
 * Troubleshooting
