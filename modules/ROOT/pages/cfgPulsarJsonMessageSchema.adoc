@@ -1,6 +1,6 @@
 = Mapping JSON messages
 
-The DataStax Apache Pulsar™ Connector supports mapping JSON messages with or without a schema.
+The DataStax Apache® Pulsar Connector supports mapping JSON messages with or without a schema.
 In this example, the key is regular JSON without schema.
 The value is also JSON but contains a schema and a payload.
 The type of the payload is Map and the connector is able to access the individual fields of that map.
@@ -27,7 +27,7 @@ The type of the payload is Map and the connector is able to access the individua
 
 See the https://github.com/datastax/pulsar-examples/tree/master/producers/src/main/java/json[DataStax Pulsar Examples] for a full example.
 
-. Set up the xref:index.adoc[supported database] table.
+. Set up the xref:index.adoc#supported-databases[supported database] table.
 . Create the keyspace.
 Ensure that keyspace is replicated to a datacenter that is set in the DataStax Apache Pulsar Connector xref:cfgRefPulsarDseConnection.md#contactPoints[contactPoints] parameter.
 For example, create the `stocks_keyspace`:
@@ -63,11 +63,11 @@ cqlsh -e "CREATE TABLE stocks_keyspace.stocks_table ( \
 nodetool describering -- keyspace\_name
 ----
 
-. In the DataStax Apache Pulsar Connector configuration file:
+. In the DataStax Apache® Pulsar Connector configuration file:
 
-.. Add the topic name to xref:cfgPulsarDseTable.adoc[topics].
-.. Define the topic-to-table map xref:cfgRefPulsarDseTable.adoc[prefix].
-.. Define the xref:cfgRefPulsarDseTable.adoc[field-to-column map].
+.. Add the topic name to xref:cfgPulsarDseTable.adoc#topics[topics].
+.. Define the topic-to-table map xref:cfgRefPulsarDseTable.adoc#prefix[prefix].
+.. Define the xref:cfgRefPulsarDseTable.adoc#mapping[field-to-column map].
 +
 Example configurations for `stocks_topic` to `stocks_table` using the minimum required settings:
 +
@@ -81,7 +81,5 @@ topic:
       stocks_table:
         mapping: 'symbol=value.symbol,ts=value.dateTime,exchange=value.exchange,industry=value.industry,name=key.name value=value.value'
 ----
-+
-NOTE: When the xref:cfgRefPulsarDseConnection.md[contactPoints] parameter is missing, the `localhost`; this assumes the database is co-located on the DataStax Apache Pulsar Connector node.
 +
 . Update configuration on a running worker or deploy the DataStax Connector for the first time.

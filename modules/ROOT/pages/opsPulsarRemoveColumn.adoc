@@ -1,6 +1,6 @@
 = Removing a Table Column from the mapping specification
 
-Remove a xref:index.adoc[supported database] table column.
+Remove a xref:index.adoc#supported-databases[supported database] table column.
 
 . Remove the field to column mapping from the configuration. See xref:cfgPulsarMapTopicTable.adoc[].
 . On a database node, use the link:https://docs.datastax.com/en/dse/6.8/cql/cql/cql_reference/cql_commands/cqlAlterTable.html[ALTER TABLE] to remove the column from the table.

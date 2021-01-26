@@ -1,9 +1,9 @@
 = Internal or LDAP authentication
 
-When the cluster has internal or LDAP authentication enabled, configure the user name and password settings for DataStax Apache Pulsar™ Connector.
+When the cluster has internal or LDAP authentication enabled, configure the user name and password settings for DataStax Apache® Pulsar Connector.
 A login role for the connector with access to the mapped tables is also required.
 
-[#_parameters_synopsis_section]
+[#ldap-parameters]
 == Parameters
 
 [source,language-yaml]

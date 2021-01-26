@@ -1,34 +1,33 @@
-= DataStax Apache Pulsar Connector details
+= DataStax Apache® Pulsar Connector details
 
-Set the common DataStax Apache Pulsar™ Connector parameters.
-See the https://pulsar.apache.org/documentation/#connect_configuring[Configuring Connectors] section of the Apache Pulsar documentation.
+Set the common DataStax Apache® Pulsar Connector parameters.
+See the https://pulsar.apache.org/documentation/#connect_configuring[Configuring Connectors] section of the Apache® Pulsar documentation.
 
-[#_parameters_synopsis_section]
 == Parameters
 
 [source,language-yaml]
 ----
-tasks.max=1
 cloud.secureConnectBundle=/path/to/secure-connect-database_name.zip
 ----
 
-cloud.secureConnectBundle::
-The full path to the secure connect bundle for your DataStax Astra database (secure-connect-database_name.zip).
+[#secureConnectBundle]
+cloud.secureConnectBundle:: The full path to the secure connect bundle for your DataStax Astra database (secure-connect-database_name.zip).
 Download the secure connect bundle from the DataStax Cloud console.
 +
 If this option is specified, you must also include the auth.username and auth.password for the database user.
 
-== Using base64 encoded file
+== Using a base64 encoded file
 
-You can encode your zip file using the standard base64 tool.
-This is particularly useful because with the absolute file path approach you have to deploy your zip to every machine that is executing the Connector. If you encode the file to base64 you supply that file only once and Pulsar Functions Framework will take care of deploying it to the relevant machines.
+You can encode your zip file using the standard base64 tool, include it directly in the Pulsar configuration file, and the Pulsar function framework will take care of deploying it to additional Pulsar machines:
 
+[source,language-bash]
 ----
 base64 -i bundle.zip
 ----
 
-Then you can fill cloud.secureConnectBundle with the result of the command
+Add the output of the command to `cloud.secureConnectBundle`:
 
+[source,language-yaml]
 ----
 cloud.secureConnectBundle=base64:UEsDBBQACAAIADmJJ1IAAAAAAAAAAAAAAAAGAAkAY2EuY3J0VVQFAAFeQPdfZJTJjvI4HMTveYq5t0bZoTl8Bzt2giEOOGQh3Mi+sgVw4qcf0a25zPj2L0s/VUml+vvzIHaI95eF/YDYxAIB/lElSgi2kGWBt1UBTiCoiAUvIUcs2WyvJ1K/Mw8w7EIGeHVmkyXABlZeBEESgD4KJMpGbrEERYwRzDeIBTikkDhADTGcqBtq9it3cMW0qc4GPOEA7H8B18DCfi3ljh3kjm1QZnAEfkAu5hFKnZV6QvaeYuUHBibPSTT8OsWblmqbJgm6pzfQWaKNo......
 ----

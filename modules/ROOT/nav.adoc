@@ -1,6 +1,6 @@
 * xref:index.adoc[]
 ** xref:pulsarSizing.adoc[]
-* link:https://github.com/chrislatimer/release-notes/blob/master/DataStax_Apache_Pulsar_Connector_1.4_Release_Notes.md[Pulsar Connector release notes]
+* link:https://github.com/datastax/release-notes/blob/master/DataStax_Apache_Pulsar_Connector_1.4_Release_Notes.md[Pulsar Connector release notes]
 * xref:pulsarInstall.adoc[]
 * xref:pulsarQuickStart.adoc[]
 * Configuration

@@ -1,8 +1,6 @@
 = Mapping basic messages to table columns
 
-When messages are created using a Basic or primitive serializer, the message contains a key-value pair.
-Map the key and value to table columns.
-Ensure that the data types of the message field are compatible with the data type of the target column.
+When messages are created using a Basic or primitive serializer, the message contains a key-value pair. Map the key and value to table columns. Ensure that the data types of the message field are compatible with the data type of the target column.
 
 For example, the Pulsar world topic (`world_topic`) contains 5 records with a key-value pair in each.
 The key is an integer and the value is text.
@@ -15,9 +13,9 @@ The key is an integer and the value is text.
 * Pulsar field mapped to a database primary key (PK) column always contains data.
 Null values are not allowed in PK columns.
 
-. Set up the link:index.adoc[supported database] table.
+. Set up the xref:index.adoc#supported-databases[supported database] table.
 . Create the keyspace.
-Ensure that keyspace is replicated to a datacenter that is set in the DataStax Apache Pulsar Connector xref:cfgRefPulsarDseConnection.md[contactPoints] parameter.
+Ensure that keyspace is replicated to a datacenter that is set in the DataStax Apache Pulsar Connector xref:cfgRefPulsarDseConnection.md#contactPoints[contactPoints] parameter.
 For example, create the world_keyspace:
 +
 [source,language-bash]
@@ -42,10 +40,10 @@ cqlsh -e "CREATE TABLE world_table (recordid int PRIMARY KEY, continent text);"
 nodetool describering -- keyspace_name
 ----
 
-. In the DataStax Apache Pulsar Connector configuration file:
-.. Add the topic name to xref:cfgRefPulsarDseTable.adpc[topics].
-.. Define the topic-to-table map xref:cfgRefPulsarDseTable.adoc[prefix].
-.. Define the xref:cfgRefPulsarDseTable.adoc[field-to-column map].
+. In the DataStax Apache® Pulsar Connector configuration file:
+.. Add the topic name to xref:cfgRefPulsarDseTable.adoc#topics[topics].
+.. Define the topic-to-table map xref:cfgRefPulsarDseTable.adoc#prefix[prefix].
+.. Define the xref:cfgRefPulsarDseTable.adoc#mapping[field-to-column map].
 +
 Example configurations for `world_topic` to `world_table` using the minimum required settings:
 +

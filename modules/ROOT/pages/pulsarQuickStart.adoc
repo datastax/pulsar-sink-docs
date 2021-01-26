@@ -1,6 +1,8 @@
 = Pulsar Connector single instance quick start
 
-Simple single instance installation of Pulsar and DSE 6.8 to show the basic configuration concepts for the DataStax Apache Pulsar Connector.
+This quick start will walk you through the simplest possible configuration connecting a standalone Apache® Pulsar instance to a single standalone DataStax Enterprise (DSE) 6.8 node.
+
+Once you've configured Pulsar, a Pulsar sink, the DataStax Apache® Pulsar Connector and the DSE instance, you'll be able to send simple key/value pair messages using the Pulsar client utility, `pulsar-client` and retrieve them from a DSE keyspace and table.
 
 == Install and configure DSE 6.8
 . Install the tarball distribution of DSE 6.8 as described in link:https://docs.datastax.com/en/install/6.8/install/installTARdse.html[Installing DataStax Enterprise 6.8 using the binary tarball].
@@ -205,3 +207,19 @@ cqlsh> SELECT * FROM pulsar_qs.pulsar_kv;
 
 (3 rows)
 ----
+
+== Where to go from here...
+
+Now that you've run through a simple end-to-end configuration, you can start experimenting with more complicated Pulsar mappings and DSE schemas. For more details, see the following topics:
+
+* xref:cfgPulsarDisplayingTopic.adoc[] Display messages to determine the data structure of the topic messages.
+* xref:cfgPulsarMapKeyPair.adoc[] Create a topic-table map for Pulsar messages that only contain a key and value in each record.
+* xref:cfgPulsarMapJson.adoc[] For JSON fields, map individual fields in the structure to columns.
+* xref:cfgPulsarMapAvroMessages.adoc[] Supports mapping individual fields from a Avro format field.
+* xref:cfgPulsarRecordHeaderToTable.adoc[] Extract values from Pulsar record header and write to the database table.
+* xref:cfgPulsarMapUdt.adoc[] Write complex types directly into User-defined Types (UDT).
+* xref:cfgPulsarMapMultipleTables.adoc[] Ingest a single topic into multiple tables using a single connector instance.
+* xref:cfgPulsarMultTopicToTables.adoc[] Ingest multiple topics and write to different tables using a single connector instance.
+* xref:cfgPulsarSelectiveUpdateMapsAndUdts.adoc[] Selectively update maps and UDTs based on Pulsar fields.
+* xref:cfgPulsarCqlQuery.adoc[] Provide CQL queries when new record arrives on the Pulsar topic.
+* xref:cfgPulsarNowFunction.adoc[] You can use the now() function in mappings.

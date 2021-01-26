@@ -1,6 +1,6 @@
 = Getting the DataStax Connector status
 
-Use the Pulsar administration tool `sinks status` command to display the status of the DataStax Apache Pulsar™ Connector.
+Use the Apache® Pulsar administration tool `sinks status` command to display the status of the DataStax Apache® Pulsar Connector.
 
 [source,language-bash]
 ----
@@ -9,7 +9,7 @@ bin/pulsar-admin sinks status --name sink-name
 
 where
 
-* sink-name - The sink name associated with the DataStax Pulsar Connector.
+* sink-name - The sink name associated with the DataStax Apache® Pulsar Connector.
 
 Example
 

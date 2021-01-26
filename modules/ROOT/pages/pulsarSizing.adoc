@@ -1,16 +1,15 @@
 = System requirements
 
-The system requirements for DataStax Apache Pulsar™ Connector depends on the workload and network capacity. The factors include characteristics of the Pulsar topic and the cluster data models and volume. DataStax recommends testing with realistic data flows before committing to an instance type for the connector.
+The system requirements for DataStax Apache® Pulsar Connector depends on the workload and network capacity. The factors include characteristics of the Pulsar topic and the cluster data models and volume. DataStax recommends testing with realistic data flows before committing to an instance type for the connector.
 
-DataStax Apache Pulsar Connector is bound by the amount of CPU available on the host. The connector holds all the records pulled from Pulsar topics in memory, along with the cluster metadata and prepared statements.
+DataStax Apache® Pulsar Connector is bound by the amount of CPU available on the host. The connector holds all the records pulled from Pulsar topics in memory, along with the cluster metadata and prepared statements.
 
 Memory pressure is influenced by:
 
 * Record size of Pulsar topics
-* Number of records pulled at the same time;
-where the maximum is set by the workers `batchSize` parameter.
+* Number of records pulled at the same time, where the maximum is set by the workers `batchSize` parameter.
 * Number of simultaneous tasks run by the connector
 
-DataStax Apache Pulsar Connector needs adequate network capacity for the payload. This includes the connections from Pulsar Servers to the target platform. Scale the connector horizontally by adding additional workers to increase overall throughput.
+DataStax Apache® Pulsar Connector needs adequate network capacity for the payload. This includes the connections from Pulsar Servers to the target platform. Scale the connector horizontally by adding additional workers to increase overall throughput.
 
-TIP: The DataStax Apache Pulsar Connector framework automatically rebalances the load when workers are added by reallocating the tasks among the workers.
+TIP: The DataStax Apache® Pulsar Connector framework automatically rebalances the load when workers are added by reallocating the tasks among the workers.

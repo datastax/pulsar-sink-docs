@@ -2,9 +2,7 @@
 
 In the Pulsar topic mapping, you can optionally provide a CQL query that should run when the new record arrives on the Pulsar topic.
 
-NOTE: This feature is only meant for advanced use cases.
-Most often, you can use the standard Pulsar mapping without a query.
-If you define a query in the topic-to-table mapping, the query has priority and will be used instead of the automatically generated action.
+NOTE: This feature is only meant for advanced use cases. Most often, you can use the standard Pulsar mapping without a query. If you define a query in the topic-to-table mapping, the query has priority and will be used instead of the automatically generated action.
 
 If used, you must provide the bound variables used in the query in the mapping column.
 For example, give the following query:

@@ -1,10 +1,6 @@
 = Extract Pulsar record header values
 
-In the Pulsar topic mapping, you can extract values from the message properties, and write the values to a supported database table:
-
-* https://docs.astra.datastax.com/docs[DataStax Astra] cloud databases
-* DataStax Enterprise (DSE) 4.7 and later databases
-* Open source Apache Cassandra® 2.1 and later databases
+In the Apache® Pulsar topic mapping, you can extract values from the message properties, and write the values to a xref:index.adoc#supported-databases[supported database table].
 
 For example:
 

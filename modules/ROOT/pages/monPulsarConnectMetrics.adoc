@@ -1,6 +1,6 @@
-= Pulsar Connect metrics
+= Pulsar Apache® Connector metrics
 
-You can view DataStax Pulsar Connector metrics in raw Prometheus format at the Apache Pulsar metrics endpoint:
+You can view DataStax Apache® Pulsar Connector metrics in raw Prometheus format at the Apache Pulsar metrics endpoint:
 
 [source,no-highlight]
 ----

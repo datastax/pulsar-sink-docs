@@ -1,8 +1,8 @@
-= Deleting the DataStax Apache Pulsar Connector
+= Deleting the DataStax Apache® Pulsar Connector
 
-To completely remove the DataStax Apache Pulsar™ Connector:
+To completely remove the DataStax Apache® Pulsar Connector:
 
-. Delete any sinks associated with the DataStax Pulsar Connector:
+. Delete any sinks associated with the DataStax Apache® Pulsar Connector:
 +
 [source,language-bash]
 ----
@@ -25,7 +25,7 @@ bin/pulsar-admin sinks delete \
     --name dse-sink-kv
 "Deleted successfully"
 ----
-. Stop the Apache Pulsar service:
+. Stop the Pulsar service:
 +
 [source,language-bash]
 ----
@@ -36,7 +36,7 @@ Shutdown is in progress... Please wait...
 Shutdown is in progress... Please wait...
 Shutdown completed.
 ----
-. Remove the DataStax Pulsar Connector from the `connectors` directory:
+. Remove the DataStax Apache® Pulsar Connector from the `connectors` directory:
 +
 [source,language-bash]
 ----

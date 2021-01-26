@@ -1,6 +1,6 @@
 = SSL encrypted connection
 
-When the cluster has client encryption enabled, configure the SSL keys and certificates for the DataStax Apache Pulsar™ Connector.
+When the cluster has client encryption enabled, configure the SSL keys and certificates for the DataStax Apache® Pulsar Connector.
 
 TIP: SSL encryption settings are configured in the link:https://docs.datastax.comen/dse/6.8//dse-admin/datastax_enterprise/config/configCassandra_yaml.html#configCassandra_yaml__clientEncryptSection[Client-to-node encryption options].
 See link:https://docs.datastax.comen/dse/6.8//dse-admin/datastax_enterprise/security/secSslTOC.html[Configuring SSL].
@@ -26,6 +26,7 @@ ssl:
     privateKey:
 ----
 
+[#provider]
 provider::
 SSL provider to use, if any.
 Valid choices:
@@ -35,37 +36,48 @@ Valid choices:
 +
 Defaults to None
 
+[#hostnameValidation]
 hostnameValidation:: Whether to validate node hostnames when using SSL.
 +
 Defaults to true
 
-cipherSuites:: The cipher suites to enable.
+[#cipherSuites]
+cipherSuites:: The cipher suites to enable. 
 +
 Defaults to none, resulting in a "minimal quality of service" according to JDK documentation.
 
+[#keystore-password]
 keystore: password:: Keystore password.
 
+[#keystore-path]
 keystore: path:: Path to the keystore file.
 
+[#openssl-keycertchain]
 openssl: keyCertChain:: Path to the SSL certificate file, when using OpenSSL.
 
+[#openssl-privatekey]
 openssl: privateKey:: Path to the private key file, when using OpenSSL.
 
+[#truststore-password]
 truststore: password:: Truststore password.
 
+[#trustore-path]
 truststore: path:: Path to the truststore file.
 
-== Using base64 encoded file
 
-For the keystore.path, truststore.path and openssl.privateKey and openssl.keyCertChain You can encode a zip file using the standard base64 tool.
-This is particularly useful because with the absolute file path approach you have to deploy your zip to every machine that is executing the Connector. If you encode the file to base64 you supply that file only once and Pulsar Functions Framework will take care of deploying it to the relevant machines.
+== Using a base64 encoded file
 
+For `keystore.path`, `truststore.path`, `openssl.privateKey`, and `openssl.keyCertChain` you can encode the target file using the standard base64 tool, include it directly in the Pulsar configuration file, and the Pulsar function framework will take care of deploying it to additional Pulsar machines:
+
+[source,language-bash]
 ----
-base64 -i bundle.zip
+base64 -i trust-store-key
 ----
 
-Then you can fill cloud.secureConnectBundle with the result of the command
+Add the output of the command to `truststore: path:`:
 
+[source,language-yaml]
 ----
-cloud.secureConnectBundle=base64:UEsDBBQACAAIADmJJ1IAAAAAAAAAAAAAAAAGAAkAY2EuY3J0VVQFAAFeQPdfZJTJjvI4HMTveYq5t0bZoTl8Bzt2giEOOGQh3Mi+sgVw4qcf0a25zPj2L0s/VUml+vvzIHaI95eF/YDYxAIB/lElSgi2kGWBt1UBTiCoiAUvIUcs2WyvJ1K/Mw8w7EIGeHVmkyXABlZeBEESgD4KJMpGbrEERYwRzDeIBTikkDhADTGcqBtq9it3cMW0qc4GPOEA7H8B18DCfi3ljh3kjm1QZnAEfkAu5hFKnZV6QvaeYuUHBibPSTT8OsWblmqbJgm6pzfQWaKNo......
+truststore:
+  path: base64:UEsDBBQACAAIADmJJ1IAAAAAAAAAAAAAAAAGAAkAY2EuY3J0VVQFAAFeQPdfZJTJjvI4HMTveYq5t0bZoTl8Bzt2giEOOGQh3Mi+sgVw4qcf0a25zPj2L0s/VUml+vvzIHaI95eF/YDYxAIB/lElSgi2kGWBt1UBTiCoiAUvIUcs2WyvJ1K/Mw8w7EIGeHVmkyXABlZeBEESgD4KJMpGbrEERYwRzDeIBTikkDhADTGcqBtq9it3cMW0qc4GPOEA7H8B18DCfi3ljh3kjm1QZnAEfkAu5hFKnZV6QvaeYuUHBibPSTT8OsWblmqbJgm6pzfQWaKNo......
 ----
