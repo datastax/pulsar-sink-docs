@@ -43,4 +43,7 @@ mv installation_location/cassandra-enhanced-pulsar-sink-1.4.0.nar pulsar_home/co
 
 . Copy the sample example.yml configuration file from `cassandra-enhanced-pulsar-sink-1.4.0/conf/` to the Pulsar configuration directory, which is typically the `config` or `etc` directory.
 . Update the settings as necessary.
++
+IMPORTANT: If you are using the `cloud.secureConnectBundle`, *ALL* subproperties under `ssl:` must be empty.
+
 . Ensure that the user running Pulsar has permission to access the configuration and NAR files.

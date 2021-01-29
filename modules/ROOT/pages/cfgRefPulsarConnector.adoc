@@ -14,6 +14,9 @@ cloud.secureConnectBundle:: The full path to the secure connect bundle for your 
 Download the secure connect bundle from the DataStax Cloud console.
 +
 If this option is specified, you must also include the auth.username and auth.password for the database user.
++
+IMPORTANT: If you are using the cloud.secureConnectBundle, *ALL* subproperties under `ssl:` must be empty.
+
 
 == Using a base64 encoded file
 
