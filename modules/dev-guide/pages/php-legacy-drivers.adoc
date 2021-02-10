@@ -1,0 +1,74 @@
+= PHP legacy drivers
+:slug: php-legacy-drivers
+
+This example can be used to attach to Astra from PHP using the DataStax Driver.
+Before proceeding you might also consider using the REST, GraphQL or Document APIs to connect to Astra without the need for a custom driver.
+
+== Prerequisites
+* Ensure the Python driver is installed. For more, see https://docs.datastax.com/en/developer/php-driver/1.3/[DataStax PHP Driver for Apache Cassandra].
+* Collect the required information for xref:connecting-with-older-drivers.adoc[Connecting with legacy drivers].
+
+== Procedure
+. Copy the certificate files from the Astra secure connect bundle to `/etc/ssl/certs/astra-secure-connect`. This folder should contain the `ca.cert`, `cert`, and `key` files.
+. Replace the `<hostname>` with your Astra database hostname.
+. Replace the `<port>` with your Astra database port.
+. Replace `<username>` and `<password>` with the Astra database username and password.
+```
+<?php
+
+$ssl     = Cassandra::ssl()
+               \->withTrustedCerts('/etc/ssl/certs/astra-secure-connect/ca.cert')
+               \->withClientCert('/etc/ssl/certs/astra-secure-connect/cert')
+               \->withPrivateKey('/etc/ssl/certs/astra-secure-connect/key')
+               \->build();
+
+
+$cluster = Cassandra::cluster()
+               \->withSSL($ssl)
+               \->withCredentials("dbadmin", "my_awesome_password")
+               \->withContactPoints('602c8f3c-ea96-41b0-a7c1-6c6c5bdd1f34-us-east1.db.astra.datastax.com')
+               \->withPort(31575)
+               \->build();
+
+$session = $cluster\->connect();
+
+$result = $session\->execute('SELECT keyspace_name, table_name FROM system_schema.tables');
+
+foreach ($result as $row) {
+    printf("The keyspace "%s" has a table "%s".
+    ", $row['keyspace_name'], $row['table_name']);
+}"
+```
+
+=== Example
+```
+<?php
+
+$ssl     = Cassandra::ssl()
+               \->withTrustedCerts('/etc/ssl/certs/astra-secure-connect/ca.cert')
+               \->withClientCert('/etc/ssl/certs/astra-secure-connect/cert')
+               \->withPrivateKey('/etc/ssl/certs/astra-secure-connect/key')
+               \->build();
+
+$cluster = Cassandra::cluster()
+               \->withSSL($ssl)
+               \->withCredentials("john.smith", "jsP@ssw0rd")
+               \->withContactPoints('602c8f3c-ea96-41b0-a7c1-6c6c5bdd1f34-us-east1.db.astra.datastax.com')
+               \->withPort(31575)
+               \->build();
+$session = $cluster\->connect();
+
+$result = $session\->execute('SELECT keyspace_name, table_name FROM system_schema.tables');
+
+foreach ($result as $row) {
+    printf("The keyspace "%s" has a table "%s".
+    ", $row['keyspace_name'], $row['table_name']);
+    }"
+```
+
+In the example above, the following variables are used:
+
+* `<hostname>` is `602c8f3c-ea96-41b0-a7c1-6c6c5bdd1f34-us-east1.db.astra.datastax.com`
+* `<port>` is `31575`
+* `<username>` is `john.smith`
+* `<password>` is `jsP@ssw0rd`

@@ -1,0 +1,18 @@
+site:
+  title: DataStax Astra Documentation
+  url: https://docs.astra.datastax.com
+  start_page: docs::index.adoc
+  keys:
+    path-to-assets: "../assets/"
+
+content:
+  edit_url: 'https://github.com/riptano/astra-docs/blob/main/{path}'
+  sources:
+  - url: .
+    branches: HEAD
+
+ui:
+  bundle:
+    url: https://github.com/riptano/antora-ui-astra/raw/main/releases/download/v0.1/ui-bundle.zip
+    snapshot: true
+  output_dir: assets

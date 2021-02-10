@@ -1,0 +1,76 @@
+= Migrate Python driver
+:slug: migrating-your-datastax-python-driver-to-connect-with-astra-databases
+
+Complete the following procedure to migrate your existing DataStax Python driver to a version that is capable of connecting to Astra databases created using DataStax Astra.
+
+==Prerequisites
+. link:doc:creating-your-astra-database[Create a database] using https://astra.datastax.com[DataStax Astra].
+. link:doc:obtaining-database-credentials[Download the secure connect bundle] to obtain connection credentials for your DataStax Astra <+++<glossary:database>+++>.
+
+[TIP]
+====
+Alternatively, [have a teammate provide access to their Astra database](doc:providing-access-to-astra-databases).
+====
+
+==Procedure
+. Install the DataStax Python driver:
+===DataStax Python driver for Apache Cassandra
+```
+pip install cassandra-driver
+```
+
+===DSE Python driver
+```
+pip install dse-driver
+```
+See the http://docs.datastax.com/en/developer/python-dse-driver/latest/installation/[Python driver installation instructions] for more information.
+
+. Verify that the DataStax Python driver installed successfully:
+===DataStax Python driver for Apache Cassandra
+```
+python -c 'import cassandra;
+print cassandra.*version*'
+```
+
+===DSE Python driver
+```
+python -c 'import dse;
+print dse.*version*'
+```
+
+The version number displays in the console output: ` 3.20.0 `
+
+. In your existing DataStax Python driver code, modify the connection code to use the DataStax Astra API.
+In the `cloud_config` parameter, include the path to the secure connect bundle for your Astra database (`secure-connect-*database_name*.zip`), as shown in the following example.
+===DataStax Python driver for Apache Cassandra
+```
+from cassandra.cluster import Cluster
+from cassandra.auth import PlainTextAuthProvider
+
+cloud_config= {
+        'secure_connect_bundle': '/path/to/secure-connect-database_name.zip'
+        }
+        auth_provider = PlainTextAuthProvider('username', 'password')
+        cluster = Cluster(cloud=cloud_config, auth_provider=auth_provider)
+        session = cluster.connect()
+```
+
+===DSE Python driver
+```
+from dse.cluster import Cluster
+from dse.auth import PlainTextAuthProvider
+
+cloud_config = {
+   'secure_connect_bundle': '/python_project/creds/secure-connect-database_name.zip'
+   }
+   auth_provider = PlainTextAuthProvider(username='username', 'password')
+   cluster = Cluster(cloud=cloud_config, auth_provider=auth_provider)
+   session = cluster.connect()
+```
+
+. Run your Python script to connect to your Astra database:
+```
+python ./my_python_driver.py
+```
+
+If successful, the code builds, compiles, and connects to your Cassandra database.

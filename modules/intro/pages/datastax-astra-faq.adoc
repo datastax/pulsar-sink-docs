@@ -1,0 +1,86 @@
+= Astra FAQs
+:slug: datastax-astra-faq
+
+Frequently asked questions about DataStax Astra.
+
+== Opening the box
+
+=== What tools does DataStax Astra include?
+
+* *Astra REST API:* Use the link:ref:datastax-astra-data-api[DataStax Astra REST API] to create an authorization token and begin interacting with your database.
+* *CQLSH:* Each Astra database includes an integrated CQL shell for interactive Cassandra Query Language (CQL) commands.
+Use CQLSH to create tables, insert data, and modify data in your keyspace.
+* *DataStax Bulk Loader:* Use DataStax Bulk Loader (dsbulk) to xref:loading-and-unloading-data-with-datastax-bulk-loader.adoc[load and unload] data into your Astra database.
+You can load data from a variety of sources and unload data from DSE or DDAC databases for transfer, use, or storage of data.
+* *Metrics dashboards:* Use the integrated metrics dashboards to xref:viewing-database-health-and-metrics.adoc[view health metrics] that include information regarding latency and throughput to the database.
+These metrics provide insights into the performance of the database and how workloads are distributed.
+
+== Making comparisons
+Use this FAQ to find answers to common questions and get help for DataStax Astra.
+
+=== How is DataStax Astra different from DSE?
+
+While you can run DataStax Enterprise (DSE) both on premises and in the cloud, DataStax Astra allows you to create Astra databases in minutes, with reduced complexity, fewer operational concerns, and an approachable entry point for developing your applications.
+DataStax Astra is a true database-as-a-service (DBaaS) offering that provides simplified cluster management with flexible pricing.
+Also, DSE includes Advanced Workloads (DSE Search, Analytics, and Graph), which are not available in DataStax Astra.
+
+== Assessing compatibility
+=== Which version of Apache Cassandra™ is compatible with DataStax Astra?
+Apache Cassandra version 3.11 is compatible with Astra databases.
+Additionally, each of the supported DSE and Apache Cassandra drivers is compatible.
+See xref:datastax-astra-faq.adoc[Which drivers work with DataStax Astra].
+
+=== Which cloud vendors does DataStax Astra support?
+
+DataStax Astra supports creating databases on Amazon Web Services (AWS), Google Cloud Platform (GCP), and Microsoft Azure.
+
+=== Which cloud regions are currently available?
+
+DataStax Astra supports single-region deployments only.
+These regions vary based on the selected cloud provider and more are added over time.
+The regions that are currently available can be seen on the https://astra.datastax.com/createDatabase[create database screen].
+Within a region, data is replicated across three availability zones to ensure high availability.region
+
+You can create up to 5 databases per region, and add a total of 20 capacity units (CUs) per database (10TBs).
+To adjust the capacity unit limits or request new regions contact [DataStax Support](https://houston.datastax.com/hc/requests/new).
+[TIP]
+====
+To discuss region needs, use the chat icon in the Astra console to talk with DataStax for guidance.
+====
+
+=== Is VPC peering possible?
+xref:using-aws-vpc-peering.adoc[VPC peering] is available on
+// Production Workload
+C- and D-tier Astra databases. For more, see xref:using-aws-vpc-peering[Connect with AWS VPC peering to your Astra database], xref:using-gcp-vpc-peering.adoc[Connect with GCP VPC peering to your Astra database], and xref:connect-with-azure-vpc-peering.adoc[Connect with Azure VPC peering to your Astra database].
+
+== Getting connected
+=== How do I connect to DataStax Astra databases?
+Use the the Cassandra Query Language SHell (CQLSH) or the DataStax drivers to [connect to your Astra database](doc:connecting-to-database).
+
+=== Which DataStax drivers work with DataStax Astra?
+Choose the DataStax driver for your preferred language and configure it to connect to your Astra database.
+See xref:connecting-to-astra-databases-using-datastax-drivers.adoc[Connecting to Astra databases using DataStax drivers]
+
+=== What are the range of ports available for DataStax Astra?
+
+The port range is 30000-32767.
+
+== Paying for services
+=== How do I manage billing for DataStax Astra?
+DataStax Astra handles billing through an integration with Stripe, and displays all related billing information on the *Billing Summary* page.
+Enter a credit card number and associated billing information to begin creating Astra databases.
+See xref:pricing-and-billing#billing.adoc[Billing] for more information.
+
+=== How is pricing calculated for each Astra database?
+
+Pricing for DataStax Astra is based on capacity unit (CU) and Service Tier.
+There's also a Free tier, which includes 5 GB of storage and is free.
+See xref:pricing-and-billing.adoc[Pricing] for more information.
+
+== Getting help
+=== Where can I find help?
+Use this documentation to get answers about what your database is capable of, or for guided information like connecting to your databases.
+
+Practice using the DataStax Astra database with the https://www.datastax.com/blog?topics=232[Better Botz blog series] or explore our xref:katacoda-creating-an-astra-database.adoc[Katacode scenarios], which will walk you through setting up your database, creating keyspaces, and managing orders and products using CQL and GraphQL.
+
+To send us feedback or get additional help, use the chat feature in the DataStax Astra console.

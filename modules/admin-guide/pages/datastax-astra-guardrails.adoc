@@ -1,0 +1,59 @@
+= Astra guardrails
+:slug: datastax-astra-guardrails
+
+DataStax Astra includes guardrails to ensure good practices and promote optimal database configurations.
+
+== Automated backup and restore
+
+Databases created using DataStax Astra are automatically backed up every four hours.
+The latest six snapshots are stored, providing flexibility in which point in time you can restore to, if necessary.
+
+If data is accidentally deleted or corrupted, contact https://houston.datastax.com/hc/requests/new[DataStax Support] within 12 hours to restore data from one of these snapshots.
+This window ensures that the data to restore exists as a saved snapshot.
+
+When restoring data, https://houston.datastax.com/hc/requests/new[DataStax Support] provides the following options:
+
+[cols=2*,options=header]
+|===
+|Option
+|Description
+
+|Same cluster
+|The table is dropped, and data is restored in the same cluster using the specified backup.
+
+|Different cluster
+|The original table remains in the cluster, and the specified backup is restored in a new cluster.
+
+|===
+
+
+[IMPORTANT]
+====
+If the database was terminated, all data is destroyed and is unrecoverable.
+====
+
+##Limited access to administrative tools Because DataStax Astra hides the complexities of database management to help you focus on developing applications, DataStax Astra is not compatible with DataStax Enterprise (DSE) administrative tools, such as `nodetool` and `dsetool`.
+
+Use the DataStax Cloud console to xref:monitoring-databases.adoc[get statistics] and xref:viewing-database-health-and-metrics.adoc[view database and health metrics].
+DataStax Astra does not support access to the database using the Java Management Extensions (JMX) technology, like JConsole.
+
+== Simplified security without compromise
+
+DataStax Astra provides a secure cloud-based database without dramatically changing the way you currently access your internal database:
+
+* New user management flows avoid the need for superusers and global keyspace administration in CQL.
+* Endpoints are secured using mutual authentication, either with mutual-TLS or secure tokens issued to the client.
+* TLS provides a secure transport layer you can trust, ensuring that in-flight data is protected.
+* Data at rest is protected by encrypted volumes.
+Additionally, DataStax Astra incorporates advanced DSE features like role-based access control (RBAC) and row-level access control (RLAC).
+
+See xref:security-guidelines.adoc[Security guidelines] for more information about how DataStax Astra implements security.
+
+== Replication within regions
+
+Each DataStax Astra database uses replication across three availability zones within the launched region to promote uptime and ensure data integrity.
+
+== Storage-Attached Indexing (SAI) limits
+
+The maximum number of SAI indexes on a table is 10.
+There can be no more than 100 SAI indexes in a single database.

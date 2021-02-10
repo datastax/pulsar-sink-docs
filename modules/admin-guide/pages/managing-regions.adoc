@@ -1,0 +1,39 @@
+= Manage multiple regions for your database
+:slug: managing-regions
+
+You can replicate data to multiple regions for high availability scenarios to ensure active-active applications failover models. Multiple regions also ensure application data availability for locality purposes with the added value of cost savings.
+
+[NOTE]
+====
+Multiple regions are available on only Product Workload databases.
+====
+
+==Adding a region to your database
+. Open a browser, navigate to link:astra.datastax.com[DataStax Astra], and log in.
+. On the *Dashboard* page, select the <+++<glossary:database>+++> name to access the **Summary** page for your selected database.
+. Select **Add Region**.
+. Select the region you want to add from the **Add Region** menu.
+. Select **Add**.
+. Confirm you want to add the region by selecting **Confirm**.+++</glossary:database>+++
+
+You'll see a screen confirming the new datacenter region is being added.
+Once you add a region, a maintenance period starts that might take up to 30 minutes.
+Your database will have limited availability during this window.
+Some actions, such as viewing database connection details, might be unavailable until maintenance is finished.
+
+==Removing a region from your database
+. Open a browser, navigate to link:astra.datastax.com[DataStax Astra], and log in.
+. On the *Dashboard* page, select the <+++<glossary:database>+++> name to access the **Summary** page for your selected database.
+. Select **Remove Region** from the overflow menu for the region you want to remove.
+. Enter your datacenter id, which is provided in the prompt.
+. Select **Remove region**.
+
+[CAUTION]
+====
+Removing a region is not reversible. Proceed with caution.
+====
+
+You'll see a screen confirming the datacenter location will be removed.
+Once you remove a location, a maintenance period starts that might take up to 30 minutes.
+Your database will have limited availability during this window.
+Some actions, such as viewing database connection details, might be unavailable until maintenance is finished.+++</glossary:database>+++

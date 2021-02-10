@@ -1,0 +1,2 @@
+* Astra release notes
+** xref:release-notes:release-notes.adoc[Astra release notes]

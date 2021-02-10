@@ -1,0 +1,118 @@
+= Update documents
+:slug: update-documents
+
+Data changes, so often it is necessary to update an entire document.
+
+== Replace a document
+Send a PATCH request to `/v2/namespaces/{namespace_name}/collections/{collections_name}/{document-id}+` to replace data to the existing collection.
+All fields included will be changed.
+```
+curl --request PATCH \
+  --url https://$\{ASTRA_CLUSTER_ID}-$\{ASTRA_CLUSTER_REGION}.apps.astra.datastax.com/api/rest/v2/namespaces/betterbotz/collections/products/e9b6c04d-0604-4bab-a3ea-6a7984644631 \
+  --header "X-Cassandra-Token: $ASTRA_AUTHORIZATION_TOKEN" \
+  --header 'Content-Type: application/json' \
+  --data '{
+    "name": "Medium Lift Arms",
+    "price": "2199.99"
+   }'
+```
+
+== Sample Results
+```
+"documentId": "e9b6c04d-0604-4bab-a3ea-6a7984644631"
+```
+
+A GET request will show that the data has been replaced in the document:
+```
+curl --request GET \
+  --url https://${ASTRA_CLUSTER_ID}-${ASTRA_CLUSTER_REGION}.apps.astra.datastax.com/api/rest/v2/namespaces/betterbotz/collections/products/e9b6c04d-0604-4bab-a3ea-6a7984644631 \
+  --header "X-Cassandra-Token: $ASTRA_AUTHORIZATION_TOKEN" \
+  --header 'Content-Type: application/json'"
+```
+
+=== Sample results
+```
+"documentId": "e9b6c04d-0604-4bab-a3ea-6a7984644631",
+"data":
+  {
+    "description": "Medium lift arms capable of lifting 850lbs of weight per arm. Sold as a set."
+    "dimensions":
+      {
+        "height": 43,
+        "length": 13,
+        "width": 27
+      },
+      "name": "Medium Lift Arms",
+      "price": "2199.99"
+    }
+  }
+```
+
+PATCH Updates are upserts.
+If the document doesn't exist, it will be created.
+If it does exist, it will be updated with the new document data.
+
+== Replace part of of a document or sub-document
+It is also possible to update only part of a document.
+To partially update, send a PATCH request to `/v2/namespaces/{namespace_name}/collections/{collections_name}/{document-id}/{document-path}`.
+In this example, we want to change just the firstname of the document:
+
+```
+curl --request PATCH
+  --url https://${ASTRA_CLUSTER_ID}-${ASTRA_CLUSTER_REGION}.apps.astra.datastax.com/api/rest/v2/namespaces/betterbotz/collections/products/e9b6c04d-0604-4bab-a3ea-6a7984644631
+  --header "X-Cassandra-Token: $ASTRA_AUTHORIZATION_TOKEN"
+  --header 'Content-Type: application/json'
+  --data '{
+    "name": "Drill Arms"
+    }'
+```
+
+=== Sample results
+```
+"documentId": "e9b6c04d-0604-4bab-a3ea-6a7984644631"
+```
+
+A GET will show that only the weights has been changed.
+```
+curl --request GET
+  --url https://${ASTRA_CLUSTER_ID}-${ASTRA_CLUSTER_REGION}.apps.astra.datastax.com/api/rest/v2/namespaces/betterbotz/collections/products/e9b6c04d-0604-4bab-a3ea-6a7984644631
+  --header "X-Cassandra-Token: $ASTRA_AUTHORIZATION_TOKEN"
+  --header 'Content-Type: application/json'
+```
+
+=== Sample results
+```
+"documentId": "e9b6c04d-0604-4bab-a3ea-6a7984644631",
+"data":
+  {
+    "description": "Medium lift arms capable of lifting 850lbs of weight per arm. Sold as a set.",
+    "dimensions":
+      {
+        "height": 43,
+        "length": 13,
+        "width": 27
+      },
+    "name": "Drill Arms",
+    "price": "2199.99"
+  }"
+```
+
+To partially update a sub-document, send a PATCH request to `/v2/namespaces/{namespace_name}/collections/{collections_name}/{document-id}/{document-path}` in the same manner as the last command, but including only sub-document information to change and the document-path of the sub-document.
+
+Include all fields that you wish to update:
+```
+curl --request PATCH \
+  --url https://${ASTRA_CLUSTER_ID}-${ASTRA_CLUSTER_REGION}.apps.astra.datastax.com/api/rest/v2/namespaces/betterbotz/collections/products/e9b6c04d-0604-4bab-a3ea-6a7984644631/dimensions
+  --header "X-Cassandra-Token: $ASTRA_AUTHORIZATION_TOKEN"
+  --header 'Content-Type: application/json'
+  --data '{
+    "length": 13,
+    "height": 41,
+    "width": 26
+    }'
+```
+
+== Sample results
+```
+"documentId": "e9b6c04d-0604-4bab-a3ea-6a7984644631"
+```

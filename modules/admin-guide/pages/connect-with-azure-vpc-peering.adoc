@@ -1,0 +1,80 @@
+= Azure VPC peering
+:slug: connect-with-azure-vpc-peering
+
+By creating a virtual private cloud (VPC), you can connect your Azure resources and Astra databases. VPC peering allows you to communicate across the VPCs.
+
+[NOTE]
+====
+VPC peering is available on only Production Workload databases.
+For more about VPC peering on Astra databases hosted on Azure, see https://docs.microsoft.com/en-us/azure/virtual-network/virtual-network-peering-overview[Virtual network peering].
+====
+
+== Prerequisites
+* Create a virtual network peer in your Azure account.
+See https://docs.microsoft.com/en-us/azure/virtual-network/quick-create-cli[Create a virtual network using the Azure CLI].
+* Create your Astra database.
+See [Creating your Astra database](doc:creating-your-astra-database).
+
+== Procedure
+###Azure command line interface To establish a peering connection for Azure and grant an Enterprise Application managed by Astra access to a peering connection, run these commands using the Azure command line interface.
+
+. Create a Service Principle in your Azure subscription for an existing Astra-managed Enterprise Application:
+```
+- az ad sp create --id b5b659f3-765c-4dc8-a7b4-250f992c1638
+```
+
+The client to create connections is always `b5b659f3-765c-4dc8-a7b4-250f992c1638`.
+
+. Create a `role.json` file that defines the necessary permissions that Service Principle will need to:
+ * Create a peering connection.
+ * Get the status of that connection.
+ * Delete the connection.
+```
+{
+    "Name": “<ROLE_NAME>“,
+    "IsCustom": true,
+    "Description": “<ROLE_DESCRIPTION>“,
+    "Actions": [
+        "Microsoft.Network/virtualNetworks/virtualNetworkPeerings/read",
+        "Microsoft.Network/virtualNetworks/virtualNetworkPeerings/write",
+        "Microsoft.Network/virtualNetworks/virtualNetworkPeerings/delete",
+        "Microsoft.Network/virtualNetworks/peer/action"
+    ],
+    "AssignableScopes": [
+        "/subscriptions/<YOUR_SUBSCRIPTION>/resourceGroups/<YOUR_RESOURCE_GROUP>/providers/Microsoft.Network/virtualNetworks/<YOUR_VIRTUAL_NETWORK>"
+    ]
+}
+```
+
+. Set the following variables in the `role.json` file:
+* `<ROLE_NAME>`: The name of the role defined in `role.json`.
+The role's name can be anything, but whatever must match the `<ROLE_NAME>` when assigning the role with the `az` command.
+* `<ROLE_DESCRIPTION>`: The description of the role defined in `role.json`.
+The description can also be anything.
+Astra doesn't use this description.
+* `<YOUR_SUBSCRIPTION>`: The Azure subscription to which you will peer the Astra cluster.
+* `<YOUR_RESOURCE_GROUP>`: The Resource Group to which you will peer the Astra cluster.
+* `<YOUR_VIRTUAL_NETWORK>`: The Virtual Network to which you will peer the Astra cluster.
+. Using the definitions defined in the role.json file create a new role in your subscription:
+```
+- az role definition create --role-definition role.json
+```
+. Assign the role you created to the service principal created to your virtual network's scope:
+```
+- az role assignment create --role “<ROLE_NAME>” --assignee b5b659f3-765c-4dc8-a7b4-250f992c1638 --scope "/subscriptions/<YOUR_SUBSCRIPTION>/resourceGroups/<YOUR_RESOURCE_GROUP>/providers/Microsoft.Network/virtualNetworks/<YOUR_VIRTUAL_NETWORK>"
+```
+
+=== Astra Console
+
+. From your database *Summary*, select *Add Peering Connection*.
+. In *Add Peering Connection*, enter `<YOUR_SUBSCRIPTION>` that matches the variable in the `role.json` file for the *Azure Subscription ID*.
+. For the *Azure Resource Group Name*, enter `<YOUR_RESOURCE_GROUP>` that matches the variable in the `role.json` file.
+. For the *Azure Virtual Network Name*, enter `<YOUR_VIRTUAL_NETWORK>` that matches the variable in the `role.json` file.
+. Select *Initiate*.
+After you initiate peering, you will see a link to *Download secure connect bundle for internal VPC network*.
+. Download this internal secure connect bundle to connect to the Astra database to ensure the connection gets routed through private IP addresses and not the open internet.
+[NOTE]
+====
+The internal secure connect bundle ensures the connection to the Astra database is routed through private IP addresses and not the open internet.
+Using the internal secure connect bundle is the same as using the external secure connect bundle when trying to connect to the database.
+====

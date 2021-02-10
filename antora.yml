@@ -1,7 +1,7 @@
-name: pulsar-connector
-title: DataStax Pulsar Connector Documentation
-version: "1.4"
-display_version: "1.4"
+name: docs
+title: DataStax Astra Documentation
+version: master
+display_version: ""
 
 nav:
 - modules/ROOT/nav.adoc

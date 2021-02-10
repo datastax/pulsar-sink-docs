@@ -1,0 +1,52 @@
+= Add rows to your table
+:slug: adding-rows-to-your-table
+
+Insert data into your tables using Astra's REST API.
+
+After creating a table in your keyspace, you can add rows of data.
+Use the [Add rows](ref:addrow-1) endpoint to add rows to the table you created in the last step.
+
+== Prerequisites
+. [Generate an authorization token](doc:generating-authorization-token).
+. [Create a table in your keyspace](doc:creating-a-table-in-your-keyspace).
+
+== Procedure
+. Copy the following request, which you use to add rows to a table in the specified keyspace.
+```
+curl --request POST \
+  --url https://${ASTRA_CLUSTER_ID}-${ASTRA_CLUSTER_REGION}.apps.astra.datastax.com/api/rest/v1/keyspaces/${ASTRA_DB_KEYSPACE}/tables/{table_name}/rows \
+  --header 'accept: application/json' \
+  --header 'content-type: application/json' \
+  --header 'x-cassandra-request-id: {unique-UUID}' \
+  --header "x-cassandra-token: ${ASTRA_AUTHORIZATION_TOKEN}" \
+  --data '{"columns":[
+  {"name":"name0","value":"value0"},
+  {"name":"name1","value":"value1"},
+  {"name":"name2","value":"value2"},
+  {"name":"name3","value":"value3"},
+  {"name":"name5","value":"value4"}]}'
+```
+
+. Replace the following values with the values for your <+++<glossary:database>+++>: * Modify `my_keyspace` to match the name of your keyspace.
+ * Replace `table_name` with the name of the table you want to create. In this example, enter `products` as the table name.
+ * Enter a `\{unique-UUID}` for the request.
+ * In the `--data` option of the call, use the `columns` parameter to define each row.
+
+In each row, `name` indicates the column name and `value` indicates the corresponding value.
+For example, the following definition adds a row for the `Heavy Lift Arms` product, including a `description`, `price`, and `created` timestamp.
+
+=== Example:
+```
+curl --request POST \
+  --url https://${ASTRA_CLUSTER_ID}-${ASTRA_CLUSTER_REGION}.apps.astra.datastax.com/api/rest/v1/keyspaces/${ASTRA_DB_KEYSPACE}/tables/products/rows \
+  --header 'accept: application/json' \
+  --header 'content-type: application/json' \
+  --header 'x-cassandra-request-id: xyzaa27b-de8e-4afc-8431-8f06a326047d' \
+  --header "x-cassandra-token: ${ASTRA_AUTHORIZATION_TOKEN}" \
+  --data '{"columns":[{"name":"id","value":"e9b6c02d-0604-4bab-a3ea-6a7984654631"},{"name":"name","value":"Heavy Lift Arms"},{"name":"description","value":"Heavy lift arms capable of lifting 1,250 lbs of weight per arm. Sold as a set."},{"name":"price","value":"4199.99"},{"name":"created","value":"2012-04-23T18:25:43.511Z"}]}'
+```
+. Run the cURL call to add the rows you defined to the `products` table in the specified keyspace.
+If the call is successful, a message returns indicating that the operation was successful, and the number of rows that were modified:
+```
+{"success": true,"rowsModified": 1}
+```

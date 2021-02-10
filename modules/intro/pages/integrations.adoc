@@ -1,0 +1,211 @@
+= Use integrations
+:slug: integrations
+
+++++
+<div id="integrations" class="container">
+  <div class="row">
+
+  <div style="padding: 20px" class="col-md-4">
+    <img class="DataGrip" src="https://api.monosnap.com/file/download?id=m1tIVeQxNbKfllUdxFj9qXdbLEM2Mf" style="height:300px">
+    <div class="example-meta">
+      <div class="example-name">
+        <a target="_blank" id="schema-management" href="https://docs.liquibase.com/workflows/database-setup-tutorials/cassandra-astra.html">Track Schema Changes with Liquibase</a>
+      </div>
+      <div class="example-description">
+        Use Liquibase to track Apache Cassandra ad Astra schema changes over time.
+      </div>
+      <br/>
+      <div class="category">
+        <i class="fa fa-clock-o" aria-hidden="true"></i> 50 minutes, Operator Tools
+      </div>
+      <div class="example-links">
+        Updated on Dec 15th, 2020
+      </div>
+      <div class="submitted-by">
+        Robert Reeves, Liquibase
+      </div>
+    </div>
+  </div>
+
+    <div style="padding: 20px" class="col-md-4">
+    <img class="DataGrip" src="https://api.monosnap.com/file/download?id=on96jjTSAaD7xsULru2vGIlzLe2QCo" style="height:300px">
+    <div class="example-meta">
+      <div class="example-name">
+        <a target="_blank" id="knowi-BI-ML" href="https://www.knowi.com/blog/datastax-astra-analytics-tutorial">Knowi BI Reporting and Analysis</a>
+      </div>
+      <div class="example-description">
+        Use Knowi to connect to DataStax Astra, analyze, and visualize data.
+      </div>
+      <br/>
+      <div class="category">
+        <i class="fa fa-clock-o" aria-hidden="true"></i> 30 minutes, BI/ML Reporting Tools
+      </div>
+      <div class="example-links">
+        Updated on Dec 15th, 2020
+      </div>
+      <div class="submitted-by">
+        Patrick Bacon, Knowi
+      </div>
+    </div>
+  </div>
+
+  <div style="padding: 20px" class="col-md-4">
+    <img class="DataGrip" src="https://www.sestevez.com/content/images/2020/07/image.png" style="height:300px">
+    <div class="example-meta">
+      <div class="example-name">
+        <a target="_blank" id="todo-astra-jamstack-netlify" href="https://www.sestevez.com/astra-datagrip/">Connecting to Astra from DataGrip via JDBC</a>
+      </div>
+      <div class="example-description">
+        A very simple way to use Intellij's DataGrip with Astra
+      </div>
+      <br/>
+      <div class="category">
+        <i class="fa fa-clock-o" aria-hidden="true"></i> 5 minutes, Developer Tools
+      </div>
+      <div class="example-links">
+        Updated on Dec 10th, 2020
+      </div>
+      <div class="submitted-by">
+        Sebastian Estevez, Datastax
+      </div>
+    </div>
+  </div>
+
+ <div class="row">
+  <div style="padding: 20px" class="col-md-4">
+    <img class="example-screenshot" src="https://github.com/yabinmeng/dseutilities/raw/master/documents/tutorial/datastax.astra/databricks_conn/resources/screenshots/notebook_cell1.png" style="height:300px">
+    <div class="example-meta">
+      <div class="example-name">
+        <a target="_blank" id="databricks-to-astra" href="https://github.com/yabinmeng/dseutilities/tree/master/documents/tutorial/datastax.astra/databricks_conn">Using Databricks Community Edition with Astra</a>
+      </div>
+      <div class="example-description">
+        Learn how to use Databricks Community Edition (DCE) (or Azure Databricks) to load data from an CSV file and save it into an Astra table; read data from an Astra table and process it in DCE.
+      </div>
+      <br/>
+      <div class="category">
+        <i class="fa fa-clock-o" aria-hidden="true"></i> 30 minutes, Data Movement
+      </div>
+      <div class="example-links">
+        Updated on Dec 10th, 2020
+      </div>
+      <div class="submitted-by">
+        Yabin Meng, DataStax
+      </div>
+      </div>
+    </div>
+
+
+  <div style="padding: 20px" class="col-md-4">
+    <img class="example-screenshot" src="https://github.com/yabinmeng/dseutilities/raw/master/documents/tutorial/datastax.astra/dse_to_astra/resources/screenshots/cassandra.catalog.png" style="height:300px">
+    <div class="example-meta">
+      <div class="example-name">
+        <a target="_blank" id="migrate-with-spark" href="https://github.com/yabinmeng/dseutilities/tree/master/documents/tutorial/datastax.astra/dse_to_astra">Migrate C* Cluster using Databricks Spark</a>
+      </div>
+      <div class="example-description">
+        Learn how to use Databricks Spark to load data from a stand-alone Apache Cassandra (C*) cluster into a DataStax Atra database.
+      </div>
+      <br/>
+      <div class="category">
+        <i class="fa fa-clock-o" aria-hidden="true"></i> 50 minutes, Migration
+      </div>
+      <div class="example-links">
+        Updated on Dec 10th, 2020
+      </div>
+      <div class="submitted-by">
+        Yabin Meng, Datastax
+      </div>
+    </div>
+  </div>
+
+  <div style="padding: 20px" class="col-md-4">
+    <img class="example-screenshot" src="https://api.monosnap.com/file/download?id=EYPc2T0qc0I8itVPAONfXtMa3CkPJh" style="height:300px">
+    <div class="example-meta">
+      <div class="example-name">
+        <a target="_blank" id="nosqlbench" href="https://ds-steven-matison.github.io/nosqlbench/astra/">Use Nosqlbench with Astra</a>
+      </div>
+      <div class="example-description">
+        Learn to use NoSQLBench to test loading data to Astra.
+      </div>
+      <br/>
+      <div class="category">
+        <i class="fa fa-clock-o" aria-hidden="true"></i> 20 minutes, Data Movement & Performance
+      </div>
+      <div class="example-links">
+        Updated on July 20th, 2020
+      </div>
+      <div class="submitted-by">
+        Steven Matison, Datastax
+      </div>
+    </div>
+  </div>
+</div>
+
+ <div class="row">
+  <div style="padding: 20px" class="col-md-4">
+    <img class="example-screenshot" src="https://api.monosnap.com/file/download?id=f1pJWF04sVkI94zkSVc9bFCk1QOnsk" style="height:300px">
+    <div class="example-meta">
+      <div class="example-name">
+        <a target="_blank" id="asb" href="https://ds-steven-matison.github.io/astra/service/broker/">Astra Service Broker with Kubernetes</a>
+      </div>
+      <div class="example-description">
+        Walk through setting up and using the Astra Service Broker with Kubernetes
+      </div>
+      <br/>
+      <div class="category">
+        <i class="fa fa-clock-o" aria-hidden="true"></i> 30 minutes, Cloud Composition
+      </div>
+      <div class="example-links">
+        Updated on Dec 10th, 2020
+      </div>
+      <div class="submitted-by">
+        Steven Matison, Datastax
+      </div>
+    </div>
+  </div>
+    <div style="padding: 20px" class="col-md-4">
+    <img class="example-screenshot" src="https://pbs.twimg.com/profile_images/781633389577195521/kazUJooF_400x400.jpg" style="height:300px">
+    <div class="example-meta">
+      <div class="example-name">
+        <a target="_blank" id="kafka-guide" href="https://docs.astra.datastax.com/docs/streaming-data-with-the-datastax-apache-kafka-connector">Kafka Source with Astra </a>
+      </div>
+      <div class="example-description">
+        Using the DataStax Apache Kafka™ Connector to stream records from an Apache Kafka topic to your DataStax Astra database..
+      </div>
+      <br/>
+      <div class="category">
+        <i class="fa fa-clock-o" aria-hidden="true"></i> 50 minutes, Intermediate
+      </div>
+      <div class="example-links">
+        Updated on Dec 10th, 2020
+      </div>
+      <div class="submitted-by">
+        Docs Team, Datastax
+      </div>
+    </div>
+  </div>
+</div>
+
+
+</div>
+  <style>
+  .example-name a {
+    color: #3B84C1;
+    font-weight: 600;
+    text-decoration: none!important;
+    font-size: 16px;
+  }
+  .example-meta {
+    padding: 15px;
+  }
+</style>
+<script>
+  var apps = Array.from(document.getElementById('sample-apps').getElementsByTagName('a')).map(item => item.id);
+
+  apps.forEach(function(app) {
+    var link = document.getElementById(app);
+    window.analytics.trackLink(link, 'Astra - Sample App Gallery GitHub Link Clicked', {
+    app: app
+  });
+  });
+</script>
+++++

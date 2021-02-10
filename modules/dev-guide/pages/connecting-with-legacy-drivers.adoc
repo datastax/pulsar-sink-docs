@@ -1,0 +1,21 @@
+= Connect with legacy drivers
+:slug: connecting-with-legacy-drivers
+
+If the driver you are using doesn’t support the Astra secure connect bundle and you are unable to upgrade, you can still connect to DataStax Astra with additional steps. To connect, collect connection information from the secure connect bundle and set up the required SSL context for your driver to speak with Astra.
+
+== Collect Astra connection information
+. Download and unzip the secure connect bundle for your Astra database.
+. From the bundle, collect the SSL related files:
+
+* ca.cert
+* cert
+* key
+
+. From the `cqlshrc` file, collect the port.
+[IMPORTANT]
+====
+Use only the port from `cqlshrc`.
+Other ports found in the secure connect bundle will not allow you to connect with this method.
+====
+
+. From the `config.json` file, grab the hostname.

@@ -1,0 +1,78 @@
+= Write documents
+:slug: write-documents
+
+==Specify a collection name
+First, let's add a document to a specified collection.
+Send a POST request to `/v2/namespaces/{namespace_name}/collections/{collections_name}` to add data to the collection `products`.
+The data is passed in the JSON body:
+```
+curl --request POST
+  --url https://${ASTRA_CLUSTER_ID}-${ASTRA_CLUSTER_REGION}.apps.astra.datastax.com/api/rest/v2/namespaces/betterbotz/collections/products
+  --header "X-Cassandra-Token: $ASTRA_AUTHORIZATION_TOKEN"
+  --header 'Content-Type: application/json'
+  --data '{
+  "name": "Heavy Lift Arms",
+  "description": "Heavy lift arms capable of lifting 1,250lbs of weight per arm. Sold as a set."
+}'"
+```
+
+===Sample results
+```
+"documentId": "d5522153-0d75-4393-a68c-be71a2bb44fd"
+```
+
+Notice the `documentId` returned is a UUID if not specified.
+
+==Specify collection name and document-id
+Next, let's add a document to a specified collection, but specify the document-id.
+Send a PUT request to `+/v2/namespaces/{namespace_name}/collections/{collections_name}/{document-id}+` to add data to the collection `products`.
+The `documentId` can be any string.
+The data is passed in the JSON body.
+```
+curl --request PUT
+  --url https://${ASTRA_CLUSTER_ID}-${ASTRA_CLUSTER_REGION}.apps.astra.datastax.com/api/rest/v2/namespaces/betterbotz/collections/products/e9b6c04d-0604-4bab-a3ea-6a7984644631
+  --header "X-Cassandra-Token: $ASTRA_AUTHORIZATION_TOKEN"
+  --header 'Content-Type: application/json'
+  --data '{
+  "name": "Medium Lift Arms",
+  "description": "Medium lift arms capable of lifting 850lbs of weight per arm. Sold as a set.",
+  "price": "3199.99",
+  "created": "2020-01-10 09:23:31.020+0040"
+}'"
+```
+
+===Sample results
+```
+"documentId": "e9b6c04d-0604-4bab-a3ea-6a7984644631"
+```
+
+Note the difference between using POST and PUT.
+The POST request is used to insert new documents when you want the system to auto-generate the documentId.
+The PUT request is used to insert a new document when you want to specify the documentId.
+
+PUT requests can also be used to update an existing document.
+Let's look at those examples, next.
+
+==Insert a sub-document
+You can also insert documents that have nested values, or sub-documents.
+Send a PUT request to `+/v2/namespaces/{namespace_name}/collections/{collections_name}/{document-id}+` to add data to the existing collection.
+The data is passed in the JSON body.
+```
+curl --request PUT
+  --url https://${ASTRA_CLUSTER_ID}-${ASTRA_CLUSTER_REGION}.apps.astra.datastax.com/api/rest/v2/namespaces/betterbotz/collections/products/e9b6c04d-0604-4bab-a3ea-6a7984644631
+  --header "X-Cassandra-Token: $ASTRA_AUTHORIZATION_TOKEN"
+  --header 'Content-Type: application/json'
+  --data '{
+  "name": "Medium Lift Arms",
+  "description": "Medium lift arms capable of lifting 850lbs of weight per arm. Sold as a set.",
+  "dimensions": {
+    "length": 13,
+    "height": 43,
+    "width": 27}
+}'
+```
+
+===Sample results
+```
+"documentId": "e9b6c04d-0604-4bab-a3ea-6a7984644631"
+```

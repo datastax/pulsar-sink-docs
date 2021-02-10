@@ -1,0 +1,16 @@
+= Export notebooks from DataStax Astra
+:slug: exporting-notebooks-from-datastax-astra
+
+Export a Studio notebook to a packaged compressed file. You can share the exported notebook with teammates, who can import the notebook for their own use.
+
+== Procedure
+. Export a notebook.
+ . In any open notebook, in the menu (*☰*), select *Export this Notebook*.
+ . On the Notebook Manager page, click the ellipsis button (*...*) to show more actions for the notebook you want to export, and click *Export*.
+. Choose one of the following export options:
+ * *Cell code and result sets:* Export the entire notebook. Useful for collaborating.
+ * *Cell code only:* Export only the cell code of the notebook. Useful for creating a clean copy of the notebook.
+For example, for a tutorial.
+You can also choose to export the notebook with diagnostic data for troubleshooting purposes.
+Selecting this option might include sensitive information in the exported notebook, but credentials are not included.
+. Share the exported notebook using any file manager.

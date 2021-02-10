@@ -1,0 +1,18 @@
+= Document API
+:slug: document-api
+
+In this QuickStart, you’ll use the Stargate Document API plugin to enable schemaless storage of free form JSON Documents in your Astra database. No modeling needed!
+
+To use the Document API, you must define the namespace and collections that will store the data.
+A namespace is a container for which a replication factor defines the number of data replicas the database will store.
+Collections consist of unstructured JSON documents.
+Documents can themselves hold multiple documents.
+Multiple collections are contained in a namespace, but a collection cannot be contained in multiple namespaces.
+
+We'll show you you how to:
+. xref:generate-authorization-token.adoc[Generate an authorization token]
+. xref:check-for-namespace.adoc[Check for namespace]
+. xref:write-documents.adoc[Write documents]
+. xref:read-documents.adoc[Read documents]
+. xref:update-documents.adoc[Update documents]
+. xref:delete-documents.adoc[Delete documents]

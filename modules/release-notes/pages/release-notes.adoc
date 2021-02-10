@@ -1,0 +1,100 @@
+= Astra release notes
+:slug: release-notes
+
+DataStax Astra release notes provide information about new and improved features, known and resolved issues, and bug fixes.
+
+== 9 December 2020
+=== Improvements
+* https://stargate.io/[Stargate] endpoints are available in all Astra databases created 9 December 2020 or later and in free Astra databases created 7 October 2020 or later.
+For more, see the Stargate link:ref:auth[REST API] and schemaless link:ref:auth-1[Document API].
+* New xref:astra-data-loader.adoc[Astra Data Loader] simplifies how you can get data into your Astra database.
+
+== 15 October 2020
+=== Improvements
+* New xref:service-tier-options.adoc[Astra plan options] are available to provide you with options that allow you to weigh the costs and database capabilities for your Astra database.
+* You can now add xref:managing-regions.adoc[multiple regions] to your database.
+
+== 29 September 2020
+####We've improved our user interface to make Astra easier for you!
+Check out your databases and our new resources in https://astra.datastax.com[Astra].
+image::../images/screenshots/50da5ef-newAstraUI.png[Revised Astra UI]
+
+== 18 September 2020
+####Use VPC peering to access your database on xref:connect-with-azure-vpc-peering.adoc[Azure] and xref:using-gcp-vpc-peering.adoc[GCP] is available to access your Astra database from Azure or GCP.
+This feature is available for C- and D-tier databases.
+
+== 28 August 2020
+####Launch your Astra database on Azure  You can now xref:creating-your-astra-database.adoc[creating your Astra database] with Microsoft Azure as your cloud provider.
+image::../images/screenshots/33040d8-Screen_Shot_2020-08-28_at_2.11.20_PM.png
+
+###Improvements
+
+* Added C-20, C-40, D-10, D-20, and D-40 database tiers. For more, see xref:service-tier-options.adoc[Service tier options].
+
+== 31 July 2020
+####DevOps API simplifies creating and managing Astra databases  To start using the DevOps API, xref:creating-a-new-service-account-for-your-database.adoc[create a service account] for your organization.
+Use the service account secret to xref:authenticating-your-service-account.adoc[authenticate your service account] and use the DevOps API.
+
+=== Migrate Astra documentation to a new platform
+
+The https://docs.astra.datastax.com/docs/[Astra product documentation] and the https://docs.astra.datastax.com/reference[Astra API references] are now hosted together at https://docs.astra.datastax.com/[docs.astra.datastax.com].
+
+== 17 July 2020
+####Use VPC peering to access your database on AWS clusters xref:using-aws-vpc-peering.adoc[VPC peering] is available to access your Astra database from the AWS Console.
+This feature is available for only C10 databases on AWS.
+
+=== In-product support is available via chat
+Submit questions or feedback directly in Astra using our new chat feature in the lower right corner.
+image::../images/screenshots/IntercomIcon.png[Use the new chat feature in DataStax Astra.]
+
+== 10 July 2020
+=== Improvement *Manage Organizations* is now listed under your databases menu.
+From the *Manage Organizations* screen, you can *View Billing* and *View Users* under the Action menu.
+
+== 26 June 2020
+=== New features
+Documentation help pane provides useful documentation links When you select *Get Help* a pane opens that provides links to helpful documentation for using your Astra database.
+
+=== Improvements
+* Check the status of Astra databases at https://status.astra.datastax.com.
+* Redesigned the database page to make information easier to read and access.
+* Added a footer to the user interface that provides important links and contact information.
+* The database cluster ID is now included in the *Cluster Details* on the *Database Details* page.
+
+== 12 May 2020: General availability
+* Enabled billing for C10 tier.
+* Reduced how long it takes to provision a cluster.
+* When an organization is created, roles can now be assigned for administrator, read/write, read, and service account.
+Groups can now be created with the associated role, except for the service account.
+* Added xref:datastax-astra-data-api.adoc[REST API] to connect to database.
+* Users can now use their Google or GitHub logins to access the Astra database.
+* Added GraphQL to simplify queries without Cassandra Query Language (CQL).
+* Meets SOC2 Type I security audit compliance.
+
+== February 27, 2020 (Beta)
+###Integrated CQLSH We brought the Cassandra Query Language SHell (CQLSH) even closer to you by integrating it directly in the DataStax Astra console.
+Navigate to your database, select the *CQL Console* tab, and issue CQL commands to interact with your database.
+
+== January 24, 2020 (Beta)
+###Standalone CQLSH The standalone version of CQLSH was released for connecting to DataStax Astra databases.
+What does that mean for you?
+It means connecting to an Astra database from your laptop without requiring DataStax Enterprise (DSE) or DataStax Distribution of Apache Cassandra™ (DDAC).
+
+Previously, you used native CQLSH included in one of those products.
+Today, you can download CQLSH, download the secure connect bundle for your Astra database, and connect with a single command.
+
+== January 7, 2020 (Beta)
+###Free tier
+
+The Free tier was released for DataStax Astra, allowing you to create an Astra database with 10 GB for free.
+Create a database with just a few clicks and start developing within minutes, no credit card required.
+[NOTE]
+====
+You can have only one active database on the Free tier.
+====
+
+== Open Beta
+The Beta release of DataStax Astra brings the ability to develop and deploy data-driven applications with a cloud-native service, built on the best distribution of Apache Cassandra™, without the hassles of database and infrastructure administration.
+
+Instead of listing the features included in this release, learn about what DataStax Astra is, and then get started with creating your own database.
+If you have questions, review the xref:datastax-astra-faq.adoc[FAQ] for answers.

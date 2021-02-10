@@ -1,0 +1,109 @@
+= Migrate Java driver
+:slug: migrating-your-datastax-java-driver-to-connect-with-astra-databases
+
+Complete the following procedure to migrate your existing DataStax Java driver to a version capable of connecting to Astra databases created using DataStax Astra.
+
+== Prerequisites
+. xref:creating-your-astra-database.adoc[Create a database] using https://astra.datastax.com[DataStax Astra].
+. xref:obtaining-database-credentials.adoc[Download the secure connect bundle] to obtain connection credentials for your DataStax Astra database.
+[TIP]
+====
+Alternatively, xref:providing-access-to-astra-databases[have a teammate provide access to their Astra database].
+====
+
+== Procedure
+. In your existing DSE Java driver code, update dependencies to include the DSE Java driver version that can connect to Astra databases.
+===DataStax Java driver for Apache Cassandra 4.x
+```
+<dependency>
+  <groupId>com.datastax.oss</groupId>
+  <artifactId>java-driver-core</artifactId>
+  <version>4.6.0</version>
+</dependency>
+```
+
+=== DataStax Java driver for Apache Cassandra 3.x
+```
+<dependency>
+  <groupId>com.datastax.cassandra</groupId>
+  <artifactId>cassandra-driver-core</artifactId>
+  <version>3.8.0</version>
+</dependency>
+```
+
+=== DSE Java 2.x
+```
+<dependency>
+  <groupId>com.datastax.dse</groupId>
+  <artifactId>dse-java-driver-core</artifactId>
+  <version>2.3.0</version>
+</dependency>
+```
+
+=== DSE Java 1.x
+```
+<dependency>
+  <groupId>com.datastax.dse</groupId>
+  <artifactId>dse-java-driver-core</artifactId>
+  <version>1.9.0</version>
+</dependency>
+```
+
+. *Optional:* To use DSE QueryBuilder, which is a utility used to generate CQL queries programmatically, add the following dependency to your `pom.xml` file:
+```
+<dependency>
+  <groupId>com.datastax.dse</groupId>
+  <artifactId>dse-java-driver-query-builder</artifactId>
+  <version>4.6.0</version>
+</dependency>
+```
+
+. Modify the connection code to use the DataStax Astra API.
+In the `CqlSession` or `Session` objects (`DseCluster` or `DseSession` objects for DSE), include the path to the secure connect bundle for your Cassandra database (`secure-connect-**database_name**.zip`) in the `withCloudSecureConnectBundle()` method, as shown in the following example.
+
+```
+CqlSession session = CqlSession.builder()
+  .withCloudSecureConnectBundle("/path/to/secure-connect-database_name.zip")
+  .withAuthCredentials("username","password")
+  .withKeyspace("keyspace_name")
+  .build())",       "language": "text",       "name": "DataStax Java driver for Apache Cassandra 4.x
+```
+
+=== DataStax Java driver for Apache Cassandra 3.x
+```
+Session session = Cluster.builder()
+  .withCloudSecureConnectBundle("/path/to/secure-connect-database_name.zip")
+  .withAuthProvider(new PlainTextAuthProvider("username", "password"))
+  .build()
+  .connect("keyspace_name"))
+```
+
+=== Java 2.x
+```
+DseSession session = DseSession.builder()
+  .withCloudSecureConnectBundle("/path/to/secure-connect-database_name.zip")
+  .withAuthCredentials("username", "password")
+  .withKeyspace("keyspace_name")
+  .build();
+```
+
+=== Java 1.x
+```
+DseCluster cluster = DseCluster.builder()
+  .withCloudSecureConnectBundle("/path/to/secure-connect-database_name.zip")
+  .withCredentials("username", "password")
+  .build();
+DseSession session = cluster.connect("keyspace_name");
+```
+
+[NOTE]
+====
+If converting from using the open source Cassandra Java driver to the DSE Java driver, ensure that you change `Session` to `DseSession`.
+====
+
+. Build the project to test the connection.
+```
+mvn clean compile exec:java -Dexec.mainClass=YourJavaDriver.java
+```
+
+If successful, the code builds, compiles, and connects to your Cassandra database.

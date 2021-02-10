@@ -1,0 +1,70 @@
+= DataStax C# driver
+:slug: connecting-to-your-database-with-the-c-driver
+
+Use the unified DataStax C# driver to connect to your DataStax Astra database and begin building your own application.
+
+[TIP]
+====
+DataStax recommends using the unified DataStax C# driver.
+If you have an existing Apache Cassandra or DataStax Enterprise (DSE) C# driver, xref:migrating-the-c-driver-to-connect-with-astra-databases.adoc[migrate the driver] to a version that is capable of connecting to Astra databases.
+====
+
+== Prerequisites
+. https://dotnet.microsoft.com/download/dotnet-core[Download] and https://docs.microsoft.com/en-us/dotnet/core/tools/dotnet-install-script[install] the current version of the .NET Core SDK.
+. Download the secure connect bundle to obtain connection credentials for your DataStax Astra database.
+[TIP]
+====
+Alternatively, have a teammate provide access to their Astra database.
+====
+
+== Procedure
+. Create a new C# project and configure it to connect to your Cassandra database.
+```
+mkdir csharpproject\ncd csharpproject\ndotnet new console
+```
+
+. Add the dependencies for the C# driver to your project.
+```
+dotnet add package CassandraCSharpDriver -v 3.15.0
+```
+
+. Replace the code in `Program.cs` with the following code to connect to your Astra database.
+[NOTE]
+====
+Include the absolute path to the secure connect bundle for your Astra database (`secure-connect-database_name.zip`) in the `WithCloudSecureConnectionBundle` method call, and your credentials in the `WithCredentials` method call, as shown in the following examples.
+====
+
+```
+using System;
+using System.Linq;
+using Cassandra;
+
+namespace csharpproject
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            var session =
+                Cluster.Builder()
+                       .WithCloudSecureConnectionBundle(@"C:\path\to\secure-connect-database_name.zip")
+                       .WithCredentials("username", "password")
+                       .Build()
+                       .Connect();
+        }
+    }
+}
+```
+
+. After the connection code, add the following code to the `Main` method in `Program.cs`. This code runs a CQL query, and prints the output to the console.
+```
+var rowSet = session.Execute("select * from system.local");
+Console.WriteLine(rowSet.First().GetValue<string>("cluster_name"));
+```
+
+. Run your C# project with the `dotnet` runtime.
+```
+dotnet restore
+dotnet build
+dotnet run --no-build
+```

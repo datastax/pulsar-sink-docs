@@ -1,0 +1,161 @@
+= Node.js REST Client
+:slug: astra-rest-client
+
+Connect your app to Astra or Stargate using a REST interface from node.js.
+
+The Astra REST Client connects to the Astra REST API and the Astra Document API.
+
+== Set up your environment
+. Install the Astra JS Collection:
+```
+npm install @astrajs/rest
+```
+
+. Open a browser, navigate to https://astra.datastax.com/[DataStax Astra], and log in.
+. From your *Dashboard* page, select your database.
+. Copy the **Cluster ID** of your database.
+You can also find the **Cluster ID** in the URL, which is the last UUID in the path:
+```
+https://astra.datastax.com/org/{org-Id}/database/{databaseid}
+```
+
+. Add the **Cluster ID** as an environment variable with the following command:
+```
+export ASTRA_DB_ID={databaseid}
+```
+
+=== Example
+```
+export ASTRA_DB_ID=b5285f63-8da5-4c6e-afd8-ade371a48795
+```
+
+. Copy the *Region* of your database, the region where your database is located.
+. Add the *Region* as an environment variable with the following command:
+```
+export ASTRA_DB_REGION={region}
+```
+
+=== For example
+```
+export ASTRA_DB_REGION=us-east1
+```
+
+. Add your username and your password as environment variables with the following command:
+```
+export ASTRA_DB_USERNAME={username}
+export ASTRA_DB_PASSWORD={password}
+```
+
+. Use `printenv` to ensure the environment variables were exported.
+
+== Use Client with Nodejs
+
+=== Document API
+```
+  const { createClient } = require("@astrajs/rest");
+
+  // create an Astra client
+  const astraClient = await createClient({
+      astraDatabaseId: process.env.ASTRA_DB_ID,
+      astraDatabaseRegion: process.env.ASTRA_DB_REGION,
+      username: process.env.ASTRA_DB_USERNAME,
+      password: process.env.ASTRA_DB_PASSWORD,
+  });
+
+  const basePath = "/api/rest/v2/namespaces/<namespace>/collections/<collectionName>";
+
+  // get a single user by document id
+  const { data, status } = await astraClient.get(`${basePath}/<documentId>`);
+
+  // get a subdocument by path
+  const { data, status } = await astraClient.get(`${basePath}/<documentId>/<subdocument>/<subdocument>`);
+
+  // search a collection of documents
+  const { data, status } = await astraClient.get(basePath, {
+    params: {
+      where: {
+        name: { $eq: "<documentId>" }
+      }
+    }
+  });
+
+  // create a new user without a document id
+  ```
+  const { data, status } = await astraClient.post(basePath, {
+    name: "<documentId>",
+  });
+  ```
+
+  // create a new user with a document id
+  const { data, status } = await astraClient.put(`${basePath}/<documentId>`, {
+    name: "cliff",
+  });
+
+  // create a user subdocument
+  const { data, status } = await astraClient.put(`${basePath}/<documentId>/<subdocument>`, {
+    title: "new blog",
+  });
+
+  // partially update user
+  const { data, status } = await astraClient.patch(`${basePath}/<documentId>`, {
+    name: "cliff",
+  });
+
+  // delete a user
+  const { data, status } = await astraClient.delete(`${basePath}/<documentId>`);
+```
+
+=== REST API
+```
+  const { createClient } = require("@astrajs/rest");
+
+  // create an Astra client
+  const astraClient = await createClient({
+      astraDatabaseId: process.env.ASTRA_DB_ID,
+      astraDatabaseRegion: process.env.ASTRA_DB_REGION,
+      username: process.env.ASTRA_DB_USERNAME,
+      password: process.env.ASTRA_DB_PASSWORD,
+  });
+
+  const basePath = "/api/rest/v2/KEYSPACES/<namespace>/collections/<collectionName>";
+
+  // get a single user by document id
+  const { data, status } = await astraClient.get(`${basePath}/<documentId>`);
+
+  // get a subdocument by path
+  const { data, status } = await astraClient.get(`${basePath}/<documentId>/<subdocument>/<subdocument>`);
+
+  // search a collection of documents
+  const { data, status } = await astraClient.get(basePath, {
+    params: {
+      where: {
+        name: { $eq: "<documentId>" }
+      }
+    }
+  });
+
+  // create a new user without a document id
+  ```
+  const { data, status } = await astraClient.post(basePath, {
+    name: "<documentId>",
+  });
+  ```
+
+  // create a new user with a document id
+  const { data, status } = await astraClient.put(`${basePath}/<documentId>`, {
+    name: "cliff",
+  });
+
+  // create a user subdocument
+  const { data, status } = await astraClient.put(`${basePath}/<documentId>/<subdocument>`, {
+    title: "new blog",
+  });
+
+  // partially update user
+  const { data, status } = await astraClient.patch(`${basePath}/<documentId>`, {
+    name: "cliff",
+  });
+
+  // delete a user
+  const { data, status } = await astraClient.delete(`${basePath}/<documentId>`);
+```

@@ -1,0 +1,41 @@
+= Database regions
+:slug: database-regions
+
+When creating a database, select a region for your database. Choose a region that is geographically close to your users to optimize performance.
+
+== AWS
+* us-east-1
+* us-west-2
+* ap-southeast-1
+
+Production workloads only:
+
+* eu-central-1
+
+== Azure
+Production workloads only:
+
+* eastus
+* westus2
+* westeurope
+
+== GCP
+* us-east1
+
+Production workloads only
+
+* us-east4
+* us-central1
+* us-west1
+* asia-east1
+* europe-west1
+* europe-west4
+* europe-north1
+
+////
+Premium regions for Production Workloads with Dedicated Resources:
+
+* australia-southeast1
+* asia-east2 (Hong Kong)
+* na-northeast
+////

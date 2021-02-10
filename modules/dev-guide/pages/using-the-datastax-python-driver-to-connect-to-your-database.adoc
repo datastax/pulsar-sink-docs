@@ -1,0 +1,83 @@
+= DataStax Python driver
+:slug: using-the-datastax-python-driver-to-connect-to-your-database
+
+Use the unified DataStax Python driver to connect to your DataStax Astra database and begin building your own application.
+
+[TIP]
+====
+DataStax recommends using the unified DataStax Python driver.
+If you have an existing Apache Cassandra or DataStax Enterprise (DSE) Python driver, xref:migrating-your-datastax-python-driver-to-connect-with-astra-databases.adoc[migrate the driver] to a version that is capable of connecting to Astra databases.
+====
+
+==Prerequisites
+. Download and install a supported Python version. Python 2.7, 3.4, 3.5 and 3.6 are supported.
+[NOTE]
+====
+https://www.python.org/[CPython] (the standard Python implementation) and http://pypy.org/[PyPy] are supported and tested.
+====
+
+. link:doc:obtaining-database-credentials[Download the secure connect bundle] to obtain connection credentials for your DataStax Astra database.
+[TIP]
+====
+Alternatively, [have a teammate provide access to their Astra database](doc:providing-access-to-astra-databases).
+====
+
+===Procedure
+. Install the DataStax Python driver.
+```
+pip install cassandra-driver
+```
+See the https://docs.datastax.com/en/developer/python-dse-driver/latest/installation/[Python driver installation instructions] for more information.
+
+. Verify that the DataStax Python driver installed successfully:
+```
+python -c 'import cassandra;
+print (cassandra.*version*)'
+```
+The version number displays in the console output: `3.23.0`
+
+. Create a `connect_database.py` file in the main directory for your Python project.
+```
+cd python_project
+touch connect_database.py
+```
+
+. Copy the following connection code into the `connect_database.py` file.
+[NOTE]
+====
+Set the `cloud_config` parameter for the `Cluster` initialization as shown in the following example.
+The `secure_connect_bundle` must include the absolute path to your Astra database credentials (`secure-connect-database_name.zip`).
+====
+
+```
+from cassandra.cluster import Cluster
+from cassandra.auth import PlainTextAuthProvider\n\ncloud_config= {
+        'secure_connect_bundle': '/path/to/secure-connect-database_name.zip'
+}
+auth_provider = PlainTextAuthProvider('username', 'password')
+cluster = Cluster(cloud=cloud_config, auth_provider=auth_provider)
+session = cluster.connect()
+```
+
+. After the connection code, add the following code to `connect-database.py`.
+This code creates a `Cluster` instance to connect to your Astra database, runs a CQL query, and prints the output to the console.
+As the name suggests, you will typically have one instance of https://docs.datastax.com/en/developer/python-dse-driver/latest/api/dse/cluster/#dse.cluster.Cluster[Cluster] for each Cassandra cluster you want to interact with.
+
+```
+row = session.execute("select release_version from system.local").one()
+if row:
+    print(row[0])
+    else:
+        print("An error occurred.")
+```
+
+. Save and close the `connect_database.py` file.
+. Run `connect_database.py`.
+```
+python ./connect_database.py
+```
+
+The console output displays the `release_version` from the `system.local` table:
+```
+4.0.0.670
+```

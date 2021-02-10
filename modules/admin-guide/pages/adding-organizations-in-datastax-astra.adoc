@@ -1,0 +1,26 @@
+= Add organizations in Astra
+:slug: adding-organizations-in-datastax-astra
+
+Creating multiple organizations in DataStax Astra is useful for segmenting groups of users and creating various  environments.
+== Procedure
+. From any page in https://astra.datastax.com[DataStax Astra], select the *Organizations* dropdown.
+image::../images/screenshots/169ed28-Screen_Shot_2020-12-03_at_12.24.54_PM.png[Organization dropdown menu]
+. In the main dropdown, select *Add Organization*.
+The *Add Organization* window opens.
+. Enter the name and email address for your new organization.
+. Select *Add* to add the new organization.
+
+The organization is added to the list.
+An email is sent to the email address entered for the organization owner.
+
+////
+== Procedure
+. From any page in [DataStax Astra](https://astra.datastax.com), select your profile dropdown and select **Manage Organizations**.
+image::../images/screenshots/169ed28-Screen_Shot_2020-12-03_at_12.24.54_PM.png[User dropdown menu]
+. Then click the **Add Organization** button.
+image::../images/screenshots/dcd4e2c-Screen_Shot_2020-12-03_at_12.25.17_PM.png
+. In the **Add Organization** window enter the name and email address for your new organization and then select **Add**.
+image::../images/screenshots/51f1630-Screen_Shot_2020-12-03_at_12.26.11_PM.png
+
+The organization is added to the list. An email is sent to the admin email address entered for the organization owner.
+////

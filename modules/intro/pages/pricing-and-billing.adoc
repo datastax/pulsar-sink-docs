@@ -1,0 +1,39 @@
+= Pricing and billing
+:slug: pricing-and-billing
+
+Learn about the pricing model and billing structure for DataStax Astra.
+
+== Pricing
+The cost of your DataStax Astra database is based on which xref:service-tier-options.adoc[plan] you select.
+
+Each Astra database (except on the Free tier) uses a single CU by default, which represents three database instances that are grouped together for three replicas.
+
+The Service Tier represents the amount of compute power allocated to each CU, and represents three compute instances per CU.
+For more, see xref:service-tier-options.adoc[Service tier options].
+
+Pricing is presented in the DataStax Cloud console in hourly terms, but billed in one-minute granularity.
+
+== Billing
+DataStax Astra handles billing through an integration with Stripe, and displays all related billing information in the *Billing Summary* section of your *Organization* summary page.
+
+In the *Billing Summary*, a tables shows the following information:
+
+* Payment Status: Paid or Pending
+* Invoice Date
+* Invoice Period
+* Subtotal
+* Total
+
+You will be billed monthly based on Greenwich Mean Time (GMT), also known as Coordinated Universal Time (UTC).
+
+[NOTE]
+====
+This summary is an approximation of your current charges before taxes, and might not reflect total database usage.
+The estimated cost per month is estimated from historical usage trends.
+The number of CUs in use, selected link:doc:service-tier-options[service tier], and number of active Astra databases impact the total cost.
+====
+
+To view your bill, hover over the row for which you want to download the bill.
+Use the overflow menu to *Download* your bill.
+
+When creating your first paid Astra database, enter your credit card number and associated billing information.

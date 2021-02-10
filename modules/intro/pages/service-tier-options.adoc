@@ -1,0 +1,87 @@
+= Astra plan options
+:slug: service-tier-options
+
+Plans affect the features, storage, and pricing of your database.
+
+For all paid plans, you can park, unpark, terminate, and and resize the databases with the xref:managing-databases.adoc[user interface] or the xref:manage-database-with-service-account.adoc[DevOps API].
+[NOTE]
+====
+To compare these tiers to Apache Cassandra™ sizing, treat the initial paid databas with a replication factor of three as three Cassandra instances in three separate racks.
+====
+
+== Serverless (Beta)
+
+[DANGER]
+====
+Serverless databases are a Beta feature.
+Use this database option at your own risk.
+====
+
+The Serverless database is an elastic cloud-native database that scales with your workload.
+You can scale your compute and storage capabilities independently.
+This allows you to focus on developing your application and less on your infrastructure costs.
+
+Only one GCP region is available for Serverless databases.
+Serverless databases don't support VPC peering or multi-region databases.
+You cannot resize or park your Serverless database.
+
+== Dev and Test with Shared Resources
+Dev and Test databases offer an entry point for developers.
+Only select AWS and GCP regions are available for the Dev and Test databases.
+Dev and Test databases don't support VPC peering or multi-region databases.
+[cols=2*,options=header]
+|===
+|Plan
+|Description
+
+|A5
+|3 vCPU, 12GB DRAM, 10GB total usable storage
+
+|A10
+|6 vCPU, 24GB DRAM, 20GB total usable storage
+
+|A20
+|12 vCPU, 48GB DRAM, 40GB total usable storage
+
+|A40
+|24 vCPU, 96GB DRAM, 80GB total usable storage
+
+|===
+
+== Production Workloads with Dedicated Resources
+VPC peering and multi-region databases are available on Production Workload databases.
+[cols=2*,options=header]
+|===
+|Plan
+|Description
+
+|C10
+|12 vCPU, 48GB DRAM, 500GB total usable storage
+
+|C20
+|24 vCPU, 96GB DRAM, 500GB total usable storage
+
+|C30
+|48 vCPU, 192GB DRAM, 500GB total usable storage
+
+|===
+
+== High-Density Production Workloads with Dedicated Resources
+High-Density Production Workload databases offer greater disk capacity and performance than other service tiers.
+VPC peering and multi-region databases are available on High-Density Product Workload databases.
+
+[cols=2*,options=header]
+|===
+|Plan
+|Description
+
+|D10
+|12 vCPU, 48GB DRAM, 1500GB total usable storage
+
+|D20
+|24 vCPU, 96GB DRAM, 1500GB total usable storage
+
+|D40
+|48 vCPU, 192GB DRAM, 1500GB total usable storage
+
+|===

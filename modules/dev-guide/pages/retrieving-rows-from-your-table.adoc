@@ -1,0 +1,57 @@
+= Retrieve rows from your table
+:slug: retrieving-rows-from-your-table
+
+Retrieve data from your tables using Astra's REST API.
+
+After creating a table in your keyspace and adding rows, you can retrieve data.
+Use the [Retrieve rows](ref:getrows-1) endpoint to retrieve rows in the table you created.
+
+== Prerequisites
+. [Generate an authorization token](doc:generating-authorization-token).
+. [Create a table in your keyspace](doc:creating-a-table-in-your-keyspace).
+. [Add rows to your table](doc:adding-rows-to-your-table).
+
+== Procedure
+. Copy the following request, which you use to retrieve rows from the specified table.
+```
+curl --request GET \
+  --url https://${ASTRA_CLUSTER_ID}-${ASTRA_CLUSTER_REGION}.apps.astra.datastax.com/api/rest/v2/keyspaces/${ASTRA_DB_KEYSPACE}/{table_name}/{primaryKey} \
+  --header 'accept: application/json' \
+  --header 'x-cassandra-request-id: {unique-UUID}' \
+  --header "x-cassandra-token: ${ASTRA_AUTHORIZATION_TOKEN}"
+```
+. Modify `my_keyspace` to match the name of your keyspace.
+. Replace `table_name` with the name of the table you want to retrieve data from.
+In this example, enter `products` as the table name.
+. Replace `primaryKey` with the value that you want to retrieve from the glossary:primary key column for your table.
+For example, if your primary key is defined as `PRIMARY KEY(product_name)`, replace `primaryKey` in the `--url` with value you want to retrieve from the `id` column.
+. Optional: Enter a `{unique-UUID}` for the request.
+
+The following request retrieves the row for `Heavy Lift Arms` from the `products` table:
+```
+curl --request GET \
+  --url https://${ASTRA_CLUSTER_ID}-${ASTRA_CLUSTER_REGION}.apps.astra.datastax.com/api/rest/v2/keyspaces/${ASTRA_DB_KEYSPACE}/products/e9b6c02d-0604-4bab-a3ea-6a7984654631 \
+  --header 'accept: application/json' \
+  --header 'x-cassandra-request-id: xyzaa27b-de8e-4afc-8431-8f06a326047d' \
+  --header "x-cassandra-token: ${ASTRA_AUTHORIZATION_TOKEN}"
+```
+
+. Run the cURL call to retrieve the row you indicated from the `products` table in the specified keyspace.
+If the call is successful, the data for the specified row returns:
+```
+{
+    "count": 1,
+    "data": [
+    {
+        "name": "Heavy Lift Arms",
+        "description": "Heavy lift arms capable of lifting 1,250 lbs of weight per arm. Sold as a set.",
+        "id": "e9b6c02d-0604-4bab-a3ea-6a7984654631",
+        "created":
+        {
+            "nano": 511000000,
+            "epochSecond": 1335205543
+        },
+        "price": 4199.99
+    }]
+}
+```

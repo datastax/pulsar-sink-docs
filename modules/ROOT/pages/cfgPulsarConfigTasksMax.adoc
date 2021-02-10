@@ -1,3 +1,0 @@
-= Configuring parallelism
-
-For information on configuring parallelism for the DataStax Apache® Pulsar Connector, see xref:opsPulsarScaling.adoc[].

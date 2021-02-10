@@ -1,0 +1,13 @@
+= IAM DRAFT: Invite users to an organization
+:slug: draft-invite-users-to-an-organization
+
+Invite users to join your organization and provide them with access based on the selected role.
+
+==Procedure
+. From your Astra *Dashboard*, select *Invite Users*.
+. On the *Invite Users* page, select the *User Role* for the user(s) you are inviting.
+. Enter the email addresses for the users you want to invite for that specific *User Role*.
+Separate the email addresses with commas, spaces, or line breaks.
+. Select *Invite* to send email invitations to the users at their email address.
+
+Invited users are listed as pending until they accept the invitation to join your organization.

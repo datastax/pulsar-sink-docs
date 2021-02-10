@@ -1,0 +1,16 @@
+= Astra Service Broker
+:slug: astra-service-broker
+
+The https://www.openservicebrokerapi.org/[Open Service Broker API] provides a standard RESTful interface for provisioning services from a provided catalog, such as Astra databases. Each service is provisioned as part of a binding which may contain sizing information such as a capacity value or size of the instance.
+
+Service brokers manage the lifecycle of services. Platforms interact with service brokers to provision, get access to, and manage the services they offer.
+The https://www.openservicebrokerapi.org/[Open Service Broker API] defines these interactions, allowing us to offer their services to anyone, regardless of the technology or infrastructure those software providers wish to utilize.
+
+The Astra Service Broker provides a bridge between Service Catalogs in Kubernetes and Cloud Foundry with Astra's xref:manage-database-with-service-account[DevOps API].
+Developers provide a YAML describing the Astra database requirements.
+Automation handles provisioning the instances and bringing the associated connection information back into the platform as configuration values for their application to consume.
+
+[IMPORTANT]
+====
+The Astra Service Broker supports only Kubernetes v1.13 and later.
+====
