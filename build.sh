@@ -6,4 +6,5 @@ mv build/site/assets build/site/docs
 echo "Sorting out additional files..."
 mv build/site/404.html build/site/docs
 mv build/site/sitemap.xml build/site/docs
+cp index.html build/site/docs/index.html
 rm build/site/index.html

@@ -1,6 +1,6 @@
 * Securing your Astra database
 ** xref:security:security-guidelines.adoc[Security guidelines]
-*** xref:security:security-faqs.adoc[Security FAQs]
-*** xref:security:datastax-astra-security-checklists.adoc[Security checklists]
-*** xref:security:managing-permissions.adoc[Managing permissions]
+** xref:security:security-faqs.adoc[Security FAQs]
+** xref:security:datastax-astra-security-checklists.adoc[Security checklists]
+** xref:security:managing-permissions.adoc[Managing permissions]
 ** xref:security:database-owner-permission.adoc[Default Astra user permissions]

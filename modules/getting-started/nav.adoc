@@ -1,7 +1,6 @@
-
-Getting started
-* xref:getting-started:getting_started_drivers.adoc[Getting started with the drivers on Astra]
-* xref:getting-started:katacoda-scenarios-to-get-started-with-astra.adoc[Katacoda scenarios]
-* xref:getting-started:building-applications-with-better-botz.adoc[Building applications with Better Botz]
-** xref:getting-started:creating-an-express-server-for-better-botz.adoc[Creating an Express Server for Better Botz]
-** xref:getting-started:using-glitch-and-the-astra-data-api.adoc[Using Glitch and the Astra Data API]
+* Getting started
+** xref:getting-started:getting_started_drivers.adoc[Getting started with the drivers on Astra]
+** xref:getting-started:katacoda-scenarios-to-get-started-with-astra.adoc[Katacoda scenarios]
+** xref:getting-started:building-applications-with-better-botz.adoc[Building applications with Better Botz]
+*** xref:getting-started:creating-an-express-server-for-better-botz.adoc[Creating an Express Server for Better Botz]
+*** xref:getting-started:using-glitch-and-the-astra-data-api.adoc[Using Glitch and the Astra Data API]

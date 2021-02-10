@@ -1,7 +1,7 @@
 site:
   title: DataStax Astra Documentation
   url: https://docs.astra.datastax.com
-  start_page: docs::index.adoc
+  start_page: docs:intro:index.adoc
   keys:
     path-to-assets: "../assets/"
 
