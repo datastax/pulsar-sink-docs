@@ -1,5 +1,0 @@
-= Get started with examples
-:slug: examples
-
-Ready to jump right in?
-Check out the resources available to build a sample app or use integrations.

@@ -1,9 +1,0 @@
-= VPC peering
-:slug: vpc-peering
-
-By creating a virtual private cloud (VPC), you can connect your VPC resources and Astra databases. VPC peering allows you to communicate across the VPCs. VPC peering is available on only Production Workload Astra databases.
-
-VPC peering is available for all cloud providers available on DataStax Astra:
-* <<AWS VPC peering>>
-* <<GCP VPC peering>>
-* <<Azure VPC peering>>
