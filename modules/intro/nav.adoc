@@ -1,5 +1,5 @@
 * Learn about DataStax Astra
-** xref:intro:what-is-datastax-astra.adoc[What is DataStax Astra?]
+** xref:intro:index.adoc[What is DataStax Astra?]
 ** xref:intro:about-your-astra-database.adoc[About your Astra database]
 *** xref:intro:about-keyspaces.adoc[Astra plan options]
 *** xref:intro:service-tier-options.adoc[Astra plan options]
