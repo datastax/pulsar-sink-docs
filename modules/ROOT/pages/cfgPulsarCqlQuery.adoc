@@ -1,0 +1,44 @@
+= Provide CQL queries in mappings
+
+In the Pulsar topic mapping, you can optionally provide a CQL query that should run when the new record arrives on the Pulsar topic.
+
+NOTE: This feature is only meant for advanced use cases. Most often, you can use the standard Pulsar mapping without a query. If you define a query in the topic-to-table mapping, the query has priority and will be used instead of the automatically generated action.
+
+If used, you must provide the bound variables used in the query in the mapping column.
+For example, give the following query:
+
+[source,language-yaml]
+----
+topic:
+  my_topic:
+    my_ks:
+      my_table:
+        query: 'INSERT INTO %s.types (bigintCol, intCol) VALUES (:some_name, :some_name_2)'
+----
+
+The corresponding mapping in this example should be defined as:
+
+[source,language-yaml]
+----
+topic:
+  my_topic:
+    my_ks:
+      my_table:
+        mapping: 'some_name=value.bigint, some_name_2=value.int'
+----
+
+Additional examples of CQL queries that you could include with the topic-to-table mapping:
+
+[source,cql-language]
+----
+topic:
+  my_topic:
+    my_ks:
+      my_table:
+        query: 'INSERT INTO ks.tbl(pkey,ccol,x) VALUES :pkey, :ccol, :x);'
+        query: 'INSERT INTO ks.tbl(pkey,ccol,x) VALUES (:pkey, :ccol, :x) USING TTL :input_ttl'
+        query: 'INSERT INTO ks.tbl(pkey,ccol,x) VALUES (:pkey, :ccol, :x) USING TIMESTAMP :input_ts'
+        query: 'UPDATE ks.tbl SET somelist = somelist + [:newitem] WHERE pkey = :pkey'
+        query: 'DELETE FROM ks.tbl WHERE pkey = :pkey AND ccol = :ccol;'
+        query: 'DELETE FROM ks.tbl WHERE pkey = :pkey AND ccol > :ccol1 AND ccol <= :ccol2;'
+----

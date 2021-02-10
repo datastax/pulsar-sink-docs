@@ -1,0 +1,59 @@
+= Mapping basic messages to table columns
+
+When messages are created using a Basic or primitive serializer, the message contains a key-value pair. Map the key and value to table columns. Ensure that the data types of the message field are compatible with the data type of the target column.
+
+For example, the Pulsar world topic (`world_topic`) contains 5 records with a key-value pair in each.
+The key is an integer and the value is text.
+
+== Table requirements
+
+. Ensure the following when mapping fields to columns:
++
+* Data in the Pulsar field is compatible with the database table column link:https://docs.datastax.com/en/dse/6.8/cql/cql/cql_reference/refDataTypes.html[data type].
+* Pulsar field mapped to a database primary key (PK) column always contains data.
+Null values are not allowed in PK columns.
+
+. Set up the xref:index.adoc#supported-databases[supported database] table.
+. Create the keyspace.
+Ensure that keyspace is replicated to a datacenter that is set in the DataStax Apache Pulsar Connector xref:cfgRefPulsarDseConnection.md#contactPoints[contactPoints] parameter.
+For example, create the world_keyspace:
++
+[source,language-bash]
+----
+cqlsh -e "CREATE KEYSPACE world_keyspace WITH replication = {'class': 'NetworkTopologyStrategy','Cassandra': 1};"
+----
++
+NOTE: The datacenter name is case sensitive.
+Use link:https://docs.datastax.com/en/dse/6.8/dse-dev/datastax_enterprise/tools/nodetool/toolsRing.html[nodetool ring] to get a list of datacenters.
+
+. Create the table. For example, create the world\_table:
++
+[source,language-bash]
+----
+cqlsh -e "CREATE TABLE world_table (recordid int PRIMARY KEY, continent text);"
+----
+
+. Verify that all nodes have the same schema version using [nodetool describering](https://docs.datastax.com/en/dse/6.8/dse-admin/datastax_enterprise/tools/nodetool/toolsDescribeRing.html). Replace keyspace_name:
++
+[source,language-bash]
+----
+nodetool describering -- keyspace_name
+----
+
+. In the DataStax Apache® Pulsar Connector configuration file:
+.. Add the topic name to xref:cfgRefPulsarDseTable.adoc#topics[topics].
+.. Define the topic-to-table map xref:cfgRefPulsarDseTable.adoc#prefix[prefix].
+.. Define the xref:cfgRefPulsarDseTable.adoc#mapping[field-to-column map].
++
+Example configurations for `world_topic` to `world_table` using the minimum required settings:
++
+[source,language-yaml]
+----
+tasks.max: 1
+topics: world_topic
+topic:
+  world_topic:
+    world_keyspace:
+      world_table:
+        mapping: 'recordid=key, continent=value'
+----

@@ -1,0 +1,21 @@
+= Data parsing fails
+
+When the data from an Apache® Pulsar field is not compatible with the data type of the target xref:index.adoc#supported-databases[supported database] table column, the data conversion fails and a message is logged in the Pulsar Connect log.
+
+Example error message when parsing a string value for a numeric column:
+
+[source,no-highlight]
+----
+java.lang.IllegalArgumentException: Could not parse 'jack'; accepted formats are: a valid
+          number (e.g. '1234.56'), a valid Java numeric format (e.g. '-123.45e6'), a valid date-time
+          pattern (e.g. '2018-10-17T18:37:52.704Z'), or a valid boolean word
+----
+
+== Remediation
+
+Ensure that the Pulsar fields are mapped to the correct database columns.
+The connector can not automatically convert varying types.
+If they do not match, consider changing your table schema to accommodate the Pulsar field types.
+
+TIP: When adding or changing columns in a database table, ensure that the schema is fully propagated before continuing.
+Use link:https://docs.datastax.com/en/dse/6.8/dse-admin/datastax_enterprise/tools/nodetool/toolsDescribeRing.html[nodetool describering] to show the schema version.

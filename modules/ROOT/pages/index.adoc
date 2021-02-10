@@ -1,0 +1,51 @@
+= About the DataStax Apache® Pulsar Connector
+
+DataStax Apache® Pulsar Connector is open-source software (OSS) installed in the Pulsar IO framework, and synchronizes records from a Pulsar topic with table rows in DataStax Enterprise (DSE) and Cassandra databases.
+
+== Key Features
+
+* Flexibility in mapping Apache® Pulsar messages to DSE and Cassandra tables.
+* Enterprise grade security support including built-in SSL, and LDAP integration.
+* Consumes all Apache® Pulsar primitives including primitives, JSON and Avro formats.
+* Flexible time/date formatting.
+* Configurable consistency level.
+* Row-level Time-to-Live (TTL).
+* Distributed mode, high availability (HA) support.
+* Standalone mode support for development.
+
+[#supported-databases]
+== Supported databases
+
+* https://docs.astra.datastax.com/docs[DataStax Astra] cloud databases
+* DataStax Enterprise (DSE) 4.7 and later databases
+* Open source Apache® Cassandra® 2.1 and later databases
+
+== Supported Pulsar data structures
+
+Ingest data from Pulsar topics with records in the following data structures:
+
+* Primitive string values
+* Complex field values in record types:
+ ** Avro
+ ** JSON formatted string with JSON schema
+ ** JSON formatted string inside a schemaless topic
+
+== Getting started
+
+* xref:pulsarQuickStart.adoc[] A quick introduction connecting Pulsar to DataStax Enterprise using the DataStax Pulsar Connector and sending simple key/value messages using the Pulsar client utility.
+
+== Advanced message mapping topics
+
+If you're already familiar with Apache® Pulsar and DSE/Astra/Cassandra® see the following advanced message mapping topics:
+
+* xref:cfgPulsarDisplayingTopic.adoc[] Display messages to determine the data structure of the topic messages.
+* xref:cfgPulsarMapKeyPair.adoc[] Create a topic-table map for Pulsar messages that only contain a key and value in each record.
+* xref:cfgPulsarMapJson.adoc[] For JSON fields, map individual fields in the structure to columns.
+* xref:cfgPulsarMapAvroMessages.adoc[] Supports mapping individual fields from a Avro format field.
+* xref:cfgPulsarRecordHeaderToTable.adoc[] Extract values from Pulsar record header and write to the database table.
+* xref:cfgPulsarMapUdt.adoc[] Write complex types directly into User-defined Types (UDT).
+* xref:cfgPulsarMapMultipleTables.adoc[] Ingest a single topic into multiple tables using a single connector instance.
+* xref:cfgPulsarMultTopicToTables.adoc[] Ingest multiple topics and write to different tables using a single connector instance.
+* xref:cfgPulsarSelectiveUpdateMapsAndUdts.adoc[] Selectively update maps and UDTs based on Pulsar fields.
+* xref:cfgPulsarCqlQuery.adoc[] Provide CQL queries when new record arrives on the Pulsar topic.
+* xref:cfgPulsarNowFunction.adoc[] You can use the now() function in mappings.

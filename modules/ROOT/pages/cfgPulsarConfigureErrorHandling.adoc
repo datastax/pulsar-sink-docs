@@ -1,0 +1,21 @@
+= Configure error handling
+
+The DataStax Apache® Pulsar Connector provides an optional parameter, `ignoreErrors`.
+When set to `true`, it allows the connector to continue processing records even after an error occurred on the prior record.
+
+[#ignoreErrors]
+ignoreErrors:: Use `ignoreErrors` settings to ignore specific types or all runtime errors, depending on the setting you choose.
++
+|===
+|Value|Meaning|Notes
+
+|`false`|No errors are ignored|Deprecated - equivalent to `NONE`
+|`true`|Only driver errors are ignored|Deprecated - equivalent to `DRIVER`
+|`NONE`|No errors are ignored; default behavior| 
+|`ALL`|All errors are ignored| 
+|`DRIVER`|Only driver errors are ignored| 
+|===
++
+If you set `ignoreErrors` to any value other than `false`, any erroneous record is logged once and the next record is picked up by the Pulsar Connector automatically.
++
+Default: `NONE`.

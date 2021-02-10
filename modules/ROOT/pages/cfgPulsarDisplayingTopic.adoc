@@ -1,0 +1,31 @@
+= Determining topic data structure
+
+You can use the Apache® Pulsar `pulsar-client` command line client to examine the structure of Pulsar messages for a topic.
+
+link:https://pulsar.apache.org/docs/en/reference-cli-tools/#consume/[]
+
+To show Apache Pulsar messages:
+
+[source,language-bash]
+----
+ bin/pulsar-client consume topic_name -s "subscription_name"
+----
+
+where
+
+topic_name:: Name of the Pulsar topic receiving the messages.
+
+subscription_name:: Arbitrary name for the consumer subscription.
+
+You'll see the message data when a message is received:
+
+[source,no-highlight]
+----
+----- got message -----
+key:[My key], properties:[], content:My content
+----
+
+in this case:
+
+* *Key*: My key
+* *Content*: My content

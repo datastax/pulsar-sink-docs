@@ -1,0 +1,60 @@
+= Deleting the DataStax Apache® Pulsar Connector
+
+To completely remove the DataStax Apache® Pulsar Connector:
+
+. Delete any sinks associated with the DataStax Apache® Pulsar Connector:
++
+[source,language-bash]
+----
+bin/pulsar-admin sinks delete --name sink_name --namespace sink_namespace --tenant sink_tenant
+----
++
+where
++
+* `name` - The name of the Pulsar sink.
+* `namespace` - The namespace in which the sink resides.
+* `sink_tenant` - The tenant name associated with the sink.
++
+Example - delete the `cass-sink-kv`
++
+[source,language-bash]
+----
+bin/pulsar-admin sinks delete \
+    --tenant public \
+    --namespace default \
+    --name dse-sink-kv
+"Deleted successfully"
+----
+. Stop the Pulsar service:
++
+[source,language-bash]
+----
+bin/pulsar-daemon stop standalone
+doing stop standalone ...
+stopping standalone
+Shutdown is in progress... Please wait...
+Shutdown is in progress... Please wait...
+Shutdown completed.
+----
+. Remove the DataStax Apache® Pulsar Connector from the `connectors` directory:
++
+[source,language-bash]
+----
+rm connectors/cassandra-enhanced-pulsar-sink-1.4.0.nar
+----
+. Restart the Pulsar service:
++
+[source,language-bash]
+----
+bin/pulsar-daemon start standalone
+doing start standalone ...
+starting standalone, logging to /Users/john.francis/apache-pulsar-2.7.0/logs/pulsar-standalone-jfrancis-rmbp15.log
+Note: Set immediateFlush to true in conf/log4j2.yaml will guarantee the logging event is flushing to disk immediately. The default behavior is switched off due to performance considerations.
+[AppClassLoader@18b4aac2] info AspectJ Weaver Version 1.9.2 built on Wednesday Oct 24, 2018 at 15:43:33 GMT
+[AppClassLoader@18b4aac2] info register classloader sun.misc.Launcher$AppClassLoader@18b4aac2
+[AppClassLoader@18b4aac2] info using configuration file:/Users/john.francis/apache-pulsar-2.7.0/lib/org.apache.pulsar-pulsar-zookeeper-2.7.0.jar!/META-INF/aop.xml
+[AppClassLoader@18b4aac2] info using configuration file:/Users/john.francis/apache-pulsar-2.7.0/lib/org.apache.pulsar-pulsar-zookeeper-utils-2.7.0.jar!/META-INF/aop.xml
+[AppClassLoader@18b4aac2] info register aspect org.apache.pulsar.zookeeper.FinalRequestProcessorAspect
+[AppClassLoader@18b4aac2] info register aspect org.apache.pulsar.zookeeper.ZooKeeperServerAspect
+[AppClassLoader@18b4aac2] info register aspect org.apache.pulsar.broker.zookeeper.aspectj.ClientCnxnAspect
+----

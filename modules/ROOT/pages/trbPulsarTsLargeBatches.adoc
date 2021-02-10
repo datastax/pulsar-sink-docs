@@ -1,0 +1,37 @@
+= Writing fails because of mutation size
+
+The DataStax Apache® Pulsar Connector collects records to write to the DataStax Enterprise (DSE) database in CQL link:https://docs.datastax.com/en/dse/6.8/cql/cql/cql_reference/cql_commands/cqlBatch.html[BATCH] commands.
+Data insertions and deletions in the records are known as mutations.
+The Connector is implemented to use single-partition batches that are submitted as one mutation operation.
+
+For a given batch, if the total size of the mutation exceeds the maximum allowed by DSE (link:https://docs.datastax.com/en/dse/6.8/dse-admin/datastax_enterprise/config/configCassandra_yaml.html#configCassandra_yaml__max_mutation_size_in_kb[max_mutation_size_in_kb]) the batch is rejected and the error message is written to the system.log, by default in `var/log/cassandra`.
+
+For example:
+
+[source,no-highlight]
+----
+Mutation of 28087887 bytes is too large for the maximum size of 16777216
+----
+
+== Remediation
+
+Before making any changes, understand the relationship between the link:https://docs.datastax.com/en/dse/6.8/dse-admin/datastax_enterprise/config/configCassandra_yaml.html#configCassandra_yaml__max_mutation_size_in_kb[max_mutation_size_in_kb] and link:https://docs.datastax.com/en/dse/6.7/dse-admin/datastax_enterprise/config/configCassandra_yaml.html#configCassandra_yaml__commitlog_segment_size_in_mb[commitlog_segment_size_in_mb] settings.
+The max_mutation_size_in_kb value is calculated as half of `commitlog_segment_size_in_mb`.
+
+Defaults when not set explicitly in `cassandra.yaml`:
+
+* `commitlog_segment_size_in_mb`: 32 MB
+* `max_mutation_size_in_kb`: 16384 (16 MB)
+
+If you set `max_mutation_size_in_kb` explicitly, also set `commitlog_segment_size_in_mb` to:
+
+`2 * max_mutation_size_in_kb / 1024`
+
+You can decrease the batch size by lowering the number of records collected in each batch (xref:cfgRefPulsarDseConnection.adoc#maxNumberOfRecordsInBatch[maxNumberOfRecordsInBatch]).
+The default is 32.
+
+If you cannot decrease the size of your batches, test whether increases to `max_mutation_size_in_kb` and `commitlog_segment_size_in_mb` result in batches completing successfully, without consuming too much RAM on the partition's node.
+Also increase the DSE database batch threshold using link:https://docs.datastax.com/en/dse/6.7/dse-admin/datastax_enterprise/config/configCassandra_yaml.html#configCassandra_yaml__batch_size_warn_threshold_in_kb[batch_size_warn_threshold_in_kb].
+
+Investigate why the mutations are larger than expected.
+Look for underlying issues with your client application, access patterns, and data model, because increasing the commitlog segment size is a limited fix.

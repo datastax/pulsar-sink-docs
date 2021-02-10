@@ -1,0 +1,36 @@
+= DataStax Pulsar Connector documentation
+
+This repo contains the source files for the Pulsar Connector documentation.
+
+The docs are written in asciidoc and use Antora to generate the output.
+
+== Dependencies
+
+Antora requires NodeJS. Install NodeJS, then Antora and then update project dependencies:
+
+[source,bash]
+----
+brew install node
+npm install -g @antora/cli@2.3 @antora/site-generator-default@2.3
+npm install
+----
+
+== Generating and viewing the HTML output locally
+
+The docs can be generated locally during development, to check work.
+
+[source,bash]
+----
+antora --clean --fetch pulsar-local.yml
+----
+
+Output files are located in the build directory.
+
+== Publishing the HTML output
+
+To generate files for publishing:
+
+[source,bash]
+----
+antora --clean --fetch pulsar-publish.yml
+----
