@@ -13,4 +13,4 @@ ui:
   bundle:
     url: https://github.com/riptano/antora-ui-pulsar-sink/raw/main/releases/download/v0.1/ui-bundle.zip
     snapshot: true
-    output_dir: assets
+  output_dir: assets
