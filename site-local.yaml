@@ -12,6 +12,7 @@ ui:
   bundle:
     url: https://github.com/riptano/antora-ui-pulsar-sink/raw/main/releases/download/v0.2/ui-bundle.zip
     snapshot: true
+  supplemental_files: ./supplemental-ui
   output_dir: assets
 
 asciidoc:
