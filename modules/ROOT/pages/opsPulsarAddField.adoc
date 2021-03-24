@@ -1,4 +1,4 @@
-= Adding a field to a Pulsar Topic
+= Adding a field to a Pulsar Topic 
 
 Use these steps to write a new field to an existing xref:index.adoc#supported-databases[supported database] table column.
 
