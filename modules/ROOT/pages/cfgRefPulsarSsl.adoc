@@ -1,4 +1,4 @@
-= SSL encrypted connection
+= SSL encrypted connection 
 
 When the cluster has client encryption enabled, configure the SSL keys and certificates for the DataStax Apache® Pulsar Connector.
 
