@@ -1,4 +1,4 @@
-= Using internal or LDAP authentication
+= Using internal or LDAP authentication 
 
 Authenticate the DataStax Apache® Pulsar Connector session using internal or LDAP authentication.
 When the cluster has internal or LDAP authentication enabled, configure the user name and password settings for DataStax Apache® Pulsar Connector.
