@@ -1,4 +1,4 @@
-= DataStax connection
+= DataStax connection 
 
 Configure the connection settings from Apache® Pulsar to the cluster.
 
