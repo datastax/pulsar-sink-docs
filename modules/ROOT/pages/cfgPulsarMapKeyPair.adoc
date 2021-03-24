@@ -1,4 +1,4 @@
-= Mapping basic messages to table columns
+= Mapping basic messages to table columns 
 
 When messages are created using a Basic or primitive serializer, the message contains a key-value pair. Map the key and value to table columns. Ensure that the data types of the message field are compatible with the data type of the target column.
 
