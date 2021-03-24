@@ -1,4 +1,4 @@
-= Record fails to write
+= Record fails to write 
 
 Records never appear in the DataStax Enterprise (DSE) database table. The cause can be issues with node availability, transient errors that prevent writes due to consistency level, a schema change where a mapped column was removed from the target table, and so forth.
 
