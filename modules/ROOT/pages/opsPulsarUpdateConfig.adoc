@@ -1,4 +1,4 @@
-= Updating the DataStax Apache® Pulsar Connector configuration
+= Updating the DataStax Apache® Pulsar Connector configuration 
 
 To update the configuration of an active DataStax Apache® Pulsar Connector sink, use the  Apache® Pulsar `pulsar-admin sinks update` command:
 
