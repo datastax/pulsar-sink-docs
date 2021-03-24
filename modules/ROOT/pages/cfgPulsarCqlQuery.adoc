@@ -1,4 +1,4 @@
-= Provide CQL queries in mappings
+= Provide CQL queries in mappings 
 
 In the Pulsar topic mapping, you can optionally provide a CQL query that should run when the new record arrives on the Pulsar topic.
 
