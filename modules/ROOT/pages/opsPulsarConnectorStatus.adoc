@@ -1,4 +1,4 @@
-= Getting the DataStax Connector status
+= Getting the DataStax Connector status 
 
 Use the Apache® Pulsar administration tool `sinks status` command to display the status of the DataStax Apache® Pulsar Connector.
 
