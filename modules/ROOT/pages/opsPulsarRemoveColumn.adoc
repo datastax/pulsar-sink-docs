@@ -1,4 +1,4 @@
-= Removing a Table Column from the mapping specification
+= Removing a Table Column from the mapping specification 
 
 Remove a xref:index.adoc#supported-databases[supported database] table column.
 
