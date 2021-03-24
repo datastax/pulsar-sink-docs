@@ -1,4 +1,4 @@
-= Loading balancing datacenter is not specified
+= Loading balancing datacenter is not specified 
 
 The following error message occurs when the load balancing datacenter (xref:cfgRefPulsarDseConnection.adoc#loadBalancing[loadBalancing.localDc]) is not set in the configuration file.
 
