@@ -1,4 +1,4 @@
-= Restarting the DataStax Apache® Pulsar Connector
+= Restarting the DataStax Apache® Pulsar Connector 
 
 To restart a DataStax Apache® Pulsar Connector that was previously running, use the `pulsar-admin sinks` command:
 
