@@ -1,9 +1,10 @@
 {
   "name": "pulsar-sink-docs",
   "scripts": {
-    "build:prod": "npm run build:publish",
+    "build:prod": "npm run build:publish && npm run build:redirects",
     "build:dev": "npm run build:local",
     "build:publish": "antora --fetch --generator antora-site-generator-lunr --clean site-publish.yaml",
+    "build:redirects": "cp -r redirects/index.html build/site",
     "build:local": "antora --stacktrace --fetch --clean site-local.yaml"
   },
   "repository": {
