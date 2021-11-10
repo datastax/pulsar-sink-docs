@@ -3,7 +3,7 @@
 * link:https://github.com/datastax/release-notes/blob/master/DataStax_Apache_Pulsar_Connector_1.4_Release_Notes.md[Pulsar Connector release notes]
 * xref:pulsarInstall.adoc[]
 * xref:pulsarQuickStart.adoc[]
-* Configuration 
+* Configuration
 ** xref:cfgPulsarConfigTasksMax.adoc[]
 ** xref:cfgPulsarColumnWritetimeTimestamp.adoc[]
 ** xref:cfgPulsarSettingRowLevelTtl.adoc[]

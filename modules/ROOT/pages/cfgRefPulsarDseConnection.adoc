@@ -1,6 +1,6 @@
 = DataStax connection 
 
-Configure the connection settings from Apache® Pulsar to the cluster.
+Configure the connection settings from Apache Pulsar™ to the cluster.
 
 == Parameters
 
