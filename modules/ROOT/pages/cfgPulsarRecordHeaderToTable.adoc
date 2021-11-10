@@ -1,6 +1,6 @@
 = Extract Pulsar record header values 
 
-In the Apache® Pulsar topic mapping, you can extract values from the message properties, and write the values to a xref:index.adoc#supported-databases[supported database table].
+In the Apache Pulsar™ topic mapping, you can extract values from the message properties, and write the values to a xref:index.adoc#supported-databases[supported database table].
 
 For example:
 

@@ -1,6 +1,6 @@
-= DataStax Apache® Pulsar Connector details
+= DataStax Apache Pulsar™ Connector details
 
-Set the common DataStax Apache® Pulsar Connector parameters.
+Set the common DataStax Apache Pulsar™ Connector parameters.
 
 == Parameters 
 
