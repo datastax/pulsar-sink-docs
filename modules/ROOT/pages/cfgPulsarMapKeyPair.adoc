@@ -40,7 +40,7 @@ cqlsh -e "CREATE TABLE world_table (recordid int PRIMARY KEY, continent text);"
 nodetool describering -- keyspace_name
 ----
 
-. In the DataStax Apache® Pulsar Connector configuration file:
+. In the DataStax Apache Pulsar™ Connector configuration file:
 .. Add the topic name to xref:cfgRefPulsarDseTable.adoc#topics[topics].
 .. Define the topic-to-table map xref:cfgRefPulsarDseTable.adoc#prefix[prefix].
 .. Define the xref:cfgRefPulsarDseTable.adoc#mapping[field-to-column map].

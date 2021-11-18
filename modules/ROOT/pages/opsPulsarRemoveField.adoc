@@ -1,6 +1,6 @@
 = Removing a field map 
 
-DataStax Apache® Pulsar Connector processing fails if any mapped Pulsar topic fields are missing from the record.
+DataStax Apache Pulsar™ Connector processing fails if any mapped Pulsar topic fields are missing from the record.
 If a field is missing or if the schema change is known ahead, remove the topic-column mapping.
 
 WARNING: The database table schema has `PRIMARY KEY` columns that uniquely identify and partition rows.

@@ -1,4 +1,4 @@
-= Using the DataStax Apache® Pulsar Connector with DataStax Enterprise authentication 
+= Using the DataStax Apache Pulsar™ Connector with DataStax Enterprise authentication 
 
 When authentication is enabled, provide credentials for internal authentication or LDAP.
 

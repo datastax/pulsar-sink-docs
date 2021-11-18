@@ -1,6 +1,6 @@
 = Mapping JSON messages 
 
-The DataStax Apache® Pulsar Connector supports mapping JSON messages with or without a schema.
+The DataStax Apache Pulsar™ Connector supports mapping JSON messages with or without a schema.
 In this example, the key is regular JSON without schema.
 The value is also JSON but contains a schema and a payload.
 The type of the payload is Map and the connector is able to access the individual fields of that map.
@@ -63,7 +63,7 @@ cqlsh -e "CREATE TABLE stocks_keyspace.stocks_table ( \
 nodetool describering -- keyspace\_name
 ----
 
-. In the DataStax Apache® Pulsar Connector configuration file:
+. In the DataStax Apache Pulsar™ Connector configuration file:
 
 .. Add the topic name to xref:cfgPulsarDseTable.adoc#topics[topics].
 .. Define the topic-to-table map xref:cfgRefPulsarDseTable.adoc#prefix[prefix].

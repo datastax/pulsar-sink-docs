@@ -1,6 +1,6 @@
 = Determining topic data structure 
 
-You can use the Apache® Pulsar `pulsar-client` command line client to examine the structure of Pulsar messages for a topic.
+You can use the Apache Pulsar™ `pulsar-client` command line client to examine the structure of Pulsar messages for a topic.
 
 link:https://pulsar.apache.org/docs/en/reference-cli-tools/#consume/[]
 
