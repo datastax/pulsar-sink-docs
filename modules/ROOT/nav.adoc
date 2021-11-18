@@ -4,7 +4,7 @@
 ** link:https://github.com/datastax/release-notes/blob/master/DataStax_Apache_Pulsar_Connector_1.4_Release_Notes.md[Pulsar Connector release notes]
 ** xref:pulsarInstall.adoc[]
 ** xref:pulsarQuickStart.adoc[]
-*Guides and examples
+* Guides and examples
 ** Configuration 
 *** xref:cfgPulsarConfigTasksMax.adoc[]
 *** xref:cfgPulsarColumnWritetimeTimestamp.adoc[]
@@ -19,19 +19,10 @@
 **** xref:cfgPulsarMapAvroMessages.adoc[]
 **** xref:cfgPulsarRecordHeaderToTable.adoc[]
 **** xref:cfgPulsarMapUdt.adoc[]
-**** xref:cfgPulsarMapMultipleTables.adoc[]
+**** xref:cfgPulsarMapMultipleTables.adoc[]     
 **** xref:cfgPulsarMultTopicToTables.adoc[]
 **** xref:cfgPulsarCqlQuery.adoc[]
 **** xref:cfgPulsarNowFunction.adoc[]
-*** Reference
-**** xref:cfgRefPulsarConnector.adoc[]
-**** xref:cfgRefPulsarDseConnection.adoc[]
-**** xref:cfgRefPulsarDseTable.adoc[]
-**** xref:cfgRefPulsarDates.adoc[]
-**** xref:cfgRefPulsarAuth.adoc[]
-***** xref:cfgRefPulsarAuthLdap.adoc[]
-**** xref:cfgRefPulsarSsl.adoc[]
-**** xref:cfgPulsarConfigureErrorHandling.adoc[]
 ** Operations
 *** xref:opsPulsarAboutOperations.adoc[]
 *** xref:opsPulsarScaling.adoc[]
@@ -49,3 +40,12 @@
 *** xref:trbPulsarTsLargeBatches.adoc[]
 *** xref:trbPulsarTsRecordParsingFails.adoc[]
 *** xref:trbPulsarTsLoadBalancing.adoc[]
+* Reference
+**** xref:cfgRefPulsarConnector.adoc[]
+**** xref:cfgRefPulsarDseConnection.adoc[]
+**** xref:cfgRefPulsarDseTable.adoc[]
+**** xref:cfgRefPulsarDates.adoc[]
+**** xref:cfgRefPulsarAuth.adoc[]
+***** xref:cfgRefPulsarAuthLdap.adoc[]
+**** xref:cfgRefPulsarSsl.adoc[]
+**** xref:cfgPulsarConfigureErrorHandling.adoc[]
