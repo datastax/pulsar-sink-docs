@@ -1,5 +1,7 @@
 = Mapping Avro messages 
 
+:page-tag: pulsar-connector,dev,develop,pulsar,avro
+
 The DataStax Apache Pulsar™ Connector supports mapping individual fields from https://avro.apache.org/docs/1.8.1/gettingstartedjava.html[Avro] formatted key or values.
 
 In this example, the key is a basic string and the value is Avro format.

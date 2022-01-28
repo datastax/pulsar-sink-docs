@@ -1,5 +1,7 @@
 = Provide CQL queries in mappings 
 
+:page-tag: pulsar-connector,dev,develop,pulsar
+
 In the Pulsar topic mapping, you can optionally provide a CQL query that should run when the new record arrives on the Pulsar topic.
 
 NOTE: This feature is only meant for advanced use cases. Most often, you can use the standard Pulsar mapping without a query. If you define a query in the topic-to-table mapping, the query has priority and will be used instead of the automatically generated action.

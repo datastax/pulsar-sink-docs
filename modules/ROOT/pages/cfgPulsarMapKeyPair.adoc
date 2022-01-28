@@ -1,5 +1,7 @@
 = Mapping basic messages to table columns 
 
+:page-tag: pulsar-connector,dev,develop,pulsar
+
 When messages are created using a Basic or primitive serializer, the message contains a key-value pair. Map the key and value to table columns. Ensure that the data types of the message field are compatible with the data type of the target column.
 
 For example, the Pulsar world topic (`world_topic`) contains 5 records with a key-value pair in each.

@@ -1,5 +1,7 @@
 = Data parsing fails 
 
+:page-tag: pulsar-connector,dev,develop,admin,manage,pulsar
+
 When the data from an Apache Pulsar™ field is not compatible with the data type of the target xref:index.adoc#supported-databases[supported database] table column, the data conversion fails and a message is logged in the Pulsar Connect log.
 
 Example error message when parsing a string value for a numeric column:

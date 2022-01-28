@@ -1,5 +1,7 @@
 = Selectively update maps and UDTs based on Pulsar fields 
 
+:page-tag: pulsar-connector,dev,develop,pulsar
+
 In the Apache Pulsar™ topic mapping, you can selectively update maps and User Defined Types (UDTs) based on whether Pulsar fields have present values. That is, any value other than `null`.
 
 The goal is to minimize tombstones in the database. If Maps or UDTs are in the database table that the DataStax Apache Pulsar™ Connector is configured to write to, in order to minimize tombstones, you can use the CQL command `UPDATE` to only update the fields present in the Pulsar record if the `nullToUnset` parameter is set to `true`.

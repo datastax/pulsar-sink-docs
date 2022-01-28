@@ -1,5 +1,7 @@
 = Adding a column to the database table 
 
+:page-tag: pulsar-connector,dev,develop,pulsar
+
 Add a column to the xref:index.adoc#supported-databases[supported database] table to synchronize an existing field from a Pulsar topic.
 
 . On a database node, use link:https://docs.datastax.com/en/dse/6.8/cql/cql/cql_reference/cql_commands/cqlAlterTable.html[ALTER TABLE] to add the column to the table.

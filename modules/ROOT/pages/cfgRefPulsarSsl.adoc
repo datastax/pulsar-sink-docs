@@ -1,5 +1,7 @@
 = SSL encrypted connection 
 
+:page-tag: pulsar-connector,security,secure,pulsar
+
 When the cluster has client encryption enabled, configure the SSL keys and certificates for the DataStax Apache Pulsar™ Connector.
 
 TIP: SSL encryption settings are configured in the link:https://docs.datastax.comen/dse/6.8//dse-admin/datastax_enterprise/config/configCassandra_yaml.html#configCassandra_yaml__clientEncryptSection[Client-to-node encryption options].

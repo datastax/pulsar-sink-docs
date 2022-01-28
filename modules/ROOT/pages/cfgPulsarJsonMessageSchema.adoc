@@ -1,5 +1,7 @@
 = Mapping JSON messages 
 
+:page-tag: pulsar-connector,dev,develop,pulsar
+
 The DataStax Apache Pulsar™ Connector supports mapping JSON messages with or without a schema.
 In this example, the key is regular JSON without schema.
 The value is also JSON but contains a schema and a payload.
