@@ -1,5 +1,7 @@
 = Using the DataStax Apache Pulsar™ Connector with DataStax Enterprise authentication 
 
+:page-tag: pulsar-connector,security,secure,pulsar
+
 When authentication is enabled, provide credentials for internal authentication or LDAP.
 
 When link:https://docs.datastax.com/en/dse/6.8/dse-admin/datastax_enterprise/security/secAuthTOC.html[authentication] is enabled, provide credentials for internal authentication, LDAP, or location of the Kerberos keytab file.

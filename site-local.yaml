@@ -1,7 +1,7 @@
 site:
   title: DataStax Pulsar Connector Documentation
   url: /docs/pulsar-connector
-  start_page: pulsar-connector::index.adoc
+  start_page: 1.4::index.adoc
 
 content:
   sources:

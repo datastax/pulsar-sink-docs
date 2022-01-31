@@ -1,5 +1,7 @@
 = Writing fails because of mutation size 
 
+:page-tag: pulsar-connector,planner,plan,pulsar
+
 The DataStax Apache Pulsar™ Connector collects records to write to the DataStax Enterprise (DSE) database in CQL link:https://docs.datastax.com/en/dse/6.8/cql/cql/cql_reference/cql_commands/cqlBatch.html[BATCH] commands.
 Data insertions and deletions in the records are known as mutations.
 The Connector is implemented to use single-partition batches that are submitted as one mutation operation.

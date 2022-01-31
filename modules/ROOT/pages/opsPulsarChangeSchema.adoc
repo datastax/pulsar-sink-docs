@@ -1,5 +1,7 @@
 = Changing the topic or table schema 
 
+:page-tag: pulsar-connector,dev,develop,pulsar
+
 How to update the DataStax Apache Pulsar™ Connector when schema changes are required.
 
 * xref:opsPulsarAddField.adoc[] Add a field Pulsar Topic schema.

@@ -1,5 +1,7 @@
 = Multiple topics to multiple tables 
 
+:page-tag: pulsar-connector,dev,develop,pulsar
+
 The DataStax Apache Pulsar™ Connector allows for mapping multiple topics to multiple tables in a single connector instance.
 
 NOTE: Most Apache Pulsar™ systems store all messages in the same format and DataStax Apache Pulsar™ Connect workers only support a single converter class for key and value.

@@ -1,5 +1,7 @@
 = Installing DataStax Apache Pulsar™ Connector 
 
+:page-tag: pulsar-connector,admin,dev,install,pulsar
+
 Install DataStax Apache Pulsar™ Connector from the DataStax distribution tar file using an account that has write access to the Pulsar configuration directory.
 
 The supported operating systems are Linux and macOS.
