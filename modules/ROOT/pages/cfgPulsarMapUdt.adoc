@@ -48,6 +48,8 @@ In the example `stocks_topic`, the key is a basic string and the value is regula
 {"symbol":"F", "value":10, "exchange":"NYSE", "industry":"AUTO", "ts":"2018-11-26T19:26:27.483"}
 ----
 
+|===
+
 The DataStax keyspace name is `stocks_keyspace`. In the stocks keyspace create the user defined type, `stocks_type`:
 
 [source,language-cql]
@@ -59,7 +61,6 @@ CREATE TYPE stocks_keyspace.stocks_type (
     industry text,
     value double);
 ----
-|===
 
 Define a table named `stocks_udt_table` that has a column for the primitive string field `name` and a second column that uses the type, `stocks_type`:
 
@@ -80,3 +81,49 @@ topic:
             stocks_udt_table:
                 mapping: 'name=key,stocks=value'
 ----
+
+== Mapping complex user defined types
+
+The DataStax Apache Pulsar™ Connector supports mapping complex user defined types of `map`, `set`, and `list`. 
+
+The DataStax keyspace name is `stocks_keyspace`. In the stocks keyspace create the user defined type, `stocks_complex_type`:
+
+[source,language-cql]
+----
+CREATE TYPE stocks_keyspace.stocks_complex_type (
+    symbol text,
+    ts timestamp,
+    exchange text,
+    industry text,
+    value double
+    trailing_five_days_value frozen<list<double>>, 
+    similar_symbols frozen<set<text>>, 
+    stats frozen<map<text, double>>);
+----
+
+* `trailing_five_days_value frozen<list<double>>` contains a `list` of the value of the stock in the last five days, for example `[10.0, 11.0, 12.0, 23.0, 10.0]`. Values in a list do not need to be unique.
+* `similar_symbols frozen<set<text>>` contains a `set` of symbols in the same industry, or performing similarly, for example `["M", "GM", "F"]`. Values in a set must be unique. 
+* `stats frozen<map<text, double>>` contains a `map` of key-value pairs, for example `{"open": 11.0, "high": 20.0, "low": 9.0}`.
+
+Define a table named `stocks_complex_udt_table` that has a column for the primitive string field `name` and a second column that uses the type, `stocks_complex_type`:
+
+[source,language-cql]
+----
+CREATE TABLE stocks_keyspace.stocks_complex_udt_table (
+    name text primary key,
+    stocks_complex FROZEN<stocks_complex_type>);
+----
+
+Configure the connector settings and use the following for the map specification:
+
+[source,language-yaml]
+----
+topic:
+    stocks_topic:
+        stocks_keyspace:
+            stocks_complex_udt_table:
+                mapping: 'name=key,stocks_complex=value'
+----
+
+
+
