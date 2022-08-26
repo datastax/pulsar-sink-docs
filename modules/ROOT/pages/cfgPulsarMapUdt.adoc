@@ -95,7 +95,7 @@ CREATE TYPE stocks_keyspace.stocks_complex_type (
     ts timestamp,
     exchange text,
     industry text,
-    value double
+    value double,
     trailing_five_days_value frozen<list<double>>, 
     similar_symbols frozen<set<text>>, 
     stats frozen<map<text, double>>);
