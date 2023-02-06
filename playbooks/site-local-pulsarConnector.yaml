@@ -12,7 +12,7 @@ output:
 
 content:
   sources:
-  - url: ./..
+  - url: ../
     branches: HEAD
     start_path: docs-src/pulsar-sink-core
 
