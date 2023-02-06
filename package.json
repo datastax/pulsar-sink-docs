@@ -1,19 +1,25 @@
 {
-  "name": "pulsar-sink-docs",
+  "name": "pulsarConnector",
   "scripts": {
-    "build:prod": "npm run build:publish && npm run build:redirects",
-    "build:dev": "npm run build:local",
-    "build:publish": "antora --fetch --generator antora-site-generator-lunr --clean site-publish.yaml",
-    "build:redirects": "cp -r redirects/index.html build/site",
-    "build:local": "antora --stacktrace --fetch --clean site-local.yaml"
+    "build:prod:pulsarConnector": "npm run build:publish:pulsarConnector",
+    "build:dev:pulsarConnector": "npm run build:local:pulsarConnector",
+    "build:publish:pulsarConnector": "antora --log-level error --fetch --clean playbooks/site-publish-pulsarConnector.yaml",
+    "build:local:pulsarConnector": "antora --stacktrace --fetch --clean playbooks/site-local-pulsarConnector.yaml",
+    "build:linkinator:pulsarConnector": "npx linkinator https://docs.datastax.com/en/pulsar-connector/docs/ --recurse --skip ' https://localhost?'"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/riptano/pulsar-sink-docs.git"
+    "url": "git+<repo-clone-URL>"
   },
   "dependencies": {
-    "@antora/cli": "^2.3.4",
-    "@antora/site-generator-default": "^2.3.4",
-    "antora-site-generator-lunr": "^0.6.1"
+    "@antora/cli": "~3.0.1",
+    "@antora/site-generator-default": "~3.0.1",
+    "linkinator": "~3.0.3",
+    "async": "~3.2.4",
+    "mobx": "~6.0.4",
+    "react": "~16.8.4",
+    "react-dom": "~16.8.4",
+    "rxjs": "~7.0.1",
+    "styled-components": "~5.1.1"
   }
 }
