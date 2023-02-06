@@ -12,8 +12,8 @@ output:
 
 content:
   sources:
-  - url: ./..
-    branches: HEAD
+  - url: https://github.com/datastax/pulsar-sink-docs
+    branches: antora-structure
     start_path: docs-src/pulsar-sink-core
 
 ui:
