@@ -2,6 +2,14 @@ site:
   title: DataStax Pulsar Connector
   url: https://docs.datastax.com/en/pulsar-connector
 
+output:
+  # The output.dir in the site-local playbook should take the form
+  # "./../build/<docset-name>". The reason for this is because DataStax docs are
+  # often stored on separate branches of the same repo. Using the docset name
+  # for the output directory ensures that different docset builds within the
+  # same repo don't overwrite each other
+  dir: ./../build/pulsar-sink-docs
+
 content:
   sources:
   - url: ./..
