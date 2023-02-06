@@ -127,7 +127,7 @@ asciidoc:
     # Bsys requires the URLs of the content source repos of the current docset
     # to be listed as attributes in the site-publish playbook in the form
     # "<repo-name>: 'ssh://github.com/<org-name>/<repo-name>.git'".
-    luna-docs: 'ssh://github.com/datastax/pulsar-sink-docs.git'
+    pulsar-sink-docs: 'ssh://github.com/datastax/pulsar-sink-docs.git'
 
   extensions:
   - ~/work/pulsar-sink-docs/playbooks/lib/tabs-block.js
