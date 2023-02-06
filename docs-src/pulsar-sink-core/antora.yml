@@ -1,7 +1,1 @@
-name: docs
-title: DataStax Pulsar Connector
-version: 1.4
-start_page: index.adoc
-
-nav:
-- modules/ROOT/nav.adoc
+antora-pulsar-connector.yml
