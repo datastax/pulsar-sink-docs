@@ -1,15 +1,15 @@
 {
-  "name": "pulsarConnector",
+  "name": "docset",
   "scripts": {
-    "build:prod:pulsarConnector": "npm run build:publish:pulsarConnector",
-    "build:dev:pulsarConnector": "npm run build:local:pulsarConnector",
-    "build:publish:pulsarConnector": "antora --log-level error --fetch --clean playbooks/site-publish-pulsarConnector.yaml",
-    "build:local:pulsarConnector": "antora --stacktrace --fetch --clean playbooks/site-local-pulsarConnector.yaml",
-    "build:linkinator:pulsarConnector": "npx linkinator https://docs.datastax.com/en/pulsar-connector/docs/ --recurse --skip ' https://localhost?'"
+    "build:prod:docset": "npm run build:publish:docset",
+    "build:dev:docset": "npm run build:local:docset",
+    "build:publish:docset": "antora --log-level error --fetch --clean playbooks/site-publish-docset.yaml",
+    "build:local:docset": "antora --stacktrace --fetch --clean playbooks/site-local-docset.yaml",
+    "build:linkinator:docset": "npx linkinator https://docs.datastax.com/en/docset/docs/ --recurse --skip ' https://localhost?'"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/datastax/pulsar-sink-docs.git"
+    "url": "git+<repo-clone-URL>"
   },
   "dependencies": {
     "@antora/cli": "~3.0.1",
