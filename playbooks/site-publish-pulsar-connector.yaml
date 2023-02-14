@@ -18,7 +18,7 @@ content:
   edit_url: false
   sources:
   - url: '~/work/pulsar-sink-docs'
-    branches: main
+    branches: HEAD
     start_path: docs-src/pulsar-sink-core
 
 ui:
