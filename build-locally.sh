@@ -3,8 +3,8 @@
 # get the product docset that is going to be run
 
 case $1 in
-  ( 'docset' ) echo "product: $1";;
-  (*) echo "pick docset" && exit;;
+  ( 'pulsar-connector' ) echo "product: $1";;
+  (*) echo "pick pulsar-connector" && exit;;
 esac
 
 echo "checking prerequisites"
@@ -60,16 +60,14 @@ fi
 
 case $1 in
 
-  docset)
-    echo "product is docset"
+  pulsar-connector)
+    echo "product is pulsar-connector"
     echo "make antora.yml links"
-    cd docs-src/docset-core
-    rm antora.yml; ln -s antora-docset.yml antora.yml
-    cd ../docset-develop
-    rm antora.yml; ln -s antora-docset.yml antora.yml
+    cd docs-src/pulsar-sink-core
+    rm antora.yml; ln -s antora-pulsar-connector.yml antora.yml
     cd ../..
     echo "run the build"
-    npm run build:local:docset
+    npm run build:local:pulsar-connector
     ;;
 
 esac

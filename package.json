@@ -1,9 +1,9 @@
 {
-  "name": "pulsarConnector",
+  "name": "pulsar-connector",
   "scripts": {
     "build:prod:pulsar-connector": "npm run build:publish:pulsar-connector",
     "build:dev:pulsar-connector": "npm run build:local:pulsar-connector",
-    "build:publish:pulsar-connector": "antora --log-level error --fetch --clean playbooks/site-publish-pulsar-connector.yaml",
+    "build:publish:pulsar-connector": "antora --stacktrace --fetch --clean playbooks/site-publish-pulsar-connector.yaml",
     "build:local:pulsar-connector": "antora --stacktrace --fetch --clean playbooks/site-local-pulsar-connector.yaml",
     "build:linkinator:pulsar-connector": "npx linkinator https://docs.datastax.com/en/pulsar-connector/docs/ --recurse --skip ' https://localhost?'"
   },

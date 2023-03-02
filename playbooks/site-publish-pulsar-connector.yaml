@@ -1,5 +1,5 @@
 site:
-  title: DataStax Pulsar Connector Documentation
+  title: DataStax Pulsar Connector
   url: https://docs.datastax.com/en/pulsar-connector
   # The keys.segmentIo site key must be in the site-publish playbook of each
   # docset. This loads Segment into the docset build, and is a requirement for

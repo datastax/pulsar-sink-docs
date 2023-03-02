@@ -5,8 +5,8 @@
 :product-repo-name-long: datastax/pulsar-sink-docs
 :product-repo-link: https://github.com/datastax/pulsar-sink-docs.git
 :product-branch-name: main
-:docset-name: pulsarConnector
-:product-branch-link: https://github.com/riptano/luna-docs/tree/main
+:docset-name: pulsar-connector
+:product-branch-link: https://github.com/datastax/pulsar-sink-docs/tree/main
 :install-git-link: https://github.com/git-guides/install-git
 :create-pr-link: https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/creating-a-pull-request
 :nvm-link: https://github.com/nvm-sh/nvm

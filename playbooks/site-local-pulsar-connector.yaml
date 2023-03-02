@@ -29,12 +29,11 @@ ui:
 
 asciidoc:
   attributes:
-    source-highlighter: highlightjs
     page-pagination: ''
     sectanchors: ''
     sectlinks: ''
-    id-prefix: ''
-    id-separator: '-'
+    idprefix: ''
+    idseparator: '-'
 
     support_url: 'https://houston.datastax.com/hc/requests/new'
     astra_docs_base_url: 'https://docs.datastax.com/en/astra/docs'
