@@ -1,8 +1,0 @@
-name: 1.4
-title: DataStax Pulsar Connector Documentation 
-# jfb, turning off versioning for a bit
-version: "master"
-#display_version: "1.4"
-
-nav:
-- modules/ROOT/nav.adoc

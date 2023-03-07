@@ -1,4 +1,4 @@
-= Mapping messages to table that has a User Defined Type 
+= Mapping messages to table that has a User Defined Type
 
 :page-tag: pulsar-connector,dev,develop,pulsar
 
@@ -10,13 +10,13 @@ In the example `stocks_topic`, the key is a basic string and the value is regula
 |===
 |key|value
 
-|APPLE| 
+|APPLE|
 [source,no-highlight]
----- 
+----
 {"symbol":"APPL", "value":208, "exchange":"NASDAQ", "industry":"TECH", "ts":"2018-11-26T19:26:27.483"}
 ----
 
-|EXXON MOBIL| 
+|EXXON MOBIL|
 [source,no-highlight]
 ----
 {"symbol":"M",
@@ -26,13 +26,13 @@ In the example `stocks_topic`, the key is a basic string and the value is regula
 "ts":"2018-11-26T19:26:27.483"}
 ----
 
-|GENERAL MOTORS| 
+|GENERAL MOTORS|
 [source,no-highlight]
----- 
+----
 {"symbol":"GM", "value":38, "exchange":"NYSE", "industry":"AUTO", "ts":"2018-11-26T19:26:27.483"}
 ----
 
-|AT&T| 
+|AT&T|
 [source,no-highlight]
 ----
 {"symbol":"AT&T",
@@ -42,9 +42,9 @@ In the example `stocks_topic`, the key is a basic string and the value is regula
 "ts":"2018-11-26T19:26:27.483"}
 ----
 
-|FORD MOTOR| 
+|FORD MOTOR|
 [source,no-highlight]
----- 
+----
 {"symbol":"F", "value":10, "exchange":"NYSE", "industry":"AUTO", "ts":"2018-11-26T19:26:27.483"}
 ----
 

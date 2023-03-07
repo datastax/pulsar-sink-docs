@@ -18,7 +18,7 @@ DataStax Apache Pulsar™ Connector is open-source software (OSS) installed in t
 [#supported-databases]
 == Supported databases
 
-* https://docs.astra.datastax.com/docs[DataStax Astra] cloud databases
+* https://docs.datastax.com/en/astra-serverless/docs/[DataStax Astra] cloud databases
 * DataStax Enterprise (DSE) 4.7 and later databases
 * Open source Apache Cassandra® 2.1 and later databases
 

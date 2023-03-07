@@ -1,8 +1,10 @@
 build
 *~
 package-lock.json
+.vscode
+.DS_Store
 
-# Logs 
+# Logs
 logs
 *.log
 npm-debug.log*
