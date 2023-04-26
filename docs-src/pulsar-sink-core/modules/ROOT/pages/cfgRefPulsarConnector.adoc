@@ -1,5 +1,5 @@
 = DataStax Apache Pulsar™ Connector details
-
+:page-aliases: cfgRefPulsarConnector.adoc
 :page-tag: pulsar-connector,dev,develop,pulsar
 
 Set the common DataStax Apache Pulsar™ Connector parameters.

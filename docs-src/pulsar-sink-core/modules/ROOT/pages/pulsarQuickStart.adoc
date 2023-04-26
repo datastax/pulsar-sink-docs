@@ -1,5 +1,5 @@
 = Pulsar Connector single instance quick start 
-
+:page-aliases: pulsarQuickStart.adoc
 :page-tag: pulsar-connector,dev,admin,planner,quickstart,pulsar
 
 This quick start will walk you through the simplest possible configuration connecting a standalone Apache Pulsar™ instance to a single standalone DataStax Enterprise (DSE) 6.8 node.

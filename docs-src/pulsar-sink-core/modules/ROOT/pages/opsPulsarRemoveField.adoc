@@ -1,5 +1,5 @@
 = Removing a field map 
-
+:page-aliases: opsPulsarRemoveField.adoc
 :page-tag: pulsar-connector,dev,develop,pulsar
 
 DataStax Apache Pulsar™ Connector processing fails if any mapped Pulsar topic fields are missing from the record.

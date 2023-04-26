@@ -1,5 +1,5 @@
 = Removing a Table Column from the mapping specification 
-
+:page-aliases: opsPulsarRemoveColumn.adoc
 :page-tag: pulsar-connector,dev,develop,pulsar
 
 Remove a xref:index.adoc#supported-databases[supported database] table column.

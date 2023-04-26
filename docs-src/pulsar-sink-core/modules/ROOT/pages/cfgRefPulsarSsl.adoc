@@ -1,5 +1,5 @@
 = SSL encrypted connection 
-
+:page-aliases: cfgRefPulsarSsl.adoc
 :page-tag: pulsar-connector,security,secure,pulsar
 
 When the cluster has client encryption enabled, configure the SSL keys and certificates for the DataStax Apache Pulsar™ Connector.

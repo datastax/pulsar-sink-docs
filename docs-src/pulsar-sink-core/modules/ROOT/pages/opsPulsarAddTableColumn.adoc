@@ -1,5 +1,5 @@
 = Adding a column to the database table 
-
+:page-aliases: opsPulsarAddTableColumn.adoc
 :page-tag: pulsar-connector,dev,develop,pulsar
 
 Add a column to the xref:index.adoc#supported-databases[supported database] table to synchronize an existing field from a Pulsar topic.

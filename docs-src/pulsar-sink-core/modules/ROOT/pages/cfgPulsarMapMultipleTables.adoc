@@ -1,5 +1,5 @@
 = Mapping a topic to multiple tables 
-
+:page-aliases: cfgPulsarMapMultipleTables.adoc
 :page-tag: pulsar-connector,dev,develop,pulsar
 
 The DataStax Apache Pulsar™ Connector allows for mapping a single topic to multiple tables for a single connector instance.

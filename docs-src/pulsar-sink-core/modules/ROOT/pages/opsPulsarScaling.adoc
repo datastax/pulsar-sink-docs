@@ -1,5 +1,5 @@
 = Scaling the DataStax Apache Pulsar™ Connector 
-
+:page-aliases: opsPulsarScaling.adoc
 :page-tag: pulsar-connector,admin,manage,pulsar
 
 Use the Apache Pulsar™ administration tool to increase or decrease the number of workers to run for a given sink using the parallelism factor. You can specify the parallelism factor during creation of a Pulsar sink, and you can modify it after the fact as well. The default parallelism factor is `1`.

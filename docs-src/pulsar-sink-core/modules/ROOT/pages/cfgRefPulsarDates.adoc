@@ -1,5 +1,5 @@
 = Converting date and times for a topic 
-
+:page-aliases: cfgRefPulsarDates.adoc
 :page-tag: pulsar-connector,dev,develop,pulsar
 
 Use the following syntax to configure date and time conversion parameters for each Pulsar topic.

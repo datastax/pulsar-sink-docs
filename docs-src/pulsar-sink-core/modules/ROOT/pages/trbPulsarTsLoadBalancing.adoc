@@ -1,5 +1,5 @@
 = Loading balancing datacenter is not specified 
-
+:page-aliases: trbPulsarTsLoadBalancing.adoc
 :page-tag: pulsar-connector,admin,manage,pulsar
 
 The following error message occurs when the load balancing datacenter (xref:cfgRefPulsarDseConnection.adoc#loadBalancing[loadBalancing.localDc]) is not set in the configuration file.

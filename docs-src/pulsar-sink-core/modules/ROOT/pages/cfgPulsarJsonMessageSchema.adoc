@@ -1,5 +1,5 @@
 = Mapping JSON messages 
-
+:page-aliases: cfgPulsarJsonMessageSchema.adoc
 :page-tag: pulsar-connector,dev,develop,pulsar
 
 The DataStax Apache Pulsar™ Connector supports mapping JSON messages with or without a schema.

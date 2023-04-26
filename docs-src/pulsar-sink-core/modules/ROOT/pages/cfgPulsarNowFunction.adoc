@@ -1,5 +1,5 @@
 = The now() function in mappings 
-
+:page-aliases: cfgPulsarNowFunction.adoc
 :page-tag: pulsar-connector,dev,develop,pulsar
 
 In the Apache Pulsar™ topic mapping, you can use the ``now()``function.

@@ -1,5 +1,5 @@
 = Determining topic data structure 
-
+:page-aliases: cfgPulsarDisplayingTopic.adoc
 :page-tag: pulsar-connector,dev,develop,pulsar
 
 You can use the Apache Pulsar™ `pulsar-client` command line client to examine the structure of Pulsar messages for a topic.
