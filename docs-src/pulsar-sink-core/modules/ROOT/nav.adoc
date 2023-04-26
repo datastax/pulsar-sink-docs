@@ -1,9 +1,9 @@
 * Getting Started
 ** xref:index.adoc[]
-*** xref:pulsar-Sizing.adoc[]
+*** xref:pulsar-sizing.adoc[]
 ** link:https://github.com/datastax/release-notes/blob/master/DataStax_Apache_pulsar-_Connector_1.4_Release_Notes.md[pulsar- Connector release notes]
-** xref:pulsar-Install.adoc[]
-** xref:pulsar-QuickStart.adoc[]
+** xref:pulsar-install.adoc[]
+** xref:pulsar-quickstart.adoc[]
 * Guides and examples
 ** Configuration
 *** xref:configure-tasks-max.adoc[]

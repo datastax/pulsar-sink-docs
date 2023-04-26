@@ -34,7 +34,7 @@ Ingest data from Pulsar topics with records in the following data structures:
 
 == Getting started
 
-* xref:pulsarQuickStart.adoc[] A quick introduction connecting Pulsar to DataStax Enterprise using the DataStax Pulsar Connector and sending simple key/value messages using the Pulsar client utility.
+* xref:pulsar-quickstart.adoc[] A quick introduction connecting Pulsar to DataStax Enterprise using the DataStax Pulsar Connector and sending simple key/value messages using the Pulsar client utility.
 
 == Advanced message mapping topics
 
