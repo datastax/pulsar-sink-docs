@@ -36,10 +36,10 @@
 *** xref:internal-ldap-auth.adoc[]
 ** xref:connect-metrics.adoc[]
 ** Troubleshooting
-*** xref:trbpulsar-TsRecordFailsToWriteToTable.adoc[]
-*** xref:trbpulsar-TsLargeBatches.adoc[]
-*** xref:trbpulsar-TsRecordParsingFails.adoc[]
-*** xref:trbpulsar-TsLoadBalancing.adoc[]
+*** xref:record-fails-to-write-to-table.adoc[]
+*** xref:large-batches.adoc[]
+*** xref:record-parsing-fails.adoc[]
+*** xref:load-balancing.adoc[]
 * Reference
 **** xref:configure-reference-pulsar-connector.adoc[]
 **** xref:configure-reference-pulsar-dse-connection.adoc[]
