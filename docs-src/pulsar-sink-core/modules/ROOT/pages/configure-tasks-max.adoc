@@ -2,4 +2,4 @@
 :page-aliases: cfgPulsarConfigTasksMax.adoc
 :page-tag: pulsar-connector,admin,manage,pulsar
 
-For information on configuring parallelism for the DataStax Apache Pulsar™ Connector, see xref:opsPulsarScaling.adoc[].
+For information on configuring parallelism for the DataStax Apache Pulsar™ Connector, see xref:scaling.adoc[].
