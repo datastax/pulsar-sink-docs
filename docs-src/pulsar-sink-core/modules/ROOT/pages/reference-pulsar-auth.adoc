@@ -10,4 +10,4 @@ TIP: To verify that authentication is configured, check the following parameters
 
 * link:https://docs.datastax.com/en/dse/6.8/dse-admin/datastax_enterprise/config/configCassandra_yaml.html#configCassandra_yaml__authenticator[authenticator] of the `cassandra.yaml`
 * link:https://docs.datastax.com/en/dse/6.8/dse-admin/datastax_enterprise/config/configDseYaml.html#configDseYaml__authentication_options[authentication_options] of the `dse.yaml`
-* xref:configure-reference-pulsar-auth-ldap.adoc[] When the cluster has internal or LDAP authentication enabled, you should configure the username and password settings for the Pulsar Connector.
+* xref:reference-pulsar-auth-ldap.adoc[] When the cluster has internal or LDAP authentication enabled, you should configure the username and password settings for the Pulsar Connector.

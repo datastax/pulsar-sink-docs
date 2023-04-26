@@ -31,7 +31,7 @@ See the https://github.com/datastax/pulsar-examples/tree/master/producers/src/ma
 
 . Set up the xref:index.adoc#supported-databases[supported database] table.
 . Create the keyspace.
-Ensure that keyspace is replicated to a datacenter that is set in the DataStax Apache Pulsar Connector xref:configure-reference-pulsar-dse-connection.adoc#contactPoints[contactPoints] parameter.
+Ensure that keyspace is replicated to a datacenter that is set in the DataStax Apache Pulsar Connector xref:reference-pulsar-dse-connection.adoc#contactPoints[contactPoints] parameter.
 For example, create the `stocks_keyspace`:
 +
 [source,language-bash]
@@ -67,9 +67,9 @@ nodetool describering -- keyspace\_name
 
 . In the DataStax Apache Pulsar™ Connector configuration file:
 
-.. Add the topic name to xref:configure-reference-pulsar-dse-table.adoc#topics[topics].
-.. Define the topic-to-table map xref:configure-reference-pulsar-dse-table.adoc#prefix[prefix].
-.. Define the xref:configure-reference-pulsar-dse-table.adoc#mapping[field-to-column map].
+.. Add the topic name to xref:reference-pulsar-dse-table.adoc#topics[topics].
+.. Define the topic-to-table map xref:reference-pulsar-dse-table.adoc#prefix[prefix].
+.. Define the xref:reference-pulsar-dse-table.adoc#mapping[field-to-column map].
 +
 Example configurations for `stocks_topic` to `stocks_table` using the minimum required settings:
 +
