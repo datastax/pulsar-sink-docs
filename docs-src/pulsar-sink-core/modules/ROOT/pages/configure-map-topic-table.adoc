@@ -1,0 +1,21 @@
+= Mapping pulsar topics to database tables 
+:page-aliases: cfgPulsarMapTopicTable.adoc
+:page-tag: pulsar-connector,dev,develop,pulsar
+
+DataStax Apache Pulsar™ Connector has a simple yet powerful syntax for mapping fields from a Pulsar record to columns in a xref:index.adoc#supported-databases[supported database] table. An instance of the DataStax Apache Pulsar™ Connector can capture multiple topics and supports mapping a single topic to one or more tables.
+
+== DataStax Apache Pulsar™ Connector topic mapping
+
+DataStax Apache Pulsar™ Connector supports topic-to-table mappings with xref:index.adoc#supported-databases[supported databases]:
+
+* xref:configure-displaying-topic.adoc[] Display messages to determine the data structure of the topic messages.
+* xref:configure-map-key-pair.adoc[] Create a topic-table map for Pulsar messages that only contain a key and value in each record.
+* xref:configure-map-json.adoc[] For JSON fields, map individual fields in the structure to columns.
+* xref:configure-map-avro-messages.adoc[] Supports mapping individual fields from a Avro format field.
+* xref:configure-record-header-to-table.adoc[] Extract values from Pulsar record header and write to the database table.
+* xref:configure-map-udt.adoc[] Write complex types directly into User-defined Types (UDT).
+* xref:configure-map-multiple-tables.adoc[] Ingest a single topic into multiple tables using a single connector instance.
+* xref:configure-multiple-topics-to-tables.adoc[] Ingest multiple topics and write to different tables using a single connector instance.
+* xref:configure-selective-update-maps-and-udts.adoc[] Selectively update maps and UDTs based on Pulsar fields.
+* xref:configure-cql-query.adoc[] Provide CQL queries when new record arrives on the Pulsar topic.
+* xref:configure-now-function.adoc[] You can use the now() function in mappings.

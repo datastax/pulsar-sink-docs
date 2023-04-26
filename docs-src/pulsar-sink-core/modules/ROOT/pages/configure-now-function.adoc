@@ -38,7 +38,7 @@ In the example above, each occurrence of `now()` is evaluated and return a diffe
 
 == Behavior of now() with DELETE records
 
-When the value of a record arrives to DataStax Apache Pulsar Connector instance, it could be a `DELETE`, assuming `deletesEnabled` is `true`; see xref:cfgRefPulsarDseTable.adoc#deletesEnabled[deletesEnabled].
+When the value of a record arrives to DataStax Apache Pulsar Connector instance, it could be a `DELETE`, assuming `deletesEnabled` is `true`; see xref:configure-reference-pulsar-dse-table.adoc#deletesEnabled[deletesEnabled].
 
 For example, consider a case where a user has mapping and used the `now()` function:
 

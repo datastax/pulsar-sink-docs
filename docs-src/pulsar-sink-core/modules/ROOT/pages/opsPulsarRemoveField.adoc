@@ -13,6 +13,6 @@ A NULL is not allowed in a PRIMARY KEY column, therefore, each `PRIMARY KEY` col
 +
 NOTE: If the field is a PK column, map a different field to the column.
 
-. Remove the field to column mapping from the configuration. See xref:cfgPulsarMapTopicTable.adoc[].
+. Remove the field to column mapping from the configuration. See xref:configure-map-topic-table.adoc[].
 . Update the configuration with the new settings. See xref:opsPulsarUpdateConfig.adoc[].
 . Start the Pulsar producer that had the schema change.

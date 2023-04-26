@@ -29,7 +29,7 @@ If you set `max_mutation_size_in_kb` explicitly, also set `commitlog_segment_siz
 
 `2 * max_mutation_size_in_kb / 1024`
 
-You can decrease the batch size by lowering the number of records collected in each batch (xref:cfgRefPulsarDseConnection.adoc#maxNumberOfRecordsInBatch[maxNumberOfRecordsInBatch]).
+You can decrease the batch size by lowering the number of records collected in each batch (xref:configure-reference-pulsar-dse-connection.adoc#maxNumberOfRecordsInBatch[maxNumberOfRecordsInBatch]).
 The default is 32.
 
 If you cannot decrease the size of your batches, test whether increases to `max_mutation_size_in_kb` and `commitlog_segment_size_in_mb` result in batches completing successfully, without consuming too much RAM on the partition's node.

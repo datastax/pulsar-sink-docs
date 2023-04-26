@@ -19,4 +19,4 @@ For details, refer to link:https://docs.datastax.com/en/security/6.8/security/se
 . Internal and LDAP schemes can also be used for role management.
 Refer to the link:https://docs.datastax.com/en/dse/6.8/dse-admin/datastax_enterprise/config/configDseYaml.html#configDseYaml__role_management_options[role management] options.
 . Set the relevant auth parameters in dse.yaml for `auth.provider`, `auth.username` (the login role name or LDAP username), and `auth.password`.
-See xref:cfgRefPulsarAuthLdap.adoc#ldap-parameters[parameters].
+See xref:configure-reference-pulsar-authLdap.adoc#ldap-parameters[parameters].

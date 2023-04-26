@@ -5,7 +5,7 @@
 Use these steps to write a new field to an existing xref:index.adoc#supported-databases[supported database] table column.
 
 . In the DataStax Apache Pulsar™ Connector configuration file, add the field-to-column definition.
-See xref:cfgPulsarMapTopicTable.adoc[].
+See xref:configure-map-topic-table.adoc[].
 . Update the configuration with the new settings.
 See xref:opsPulsarUpdateConfig.adoc[].
 . Start the Pulsar producer that had the schema change.

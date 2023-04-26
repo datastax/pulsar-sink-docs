@@ -40,14 +40,14 @@ Ingest data from Pulsar topics with records in the following data structures:
 
 If you're already familiar with Apache Pulsar™ and DSE/Astra/Cassandra® see the following advanced message mapping topics:
 
-* xref:cfgPulsarDisplayingTopic.adoc[] Display messages to determine the data structure of the topic messages.
-* xref:cfgPulsarMapKeyPair.adoc[] Create a topic-table map for Pulsar messages that only contain a key and value in each record.
-* xref:cfgPulsarMapJson.adoc[] For JSON fields, map individual fields in the structure to columns.
-* xref:cfgPulsarMapAvroMessages.adoc[] Supports mapping individual fields from a Avro format field.
-* xref:cfgPulsarRecordHeaderToTable.adoc[] Extract values from Pulsar record header and write to the database table.
-* xref:cfgPulsarMapUdt.adoc[] Write complex types directly into User-defined Types (UDT).
-* xref:cfgPulsarMapMultipleTables.adoc[] Ingest a single topic into multiple tables using a single connector instance.
-* xref:cfgPulsarMultTopicToTables.adoc[] Ingest multiple topics and write to different tables using a single connector instance.
-* xref:cfgPulsarSelectiveUpdateMapsAndUdts.adoc[] Selectively update maps and UDTs based on Pulsar fields.
-* xref:cfgPulsarCqlQuery.adoc[] Provide CQL queries when new record arrives on the Pulsar topic.
-* xref:cfgPulsarNowFunction.adoc[] You can use the now() function in mappings.
+* xref:configure-displaying-topic.adoc[] Display messages to determine the data structure of the topic messages.
+* xref:configure-map-key-pair.adoc[] Create a topic-table map for Pulsar messages that only contain a key and value in each record.
+* xref:configure-map-json.adoc[] For JSON fields, map individual fields in the structure to columns.
+* xref:configure-map-avro-messages.adoc[] Supports mapping individual fields from a Avro format field.
+* xref:configure-record-header-to-table.adoc[] Extract values from Pulsar record header and write to the database table.
+* xref:configure-map-udt.adoc[] Write complex types directly into User-defined Types (UDT).
+* xref:configure-map-multiple-tables.adoc[] Ingest a single topic into multiple tables using a single connector instance.
+* xref:configure-multiple-topics-to-tables.adoc[] Ingest multiple topics and write to different tables using a single connector instance.
+* xref:configure-selective-update-maps-and-udts.adoc[] Selectively update maps and UDTs based on Pulsar fields.
+* xref:configure-cql-query.adoc[] Provide CQL queries when new record arrives on the Pulsar topic.
+* xref:configure-now-function.adoc[] You can use the now() function in mappings.

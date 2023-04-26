@@ -4,7 +4,7 @@
 
 Remove a xref:index.adoc#supported-databases[supported database] table column.
 
-. Remove the field to column mapping from the configuration. See xref:cfgPulsarMapTopicTable.adoc[].
+. Remove the field to column mapping from the configuration. See xref:configure-map-topic-table.adoc[].
 . On a database node, use the link:https://docs.datastax.com/en/dse/6.8/cql/cql/cql_reference/cql_commands/cqlAlterTable.html[ALTER TABLE] to remove the column from the table.
 +
 TIP: You can only remove non-PRIMARY KEY columns.

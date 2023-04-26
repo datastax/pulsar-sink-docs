@@ -62,7 +62,7 @@ Null values are not allowed in PK columns.
 
 . Set up the xref:index.adoc#supported-databases[supported database] table.
 . Create the keyspace.
-Ensure that keyspace is replicated to a datacenter that is set in the DataStax Apache Pulsar Connector xref:cfgRefPulsarDseConnection.adoc#contactPoints[contactPoints] parameter.
+Ensure that keyspace is replicated to a datacenter that is set in the DataStax Apache Pulsar Connector xref:configure-reference-pulsar-dse-connection.adoc#contactPoints[contactPoints] parameter.
 For example, create the `stocks_keyspace`:
 +
 [source,language-bash]

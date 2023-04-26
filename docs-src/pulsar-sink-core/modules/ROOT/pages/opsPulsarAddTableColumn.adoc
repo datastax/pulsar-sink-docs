@@ -10,4 +10,4 @@ Add a column to the xref:index.adoc#supported-databases[supported database] tabl
 IMPORTANT: Data synchronization may fail if the schema change is inconsistent across the entire cluster.
 
 . In the DataStax Apache Pulsar™ Connector configuration file, add the field-to-column definition.
-See xref:cfgPulsarMapTopicTable.adoc[].
+See xref:configure-map-topic-table.adoc[].

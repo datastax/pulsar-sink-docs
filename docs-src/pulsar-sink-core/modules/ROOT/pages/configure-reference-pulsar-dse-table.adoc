@@ -1,5 +1,5 @@
 = Pulsar topic-to-table settings 
-:page-aliases: cfgRefPulsarDseConnection.adoc
+:page-aliases: cfgRefPulsarDseTable.adoc
 :page-tag: pulsar-connector,dev,develop,pulsar
 
 Capture Apache Pulsar™ topics in the xref:index.adoc#supported-databases[supported database] by specifying a target keyspace, table, and then map the topic fields to table columns in the name of the parameter.
@@ -35,7 +35,7 @@ where:
 [#mapping]
 mapping::
 Required, field-to-column mapping.
-See xref:ROOT:cfgPulsarMapTopicTable.adoc[].
+See xref:ROOT:configure-map-topic-table.adoc[].
 
 [#consistencyLevel]
 consistencyLevel:: Query consistency level.
