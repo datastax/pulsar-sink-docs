@@ -1,6 +1,7 @@
 site:
   title: DataStax Pulsar Connector
   url: https://docs.datastax.com/en/pulsar-connector
+  start_page: docs::index.adoc
 
 output:
   # The output.dir in the site-local playbook should take the form
