@@ -1,6 +1,7 @@
 site:
   title: DataStax Pulsar Connector
   url: https://docs.datastax.com/en/pulsar-connector
+  start_page: docs::index.adoc
   # The google_analytics and segment_io site keys must be in the release playbook
   # of each docset. This ensures that the Google Tag Manager (GTM) and Segment
   # scripts get loaded into the docsets that get published to docs.datastax.com.
