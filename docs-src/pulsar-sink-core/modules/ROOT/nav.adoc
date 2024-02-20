@@ -1,11 +1,12 @@
-* Getting Started
+.Getting Started
 ** xref:index.adoc[]
-*** xref:pulsarSizing.adoc[]
+** xref:pulsarSizing.adoc[]
 ** link:https://github.com/datastax/release-notes/blob/master/DataStax_Apache_Pulsar_Connector_1.4_Release_Notes.md[Pulsar Connector release notes]
 ** xref:pulsarInstall.adoc[]
 ** xref:pulsarQuickStart.adoc[]
-* Guides and examples
-** Configuration 
+
+.Guides and examples
+** Configuration
 *** xref:cfgPulsarConfigTasksMax.adoc[]
 *** xref:cfgPulsarColumnWritetimeTimestamp.adoc[]
 *** xref:cfgPulsarSettingRowLevelTtl.adoc[]
@@ -19,7 +20,7 @@
 **** xref:cfgPulsarMapAvroMessages.adoc[]
 **** xref:cfgPulsarRecordHeaderToTable.adoc[]
 **** xref:cfgPulsarMapUdt.adoc[]
-**** xref:cfgPulsarMapMultipleTables.adoc[]     
+**** xref:cfgPulsarMapMultipleTables.adoc[]
 **** xref:cfgPulsarMultTopicToTables.adoc[]
 **** xref:cfgPulsarCqlQuery.adoc[]
 **** xref:cfgPulsarNowFunction.adoc[]
@@ -40,7 +41,8 @@
 *** xref:trbPulsarTsLargeBatches.adoc[]
 *** xref:trbPulsarTsRecordParsingFails.adoc[]
 *** xref:trbPulsarTsLoadBalancing.adoc[]
-* Reference
+
+.Reference
 **** xref:cfgRefPulsarConnector.adoc[]
 **** xref:cfgRefPulsarDseConnection.adoc[]
 **** xref:cfgRefPulsarDseTable.adoc[]
