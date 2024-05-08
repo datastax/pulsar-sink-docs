@@ -1,5 +1,5 @@
 name: pulsar-connector
-title: DataStax Pulsar Connector
+title: DataStax Apache Pulsar Connector
 version: ~
 start_page: index.adoc
 
