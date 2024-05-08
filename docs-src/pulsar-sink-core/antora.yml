@@ -1,1 +1,7 @@
-antora-pulsar-connector.yml
+name: pulsar-connector
+title: DataStax Apache Pulsar Connector
+version: ~
+start_page: index.adoc
+
+nav:
+- modules/ROOT/nav.adoc
