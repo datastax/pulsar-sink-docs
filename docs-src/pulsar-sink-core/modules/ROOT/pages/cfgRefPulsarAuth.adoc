@@ -1,5 +1,5 @@
-= Using the DataStax Apache Pulsar™ Connector with DataStax Enterprise authentication 
-
+= Using the DataStax Apache Pulsar™ Connector with DataStax Enterprise authentication
+:navtitle: Using the Pulsar Connector with DSE authentication
 :page-tag: pulsar-connector,security,secure,pulsar
 
 When authentication is enabled, provide credentials for internal authentication or LDAP.

@@ -1,5 +1,5 @@
-= Installing DataStax Apache Pulsar™ Connector 
-
+= Installing DataStax Apache Pulsar™ Connector
+:navtitle: Installation
 :page-tag: pulsar-connector,admin,dev,install,pulsar
 
 Install DataStax Apache Pulsar™ Connector from the DataStax distribution tar file using an account that has write access to the Pulsar configuration directory.

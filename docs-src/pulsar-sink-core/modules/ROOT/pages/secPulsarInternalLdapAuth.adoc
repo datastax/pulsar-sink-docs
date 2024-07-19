@@ -1,5 +1,4 @@
-= Using internal or LDAP authentication 
-
+= Using internal or LDAP authentication
 :page-tag: pulsar-connector,security,secure,pulsar,ldap
 
 Authenticate the DataStax Apache Pulsar™ Connector session using internal or LDAP authentication.

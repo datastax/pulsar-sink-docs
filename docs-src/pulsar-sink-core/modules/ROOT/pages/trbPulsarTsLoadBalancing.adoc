@@ -1,4 +1,4 @@
-= Loading balancing datacenter is not specified 
+= Load balancing datacenter is not specified
 
 :page-tag: pulsar-connector,admin,manage,pulsar
 

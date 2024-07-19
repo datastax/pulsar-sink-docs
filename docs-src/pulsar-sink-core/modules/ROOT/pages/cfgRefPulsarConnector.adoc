@@ -1,10 +1,10 @@
-= DataStax Apache Pulsar™ Connector details
-
+= DataStax Apache Pulsar™ Connector parameters
+:navtitle: Pulsar Connector parameters
 :page-tag: pulsar-connector,dev,develop,pulsar
 
 Set the common DataStax Apache Pulsar™ Connector parameters.
 
-== Parameters 
+== Parameters
 
 [source,language-yaml]
 ----

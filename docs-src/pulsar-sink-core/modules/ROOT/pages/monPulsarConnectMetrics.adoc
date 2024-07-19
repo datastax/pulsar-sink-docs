@@ -1,5 +1,5 @@
-= DataStax Apache Pulsar™ Connector metrics 
-
+= DataStax Apache Pulsar™ Connector metrics
+:navtitle: Metrics
 :page-tag: pulsar-connector,admin,manage,pulsar
 
 You can view DataStax Apache Pulsar™ Connector metrics in raw Prometheus format at the Apache Pulsar metrics endpoint:
@@ -45,7 +45,7 @@ com_datastax_oss_pulsar_sink_dse_sink_kv_Count{instance="localhost:8080", job="p
 
 The entries in this reference are separated into the Prometheus root query, and available metrics for the `name` attribute are listed within.
 
-TIP: Specifying only the root query returns all of the available named metrics. 
+TIP: Specifying only the root query returns all of the available named metrics.
 
 == com_datastax_oss_pulsar_sink_<sink_name>_Count
 
@@ -86,7 +86,7 @@ com_datastax_oss_pulsar_sink_dse_sink_kv_Count{instance="localhost:8080", job="p
 
 === batchSizeInBytes
 
-Calculated size of every batch statement in bytes. 
+Calculated size of every batch statement in bytes.
 
 Example
 
@@ -145,7 +145,7 @@ com_datastax_oss_pulsar_sink_dse_sink_kv_SnapshotSize{instance="localhost:8080",
 
 === batchSizeInBytes
 
-Calculated size of every batch statement in bytes. 
+Calculated size of every batch statement in bytes.
 
 Example
 
@@ -230,7 +230,7 @@ com_datastax_oss_pulsar_sink_dse_sink_kv_95thPercentile{instance="localhost:8080
 
 === batchSizeInBytes
 
-Calculated size of every batch statement in bytes. 
+Calculated size of every batch statement in bytes.
 
 Example
 
@@ -267,7 +267,7 @@ com_datastax_oss_pulsar_sink_dse_sink_kv_50thPercentile{instance="localhost:8080
 
 === batchSizeInBytes
 
-Calculated size of every batch statement in bytes. 
+Calculated size of every batch statement in bytes.
 
 Example
 
@@ -304,7 +304,7 @@ com_datastax_oss_pulsar_sink_dse_sink_kv_999thPercentile{instance="localhost:808
 
 === batchSizeInBytes
 
-Calculated size of every batch statement in bytes. 
+Calculated size of every batch statement in bytes.
 
 Example
 
@@ -341,7 +341,7 @@ com_datastax_oss_pulsar_sink_dse_sink_kv_98thPercentile{instance="localhost:8080
 
 === batchSizeInBytes
 
-Calculated size of every batch statement in bytes. 
+Calculated size of every batch statement in bytes.
 
 Example
 
@@ -378,7 +378,7 @@ com_datastax_oss_pulsar_sink_dse_sink_kv_99thPercentile{instance="localhost:8080
 
 === batchSizeInBytes
 
-Calculated size of every batch statement in bytes. 
+Calculated size of every batch statement in bytes.
 
 Example
 
@@ -415,7 +415,7 @@ com_datastax_oss_pulsar_sink_dse_sink_kv_Mean{instance="localhost:8080", job="pu
 
 === batchSizeInBytes
 
-Calculated size of every batch statement in bytes. 
+Calculated size of every batch statement in bytes.
 
 Example
 
@@ -452,7 +452,7 @@ com_datastax_oss_pulsar_sink_dse_sink_kv_Max{instance="localhost:8080", job="pul
 
 === batchSizeInBytes
 
-Calculated size of every batch statement in bytes. 
+Calculated size of every batch statement in bytes.
 
 Example
 
@@ -537,7 +537,7 @@ com_datastax_oss_pulsar_sink_dse_sink_kv_Min{instance="localhost:8080", job="pul
 
 === batchSizeInBytes
 
-Calculated size of every batch statement in bytes. 
+Calculated size of every batch statement in bytes.
 
 Example
 
@@ -622,7 +622,7 @@ com_datastax_oss_pulsar_sink_dse_sink_kv_75thPercentile{instance="localhost:8080
 
 === batchSizeInBytes
 
-Calculated size of every batch statement in bytes. 
+Calculated size of every batch statement in bytes.
 
 Example
 
@@ -696,7 +696,7 @@ com_datastax_oss_pulsar_sink_dse_sink_kv_StdDev{instance="localhost:8080", job="
 
 === batchSizeInBytes
 
-Calculated size of every batch statement in bytes. 
+Calculated size of every batch statement in bytes.
 
 Example
 

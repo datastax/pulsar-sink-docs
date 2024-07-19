@@ -1,8 +1,8 @@
-= Pulsar Connector single instance quick start 
-
+= Pulsar Connector single instance quickstart
+:navtitle: Single instance quickstart
 :page-tag: pulsar-connector,dev,admin,planner,quickstart,pulsar
 
-This quick start will walk you through the simplest possible configuration connecting a standalone Apache Pulsar™ instance to a single standalone DataStax Enterprise (DSE) 6.8 node.
+This quickstart will walk you through the simplest possible configuration connecting a standalone Apache Pulsar™ instance to a single standalone DataStax Enterprise (DSE) 6.8 node.
 
 Once you've configured Pulsar, a Pulsar sink, the DataStax Apache Pulsar™ Connector and the DSE instance, you'll be able to send simple key/value pair messages using the Pulsar client utility, `pulsar-client` and retrieve them from a DSE keyspace and table.
 

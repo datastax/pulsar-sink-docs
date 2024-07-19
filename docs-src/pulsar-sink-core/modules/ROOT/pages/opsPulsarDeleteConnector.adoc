@@ -1,5 +1,5 @@
-= Deleting the DataStax Apache Pulsar™ Connector 
-
+= Deleting the DataStax Apache Pulsar™ Connector
+:navtitle: Deleting the Pulsar Connector
 :page-tag: pulsar-connector,admin,manage,pulsar
 
 To completely remove the DataStax Apache Pulsar™ Connector:
