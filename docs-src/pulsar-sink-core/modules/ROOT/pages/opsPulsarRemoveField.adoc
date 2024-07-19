@@ -1,5 +1,4 @@
-= Removing a field map 
-
+= Removing a field map
 :page-tag: pulsar-connector,dev,develop,pulsar
 
 DataStax Apache Pulsar(TM) Connector processing fails if any mapped Pulsar topic fields are missing from the record.

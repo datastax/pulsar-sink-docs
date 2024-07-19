@@ -1,5 +1,4 @@
-= Multiple topics to multiple tables 
-
+= Multiple topics to multiple tables
 :page-tag: pulsar-connector,dev,develop,pulsar
 
 The DataStax Apache Pulsar(TM) Connector allows for mapping multiple topics to multiple tables in a single connector instance.
@@ -12,13 +11,13 @@ In the example `stocks_topic`, the key is a basic string and the value is regula
 |===
 |key|value
 
-|APPLE| 
+|APPLE|
 [source,no-highlight]
----- 
+----
 {"symbol":"APPL", "value":208, "exchange":"NASDAQ", "industry":"TECH", "ts":"2018-11-26T19:26:27.483"}
 ----
 
-|EXXON MOBIL| 
+|EXXON MOBIL|
 [source,no-highlight]
 ----
 {"symbol":"M",
@@ -28,13 +27,13 @@ In the example `stocks_topic`, the key is a basic string and the value is regula
 "ts":"2018-11-26T19:26:27.483"}
 ----
 
-|GENERAL MOTORS| 
+|GENERAL MOTORS|
 [source,no-highlight]
----- 
+----
 {"symbol":"GM", "value":38, "exchange":"NYSE", "industry":"AUTO", "ts":"2018-11-26T19:26:27.483"}
 ----
 
-|AT&T| 
+|AT&T|
 [source,no-highlight]
 ----
 {"symbol":"AT&T",
@@ -44,9 +43,9 @@ In the example `stocks_topic`, the key is a basic string and the value is regula
 "ts":"2018-11-26T19:26:27.483"}
 ----
 
-|FORD MOTOR| 
+|FORD MOTOR|
 [source,no-highlight]
----- 
+----
 {"symbol":"F", "value":10, "exchange":"NYSE", "industry":"AUTO", "ts":"2018-11-26T19:26:27.483"}
 ----
 |===
@@ -57,7 +56,7 @@ And `baseball_topic` has the same structure, basic key and JSON value.
 |===
 |key|value
 
-|redsox| 
+|redsox|
 [source,no-highlight]
 ----
 {"number":50,
@@ -67,13 +66,13 @@ And `baseball_topic` has the same structure, basic key and JSON value.
 "city":"boston"}
 ----
 
-|redsox| 
+|redsox|
 [source,no-highlight]
----- 
+----
 {"number":28, "firstname":"jd", "lastname":"martinez", "street":"4 yawkey way", "city":"boston"}
 ----
 
-|redsox| 
+|redsox|
 [source,no-highlight]
 ----
 {"number":16,
@@ -83,13 +82,13 @@ And `baseball_topic` has the same structure, basic key and JSON value.
 "city":"boston"}
 ----
 
-|redsox| 
+|redsox|
 [source,no-highlight]
----- 
+----
 {"number":41, "firstname":"chris", "lastname":"sale", "street":"4 yawkey way", "city":"boston"}
 ----
 
-|redsox| 
+|redsox|
 [source,no-highlight]
 ----
 {"number":24,

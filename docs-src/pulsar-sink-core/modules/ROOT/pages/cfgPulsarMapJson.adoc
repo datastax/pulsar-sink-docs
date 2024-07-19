@@ -1,5 +1,4 @@
-= Mapping a message that contain JSON fields 
-
+= Mapping a message that contain JSON fields
 :page-tag: pulsar-connector,dev,develop,pulsar,json
 
 When the data format for the key or value is JSON, the DataStax Apache Pulsar(TM) Connector mapping can include individual fields in the JSON structure.

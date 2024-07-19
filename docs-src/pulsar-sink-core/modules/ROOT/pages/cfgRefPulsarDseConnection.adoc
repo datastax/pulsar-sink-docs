@@ -1,5 +1,4 @@
-= DataStax connection 
-
+= DataStax connection
 :page-tag: pulsar-connector,admin,dev,connect,pulsar
 
 Configure the connection settings from Apache Pulsar(TM) to the cluster.
@@ -9,13 +8,13 @@ Configure the connection settings from Apache Pulsar(TM) to the cluster.
 [source,language-yaml]
 ----
  connectionPoolLocalSize: 4
- contactPoints: [dse_host_list] 
- loadBalancing.localDc: datacenter_name 
- port: 9042 
- maxConcurrentRequests: 500 
- maxNumberOfRecordsInBatch: 32 
- queryExecutionTimeout: 30 
- jmx: true 
+ contactPoints: [dse_host_list]
+ loadBalancing.localDc: datacenter_name
+ port: 9042
+ maxConcurrentRequests: 500
+ maxNumberOfRecordsInBatch: 32
+ queryExecutionTimeout: 30
+ jmx: true
  compression: None
 ----
 

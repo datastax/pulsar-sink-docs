@@ -1,5 +1,4 @@
-= Mapping a message that contains both basic and JSON fields 
-
+= Mapping a message that contains both basic and JSON fields
 :page-tag: pulsar-connector,dev,develop,pulsar,json
 
 When the data format for the message key or value is JSON, the DataStax Apache Pulsar(TM) connector mapping can include individual fields in the JSON structure.
@@ -11,13 +10,13 @@ The key is mapped to the name field and each of the JSON fields to a separate co
 |===
 |key|value
 
-|APPLE| 
+|APPLE|
 [source,no-highlight]
 ----
 {"symbol":"APPL", "value":208, "exchange":"NASDAQ", "industry":"TECH", "ts":"2018-11-26T19:26:27.483"}
 ----
 
-|EXXON MOBIL| 
+|EXXON MOBIL|
 [source,no-highlight]
 ----
 {"symbol":"M",
@@ -27,13 +26,13 @@ The key is mapped to the name field and each of the JSON fields to a separate co
 "ts":"2018-11-26T19:26:27.483"}
 ----
 
-|GENERAL MOTORS| 
+|GENERAL MOTORS|
 [source,no-highlight]
----- 
+----
 {"symbol":"GM", "value":38, "exchange":"NYSE", "industry":"AUTO", "ts":"2018-11-26T19:26:27.483"}
 ----
 
-|AT&T| 
+|AT&T|
 [source,no-highlight]
 ----
 {"symbol":"AT&T",
@@ -43,9 +42,9 @@ The key is mapped to the name field and each of the JSON fields to a separate co
 "ts":"2018-11-26T19:26:27.483"}
 ----
 
-|FORD MOTOR| 
+|FORD MOTOR|
 [source,no-highlight]
----- 
+----
 {"symbol":"F", "value":10, "exchange":"NYSE", "industry":"AUTO", "ts":"2018-11-26T19:26:27.483"} `
 ----
 |===
@@ -103,7 +102,7 @@ nodetool describering -- keyspace\_name
 Example configurations for `stocks_topic` to `stocks_table` using the minimum required settings:
 +
 [source,language-yaml]
----- 
+----
 tasks.max: 1
 topics: stocks_topic
 topic

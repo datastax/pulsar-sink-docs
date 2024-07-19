@@ -1,5 +1,4 @@
-= Configuring parallelism 
-
+= Configuring parallelism
 :page-tag: pulsar-connector,admin,manage,pulsar
 
 For information on configuring parallelism for the DataStax Apache Pulsar(TM) Connector, see xref:opsPulsarScaling.adoc[].

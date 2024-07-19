@@ -1,5 +1,4 @@
 = Internal or LDAP authentication
-
 :page-tag: pulsar-connector,security,secure,pulsar
 
 When the cluster has internal or LDAP authentication enabled, configure the user name and password settings for DataStax Apache Pulsar(TM) Connector.

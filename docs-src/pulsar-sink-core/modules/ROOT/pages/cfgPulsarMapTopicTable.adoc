@@ -1,5 +1,4 @@
-= Mapping pulsar topics to database tables 
-
+= Mapping pulsar topics to database tables
 :page-tag: pulsar-connector,dev,develop,pulsar
 
 DataStax Apache Pulsar(TM) Connector has a simple yet powerful syntax for mapping fields from a Pulsar record to columns in a xref:index.adoc#supported-databases[supported database] table. An instance of the DataStax Apache Pulsar(TM) Connector can capture multiple topics and supports mapping a single topic to one or more tables.

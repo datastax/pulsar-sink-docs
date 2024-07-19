@@ -1,5 +1,4 @@
-= SSL encrypted connection 
-
+= SSL encrypted connection
 :page-tag: pulsar-connector,security,secure,pulsar
 
 When the cluster has client encryption enabled, configure the SSL keys and certificates for the DataStax Apache Pulsar(TM) Connector.
@@ -44,7 +43,7 @@ hostnameValidation:: Whether to validate node hostnames when using SSL.
 Defaults to true
 
 [#cipherSuites]
-cipherSuites:: The cipher suites to enable. 
+cipherSuites:: The cipher suites to enable.
 +
 Defaults to none, resulting in a "minimal quality of service" according to JDK documentation.
 

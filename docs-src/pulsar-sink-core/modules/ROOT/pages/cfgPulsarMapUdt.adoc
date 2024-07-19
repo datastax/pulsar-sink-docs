@@ -1,5 +1,4 @@
 = Mapping messages to table that has a User Defined Type
-
 :page-tag: pulsar-connector,dev,develop,pulsar
 
 The DataStax Apache Pulsar(TM) Connector processes JSON, Avro, and complex types directly into a https://docs.datastax.com/en/dse/6.8/cql/cql/cql_using/useAlterType.html[user-defined type] column in the xref:index.adoc#supported-databases[supported database]. The Pulsar message embedded field names and the UDT field names must match.
@@ -84,7 +83,7 @@ topic:
 
 == Mapping complex user defined types
 
-The DataStax Apache Pulsar(TM) Connector supports mapping complex user defined types of `map`, `set`, and `list`. 
+The DataStax Apache Pulsar(TM) Connector supports mapping complex user defined types of `map`, `set`, and `list`.
 
 The DataStax keyspace name is `stocks_keyspace`. In the stocks keyspace create the user defined type, `stocks_complex_type`:
 
@@ -96,13 +95,13 @@ CREATE TYPE stocks_keyspace.stocks_complex_type (
     exchange text,
     industry text,
     value double,
-    trailing_five_days_value frozen<list<double>>, 
-    similar_symbols frozen<set<text>>, 
+    trailing_five_days_value frozen<list<double>>,
+    similar_symbols frozen<set<text>>,
     stats frozen<map<text, double>>);
 ----
 
 * `trailing_five_days_value frozen<list<double>>` contains a `list` of the value of the stock in the last five days, for example `[10.0, 11.0, 12.0, 23.0, 10.0]`. Values in a list do not need to be unique.
-* `similar_symbols frozen<set<text>>` contains a `set` of symbols in the same industry, or performing similarly, for example `["M", "GM", "F"]`. Values in a set must be unique. 
+* `similar_symbols frozen<set<text>>` contains a `set` of symbols in the same industry, or performing similarly, for example `["M", "GM", "F"]`. Values in a set must be unique.
 * `stats frozen<map<text, double>>` contains a `map` of key-value pairs, for example `{"open": 11.0, "high": 20.0, "low": 9.0}`.
 
 Define a table named `stocks_complex_udt_table` that has a column for the primitive string field `name` and a second column that uses the type, `stocks_complex_type`:

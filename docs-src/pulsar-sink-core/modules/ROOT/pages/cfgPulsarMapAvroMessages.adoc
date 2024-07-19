@@ -1,5 +1,4 @@
-= Mapping Avro messages 
-
+= Mapping Avro messages
 :page-tag: pulsar-connector,dev,develop,pulsar,avro
 
 The DataStax Apache Pulsar(TM) Connector supports mapping individual fields from https://avro.apache.org/docs/1.8.1/gettingstartedjava.html[Avro] formatted key or values.
@@ -18,11 +17,11 @@ The Pulsar topic name is `users_topic` and have the following records:
 “favorite_color”: “pink”}`
 |user2|
 `{"`name`": "`shereen`", + "`favorite_number`":7, + "`favorite_color`": "`black`"}`
-|user3| 
+|user3|
 `{“name”: “kimberly”,
 “favorite_number”:11,
 “favorite_color”: “orange”}`
-|user4| 
+|user4|
 `{"`name`": "`taryn`", + "`favorite_number`":37, + "`favorite_color`": "`green`"}`
 
 The value field uses the following Avro Schema:
