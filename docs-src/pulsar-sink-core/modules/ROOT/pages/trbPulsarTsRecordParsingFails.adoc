@@ -20,4 +20,4 @@ The connector can not automatically convert varying types.
 If they do not match, consider changing your table schema to accommodate the Pulsar field types.
 
 TIP: When adding or changing columns in a database table, ensure that the schema is fully propagated before continuing.
-Use link:https://docs.datastax.com/en/dse/6.8/dse-admin/datastax_enterprise/tools/nodetool/toolsDescribeRing.html[nodetool describering] to show the schema version.
+Use https://docs.datastax.com/en/dse/6.8/dse-admin/datastax_enterprise/tools/nodetool/toolsDescribeRing.html[nodetool describering] to show the schema version.

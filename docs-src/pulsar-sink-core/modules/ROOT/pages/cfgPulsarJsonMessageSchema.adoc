@@ -42,7 +42,7 @@ cqlsh -e "CREATE KEYSPACE stocks_keyspace \
 ----
 +
 NOTE: The datacenter name is case sensitive.
-Use link:https://docs.datastax.com/en/dse/6.8/dse-dev/datastax_enterprise/tools/nodetool/toolsRing.html[nodetool ring] to get a list of datacenters.
+Use https://docs.datastax.com/en/dse/6.8/dse-dev/datastax_enterprise/tools/nodetool/toolsRing.html[nodetool ring] to get a list of datacenters.
 
 . Create the table. For example, create the `stocks_table`:
 +
@@ -58,7 +58,7 @@ cqlsh -e "CREATE TABLE stocks_keyspace.stocks_table ( \
   PRIMARY KEY (symbol, ts));"
 ----
 
-. Verify that all nodes have the same schema version using link:https://docs.datastax.com/en/dse/6.8/dse-admin/datastax_enterprise/tools/nodetool/toolsDescribeRing.html[nodetool describering]. Replace keyspace\_name:
+. Verify that all nodes have the same schema version using https://docs.datastax.com/en/dse/6.8/dse-admin/datastax_enterprise/tools/nodetool/toolsDescribeRing.html[nodetool describering]. Replace keyspace\_name:
 +
 [source,language-bash]
 ----

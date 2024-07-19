@@ -2,7 +2,7 @@
 
 :page-tag: pulsar-connector,dev,develop,pulsar
 
-The DataStax Apache Pulsar(TM) Connector processes JSON, Avro, and complex types directly into a link:https://docs.datastax.com/en/dse/6.8/cql/cql/cql_using/useAlterType.html[user-defined type] column in the xref:index.adoc#supported-databases[supported database]. The Pulsar message embedded field names and the UDT field names must match.
+The DataStax Apache Pulsar(TM) Connector processes JSON, Avro, and complex types directly into a https://docs.datastax.com/en/dse/6.8/cql/cql/cql_using/useAlterType.html[user-defined type] column in the xref:index.adoc#supported-databases[supported database]. The Pulsar message embedded field names and the UDT field names must match.
 
 In the example `stocks_topic`, the key is a basic string and the value is regular JSON.
 

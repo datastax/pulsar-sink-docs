@@ -3,7 +3,7 @@
 :page-tag: pulsar-connector,dev,develop,pulsar
 
 In the Apache Pulsar(TM) topic mapping, you can use the ``now()``function.
-It returns `TIMEUUID`, which is documented in the link:https://docs.datastax.com/en/dse/6.8/cql/cql/cql_using/refTimeUuidFunctions.html[UUID and timeuuid column].
+It returns `TIMEUUID`, which is documented in the https://docs.datastax.com/en/dse/6.8/cql/cql/cql_using/refTimeUuidFunctions.html[UUID and timeuuid column].
 
 For example:
 

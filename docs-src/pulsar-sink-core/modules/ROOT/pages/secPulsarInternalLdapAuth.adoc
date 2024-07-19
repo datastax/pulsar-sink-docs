@@ -6,16 +6,16 @@ When the cluster has internal or LDAP authentication enabled, configure the user
 This task also requires a login role for the DataStax Apache Pulsar(TM) Connector with access to the mapped tables.
 
 . Verify whether your cluster has internal or LDAP authentication enabled.
-Refer to the link:https://docs.datastax.com/en/dse/6.8/dse-admin/datastax_enterprise/config/configDseYaml.html#configDseYaml__authenticationOptions[authentication options] in the dse.yaml file.
+Refer to the https://docs.datastax.com/en/dse/6.8/dse-admin/datastax_enterprise/config/configDseYaml.html#configDseYaml__authenticationOptions[authentication options] in the dse.yaml file.
 Authentication options for the DSE Authenticator allow you to use multiple schemes for authentication simultaneously in a DataStax Enterprise cluster.
 . Additional authenticator configuration is required in dse.yaml when the authorization option in cassandra.yaml is set to `com.datastax.bdp.cassandra.auth.DseAuthorizer`.
 When authorization is enabled, the DataStax Apache Pulsar(TM) Connector login role must have a minimum of `modify` privileges on tables receiving data from the DataStax Apache Pulsar Connector.
-For details, refer to the link:https://docs.datastax.com/en/dse/6.8/dse-admin/datastax_enterprise/config/configCassandra_yaml.html#configCassandra_yaml__authenticator[authorization] options.
+For details, refer to the https://docs.datastax.com/en/dse/6.8/dse-admin/datastax_enterprise/config/configCassandra_yaml.html#configCassandra_yaml__authenticator[authorization] options.
 . In dse.yaml, there are options to configure LDAP security when the authenticator option in cassandra.yaml is set to `com.datastax.bdp.cassandra.auth.DseAuthenticator`.
 When not set, LDAP authentication is not used.
 The default in dse.yaml is that this setting is commented out (false).
-For details, refer to link:https://docs.datastax.com/en/security/6.8/security/secLDAPScheme.html[Defining an LDAP scheme].
+For details, refer to https://docs.datastax.com/en/security/6.8/security/secLDAPScheme.html[Defining an LDAP scheme].
 . Internal and LDAP schemes can also be used for role management.
-Refer to the link:https://docs.datastax.com/en/dse/6.8/dse-admin/datastax_enterprise/config/configDseYaml.html#configDseYaml__role_management_options[role management] options.
+Refer to the https://docs.datastax.com/en/dse/6.8/dse-admin/datastax_enterprise/config/configDseYaml.html#configDseYaml__role_management_options[role management] options.
 . Set the relevant auth parameters in dse.yaml for `auth.provider`, `auth.username` (the login role name or LDAP username), and `auth.password`.
 See xref:cfgRefPulsarAuthLdap.adoc#ldap-parameters[parameters].

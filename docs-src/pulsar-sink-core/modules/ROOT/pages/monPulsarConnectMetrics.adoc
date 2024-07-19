@@ -9,7 +9,7 @@ You can view DataStax Apache Pulsar(TM) Connector metrics in raw Prometheus form
 http://<pulsar_instance>:8080/metrics
 ----
 
-You can also configure a Prometheus instance to monitor your Pulsar instance as described here, link:https://prometheus.io/docs/prometheus/latest/getting_started/[Getting Started].
+You can also configure a Prometheus instance to monitor your Pulsar instance as described here, https://prometheus.io/docs/prometheus/latest/getting_started/[Getting Started].
 
 == Prometheus query roots
 

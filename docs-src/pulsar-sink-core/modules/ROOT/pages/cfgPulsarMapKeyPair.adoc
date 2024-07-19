@@ -11,7 +11,7 @@ The key is an integer and the value is text.
 
 . Ensure the following when mapping fields to columns:
 +
-* Data in the Pulsar field is compatible with the database table column link:https://docs.datastax.com/en/dse/6.8/cql/cql/cql_reference/refDataTypes.html[data type].
+* Data in the Pulsar field is compatible with the database table column https://docs.datastax.com/en/dse/6.8/cql/cql/cql_reference/refDataTypes.html[data type].
 * Pulsar field mapped to a database primary key (PK) column always contains data.
 Null values are not allowed in PK columns.
 
@@ -26,7 +26,7 @@ cqlsh -e "CREATE KEYSPACE world_keyspace WITH replication = {'class': 'NetworkTo
 ----
 +
 NOTE: The datacenter name is case sensitive.
-Use link:https://docs.datastax.com/en/dse/6.8/dse-dev/datastax_enterprise/tools/nodetool/toolsRing.html[nodetool ring] to get a list of datacenters.
+Use https://docs.datastax.com/en/dse/6.8/dse-dev/datastax_enterprise/tools/nodetool/toolsRing.html[nodetool ring] to get a list of datacenters.
 
 . Create the table. For example, create the world\_table:
 +

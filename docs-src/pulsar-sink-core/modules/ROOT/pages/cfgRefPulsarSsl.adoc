@@ -4,8 +4,8 @@
 
 When the cluster has client encryption enabled, configure the SSL keys and certificates for the DataStax Apache Pulsar(TM) Connector.
 
-TIP: SSL encryption settings are configured in the link:https://docs.datastax.comen/dse/6.8//dse-admin/datastax_enterprise/config/configCassandra_yaml.html#configCassandra_yaml__clientEncryptSection[Client-to-node encryption options].
-See link:https://docs.datastax.comen/dse/6.8//dse-admin/datastax_enterprise/security/secSslTOC.html[Configuring SSL].
+TIP: SSL encryption settings are configured in the https://docs.datastax.comen/dse/6.8//dse-admin/datastax_enterprise/config/configCassandra_yaml.html#configCassandra_yaml__clientEncryptSection[Client-to-node encryption options].
+See https://docs.datastax.comen/dse/6.8//dse-admin/datastax_enterprise/security/secSslTOC.html[Configuring SSL].
 
 IMPORTANT: You cannot use this option if specifying the `cloud.secureConnectBundle` option for connecting to a DataStax Astra database. If you are using the `cloud.secureConnectBundle`, *ALL* subproperties under `ssl:` must be empty.
 

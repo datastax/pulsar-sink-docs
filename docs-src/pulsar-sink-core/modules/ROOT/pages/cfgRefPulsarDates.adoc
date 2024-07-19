@@ -69,7 +69,7 @@ See https://docs.oracle.com/javase/8/docs/api/java/time/format/DateTimeFormatter
 
 Timezone example
 
-To write to a column with data type link:https://docs.datastax.com/en/dse/6.8/cql/cql/cql_reference/refDataTypes.html#refDataTypes__timestamp[timestamp], for the test Pulsar topic string field that contains `2018-03-09T17:12:32.584+01:00[Europe/Paris]`, use the setting:
+To write to a column with data type https://docs.datastax.com/en/dse/6.8/cql/cql/cql_reference/refDataTypes.html#refDataTypes__timestamp[timestamp], for the test Pulsar topic string field that contains `2018-03-09T17:12:32.584+01:00[Europe/Paris]`, use the setting:
 
 [source,language-yaml]
 ----
@@ -81,7 +81,7 @@ topic:
 
 Date example
 
-To write to a column with type link:https://docs.datastax.com/en/dse/6.8/cql/cql/cql_reference/refDataTypes.html#refDataTypes__date[date] for a Pulsar topic that contains a string field like "2018-04-12", use the setting:
+To write to a column with type https://docs.datastax.com/en/dse/6.8/cql/cql/cql_reference/refDataTypes.html#refDataTypes__date[date] for a Pulsar topic that contains a string field like "2018-04-12", use the setting:
 
 [source,language-yaml]
 ----
@@ -93,7 +93,7 @@ topic:
 
 Time example
 
-To write to a column with type link:https://docs.datastax.com/en/dse/6.8/cql/cql/cql_reference/refDataTypes.html#refDataTypes__time[time] for a Pulsar topic string field like "10:15:30", use setting:
+To write to a column with type https://docs.datastax.com/en/dse/6.8/cql/cql/cql_reference/refDataTypes.html#refDataTypes__time[time] for a Pulsar topic string field like "10:15:30", use setting:
 
 [source,language-yaml]
 ----

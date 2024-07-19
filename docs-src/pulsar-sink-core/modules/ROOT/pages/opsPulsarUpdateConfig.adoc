@@ -12,7 +12,7 @@ pulsar-admin sinks update --name sink_name [options]
 where
 
 * sink-name - The sink name associated with the DataStax Pulsar Connector.
-* [options] - Apache Pulsar configuration options. For a complete list, see link:http://pulsar.apache.org/tools/pulsar-admin/2.7.0-SNAPSHOT/#-em-update-em--25[pulsar-admin sinks update]
+* [options] - Apache Pulsar configuration options. For a complete list, see http://pulsar.apache.org/tools/pulsar-admin/2.7.0-SNAPSHOT/#-em-update-em--25[pulsar-admin sinks update]
 
 Example configuration update
 

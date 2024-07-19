@@ -5,10 +5,10 @@
 Remove a xref:index.adoc#supported-databases[supported database] table column.
 
 . Remove the field to column mapping from the configuration. See xref:cfgPulsarMapTopicTable.adoc[].
-. On a database node, use the link:https://docs.datastax.com/en/dse/6.8/cql/cql/cql_reference/cql_commands/cqlAlterTable.html[ALTER TABLE] to remove the column from the table.
+. On a database node, use the https://docs.datastax.com/en/dse/6.8/cql/cql/cql_reference/cql_commands/cqlAlterTable.html[ALTER TABLE] to remove the column from the table.
 +
 TIP: You can only remove non-PRIMARY KEY columns.
 
-. Confirm that the schema change has been pushed to all nodes using link:https://docs.datastax.com/en/dse/6.8/dse-admin/datastax_enterprise/tools/nodetool/toolsDescribeCluster.html[nodetool describecluster].
+. Confirm that the schema change has been pushed to all nodes using https://docs.datastax.com/en/dse/6.8/dse-admin/datastax_enterprise/tools/nodetool/toolsDescribeCluster.html[nodetool describecluster].
 +
 IMPORTANT: Data synchronization may fail if the schema change is inconsistent across the entire DataStax cluster.

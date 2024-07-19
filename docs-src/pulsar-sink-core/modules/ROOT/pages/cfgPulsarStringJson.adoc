@@ -56,7 +56,7 @@ NOTE: JSON records in Pulsar can also have a schema associated with them.
 
 Ensure the following when mapping fields to columns:
 
-* Data in the Apache Pulsar(TM) field is compatible with the database table column link:http://docs.datastax.com/en/dse/6.8/cql/cql/cql_reference/refDataTypes.html[data type].
+* Data in the Apache Pulsar(TM) field is compatible with the database table column http://docs.datastax.com/en/dse/6.8/cql/cql/cql_reference/refDataTypes.html[data type].
 * Pulsar field mapped to a database primary key (PK) column always contains data.
 Null values are not allowed in PK columns.
 
@@ -73,7 +73,7 @@ cqlsh -e "CREATE KEYSPACE stocks_keyspace \
 ----
 +
 NOTE: The datacenter name is case sensitive.
-Use link:https://docs.datastax.com/en/dse/6.8/dse-dev/datastax_enterprise/tools/nodetool/toolsRing.html[nodetool ring] to get a list of datacenters.
+Use https://docs.datastax.com/en/dse/6.8/dse-dev/datastax_enterprise/tools/nodetool/toolsRing.html[nodetool ring] to get a list of datacenters.
 
 . Create the table. For example, create the `stocks_table`:
 +
@@ -89,7 +89,7 @@ cqlsh -e "CREATE TABLE stocks_keyspace.stocks_table ( \
   PRIMARY KEY (symbol, ts));"
 ----
 
-. Verify that all nodes have the same schema version using link:https://docs.datastax.com/en/dse/6.8/dse-admin/datastax_enterprise/tools/nodetool/toolsDescribeRing.html[nodetool describering]. Replace keyspace_name:
+. Verify that all nodes have the same schema version using https://docs.datastax.com/en/dse/6.8/dse-admin/datastax_enterprise/tools/nodetool/toolsDescribeRing.html[nodetool describering]. Replace keyspace_name:
 +
 [source,language-bash]
 ----

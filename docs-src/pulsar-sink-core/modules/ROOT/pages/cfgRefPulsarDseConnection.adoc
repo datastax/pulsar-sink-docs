@@ -40,7 +40,7 @@ Default: `""`
 
 [#port]
 port:: DSE native transport port.
-See link:https://docs.datastax.com/en/dse/6.8/dse-admin/datastax_enterprise/config/configCassandra_yaml.html#configCassandra_yaml__native_transport_port[native_transport_port].
+See https://docs.datastax.com/en/dse/6.8/dse-admin/datastax_enterprise/config/configCassandra_yaml.html#configCassandra_yaml__native_transport_port[native_transport_port].
 +
 Default: `9042`
 

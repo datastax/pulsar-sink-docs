@@ -4,8 +4,8 @@
 
 Add a column to the xref:index.adoc#supported-databases[supported database] table to synchronize an existing field from a Pulsar topic.
 
-. On a database node, use link:https://docs.datastax.com/en/dse/6.8/cql/cql/cql_reference/cql_commands/cqlAlterTable.html[ALTER TABLE] to add the column to the table.
-. Confirm that the schema change has been pushed to all nodes using link:https://docs.datastax.com/en/dse/6.8/dse-admin/datastax_enterprise/tools/nodetool/toolsDescribeCluster.html[nodetool describecluster].
+. On a database node, use https://docs.datastax.com/en/dse/6.8/cql/cql/cql_reference/cql_commands/cqlAlterTable.html[ALTER TABLE] to add the column to the table.
+. Confirm that the schema change has been pushed to all nodes using https://docs.datastax.com/en/dse/6.8/dse-admin/datastax_enterprise/tools/nodetool/toolsDescribeCluster.html[nodetool describecluster].
 +
 IMPORTANT: Data synchronization may fail if the schema change is inconsistent across the entire cluster.
 
