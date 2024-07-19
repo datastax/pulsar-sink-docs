@@ -1,15 +1,15 @@
 = Using internal or LDAP authentication
 :page-tag: pulsar-connector,security,secure,pulsar,ldap
 
-Authenticate the DataStax Apache Pulsar™ Connector session using internal or LDAP authentication.
-When the cluster has internal or LDAP authentication enabled, configure the user name and password settings for DataStax Apache Pulsar™ Connector.
-This task also requires a login role for the DataStax Apache Pulsar™ Connector with access to the mapped tables.
+Authenticate the DataStax Apache Pulsar(TM) Connector session using internal or LDAP authentication.
+When the cluster has internal or LDAP authentication enabled, configure the user name and password settings for DataStax Apache Pulsar(TM) Connector.
+This task also requires a login role for the DataStax Apache Pulsar(TM) Connector with access to the mapped tables.
 
 . Verify whether your cluster has internal or LDAP authentication enabled.
 Refer to the link:https://docs.datastax.com/en/dse/6.8/dse-admin/datastax_enterprise/config/configDseYaml.html#configDseYaml__authenticationOptions[authentication options] in the dse.yaml file.
 Authentication options for the DSE Authenticator allow you to use multiple schemes for authentication simultaneously in a DataStax Enterprise cluster.
 . Additional authenticator configuration is required in dse.yaml when the authorization option in cassandra.yaml is set to `com.datastax.bdp.cassandra.auth.DseAuthorizer`.
-When authorization is enabled, the DataStax Apache Pulsar™ Connector login role must have a minimum of `modify` privileges on tables receiving data from the DataStax Apache Pulsar Connector.
+When authorization is enabled, the DataStax Apache Pulsar(TM) Connector login role must have a minimum of `modify` privileges on tables receiving data from the DataStax Apache Pulsar Connector.
 For details, refer to the link:https://docs.datastax.com/en/dse/6.8/dse-admin/datastax_enterprise/config/configCassandra_yaml.html#configCassandra_yaml__authenticator[authorization] options.
 . In dse.yaml, there are options to configure LDAP security when the authenticator option in cassandra.yaml is set to `com.datastax.bdp.cassandra.auth.DseAuthenticator`.
 When not set, LDAP authentication is not used.

@@ -2,7 +2,7 @@
 
 :page-tag: pulsar-connector,dev,develop,pulsar
 
-In the Apache Pulsar™ topic mapping, you can optionally specify which column should be used to note the timestamp when the Pulsar-produced record was inserted into any of the xref:index.adoc#supported-databases[supported databases].
+In the Apache Pulsar(TM) topic mapping, you can optionally specify which column should be used to note the timestamp when the Pulsar-produced record was inserted into any of the xref:index.adoc#supported-databases[supported databases].
 
 The mapping setting provides a special property, `__timestamp`.
 The format is:

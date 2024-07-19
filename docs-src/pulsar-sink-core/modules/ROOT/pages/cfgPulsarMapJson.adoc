@@ -2,7 +2,7 @@
 
 :page-tag: pulsar-connector,dev,develop,pulsar,json
 
-When the data format for the key or value is JSON, the DataStax Apache Pulsar™ Connector mapping can include individual fields in the JSON structure.
+When the data format for the key or value is JSON, the DataStax Apache Pulsar(TM) Connector mapping can include individual fields in the JSON structure.
 
 NOTE: JSON records in Pulsar can also have a schema associated with them.
 

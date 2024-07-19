@@ -17,7 +17,7 @@ topic:
       unit: MILLISECONDS
 ----
 
-where topic_name is the name of the Apache Pulsar™ topic.
+where topic_name is the name of the Apache Pulsar(TM) topic.
 
 == Parameters
 

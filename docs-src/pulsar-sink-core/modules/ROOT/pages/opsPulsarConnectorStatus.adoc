@@ -1,8 +1,8 @@
-= Getting the DataStax Apache Pulsar™ Connector status
+= Getting the DataStax Apache Pulsar(TM) Connector status
 :navtitle: Getting the Pulsar Connector status
 :page-tag: pulsar-connector,dev,develop,admin,manage,pulsar
 
-Use the Apache Pulsar™ administration tool `sinks status` command to display the status of the DataStax Apache Pulsar™ Connector.
+Use the Apache Pulsar(TM) administration tool `sinks status` command to display the status of the DataStax Apache Pulsar(TM) Connector.
 
 [source,language-bash]
 ----
@@ -11,7 +11,7 @@ bin/pulsar-admin sinks status --name sink-name
 
 where
 
-* sink-name - The sink name associated with the DataStax Apache Pulsar™ Connector.
+* sink-name - The sink name associated with the DataStax Apache Pulsar(TM) Connector.
 
 Example
 

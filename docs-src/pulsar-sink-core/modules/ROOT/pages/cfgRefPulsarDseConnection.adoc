@@ -2,7 +2,7 @@
 
 :page-tag: pulsar-connector,admin,dev,connect,pulsar
 
-Configure the connection settings from Apache Pulsar™ to the cluster.
+Configure the connection settings from Apache Pulsar(TM) to the cluster.
 
 == Parameters
 

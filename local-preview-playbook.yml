@@ -65,7 +65,7 @@ asciidoc:
     emoji-rocket: "&#128640;"
     emoji-smile: "&#128512"
     dse: 'DataStax Enterprise (DSE)'
-    cassandra: 'Apache Cassandra®'
+    cassandra: 'Apache Cassandra(R)'
     classic: 'classic'
     classic_cap: 'Classic'
     serverless: 'serverless'

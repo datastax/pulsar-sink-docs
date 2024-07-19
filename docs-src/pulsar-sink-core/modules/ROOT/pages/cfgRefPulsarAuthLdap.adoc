@@ -2,7 +2,7 @@
 
 :page-tag: pulsar-connector,security,secure,pulsar
 
-When the cluster has internal or LDAP authentication enabled, configure the user name and password settings for DataStax Apache Pulsar™ Connector.
+When the cluster has internal or LDAP authentication enabled, configure the user name and password settings for DataStax Apache Pulsar(TM) Connector.
 A login role for the connector with access to the mapped tables is also required.
 
 [#ldap-parameters]
@@ -27,6 +27,6 @@ Default: `None`
 
 username:: DSE login role name or LDAP username.Astra database username.
 +
-NOTE: When [authorization is enabled](https://docs.datastax.comen/dse/6.8//dse-admin/datastax_enterprise/config/configDseYaml.html#configDseYaml__authorizationOptions), the DataStax connector login role must have a minimum of `modify` privileges on tables receiving data from the DataStax Apache Pulsar™ Connector.
+NOTE: When [authorization is enabled](https://docs.datastax.comen/dse/6.8//dse-admin/datastax_enterprise/config/configDseYaml.html#configDseYaml__authorizationOptions), the DataStax connector login role must have a minimum of `modify` privileges on tables receiving data from the DataStax Apache Pulsar(TM) Connector.
 
 password:: Login role or LDAP password.Astra database password for the specified username.

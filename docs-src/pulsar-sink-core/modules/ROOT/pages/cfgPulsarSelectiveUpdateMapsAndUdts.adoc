@@ -2,9 +2,9 @@
 
 :page-tag: pulsar-connector,dev,develop,pulsar
 
-In the Apache Pulsar™ topic mapping, you can selectively update maps and User Defined Types (UDTs) based on whether Pulsar fields have present values. That is, any value other than `null`.
+In the Apache Pulsar(TM) topic mapping, you can selectively update maps and User Defined Types (UDTs) based on whether Pulsar fields have present values. That is, any value other than `null`.
 
-The goal is to minimize tombstones in the database. If Maps or UDTs are in the database table that the DataStax Apache Pulsar™ Connector is configured to write to, in order to minimize tombstones, you can use the CQL command `UPDATE` to only update the fields present in the Pulsar record if the `nullToUnset` parameter is set to `true`.
+The goal is to minimize tombstones in the database. If Maps or UDTs are in the database table that the DataStax Apache Pulsar(TM) Connector is configured to write to, in order to minimize tombstones, you can use the CQL command `UPDATE` to only update the fields present in the Pulsar record if the `nullToUnset` parameter is set to `true`.
 
 To do so, you can leverage the query parameter with the `udtColNotFrozen` keyword.
 The UDT field definition must be not frozen.
@@ -38,7 +38,7 @@ For example:
 UPDATE ks.table set udtColNotFrozen.udtmem1=:udtcol1, udtColNotFrozen.udtmem2=:udtcol2 where bigintCol=:bigintcol
 ----
 
-When the new record arrives, DataStax Apache Pulsar™ Connector sets only the not null fields;
+When the new record arrives, DataStax Apache Pulsar(TM) Connector sets only the not null fields;
 it will not override fields of UDT that have a null value (or are not present) in the Pulsar record, assuming `nullToUnset` is set to `true`.
 The behavior of the Update versus Override is defined via the `nullToUnset` parameter.
 See its description in xref:cfgRefPulsarDseTable.adoc#nullToUnset[nullToUnset].

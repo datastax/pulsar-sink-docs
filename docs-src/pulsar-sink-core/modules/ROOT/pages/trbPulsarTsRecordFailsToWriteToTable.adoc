@@ -6,7 +6,7 @@ Records never appear in the DataStax Enterprise (DSE) database table. The cause 
 
 == Remediation
 
-. Change the DataStax Apache Pulsar™ Connector  `verbose` option to `true` in your sink configuration file:
+. Change the DataStax Apache Pulsar(TM) Connector  `verbose` option to `true` in your sink configuration file:
 +
 [source,language-yaml]
 ----

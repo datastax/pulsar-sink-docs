@@ -1,14 +1,14 @@
-= About the DataStax Apache Pulsar™ Connector 
+= About the DataStax Apache Pulsar(TM) Connector 
 
 :page-tag: pulsar-connector,planner,dev,admin,pulsar
 
-DataStax Apache Pulsar™ Connector is open-source software (OSS) installed in the Pulsar IO framework, and synchronizes records from a Pulsar topic with table rows in DataStax Enterprise (DSE) and Cassandra databases.
+DataStax Apache Pulsar(TM) Connector is open-source software (OSS) installed in the Pulsar IO framework, and synchronizes records from a Pulsar topic with table rows in DataStax Enterprise (DSE) and Cassandra databases.
 
 == Key Features
 
-* Flexibility in mapping Apache Pulsar™ messages to DSE and Cassandra tables.
+* Flexibility in mapping Apache Pulsar(TM) messages to DSE and Cassandra tables.
 * Enterprise grade security support including built-in SSL, and LDAP integration.
-* Consumes all Apache Pulsar™ primitives including primitives, JSON and Avro formats.
+* Consumes all Apache Pulsar(TM) primitives including primitives, JSON and Avro formats.
 * Flexible time/date formatting.
 * Configurable consistency level.
 * Row-level Time-to-Live (TTL).
@@ -20,7 +20,7 @@ DataStax Apache Pulsar™ Connector is open-source software (OSS) installed in t
 
 * https://docs.datastax.com/en/astra-serverless/docs/[DataStax Astra] cloud databases
 * DataStax Enterprise (DSE) 4.7 and later databases
-* Open source Apache Cassandra® 2.1 and later databases
+* Open source Apache Cassandra(R) 2.1 and later databases
 
 == Supported Pulsar data structures
 
@@ -38,7 +38,7 @@ Ingest data from Pulsar topics with records in the following data structures:
 
 == Advanced message mapping topics
 
-If you're already familiar with Apache Pulsar™ and DSE/Astra/Cassandra® see the following advanced message mapping topics:
+If you're already familiar with Apache Pulsar(TM) and DSE/Astra/Cassandra(R) see the following advanced message mapping topics:
 
 * xref:cfgPulsarDisplayingTopic.adoc[] Display messages to determine the data structure of the topic messages.
 * xref:cfgPulsarMapKeyPair.adoc[] Create a topic-table map for Pulsar messages that only contain a key and value in each record.
