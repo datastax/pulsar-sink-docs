@@ -4,7 +4,7 @@
 
 To restart a DataStax Apache Pulsar(TM) Connector that was previously running, use the `pulsar-admin sinks` command:
 
-[source,language-bash]
+[source,bash]
 ----
 bin/pulsar-admin sinks restart --name sink-name
 ----
@@ -17,7 +17,7 @@ Example restart a sink
 
 To restart `dse-sink-kv`:
 
-[source,language-bash]
+[source,bash]
 ----
 bin/pulsar-admin sinks restart --name dse-sink-kv
 Stopped successfully

@@ -5,7 +5,7 @@ In the Apache Pulsar(TM) topic mapping, you can extract values from the message 
 
 For example:
 
-[source,no-highlight]
+[source,console]
 ----
 topic:
   my_topic

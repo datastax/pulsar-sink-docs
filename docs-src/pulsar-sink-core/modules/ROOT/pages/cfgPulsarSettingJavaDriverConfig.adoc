@@ -4,7 +4,7 @@
 In your DataStax Apache Pulsar(TM) Connector configuration file, you can directly pass settings to the DataStax Java driver by using the `datastax-java-driver` prefix.
 For example:
 
-[source,no-highlight]
+[source,console]
 ----
 datastax-java-driver.basic.request.consistency=ALL
 ----
@@ -50,7 +50,7 @@ For `datastax-java-driver.basic.contact-points`, you must provide the fully qual
 By passing in the Java driver's setting, this option gives you more configuration flexibility because you can specify a different port for each host.
 Example:
 
-[source,no-highlight]
+[source,console]
 ----
 datastax-java-driver.basic.contact-points = 127.0.0.1:9042, 127.0.0.2:90
 ----
@@ -68,7 +68,7 @@ The following properties that are of type `List`, which you could pass into the 
 The conversion by the Java driver will split the comma-separated values provided in those setting to create indexed properties.
 For example, if you passed in `datastax-java-driver.advanced.metrics.session.enabled=a,b`, the entry is converted to:
 
-[source,no-highlight]
+[source,console]
 ----
 datastax-java-driver.advanced.metrics.session.enabled.0=a
 datastax-java-driver.advanced.metrics.session.enabled.1=b

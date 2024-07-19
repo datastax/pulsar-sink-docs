@@ -4,7 +4,7 @@
 
 Use the Apache Pulsar(TM) administration tool sinks command to retrieve detailed information on a Pulsar sink:
 
-[source,language-bash]
+[source,bash]
 ----
 bin/pulsar-admin sinks get --name sink-name
 ----
@@ -18,7 +18,7 @@ Example show configuration
 
 To display the configuration of `dse-sink-kv`:
 
-[source,language-bash]
+[source,bash]
 ----
 bin/pulsar-admin sinks get --name dse-sink-kv
 ----

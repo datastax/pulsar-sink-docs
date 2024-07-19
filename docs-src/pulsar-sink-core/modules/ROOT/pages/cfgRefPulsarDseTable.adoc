@@ -7,7 +7,7 @@ Capture Apache Pulsar(TM) topics in the xref:index.adoc#supported-databases[supp
 
 Use the following syntax for standalone properties file:
 
-[source,language-yaml]
+[source,yaml]
 ----
 topics: topic_list
 topic:

@@ -19,7 +19,7 @@ Null values are not allowed in PK columns.
 Ensure that keyspace is replicated to a datacenter that is set in the DataStax Apache Pulsar Connector xref:cfgRefPulsarDseConnection.adoc#contactPoints[contactPoints] parameter.
 For example, create the world_keyspace:
 +
-[source,language-bash]
+[source,bash]
 ----
 cqlsh -e "CREATE KEYSPACE world_keyspace WITH replication = {'class': 'NetworkTopologyStrategy','Cassandra': 1};"
 ----
@@ -29,14 +29,14 @@ Use https://docs.datastax.com/en/dse/6.8/dse-dev/datastax_enterprise/tools/nodet
 
 . Create the table. For example, create the world\_table:
 +
-[source,language-bash]
+[source,bash]
 ----
 cqlsh -e "CREATE TABLE world_table (recordid int PRIMARY KEY, continent text);"
 ----
 
 . Verify that all nodes have the same schema version using [nodetool describering](https://docs.datastax.com/en/dse/6.8/dse-admin/datastax_enterprise/tools/nodetool/toolsDescribeRing.html). Replace keyspace_name:
 +
-[source,language-bash]
+[source,bash]
 ----
 nodetool describering -- keyspace_name
 ----
@@ -48,7 +48,7 @@ nodetool describering -- keyspace_name
 +
 Example configurations for `world_topic` to `world_table` using the minimum required settings:
 +
-[source,language-yaml]
+[source,yaml]
 ----
 tasks.max: 1
 topics: world_topic

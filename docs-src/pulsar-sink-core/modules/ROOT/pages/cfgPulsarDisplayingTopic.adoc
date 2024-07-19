@@ -7,7 +7,7 @@ https://pulsar.apache.org/docs/en/reference-cli-tools/#consume
 
 To show Apache Pulsar messages:
 
-[source,language-bash]
+[source,bash]
 ----
  bin/pulsar-client consume topic_name -s "subscription_name"
 ----
@@ -20,7 +20,7 @@ subscription_name:: Arbitrary name for the consumer subscription.
 
 You'll see the message data when a message is received:
 
-[source,no-highlight]
+[source,console]
 ----
 ----- got message -----
 key:[My key], properties:[], content:My content

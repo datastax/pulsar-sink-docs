@@ -7,7 +7,7 @@ A login role for the connector with access to the mapped tables is also required
 [#ldap-parameters]
 == Parameters
 
-[source,language-yaml]
+[source,yaml]
 ----
 auth:
   provider: DSE

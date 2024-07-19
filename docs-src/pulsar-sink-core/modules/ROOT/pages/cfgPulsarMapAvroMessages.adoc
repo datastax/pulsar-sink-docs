@@ -69,7 +69,7 @@ The DataStax keyspace name is `users_keyspace` and table is `users_table`.
 
 To create the table use the following command:
 
-[source,language-cql]
+[source,cql]
 ----
 CREATE TABLE users_keyspace.users_table (userid text primary key, name text,
           favoritenumber int, favoritecolor text);
@@ -77,7 +77,7 @@ CREATE TABLE users_keyspace.users_table (userid text primary key, name text,
 
 Configure the connector and use the following map specification:
 
-[source,language-yaml]
+[source,yaml]
 ----
 topic:
     users_topic:

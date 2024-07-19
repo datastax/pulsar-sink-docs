@@ -33,7 +33,7 @@ See the https://github.com/datastax/pulsar-examples/tree/master/producers/src/ma
 Ensure that keyspace is replicated to a datacenter that is set in the DataStax Apache Pulsar Connector xref:cfgRefPulsarDseConnection.adoc#contactPoints[contactPoints] parameter.
 For example, create the `stocks_keyspace`:
 +
-[source,language-bash]
+[source,bash]
 ----
 cqlsh -e "CREATE KEYSPACE stocks_keyspace \
   WITH replication = {'class': 'NetworkTopologyStrategy',\
@@ -45,7 +45,7 @@ Use https://docs.datastax.com/en/dse/6.8/dse-dev/datastax_enterprise/tools/nodet
 
 . Create the table. For example, create the `stocks_table`:
 +
-[source,language-bash]
+[source,bash]
 ----
 cqlsh -e "CREATE TABLE stocks_keyspace.stocks_table ( \
   symbol text, \
@@ -59,7 +59,7 @@ cqlsh -e "CREATE TABLE stocks_keyspace.stocks_table ( \
 
 . Verify that all nodes have the same schema version using https://docs.datastax.com/en/dse/6.8/dse-admin/datastax_enterprise/tools/nodetool/toolsDescribeRing.html[nodetool describering]. Replace keyspace\_name:
 +
-[source,language-bash]
+[source,bash]
 ----
 nodetool describering -- keyspace\_name
 ----
@@ -72,7 +72,7 @@ nodetool describering -- keyspace\_name
 +
 Example configurations for `stocks_topic` to `stocks_table` using the minimum required settings:
 +
-[source,language-yaml]
+[source,yaml]
 ----
 tasks.max: 1
 topics: stocks_topic

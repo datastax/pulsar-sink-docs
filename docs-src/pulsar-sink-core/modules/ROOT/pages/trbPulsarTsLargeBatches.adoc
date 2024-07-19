@@ -9,7 +9,7 @@ For a given batch, if the total size of the mutation exceeds the maximum allowed
 
 For example:
 
-[source,no-highlight]
+[source,console]
 ----
 Mutation of 28087887 bytes is too large for the maximum size of 16777216
 ----

@@ -6,7 +6,7 @@ To completely remove the DataStax Apache Pulsar(TM) Connector:
 
 . Delete any sinks associated with the DataStax Apache Pulsar(TM) Connector:
 +
-[source,language-bash]
+[source,bash]
 ----
 bin/pulsar-admin sinks delete --name sink_name --namespace sink_namespace --tenant sink_tenant
 ----
@@ -19,7 +19,7 @@ where
 +
 Example - delete the `cass-sink-kv`
 +
-[source,language-bash]
+[source,bash]
 ----
 bin/pulsar-admin sinks delete \
     --tenant public \
@@ -29,7 +29,7 @@ bin/pulsar-admin sinks delete \
 ----
 . Stop the Pulsar service:
 +
-[source,language-bash]
+[source,bash]
 ----
 bin/pulsar-daemon stop standalone
 doing stop standalone ...
@@ -40,13 +40,13 @@ Shutdown completed.
 ----
 . Remove the DataStax Apache Pulsar(TM) Connector from the `connectors` directory:
 +
-[source,language-bash]
+[source,bash]
 ----
 rm connectors/cassandra-enhanced-pulsar-sink-1.4.0.nar
 ----
 . Restart the Pulsar service:
 +
-[source,language-bash]
+[source,bash]
 ----
 bin/pulsar-daemon start standalone
 doing start standalone ...

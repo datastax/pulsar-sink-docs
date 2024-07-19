@@ -5,7 +5,7 @@ Configure the connection settings from Apache Pulsar(TM) to the cluster.
 
 == Parameters
 
-[source,language-yaml]
+[source,yaml]
 ----
  connectionPoolLocalSize: 4
  contactPoints: [dse_host_list]

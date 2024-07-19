@@ -12,14 +12,14 @@ In the example `stocks_topic`, the key is a basic string and the value is regula
 |
 APPLE
 |
-[source,no-highlight]
+[source,console]
 ----
 {"symbol":"APPL", "value":208, "exchange":"NASDAQ", "industry":"TECH", "ts":"2018-11-26T19:26:27.483"}
 ----
 |
 EXXON MOBIL
 |
-[source,no-highlight]
+[source,console]
 ----
 {"symbol":"M",
 "value":80,
@@ -30,14 +30,14 @@ EXXON MOBIL
 |
 GENERAL MOTORS
 |
-[source,no-highlight]
+[source,console]
 ----
 {"symbol":"GM", "value":38, "exchange":"NYSE", "industry":"AUTO", "ts":"2018-11-26T19:26:27.483"}
 ----
 |
 AT&T
 |
-[source,no-highlight]
+[source,console]
 ----
 {"symbol":"AT&T",
 "value":33,
@@ -48,7 +48,7 @@ AT&T
 |
 FORD MOTOR
 |
-[source,no-highlight]
+[source,console]
 ----
 {"symbol":"F", "value":10, "exchange":"NYSE", "industry":"AUTO", "ts":"2018-11-26T19:26:27.483"}
 ----
@@ -59,7 +59,7 @@ In the DataStax keyspace `stocks_keyspace`, create three different tables that o
 
 * `stocks_table_by_symbol`
 +
-[source,language-cql]
+[source,cql]
 ----
 CREATE TABLE stocks_keyspace.stocks_table_by_symbol (
    symbol text,
@@ -73,7 +73,7 @@ CREATE TABLE stocks_keyspace.stocks_table_by_symbol (
 
 * `stocks_table_by_exhange`
 +
-[source,language-cql]
+[source,cql]
 ----
 CREATE TABLE stocks_keyspace.stocks_table_by_exchange (
    symbol text,
@@ -87,7 +87,7 @@ CREATE TABLE stocks_keyspace.stocks_table_by_exchange (
 
 * `stocks_table_by_industry`
 +
-[source,language-cql]
+[source,cql]
 ----
 CREATE TABLE stocks_keyspace.stocks_table_by_industry (
    symbol text,
@@ -103,7 +103,7 @@ Configure the connector and add all the map specifications:
 
 * `stocks_topic` to `stocks_table_by_symbol`
 +
-[source,language-yaml]
+[source,yaml]
 ----
 topic:
    stocks_topic:
@@ -114,7 +114,7 @@ topic:
 
 * `stocks_topic` to `stocks_table_by_exchange`
 +
-[source,language-yaml]
+[source,yaml]
 ----
 “topic:
    stocks_topic:
@@ -125,7 +125,7 @@ topic:
 
 * `stocks_topic` to `stocks_table_by_industry`
 +
-[source,language-yaml]
+[source,yaml]
 ----
 topic:
    stocks_topic:

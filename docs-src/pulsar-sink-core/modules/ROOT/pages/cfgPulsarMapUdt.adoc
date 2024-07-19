@@ -10,13 +10,13 @@ In the example `stocks_topic`, the key is a basic string and the value is regula
 |key|value
 
 |APPLE|
-[source,no-highlight]
+[source,console]
 ----
 {"symbol":"APPL", "value":208, "exchange":"NASDAQ", "industry":"TECH", "ts":"2018-11-26T19:26:27.483"}
 ----
 
 |EXXON MOBIL|
-[source,no-highlight]
+[source,console]
 ----
 {"symbol":"M",
 "value":80,
@@ -26,13 +26,13 @@ In the example `stocks_topic`, the key is a basic string and the value is regula
 ----
 
 |GENERAL MOTORS|
-[source,no-highlight]
+[source,console]
 ----
 {"symbol":"GM", "value":38, "exchange":"NYSE", "industry":"AUTO", "ts":"2018-11-26T19:26:27.483"}
 ----
 
 |AT&T|
-[source,no-highlight]
+[source,console]
 ----
 {"symbol":"AT&T",
 "value":33,
@@ -42,7 +42,7 @@ In the example `stocks_topic`, the key is a basic string and the value is regula
 ----
 
 |FORD MOTOR|
-[source,no-highlight]
+[source,console]
 ----
 {"symbol":"F", "value":10, "exchange":"NYSE", "industry":"AUTO", "ts":"2018-11-26T19:26:27.483"}
 ----
@@ -51,7 +51,7 @@ In the example `stocks_topic`, the key is a basic string and the value is regula
 
 The DataStax keyspace name is `stocks_keyspace`. In the stocks keyspace create the user defined type, `stocks_type`:
 
-[source,language-cql]
+[source,cql]
 ----
 CREATE TYPE stocks_keyspace.stocks_type (
     symbol text,
@@ -63,7 +63,7 @@ CREATE TYPE stocks_keyspace.stocks_type (
 
 Define a table named `stocks_udt_table` that has a column for the primitive string field `name` and a second column that uses the type, `stocks_type`:
 
-[source,language-cql]
+[source,cql]
 ----
 CREATE TABLE stocks_keyspace.stocks_table (
     name text primary key,
@@ -72,7 +72,7 @@ CREATE TABLE stocks_keyspace.stocks_table (
 
 Configure the connector settings and use the following for the map specification:
 
-[source,language-yaml]
+[source,yaml]
 ----
 topic:
     stocks_topic:
@@ -87,7 +87,7 @@ The DataStax Apache Pulsar(TM) Connector supports mapping complex user defined t
 
 The DataStax keyspace name is `stocks_keyspace`. In the stocks keyspace create the user defined type, `stocks_complex_type`:
 
-[source,language-cql]
+[source,cql]
 ----
 CREATE TYPE stocks_keyspace.stocks_complex_type (
     symbol text,
@@ -106,7 +106,7 @@ CREATE TYPE stocks_keyspace.stocks_complex_type (
 
 Define a table named `stocks_complex_udt_table` that has a column for the primitive string field `name` and a second column that uses the type, `stocks_complex_type`:
 
-[source,language-cql]
+[source,cql]
 ----
 CREATE TABLE stocks_keyspace.stocks_complex_udt_table (
     name text primary key,
@@ -115,7 +115,7 @@ CREATE TABLE stocks_keyspace.stocks_complex_udt_table (
 
 Configure the connector settings and use the following for the map specification:
 
-[source,language-yaml]
+[source,yaml]
 ----
 topic:
     stocks_topic:

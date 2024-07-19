@@ -4,7 +4,7 @@
 
 Use the Apache Pulsar(TM) administration tool `sinks status` command to display the status of the DataStax Apache Pulsar(TM) Connector.
 
-[source,language-bash]
+[source,bash]
 ----
 bin/pulsar-admin sinks status --name sink-name
 ----
@@ -15,7 +15,7 @@ where
 
 Example
 
-[source,language-bash]
+[source,bash]
 ----
 bin/pulsar-admin sinks status --name cass-sink-kv
 ----

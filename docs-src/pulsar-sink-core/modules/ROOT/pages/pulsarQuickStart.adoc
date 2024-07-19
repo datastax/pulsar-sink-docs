@@ -10,14 +10,14 @@ Once you've configured Pulsar, a Pulsar sink, the DataStax Apache Pulsar(TM) Con
 . Install the tarball distribution of DSE 6.8 as described in https://docs.datastax.com/en/install/6.8/install/installTARdse.html[Installing DataStax Enterprise 6.8 using the binary tarball].
 . Start DSE from the installation directory:
 +
-[source,language-bash]
+[source,bash]
 ----
 bin/dse cassandra
 ----
 
 . Verify that DataStax Enterprise is running from the installation directory:
 +
-[source,language-bash]
+[source,bash]
 ----
 bin/nodetool status
 Datacenter: Cassandra
@@ -30,7 +30,7 @@ UN  127.0.0.1  152.24 KiB  100.0%           <host-id>  <token>  rack1
 
 . Start `cqlsh`:
 +
-[source,language-bash]
+[source,bash]
 ----
 bin/cqlsh
 Connected to Test Cluster at 127.0.0.1:9042.
@@ -41,7 +41,7 @@ cqlsh>
 
 . Create a new keyspace, `pulsar_qs`:
 +
-[source,language-cql]
+[source,cql]
 ----
 cqlsh> CREATE KEYSPACE IF NOT EXISTS pulsar_qs
 WITH replication = {
@@ -52,7 +52,7 @@ WITH replication = {
 
 . Create a new table, `pulsar_kv` in the keyspace to hold the Pulsar message content:
 +
-[source,language-cql]
+[source,cql]
 ----
 cqlsh> CREATE TABLE pulsar_qs.pulsar_kv (
 	key text PRIMARY KEY,
@@ -64,14 +64,14 @@ cqlsh> CREATE TABLE pulsar_qs.pulsar_kv (
 
 . Download Apache Pulsar:
 +
-[source,language-bash]
+[source,bash]
 ----
 wget https://archive.apache.org/dist/pulsar/pulsar-2.7.0/apache-pulsar-2.7.0-bin.tar.gz
 ----
 
 . Untar the Pulsar binary:
 +
-[source,language-bash]
+[source,bash]
 ----
 tar xvfz apache-pulsar-2.7.0-bin.tar.gz
 ----
@@ -80,7 +80,7 @@ tar xvfz apache-pulsar-2.7.0-bin.tar.gz
 If you agree, enable the *Terms* checkbox and click the download icon.
 . Extract the files:
 +
-[source,language-bash]
+[source,bash]
 ----
 tar zxf cassandra-enhanced-pulsar-sink-1.4.0.tar.gz
 ----
@@ -88,21 +88,21 @@ tar zxf cassandra-enhanced-pulsar-sink-1.4.0.tar.gz
 . Create a `connectors` directory in the Pulsar home directory if it doesn't exist.
 . Copy the DataStax connector NAR to the Pulsar `connectors` directory:
 +
-[source,language-bash]
+[source,bash]
 ----
 cp installation_location/cassandra-enhanced-pulsar-sink-1.4.0.nar pulsar_home/connectors
 ----
 
 . Start Apache Pulsar in standalone mode:
 +
-[source,language-bash]
+[source,bash]
 ----
 bin/pulsar standalone
 ----
 
 . Open a new terminal and check that the DataStax Apache Pulsar Connector is running:
 +
-[source,language-bash]
+[source,bash]
 ----
 curl -s http://localhost:8080/admin/v2/functions/connectors
 [{"name":"cassandra-enhanced","description":"A DataStax Pulsar Sink to load records from Pulsar topics to Apache Cassandra(R) or DataStax Enterprise(DSE)\n","sinkClass":"com.datastax.oss.sink.pulsar.RecordCassandraSinkTask"}]%
@@ -112,7 +112,7 @@ curl -s http://localhost:8080/admin/v2/functions/connectors
 
 . Save following YAML contents to the Pulsar configuration directory, `conf` as `qs.yml`:
 +
-[source,language-yaml]
+[source,yaml]
 ----
 configs:
   verbose: false
@@ -173,7 +173,7 @@ configs:
 
 . Create a new Pulsar sink:
 +
-[source,language-bash]
+[source,bash]
 ----
 bin/pulsar-admin sinks create \
 	--name dse-sink-kv \
@@ -188,7 +188,7 @@ bin/pulsar-admin sinks create \
 
 . Send some messages to DSE:
 +
-[source,language-bash]
+[source,bash]
 ----
 bin/pulsar-client produce -k "Message 1" -m "Content 1" persistent://public/default/example_topic
 bin/pulsar-client produce -k "Message 2" -m "Content 2" persistent://public/default/example_topic
@@ -197,7 +197,7 @@ bin/pulsar-client produce -k "Message 3" -m "Content 3" persistent://public/defa
 
 . Start cqlsh and view the messages in the `pulsar_kv` table:
 +
-[source,language-cql]
+[source,cql]
 ----
 cqlsh> SELECT * FROM pulsar_qs.pulsar_kv;
 

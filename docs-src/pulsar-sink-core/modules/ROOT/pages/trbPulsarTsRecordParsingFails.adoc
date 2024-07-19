@@ -5,7 +5,7 @@ When the data from an Apache Pulsar(TM) field is not compatible with the data ty
 
 Example error message when parsing a string value for a numeric column:
 
-[source,no-highlight]
+[source,console]
 ----
 java.lang.IllegalArgumentException: Could not parse 'jack'; accepted formats are: a valid
           number (e.g. '1234.56'), a valid Java numeric format (e.g. '-123.45e6'), a valid date-time

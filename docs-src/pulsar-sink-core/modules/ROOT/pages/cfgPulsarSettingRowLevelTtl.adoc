@@ -5,7 +5,7 @@ In the Apache Pulsar(TM) topic mapping, you can optionally specify which column 
 The mapping setting provides a special property, `__ttl`.
 The format is:
 
-[source,no-highlight]
+[source,console]
 ----
 topic:
   my_topic:
@@ -20,7 +20,7 @@ If you want to specify a `ttl` value in a unit such as `HOURS`, set `timeUnit` t
 DataStax Apache Pulsar Connector automatically transforms the value to `SECONDS`, which is the DSE `ttl` unit.
 The transformation also applies for static .ttl field configuration:
 
-[source,no-highlight]
+[source,console]
 ----
 topic:
   my_topic:

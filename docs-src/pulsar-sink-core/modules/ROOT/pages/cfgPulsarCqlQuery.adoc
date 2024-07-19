@@ -8,7 +8,7 @@ NOTE: This feature is only meant for advanced use cases. Most often, you can use
 If used, you must provide the bound variables used in the query in the mapping column.
 For example, give the following query:
 
-[source,language-yaml]
+[source,yaml]
 ----
 topic:
   my_topic:
@@ -19,7 +19,7 @@ topic:
 
 The corresponding mapping in this example should be defined as:
 
-[source,language-yaml]
+[source,yaml]
 ----
 topic:
   my_topic:

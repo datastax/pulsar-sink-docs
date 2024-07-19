@@ -6,7 +6,7 @@ It returns `TIMEUUID`, which is documented in the https://docs.datastax.com/en/d
 
 For example:
 
-[source,language-yaml]
+[source,yaml]
 ----
 topic:
   my_topic:
@@ -17,14 +17,14 @@ topic:
 
 In this example, you must create `col1` in a CQL table with the following definition:
 
-[source,no-highlight]
+[source,console]
 ----
 col1 timeuuid
 ----
 
 You can use the `now()` function for mapping of multiple database columns:
 
-[source,language-yaml]
+[source,yaml]
 ----
 topic:
   my_topic:
@@ -41,14 +41,14 @@ When the value of a record arrives to DataStax Apache Pulsar Connector instance,
 
 For example, consider a case where a user has mapping and used the `now()` function:
 
-[source,no-highlight]
+[source,console]
 ----
 my_pk=value.my_pk, my_value=value.my_value, loaded_at=now()
 ----
 
 If there is an insertion of a value that is `null`, such as:
 
-[source,no-highlight]
+[source,console]
 ----
 "{\"my_pk\": 1234567, \"my_value\": null}";
 ----

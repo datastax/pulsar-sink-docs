@@ -19,14 +19,14 @@ Perform the following steps on a Pulsar Connect node:
 If you agree, enable the *Terms* checkbox and click the download icon.
 . Extract the files:
 +
-[source,language-bash]
+[source,bash]
 ----
 tar zxf cassandra-enhanced-pulsar-sink-1.4.0.tar.gz
 ----
 +
 The following files are unpacked into a directory such as `cassandra-enhanced-pulsar-sink-1.4.0`:
 +
-[source,no-highlight]
+[source,console]
 ----
 LICENSE.txt
 README.md
@@ -38,7 +38,7 @@ cassandra-enhanced-pulsar-sink-1.4.0.nar
 . Create a `connectors` directory in the Pulsar home directory if it doesn't exist.
 . Move the DataStax connector NAR to the Pulsar `connectors` directory:
 +
-[source,language-bash]
+[source,bash]
 ----
 mv installation_location/cassandra-enhanced-pulsar-sink-1.4.0.nar pulsar_home/connectors
 ----

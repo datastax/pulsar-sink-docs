@@ -6,7 +6,7 @@ In the Apache Pulsar(TM) topic mapping, you can optionally specify which column 
 The mapping setting provides a special property, `__timestamp`.
 The format is:
 
-[source,language-yaml]
+[source,yaml]
 ----
 topic:
   my_topic:
@@ -27,7 +27,7 @@ The connector will automatically transform it to the database's proper numeric t
 that is, to `MICROSECONDS`.
 Example:
 
-[source,language-yaml]
+[source,yaml]
 ----
 topic:
   my_topic:
