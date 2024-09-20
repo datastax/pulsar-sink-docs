@@ -23,60 +23,68 @@ topic:
 ----
 
 [#topics]
-topics:: A comma separated list of all topics to which the DataStax Connector subscribes.
-+
-where:
-+
-* topic_name - Pulsar topic name.
-* keyspace_name - database keyspace where the table is located.
-* table_name - database table where data is written.
+=== topics
+A comma separated list of all topics to which the DataStax Connector subscribes.
+
+* `topic_name` - Pulsar topic name.
+* `keyspace_name` - database keyspace where the table is located.
+* `table_name` - database table where data is written.
 
 [#mapping]
-mapping::
+=== mapping
 Required, field-to-column mapping.
-See xref:ROOT:cfgPulsarMapTopicTable.adoc[].
+
+For more, see xref:ROOT:cfgPulsarMapTopicTable.adoc[].
 
 [#consistencyLevel]
-consistencyLevel:: Query consistency level.
-DSE settings are:
-+
--   https://docs.datastax.com/en/dse/6.8/dse-arch/datastax_enterprise/dbInternals/dbIntConfigConsistency.html#dbIntConfigConsistency__all[ALL]
--   https://docs.datastax.com/en/dse/6.8/dse-arch/datastax_enterprise/dbInternals/dbIntConfigConsistency.html#dbIntConfigConsistency__each_quorum[EACH QUORUM]
--   https://docs.datastax.com/en/dse/6.8/dse-arch/datastax_enterprise/dbInternals/dbIntConfigConsistency.html#dbIntConfigConsistency__quorum[QUORUM]
--   https://docs.datastax.com/en/dse/6.8/dse-arch/datastax_enterprise/dbInternals/dbIntConfigConsistency.html#dbIntConfigConsistency__local_quorum[LOCAL_QUORUM]
--   https://docs.datastax.com/en/dse/6.8/dse-arch/datastax_enterprise/dbInternals/dbIntConfigConsistency.html#dbIntConfigConsistency__one[ONE]
--   https://docs.datastax.com/en/dse/6.8/dse-arch/datastax_enterprise/dbInternals/dbIntConfigConsistency.html#dbIntConfigConsistency__two[TWO]
--   https://docs.datastax.com/en/dse/6.8/dse-arch/datastax_enterprise/dbInternals/dbIntConfigConsistency.html#dbIntConfigConsistency__three[THREE]
--   https://docs.datastax.com/en/dse/6.8/dse-arch/datastax_enterprise/dbInternals/dbIntConfigConsistency.html#dbIntConfigConsistency__local_one[LOCAL\_ONE] (default)
--   https://docs.datastax.com/en/dse/6.8/dse-arch/datastax_enterprise/dbInternals/dbIntConfigConsistency.html#dbIntConfigConsistency__any[ANY]
-+
-See https://docs.datastax.com/en/dse/6.8/dse-arch/datastax_enterprise/dbInternals/dbIntAboutDataConsistency.html[How are consistent read and write operations handled?]
-+
+=== consistencyLevel
+Query consistency level.
+
 Default: `LOCAL_ONE`
 
+DSE settings are:
+
+* xref:dse:architecture:database-internals/configure-consistency.adoc[ALL]
+* xref:dse:architecture:database-internals/configure-consistency.adoc[EACH QUORUM]
+* xref:dse:architecture:database-internals/configure-consistency.adoc[QUORUM]
+* xref:dse:architecture:database-internals/configure-consistency.adoc[LOCAL_QUORUM]
+* xref:dse:architecture:database-internals/configure-consistency.adoc[ONE]
+* xref:dse:architecture:database-internals/configure-consistency.adoc[TWO]
+* xref:dse:architecture:database-internals/configure-consistency.adoc[THREE]
+* xref:dse:architecture:database-internals/configure-consistency.adoc[LOCAL_ONE]
+* xref:dse:architecture:database-internals/configure-consistency.adoc[ANY]
+
+For more, see xref:dse:architecture:database-internals/about-data-consistency.adoc[]
+
 [#nullToUnset]
-nullToUnset:: Whether to treat null values in Pulsar as UNSET in DSE.
+=== nullToUnset
+Whether to treat null values in Pulsar as UNSET in DSE.
+
+Default: `true`
+
 This parameter controls the handling of updates versus overrides.
-+
+
 When true (default), the DataStax Pulsar Connector treats null values as unset fields.
 It only updates fields that are _not_ null when a new record arrives.
 DataStax recommends using the default to avoid creating unnecessary tombstones.
-+
+
 If false, fields with null values are visible in the DSE target table.
-+
-Default: `true`
 
 [#ttl]
-ttl:: Time-to-live.
+=== ttl
+Time-to-live.
+
+Default: `-1` (disabled)
+
 Set to the number of seconds before the data is automatically deleted from the DSE table.
 When you configure `topic.<topic-name>.<keyspace-name>.<table-name>.ttl`, all rows for that topic table will have this same `TTL` value.
 DataStax Pulsar Connector appends `AND TTL <configured-ttl-value>` to the INSERT statement for those rows.
-+
-Default: `-1` (disabled)
 
 [#deletesEnabled]
-deletesEnabled:: When enabled, treat records that after mapping would result in only non-null values for primary key columns as deletes, rather than inserting/updating nulls for all regular columns.
-+
-NOTE: Only triggers if the setting is enabled and the mapping specification contains all DSE table columns.
-+
+=== deletesEnabled
+
 Default: `true`
+
+When enabled, treat records that after mapping would result in only non-null values for primary key columns as deletes, rather than inserting/updating nulls for all regular columns.
+
+Only triggers if the setting is enabled and the mapping specification contains all DSE table columns.
