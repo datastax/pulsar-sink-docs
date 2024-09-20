@@ -55,8 +55,14 @@ See https://docs.datastax.com/en/dse/6.8/dse-arch/datastax_enterprise/dbInternal
 Default: `LOCAL_ONE`
 
 [#nullToUnset]
-nullToUnset:: Whether to treat nulls in Pulsar as UNSET in DSE.
+nullToUnset:: Whether to treat null values in Pulsar as UNSET in DSE.
+This parameter controls the handling of updates versus overrides.
++
+When true (default), the DataStax Pulsar Connector treats null values as unset fields.
+It only updates fields that are _not_ null when a new record arrives.
 DataStax recommends using the default to avoid creating unnecessary tombstones.
++
+If false, fields with null values are visible in the DSE target table.
 +
 Default: `true`
 
