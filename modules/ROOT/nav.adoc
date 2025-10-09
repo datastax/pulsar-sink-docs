@@ -53,10 +53,7 @@
 * xref:cfgPulsarConfigureErrorHandling.adoc[]
 
 .Troubleshooting
-* xref:trbPulsarTsRecordFailsToWriteToTable.adoc[]
 * xref:trbPulsarTsLargeBatches.adoc[]
-* xref:trbPulsarTsRecordParsingFails.adoc[]
-* xref:trbPulsarTsLoadBalancing.adoc[]
 
 .Release notes
 * https://github.com/datastax/release-notes/blob/master/DataStax_Apache_Pulsar_Connector_1.4_Release_Notes.md[Release notes]
