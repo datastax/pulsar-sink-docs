@@ -4,6 +4,7 @@
 * xref:pulsarQuickStart.adoc[]
 
 .Configure
+* xref:secPulsarInternalLdapAuth.adoc[]
 * xref:cfgPulsarConfigTasksMax.adoc[]
 * xref:cfgPulsarColumnWritetimeTimestamp.adoc[]
 * xref:cfgPulsarSettingRowLevelTtl.adoc[]
@@ -40,13 +41,8 @@
 * xref:opsPulsarDeleteConnector.adoc[]
 * xref:opsPulsarConnectorStatus.adoc[]
 
-.Security
-* xref:secPulsarInternalLdapAuth.adoc[]
-* xref:cfgRefPulsarSsl.adoc[]
-
 .Reference
 * xref:monPulsarConnectMetrics.adoc[]
-* xref:cfgRefPulsarConnector.adoc[]
 * xref:cfgRefPulsarDseConnection.adoc[]
 * xref:cfgRefPulsarDseTable.adoc[]
 * xref:cfgRefPulsarDates.adoc[]
