@@ -42,8 +42,6 @@
 
 .Security
 * xref:secPulsarInternalLdapAuth.adoc[]
-* xref:cfgRefPulsarAuth.adoc[]
-* xref:cfgRefPulsarAuthLdap.adoc[]
 * xref:cfgRefPulsarSsl.adoc[]
 
 .Reference

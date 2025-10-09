@@ -1,20 +1,48 @@
-= Using internal or LDAP authentication
+= Authentication
+:page-aliases: ROOT:cfgRefPulsarAuthLdap.adoc, ROOT:cfgRefPulsarAuth.adoc
 
-Authenticate the DataStax Apache Pulsar(TM) Connector session using internal or LDAP authentication.
-When the cluster has internal or LDAP authentication enabled, configure the user name and password settings for DataStax Apache Pulsar(TM) Connector.
-This task also requires a login role for the DataStax Apache Pulsar(TM) Connector with access to the mapped tables.
+Authenticate the DataStax Apache Pulsar(TM) Connector session using internal, LDAP, or Kerberos authentication, depending on the methods supported by your cluster.
 
-. Verify whether your cluster has internal or LDAP authentication enabled.
-Refer to the https://docs.datastax.com/en/dse/6.8/dse-admin/datastax_enterprise/config/configDseYaml.html#configDseYaml__authenticationOptions[authentication options] in the dse.yaml file.
-Authentication options for the DSE Authenticator allow you to use multiple schemes for authentication simultaneously in a DataStax Enterprise cluster.
-. Additional authenticator configuration is required in dse.yaml when the authorization option in cassandra.yaml is set to `com.datastax.bdp.cassandra.auth.DseAuthorizer`.
-When authorization is enabled, the DataStax Apache Pulsar(TM) Connector login role must have a minimum of `modify` privileges on tables receiving data from the DataStax Apache Pulsar Connector.
-For details, refer to the https://docs.datastax.com/en/dse/6.8/dse-admin/datastax_enterprise/config/configCassandra_yaml.html#configCassandra_yaml__authenticator[authorization] options.
-. In dse.yaml, there are options to configure LDAP security when the authenticator option in cassandra.yaml is set to `com.datastax.bdp.cassandra.auth.DseAuthenticator`.
-When not set, LDAP authentication is not used.
-The default in dse.yaml is that this setting is commented out (false).
-For details, refer to https://docs.datastax.com/en/security/6.8/security/secLDAPScheme.html[Defining an LDAP scheme].
-. Internal and LDAP schemes can also be used for role management.
-Refer to the https://docs.datastax.com/en/dse/6.8/dse-admin/datastax_enterprise/config/configDseYaml.html#configDseYaml__role_management_options[role management] options.
-. Set the relevant auth parameters in dse.yaml for `auth.provider`, `auth.username` (the login role name or LDAP username), and `auth.password`.
-See xref:cfgRefPulsarAuthLdap.adoc#ldap-parameters[parameters].
+== Use the Pulsar Connector with DSE authentication
+
+When xref:6.9@dse:securing:authorization-authentication/enable-unifiedi-authentication.adoc[DSE Unified Authentication is enabled], you must provide credentials for internal/LDAP authentication or provide the location of the Kerberos keytab file.
+
+The connector also supports DSE role management with internal and LDAP schemes.
+
+For information about authentication configuration for DSE clusters, see the documentation for your version of DSE.
+
+== Internal or LDAP authentication
+
+If the cluster has internal or LDAP authentication enabled, configure the username and password settings for the Pulsar Connector.
+You must also provide a login role for the connector with access to the mapped tables.
+
+Set the relevant auth parameters in dse.yaml for `auth.provider`, `auth.username` (the login role name or LDAP username), and `auth.password`.
+
+[source,yaml]
+----
+auth:
+  provider: DSE
+  username: login_role
+  password: password
+----
+
+provider::
+Select the type of authentication provider configured for the cluster:
++
+* **`None` (default)**: No authentication
+* **`DSE`**: Internal or LDAP authentication
+* **`GSSAPI`**: SASL authentication to DSE clusters using the GSSAPI mechanism (Kerberos authentication)
++
+When using GSSAPI, you must provide the path to the Kerberos configuration file (`krb5.conf`) in the `java.security.krb5.conf` system property at startup.
+For more information, see xref:ROOT:ecPulsarInternalLdapAuth.adoc[].
+
+username::
+For DSE, provide the login role name or LDAP username.
+If xref:6.9@dse:managing:configure/configure-dse-yaml.adoc#authorizationOptions[authorization is enabled], the DataStax connector login role must have a minimum of `modify` privileges on tables receiving data from the DataStax Apache Pulsar(TM) Connector.
++
+For Astra, enter the literal string `token` or provide the `clientId` from an Astra application token.
+
+password::
+For DSE, provide the login role or LDAP password.
++
+For Astra, provide a secure reference to your Astra application token, or provide the `clientSecret` from an application token.
