@@ -31,7 +31,7 @@ To connect to Astra, provide the application token credentials in the <<authenti
 If the cluster has internal or LDAP authentication enabled, configure the username and password settings for the Pulsar Connector.
 You must also provide a login role for the connector with access to the mapped tables.
 
-Set the relevant auth parameters in `dse.yaml` for `auth.provider`, `auth.username`, and `auth.password`.
+In your connector's configuration YAML file, set the relevant auth parameters for `auth.provider`, `auth.username`, and `auth.password`:
 
 [source,yaml]
 ----
