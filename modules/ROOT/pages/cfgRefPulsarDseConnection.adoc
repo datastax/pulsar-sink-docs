@@ -1,5 +1,4 @@
 = DataStax connection
-:page-tag: pulsar-connector,admin,dev,connect,pulsar
 
 Configure the connection settings from Apache Pulsar(TM) to the cluster.
 
@@ -39,7 +38,7 @@ Default: `""`
 
 [#port]
 port:: DSE native transport port.
-See https://docs.datastax.com/en/dse/6.8/dse-admin/datastax_enterprise/config/configCassandra_yaml.html#configCassandra_yaml__native_transport_port[native_transport_port].
+See `xref:6.9@dse:managing:configure/configure-cassandra-yaml.adoc#native-transport-cql-binary-protocol[native_transport_port]`.
 +
 Default: `9042`
 

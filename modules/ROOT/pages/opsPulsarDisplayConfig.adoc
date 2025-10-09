@@ -1,6 +1,5 @@
 = Displaying the DataStax Apache Pulsar(TM) Connector configuration
 :navtitle: Displaying the Pulsar Connector configuration
-:page-tag: pulsar-connector,dev,develop,admin,manage,pulsar
 
 Use the Apache Pulsar(TM) administration tool sinks command to retrieve detailed information on a Pulsar sink:
 

@@ -1,5 +1,4 @@
 = Mapping basic messages to table columns
-:page-tag: pulsar-connector,dev,develop,pulsar
 
 When messages are created using a Basic or primitive serializer, the message contains a key-value pair. Map the key and value to table columns. Ensure that the data types of the message field are compatible with the data type of the target column.
 
@@ -10,7 +9,7 @@ The key is an integer and the value is text.
 
 . Ensure the following when mapping fields to columns:
 +
-* Data in the Pulsar field is compatible with the database table column https://docs.datastax.com/en/dse/6.8/cql/cql/cql_reference/refDataTypes.html[data type].
+* Data in the Pulsar field is compatible with the database table column xref:dse-6.9@cql:reference:data-types.adoc[data type].
 * Pulsar field mapped to a database primary key (PK) column always contains data.
 Null values are not allowed in PK columns.
 
@@ -25,7 +24,7 @@ cqlsh -e "CREATE KEYSPACE world_keyspace WITH replication = {'class': 'NetworkTo
 ----
 +
 NOTE: The datacenter name is case sensitive.
-Use https://docs.datastax.com/en/dse/6.8/dse-dev/datastax_enterprise/tools/nodetool/toolsRing.html[nodetool ring] to get a list of datacenters.
+Use `xref:dse:managing:tools/nodetool/ring.adoc[nodetool ring]` to get a list of datacenters.
 
 . Create the table. For example, create the world\_table:
 +
@@ -34,7 +33,8 @@ Use https://docs.datastax.com/en/dse/6.8/dse-dev/datastax_enterprise/tools/nodet
 cqlsh -e "CREATE TABLE world_table (recordid int PRIMARY KEY, continent text);"
 ----
 
-. Verify that all nodes have the same schema version using [nodetool describering](https://docs.datastax.com/en/dse/6.8/dse-admin/datastax_enterprise/tools/nodetool/toolsDescribeRing.html). Replace keyspace_name:
+. Verify that all nodes have the same schema version using `xref:dse:managing:tools/nodetool/describe-ring.adoc[nodetool describering]`.
+Replace **keyspace_name** with your keyspace's name:
 +
 [source,bash]
 ----

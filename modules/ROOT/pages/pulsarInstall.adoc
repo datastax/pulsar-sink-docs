@@ -1,6 +1,6 @@
 = Installing DataStax Apache Pulsar(TM) Connector
 :navtitle: Installation
-:page-tag: pulsar-connector,admin,dev,install,pulsar
+:page-aliases: ROOT:pulsarSizing.adoc
 
 Install DataStax Apache Pulsar(TM) Connector from the DataStax distribution tar file using an account that has write access to the Pulsar configuration directory.
 
@@ -8,12 +8,32 @@ The supported operating systems are Linux and macOS.
 
 == Supported Apache Pulsar(TM) versions
 
-Install the DataStax Apache Pulsar(TM) Connector on Apache Pulsar 2.7.0.
+The DataStax Apache Pulsar(TM) Connector requires Apache Pulsar 2.7.0 or later.
 
-IMPORTANT: https://www.apache.org/licenses/LICENSE-2.0[Apache-2.0 license agreement].
-By downloading this DataStax product, you agree to the terms of the open-source Apache-2.0 license agreement.
+== System requirements
 
-Perform the following steps on a Pulsar Connect node:
+The system requirements for DataStax Apache Pulsar(TM) Connector depends on the workload and network capacity.
+The factors include characteristics of the Pulsar topic and the cluster data models and volume.
+DataStax recommends testing with realistic data flows before committing to an instance type for the connector.
+
+DataStax Apache Pulsar(TM) Connector is bound by the amount of CPU available on the host.
+The connector holds all the records pulled from Pulsar topics in memory, along with the cluster metadata and prepared statements.
+
+Memory pressure is influenced by:
+
+* Record size of Pulsar topics
+* Number of records pulled at the same time, where the maximum is set by the workers `batchSize` parameter.
+* Number of simultaneous tasks run by the connector
+
+DataStax Apache Pulsar(TM) Connector needs adequate network capacity for the payload.
+This includes the connections from Pulsar Servers to the target platform.
+Scale the connector horizontally by adding additional workers to increase overall throughput.
+
+TIP: The DataStax Apache Pulsar(TM) Connector framework automatically rebalances the load when workers are added by reallocating the tasks among the workers.
+
+== Install the connector
+
+Perform the following steps on a Pulsar Connect node running Apache Pulsar 2.7.0 or later:
 
 . Download the tar file from the https://downloads.datastax.com/#apc[DataStax downloads site].
 If you agree, enable the *Terms* checkbox and click the download icon.

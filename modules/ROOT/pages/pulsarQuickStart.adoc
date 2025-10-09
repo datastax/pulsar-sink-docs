@@ -1,13 +1,14 @@
 = Pulsar Connector single instance quickstart
 :navtitle: Single instance quickstart
-:page-tag: pulsar-connector,dev,admin,planner,quickstart,pulsar
 
 This quickstart will walk you through the simplest possible configuration connecting a standalone Apache Pulsar(TM) instance to a single standalone DataStax Enterprise (DSE) 6.8 node.
 
 Once you've configured Pulsar, a Pulsar sink, the DataStax Apache Pulsar(TM) Connector and the DSE instance, you'll be able to send simple key/value pair messages using the Pulsar client utility, `pulsar-client` and retrieve them from a DSE keyspace and table.
 
 == Install and configure DSE 6.8
-. Install the tarball distribution of DSE 6.8 as described in https://docs.datastax.com/en/install/6.8/install/installTARdse.html[Installing DataStax Enterprise 6.8 using the binary tarball].
+
+. xref:dse:installing:tarball-dse.adoc[Install the tarball distribution of DSE].
+
 . Start DSE from the installation directory:
 +
 [source,bash]

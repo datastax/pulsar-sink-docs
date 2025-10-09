@@ -1,5 +1,4 @@
 = Multiple topics to multiple tables
-:page-tag: pulsar-connector,dev,develop,pulsar
 
 The DataStax Apache Pulsar(TM) Connector allows for mapping multiple topics to multiple tables in a single connector instance.
 

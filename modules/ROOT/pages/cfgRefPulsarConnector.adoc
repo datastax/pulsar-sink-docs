@@ -1,6 +1,5 @@
 = DataStax Apache Pulsar(TM) Connector parameters
 :navtitle: Pulsar Connector parameters
-:page-tag: pulsar-connector,dev,develop,pulsar
 
 Set the common DataStax Apache Pulsar(TM) Connector parameters.
 

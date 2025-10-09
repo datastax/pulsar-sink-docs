@@ -1,5 +1,4 @@
 = Provide CQL queries in mappings
-:page-tag: pulsar-connector,dev,develop,pulsar
 
 In the Pulsar topic mapping, you can optionally provide a CQL query that should run when the new record arrives on the Pulsar topic.
 

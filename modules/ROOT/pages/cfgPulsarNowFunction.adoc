@@ -1,8 +1,7 @@
 = The now() function in mappings
-:page-tag: pulsar-connector,dev,develop,pulsar
 
 In the Apache Pulsar(TM) topic mapping, you can use the ``now()``function.
-It returns `TIMEUUID`, which is documented in the https://docs.datastax.com/en/dse/6.8/cql/cql/cql_using/refTimeUuidFunctions.html[UUID and timeuuid column].
+It returns `TIMEUUID`, which is documented in the xref:dse-6.9@cql:reference:uuid.adoc[UUID and timeuuid column].
 
 For example:
 
@@ -12,7 +11,7 @@ topic:
   my_topic:
     my_ks:
       my_table:
-        mapping: 'col1=now()''
+        mapping: 'col1=now()'
 ----
 
 In this example, you must create `col1` in a CQL table with the following definition:
@@ -30,7 +29,7 @@ topic:
   my_topic:
     my_ks:
       my_table:
-        mapping: 'col1=now(), col2=now(), col3=now()''
+        mapping: 'col1=now(), col2=now(), col3=now()'
 ----
 
 In the example above, each occurrence of `now()` is evaluated and return a different `TIMEUUID`.

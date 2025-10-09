@@ -1,6 +1,5 @@
 = About operating and maintaining the DataStax Apache Pulsar(TM) Connector
 :navtitle: About operating and maintaining the Pulsar Connector
-:page-tag: pulsar-connector,admin,manage,pulsar
 
 To operate and maintain the DataStax Apache Pulsar(TM) Connector use the Apache Pulsar(TM) adminstration tool, `pulsar-admin` in concert with the Apache Pulsar(TM) REST Administration API.
 

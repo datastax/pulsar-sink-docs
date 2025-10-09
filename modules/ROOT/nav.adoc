@@ -1,61 +1,64 @@
 .Get started
-* xref:pulsarSizing.adoc[]
+* xref:ROOT:index.adoc[]
 * xref:pulsarInstall.adoc[]
 * xref:pulsarQuickStart.adoc[]
-* https://github.com/datastax/release-notes/blob/master/DataStax_Apache_Pulsar_Connector_1.4_Release_Notes.md[Release notes]
 
-.Guides and examples
-* Configuration
-** xref:cfgPulsarConfigTasksMax.adoc[]
-** xref:cfgPulsarColumnWritetimeTimestamp.adoc[]
-** xref:cfgPulsarSettingRowLevelTtl.adoc[]
-** xref:cfgPulsarSettingJavaDriverConfig.adoc[]
-** Mapping Pulsar topics to database tables
-*** xref:cfgPulsarMapTopicTable.adoc[]
-*** xref:cfgPulsarDisplayingTopic.adoc[]
-*** xref:cfgPulsarMapKeyPair.adoc[]
-*** Mapping a message that contains JSON fields
-**** xref:cfgPulsarMapJson.adoc[]
-**** xref:cfgPulsarStringJson.adoc[]
-**** xref:cfgPulsarJsonMessageSchema.adoc[]
-*** xref:cfgPulsarMapAvroMessages.adoc[]
-*** xref:cfgPulsarRecordHeaderToTable.adoc[]
-*** xref:cfgPulsarMapUdt.adoc[]
-*** xref:cfgPulsarMapMultipleTables.adoc[]
-*** xref:cfgPulsarMultTopicToTables.adoc[]
-*** xref:cfgPulsarSelectiveUpdateMapsAndUdts.adoc[]
-*** xref:cfgPulsarCqlQuery.adoc[]
-*** xref:cfgPulsarNowFunction.adoc[]
-* Operations
-** xref:opsPulsarAboutOperations.adoc[]
-** xref:opsPulsarScaling.adoc[]
-** Changing the topic or table schema
-*** xref:opsPulsarChangeSchema.adoc[]
-*** xref:opsPulsarAddField.adoc[]
-*** xref:opsPulsarRemoveField.adoc[]
-*** xref:opsPulsarAddTableColumn.adoc[]
-*** xref:opsPulsarRemoveColumn.adoc[]
-** xref:opsPulsarRestart.adoc[]
-** xref:opsPulsarDisplayConfig.adoc[]
-** xref:opsPulsarUpdateConfig.adoc[]
-** xref:opsPulsarDeleteConnector.adoc[]
-** xref:opsPulsarConnectorStatus.adoc[]
-* Security
-** xref:secPulsarInternalLdapAuth.adoc[]
-* xref:monPulsarConnectMetrics.adoc[]
-* Troubleshooting
-** xref:trbPulsarTsRecordFailsToWriteToTable.adoc[]
-** xref:trbPulsarTsLargeBatches.adoc[]
-** xref:trbPulsarTsRecordParsingFails.adoc[]
-** xref:trbPulsarTsLoadBalancing.adoc[]
+.Configure
+* xref:cfgPulsarConfigTasksMax.adoc[]
+* xref:cfgPulsarColumnWritetimeTimestamp.adoc[]
+* xref:cfgPulsarSettingRowLevelTtl.adoc[]
+* xref:cfgPulsarSettingJavaDriverConfig.adoc[]
+* Mapping Pulsar topics to database tables
+** xref:cfgPulsarMapTopicTable.adoc[]
+** xref:cfgPulsarDisplayingTopic.adoc[]
+** xref:cfgPulsarMapKeyPair.adoc[]
+** Mapping a message that contains JSON fields
+*** xref:cfgPulsarMapJson.adoc[]
+*** xref:cfgPulsarStringJson.adoc[]
+*** xref:cfgPulsarJsonMessageSchema.adoc[]
+** xref:cfgPulsarMapAvroMessages.adoc[]
+** xref:cfgPulsarRecordHeaderToTable.adoc[]
+** xref:cfgPulsarMapUdt.adoc[]
+** xref:cfgPulsarMapMultipleTables.adoc[]
+** xref:cfgPulsarMultTopicToTables.adoc[]
+** xref:cfgPulsarSelectiveUpdateMapsAndUdts.adoc[]
+** xref:cfgPulsarCqlQuery.adoc[]
+** xref:cfgPulsarNowFunction.adoc[]
+
+.Operations
+* xref:opsPulsarAboutOperations.adoc[]
+* xref:opsPulsarScaling.adoc[]
+* Changing the topic or table schema
+** xref:opsPulsarChangeSchema.adoc[]
+** xref:opsPulsarAddField.adoc[]
+** xref:opsPulsarRemoveField.adoc[]
+** xref:opsPulsarAddTableColumn.adoc[]
+** xref:opsPulsarRemoveColumn.adoc[]
+* xref:opsPulsarRestart.adoc[]
+* xref:opsPulsarDisplayConfig.adoc[]
+* xref:opsPulsarUpdateConfig.adoc[]
+* xref:opsPulsarDeleteConnector.adoc[]
+* xref:opsPulsarConnectorStatus.adoc[]
+
+.Security
+* xref:secPulsarInternalLdapAuth.adoc[]
+* xref:cfgRefPulsarAuth.adoc[]
+* xref:cfgRefPulsarAuthLdap.adoc[]
+* xref:cfgRefPulsarSsl.adoc[]
 
 .Reference
+* xref:monPulsarConnectMetrics.adoc[]
 * xref:cfgRefPulsarConnector.adoc[]
 * xref:cfgRefPulsarDseConnection.adoc[]
 * xref:cfgRefPulsarDseTable.adoc[]
 * xref:cfgRefPulsarDates.adoc[]
-* DataStax Enterprise authentication
-** xref:cfgRefPulsarAuth.adoc[]
-** xref:cfgRefPulsarAuthLdap.adoc[]
-* xref:cfgRefPulsarSsl.adoc[]
 * xref:cfgPulsarConfigureErrorHandling.adoc[]
+
+.Troubleshooting
+* xref:trbPulsarTsRecordFailsToWriteToTable.adoc[]
+* xref:trbPulsarTsLargeBatches.adoc[]
+* xref:trbPulsarTsRecordParsingFails.adoc[]
+* xref:trbPulsarTsLoadBalancing.adoc[]
+
+.Release notes
+* https://github.com/datastax/release-notes/blob/master/DataStax_Apache_Pulsar_Connector_1.4_Release_Notes.md[Release notes]

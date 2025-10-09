@@ -1,17 +1,16 @@
 = Removing a field map
-:page-tag: pulsar-connector,dev,develop,pulsar
 
 DataStax Apache Pulsar(TM) Connector processing fails if any mapped Pulsar topic fields are missing from the record.
 If a field is missing or if the schema change is known ahead, remove the topic-column mapping.
 
 WARNING: The database table schema has `PRIMARY KEY` columns that uniquely identify and partition rows.
-See https://docs.datastax.com/en/dse/6.8/cql/cql/ddl/dataModelingCQLTOC.html[CQL data modeling].
+See xref:dse-6.9@cql:data-modeling:methodology.adoc[CQL data modeling].
 A NULL is not allowed in a PRIMARY KEY column, therefore, each `PRIMARY KEY` column must have a field-column map.
 
-. On a xref:index.adoc#supported-databases[supported database] node, use the CQLSH https://docs.datastax.com/en/dse/6.7/cql/cql/cql_reference/cqlsh_commands/cqlshDescribeTable.html[DESCRIBE TABLE] command to verify that the field is not a PRIMARY KEY (PK) column.
+. On a xref:ROOT:index.adoc#supported-databases[supported database] node, use the `cqlsh` command `xref:dse-6.9@cql:reference:cqlsh-commands/describe-table.adoc[DESCRIBE TABLE]` to verify that the field is not a PRIMARY KEY (PK) column.
 +
 NOTE: If the field is a PK column, map a different field to the column.
 
-. Remove the field to column mapping from the configuration. See xref:cfgPulsarMapTopicTable.adoc[].
-. Update the configuration with the new settings. See xref:opsPulsarUpdateConfig.adoc[].
+. Remove the field to column mapping from the configuration. See xref:ROOT:cfgPulsarMapTopicTable.adoc[].
+. Update the configuration with the new settings. See xref:ROOT:opsPulsarUpdateConfig.adoc[].
 . Start the Pulsar producer that had the schema change.

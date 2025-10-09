@@ -1,5 +1,4 @@
 = Mapping a message that contains both basic and JSON fields
-:page-tag: pulsar-connector,dev,develop,pulsar,json
 
 When the data format for the message key or value is JSON, the DataStax Apache Pulsar(TM) connector mapping can include individual fields in the JSON structure.
 
@@ -55,7 +54,7 @@ NOTE: JSON records in Pulsar can also have a schema associated with them.
 
 Ensure the following when mapping fields to columns:
 
-* Data in the Apache Pulsar(TM) field is compatible with the database table column http://docs.datastax.com/en/dse/6.8/cql/cql/cql_reference/refDataTypes.html[data type].
+* Data in the Apache Pulsar(TM) field is compatible with the database table column xref:dse-6.9@cql:reference:data-types.adoc[data type].
 * Pulsar field mapped to a database primary key (PK) column always contains data.
 Null values are not allowed in PK columns.
 
@@ -72,7 +71,7 @@ cqlsh -e "CREATE KEYSPACE stocks_keyspace \
 ----
 +
 NOTE: The datacenter name is case sensitive.
-Use https://docs.datastax.com/en/dse/6.8/dse-dev/datastax_enterprise/tools/nodetool/toolsRing.html[nodetool ring] to get a list of datacenters.
+Use `xref:dse:managing:tools/nodetool/ring.adoc[nodetool ring]` to get a list of datacenters.
 
 . Create the table. For example, create the `stocks_table`:
 +
@@ -88,11 +87,12 @@ cqlsh -e "CREATE TABLE stocks_keyspace.stocks_table ( \
   PRIMARY KEY (symbol, ts));"
 ----
 
-. Verify that all nodes have the same schema version using https://docs.datastax.com/en/dse/6.8/dse-admin/datastax_enterprise/tools/nodetool/toolsDescribeRing.html[nodetool describering]. Replace keyspace_name:
+. Verify that all nodes have the same schema version using `xref:dse:managing:tools/nodetool/describe-ring.adoc[nodetool describering]`.
+Replace **keyspace_name** with your keyspace's name:
 +
 [source,bash]
 ----
-nodetool describering -- keyspace\_name
+nodetool describering -- keyspace_name
 ----
 
 . In the DataStax Connector configuration file:

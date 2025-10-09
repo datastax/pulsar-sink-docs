@@ -1,5 +1,4 @@
 = Selectively update maps and UDTs based on Pulsar fields
-:page-tag: pulsar-connector,dev,develop,pulsar
 
 In the Apache Pulsar(TM) topic mapping, you can selectively update maps and User Defined Types (UDTs) based on whether Pulsar fields have present values. That is, any value other than `null`.
 

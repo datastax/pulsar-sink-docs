@@ -1,5 +1,4 @@
 = Pulsar topic-to-table settings
-:page-tag: pulsar-connector,dev,develop,pulsar
 
 Capture Apache Pulsar(TM) topics in the xref:index.adoc#supported-databases[supported database] by specifying a target keyspace, table, and then map the topic fields to table columns in the name of the parameter.
 

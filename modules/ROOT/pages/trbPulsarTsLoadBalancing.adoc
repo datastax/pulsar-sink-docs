@@ -1,7 +1,6 @@
 = Load balancing datacenter is not specified
-:page-tag: pulsar-connector,admin,manage,pulsar
 
-The following error message occurs when the load balancing datacenter (xref:cfgRefPulsarDseConnection.adoc#loadBalancing[loadBalancing.localDc]) is not set in the configuration file.
+The following error message occurs when the load balancing datacenter (xref:ROOT:cfgRefPulsarDseConnection.adoc#loadBalancing[loadBalancing.localDc]) is not set in the configuration file.
 
 [source,console]
 ----
@@ -15,5 +14,5 @@ org.apache.pulsar.common.config.ConfigException: Invalid value [127.0.0.2] for
 The connector requires that you set the `loadBalancing.localDc`.
 DataStax Enterprise datacenter names are case-sensitive.
 
-Check the datacenter name in the cluster by running https://docs.datastax.com/en/dse/6.7/dse-admin/datastax_enterprise/tools/nodetool/toolsStatus.html[nodetool status] and verify that xref:cfgRefPulsarDseConnection.adoc#loadBalancing[loadBalancing.localDc] exactly matches.
+Check the datacenter name in the cluster by running `xref:dse:managing:tools/nodetool/status.adoc[nodetool status]` and verify that xref:ROOT:cfgRefPulsarDseConnection.adoc#loadBalancing[loadBalancing.localDc] exactly matches.
 Datacenter names are case sensitive.

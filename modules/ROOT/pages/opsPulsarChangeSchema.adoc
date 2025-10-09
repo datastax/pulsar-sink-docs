@@ -1,5 +1,4 @@
 = Changing the topic or table schema
-:page-tag: pulsar-connector,dev,develop,pulsar
 
 How to update the DataStax Apache Pulsar(TM) Connector when schema changes are required.
 
