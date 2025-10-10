@@ -234,6 +234,6 @@ Explore the following documentation to get started with more complex mappings an
 
 * Create xref:cfgPulsarMapKeyPair.adoc[key-value pair mappings], xref:cfgPulsarMapJson.adoc[JSON mappings], and xref:cfgPulsarMapAvroMessages.adoc[Avro mappings].
 
-* Try advanced and specialized mapping functionality, such as xref:cfgPulsarMapUdt.adoc[writing complex types directly into User-defined Types (UDT)] or xref:cfgPulsarNowFunction.adoc[using the now() function in mappings].
+* Try advanced and specialized mapping functionality, such as xref:cfgPulsarMapUdt.adoc[mapping UDTs].
 
 * Use one connector instance to xref:cfgPulsarMapMultipleTables.adoc[ingest a single topic into multiple tables] or xref:cfgPulsarMultTopicToTables.adoc[ingest multiple topics to different tables].

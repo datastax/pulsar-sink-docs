@@ -1,31 +1,26 @@
-= Determining topic data structure
+= Determine topic data structure
 
-You can use the Apache Pulsar(TM) `pulsar-client` command line client to examine the structure of Pulsar messages for a topic.
+You can use `https://pulsar.apache.org/docs/en/reference-cli-tools/#consume[pulsar-client]` to examine the structure of Apache Pulsar(TM) messages for a topic.
 
-https://pulsar.apache.org/docs/en/reference-cli-tools/#consume
+This can help you determine your field-to-column mapping.
 
 To show Apache Pulsar messages:
 
-[source,bash]
+[source,bash,subs="+quotes"]
 ----
- bin/pulsar-client consume topic_name -s "subscription_name"
+bin/pulsar-client consume **TOPIC_NAME** -s "**SUBSCRIPTION_NAME**"
 ----
 
-where
+Replace the following:
 
-topic_name:: Name of the Pulsar topic receiving the messages.
+* `**TOPIC_NAME**`: Name of the Pulsar topic receiving the messages.
+* `**SUBSCRIPTION_NAME**`: Arbitrary name for the consumer subscription.
 
-subscription_name:: Arbitrary name for the consumer subscription.
-
-You'll see the message data when a message is received:
+The response is the message data when a message is received.
+For example, the following response indicates a message with a key of `My key` and content of `My content`:
 
 [source,console]
 ----
 ----- got message -----
 key:[My key], properties:[], content:My content
 ----
-
-in this case:
-
-* *Key*: My key
-* *Content*: My content

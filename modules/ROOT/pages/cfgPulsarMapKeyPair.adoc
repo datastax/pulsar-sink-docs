@@ -1,15 +1,23 @@
-= Mapping basic messages to table columns
+= Map basic messages
 
-When messages are created using a Basic or primitive serializer, the message contains a key-value pair. Map the key and value to table columns. Ensure that the data types of the message field are compatible with the data type of the target column.
+When messages are created using a basic or primitive serializer, the message contains a key-value pair.
+Map the key and value to table columns.
 
-For example, the Pulsar world topic (`world_topic`) contains 5 records with a key-value pair in each.
+== Mapping requirements
+
+When mapping fields to columns, the following requirements apply:
+
+* The data in the Pulsar field must be compatible with the mapped column's xref:dse-6.9@cql:reference:data-types.adoc[data type].
+For example, a string field cannot map to a number column.
+
+* A Pulsar field mapped to a table's primary key (PK) column must always contain data because primary key columns don't allow nulls.
+
+* All primary key columns must have a mapping because primary key columns don't allow nulls.
+
+== Basic mapping example
+
+In this example, a Pulsar topic named `world_topic` contains five records with a key-value pair in each.
 The key is an integer and the value is text.
-
-== Table requirements
-
-
-When mapping fields to columns the data in the Pulsar field must be compatible with the database table column's xref:dse-6.9@cql:reference:data-types.adoc[data type].
-Additionally, the Pulsar field mapped to a table's primary key (PK) column must always contain data because primary key columns don't allow nulls.
 
 . Create a keyspace in your database.
 +

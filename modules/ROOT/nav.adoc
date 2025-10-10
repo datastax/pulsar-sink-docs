@@ -11,14 +11,9 @@
 * xref:cfgPulsarMapAvroMessages.adoc[]
 * xref:cfgPulsarMapUdt.adoc[]
 * xref:cfgPulsarRecordHeaderToTable.adoc[]
-* xref:cfgPulsarSelectiveUpdateMapsAndUdts.adoc[]
 * xref:cfgPulsarCqlQuery.adoc[]
-* xref:cfgPulsarNowFunction.adoc[]
-* xref:cfgPulsarColumnWritetimeTimestamp.adoc[]
-* xref:cfgRefPulsarDates.adoc[]
-* Map multiple tables or topics
-** xref:cfgPulsarMapMultipleTables.adoc[]
-** xref:cfgPulsarMultTopicToTables.adoc[]
+* xref:cfgPulsarMapMultipleTables.adoc[]
+* xref:cfgPulsarMultTopicToTables.adoc[]
 
 .Operations
 * xref:opsPulsarAboutOperations.adoc[]

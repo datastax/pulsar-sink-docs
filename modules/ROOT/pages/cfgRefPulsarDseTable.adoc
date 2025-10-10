@@ -1,9 +1,9 @@
 = Pulsar topic-to-table parameters
-:page-aliases: ROOT:cfgPulsarSettingRowLevelTtl.adoc, ROOT:cfgPulsarMapTopicTable.adoc
+:page-aliases: ROOT:cfgPulsarSettingRowLevelTtl.adoc, ROOT:cfgPulsarMapTopicTable.adoc, ROOT:cfgPulsarColumnWritetimeTimestamp.adoc, ROOT:cfgRefPulsarDates.adoc, ROOT:cfgPulsarNowFunction.adoc
 
 The connector writes messages from your Apache Pulsar(TM) topics to tables in your database using the mapping and topic properties set in your connector's configuration YAML file.
 
-This includes the topic name, keyspace name, table name, schema mapping, and other write options.
+This includes the topic name, keyspace name, table name, schema mapping, codec options, and other write options.
 
 Use the following syntax for standalone properties file:
 
@@ -20,6 +20,26 @@ topic:
         ttl: -1
         nullToUnset: true
         deletesEnabled: true
+    codec:
+      locale: en_US
+      timeZone: UTC
+      timestamp: CQL_TIMESTAMP
+      date: ISO_LOCAL_DATE
+      time: ISO_LOCAL_TIME
+      unit: MILLISECONDS
+----
+
+== Core parameters
+
+The essential, top-level parameters are `topics`, `topic`, topic names, keyspace names, and table_names.
+
+[source,yaml]
+----
+topics: topic_name, topic_name1, topic_name2
+topic:
+  topic_name:
+    keyspace_name:
+      table_name:
 ----
 
 [#topics]
@@ -42,18 +62,52 @@ topic:
 Make sure that the keyspace and table are the correct targets for the topic.
 This is where Pulsar will write the messages from the topic.
 
-[#mapping]
-mapping::
-Required.
-A mapping of Pulsar fields to table columns.
-The exact contents depends on the message format and table schema.
-For more information and examples, explore the other mapping topics in this documentation.
+== Table parameters
+
+These parameters are nested under the table name in the configuration YAML file.
+They define the mapping and write options for the records inserted into the table.
+
+[source,yaml]
+----
+topics: topic_name
+topic:
+  topic_name:
+    keyspace_name:
+      table_name:
+        mapping: 'record=key, content=value'
+        consistencyLevel: LOCAL_ONE
+        ttlTimeUnit: SECONDS
+        ttl: -1
+        nullToUnset: true
+        deletesEnabled: true
+----
 
 consistencyLevel::
 Query xref:dse:architecture:database-internals/about-data-consistency.adoc[consistency level] for writes.
 Valid values depend on your database provider and use case.
 +
 Default: `LOCAL_ONE`
+
+[#deletesEnabled]
+deletesEnabled::
+This parameter controls the handling of records that cause all columns to contain null values except for the primary key (PK) columns.
++
+If `false` (disabled), records are always applied as `INSERT`/`UPDATE` statements, even if all non-PK columns would become null.
++
+If `true` (enabled, default), a record that results in all-null values (except for PK columns) is applied as a `DELETE`, rather than an `INSERT`/`UPDATE` that would write nulls to all non-PK columns.
++
+If `true`, the `mapping` must include _all_ columns in order for the setting to function.
+If the `mapping` doesn't include all columns, this parameter is treated as `false`.
++
+The behavior applies to the post-mapping result.
+For example, if a row has a mix of null and non-null values, and the new record nullifies all of the non-null values, the result is a `DELETE`.
+
+[#mapping]
+mapping::
+Required.
+A mapping of Pulsar fields to table columns.
+The exact contents depends on the message format and table schema.
+For examples and options, see the other mapping topics in this documentation and <<mapping-properties>>.
 
 [#nullToUnset]
 nullToUnset::
@@ -69,8 +123,13 @@ If `false`, fields with null values are visible in the table as `UNSET` values.
 +
 Default: `true`
 
+query::
+See xref:ROOT:cfgPulsarCqlQuery.adoc[].
+
+[#ttl]
 ttl, ttlTimeUnit, __ttl::
-There are two ways to set time-to-live (TTL) in your connector configuration.
+The default time-to-live (TTL) is `-1`, which means that TTL is disabled.
+If you want to use TTL, there are two ways to set TTL in your connector configuration.
 +
 [tabs]
 ======
@@ -78,7 +137,6 @@ Static TTL::
 +
 --
 In the table configuration, set `ttl` to the amount of seconds that a record remains in the table before it is automatically deleted.
-The default is `-1`, which means that TTL is disabled.
 
 [source,yaml]
 ----
@@ -92,7 +150,7 @@ The default is `-1`, which means that TTL is disabled.
 Dynamic TTL::
 +
 --
-In the `mapping` parameter, you can use the `__ttl` property to specify the column to use as the TTL value for the record being inserted into the database table.
+In the `<<mapping,mapping>>` parameter, you can use the `__ttl` property to specify the column to use as the TTL value for the record being inserted into the database table.
 For example:
 
 [source,yaml]
@@ -116,16 +174,136 @@ With either static or dynamic TTL, you can optionally set `ttlTimeUnit` to speci
 The default time unit is `SECONDS`.
 If you specify a different time unit, such as `HOURS`, the DataStax Pulsar connector automatically converts the value to `SECONDS` for compatibility.
 
-[#deletesEnabled]
-deletesEnabled::
-This parameter controls the handling of records that cause all columns to contain null values except for the primary key (PK) columns.
+[#mapping-properties]
+=== Mapping properties and functions
+
+The `mapping` parameter accepts additional properties that you can use to modify how the connector writes records to the table:
+
+[#timestamp]
+__timestamp, timestampTimeUnit::
+In the `<<mapping,mapping>>` parameter, you can use the optional `\__timestamp` property to specify which column should be used for the writetime timestamp when a record is written to the database.
+The specified `__timestamp` column must be a number type.
+For example:
 +
-If `false` (disabled), records are always applied as `INSERT`/`UPDATE` statements, even if all non-PK columns would become null.
+[source,yaml]
+----
+        mapping: 'col1=key.f1, col2=value.f1, __timestamp=value.f2'
+----
 +
-If `true` (enabled, default), a record that results in all-null values (except for PK columns) is applied as a `DELETE`, rather than an `INSERT`/`UPDATE` that would write nulls to all non-PK columns.
+By default, the database internally tracks the `writetime` timestamp of records inserted from Pulsar.
+Use the `__timestamp` property when your Pulsar records have an explicit timestamp field that you want to use as the writetime for the database record produced by the connector.
 +
-If `true`, the `mapping` must include _all_ columns in order for the setting to function.
-If the `mapping` doesn't include all columns, this parameter is treated as `false`.
+If you set `__timestamp`, you can also set `timestampTimeUnit` to specify the time unit for the provided timestamp value:
 +
-The behavior applies to the post-mapping result.
-For example, if a row has a mix of null and non-null values, and the new record nullifies all of the non-null values, the result is a `DELETE`.
+[source,yaml]
+----
+      table_name:
+        timestampTimeUnit: SECONDS
+        mapping: 'col1=key.f1, col2=value.f1, __timestamp=value.f2'
+----
++
+The default timestamp time unit is `MICROSECONDS`.
+If you specify a different time unit, such as `SECONDS`, the DataStax Pulsar connector automatically converts the value to `MICROSECONDS` for compatibility.
+
+__ttl::
+See `<<ttl,ttl>>`.
+
+now()::
+In the `<<mapping,mapping>>` parameter, you can use the optional `now()` function to set a column to the current timeuuid when a record is written to the database.
+The function gets the `TIMEUUID`, which is written to the table's xref:dse-6.9@cql:reference:uuid.adoc[UUID and timeuuid column].
++
+You can use the `now()` function on one or more columns, for example:
++
+[source,yaml]
+----
+      table_name:
+        mapping: 'col1=now(), col2=now(), col3=now()'
+----
++
+A column mapped to `now()` must exist in the table definition, and it must have the type `timeuuid`.
++
+If mapped to multiple columns, each occurrence of `now()` is evaluated and returns a different `TIMEUUID`.
++
+If `<<deletesEnabled,deletesEnabled>>` is `true` and the record causes all non-primary key columns to be null, then the called `now()` function is ignored, and the record is deleted.
+This prevents the table from containing rows with only a primary key and timestamp.
+
+== Codec parameters
+
+Use the `codec` parameters to configure date and time conversion for each Pulsar topic if you don't want to use the default settings:
+
+[source,yaml]
+----
+topics: topic_name
+topic:
+  topic_name:
+    codec:
+      locale: en_US
+      timeZone: UTC
+      timestamp: CQL_TIMESTAMP
+      date: ISO_LOCAL_DATE
+      time: ISO_LOCAL_TIME
+      unit: MILLISECONDS
+    keyspace_name:
+      table_name:
+----
+
+Note that the `codec` parameters are nested under the topic name (`topics.topic.topic_name.codec`), and they apply to that topic only.
+
+[TIP]
+====
+In addition to the following settings, the connector supports any public static field in `https://docs.oracle.com/javase/8/docs/api/java/time/format/DateTimeFormatter.html[java.time.format.DateTimeFormatter]` as an option.
+====
+
+timestamp::
+The temporal pattern to use for string-to-CQL timestamp conversion.
+Allowed values include the following:
++
+* A date-time pattern, such as `yyyy-MM-dd HH:mm:ss`
+* A pre-defined formatter, such as `ISO_ZONED_DATE_TIME` or `ISO_INSTANT`
+* A special formatter, `CQL_TIMESTAMP`, that accepts all valid CQL literal formats for the timestamp type.
++
+Default: `CQL_TIMESTAMP`
++
+If the Pulsar records are strings that contain only digits that cannot be parsed by the `timestamp` format, use the `<<unit,unit>>` parameter to specify the time unit of the parsed value.
+
+date::
+The temporal pattern to use for string-to-CQL date conversion.
+Allowed values include the following:
++
+* A date-time pattern, such as `yyyy-MM-dd`
+* A pre-defined formatter, such as `ISO_LOCAL_DATE`
++
+Default: `ISO_LOCAL_DATE`
++
+For example, to write a Pulsar string field like "2018-04-12" to a xref:dse-6.9@cql:reference:data-types.adoc#date-and-time-types[date] column, set `date: "yyyy-MM-dd"`.
+
+time::
+The temporal pattern to use for string-to-CQL time conversion.
+Allowed values include the following:
++
+* A date-time pattern, such as `HH:mm:ss`
+* A pre-defined formatter, such as `ISO_LOCAL_TIME`
++
+Default: `ISO_LOCAL_TIME`
++
+For example, to write a Pulsar string field like "10:15:30" to a xref:dse-6.9@cql:reference:data-types.adoc#date-and-time-types[time] column, the default `ISO_LOCAL_TIME` correctly converts the time format.
+
+[#unit]
+unit::
+If the Pulsar records are strings that contain only digits that cannot be parsed by the `timestamp` format, use the `unit` parameter to specify the time unit to apply to the parsed values.
++
+`unit` can be any TimeUnit enum constant.
++
+Default: `MILLISECONDS`
+
+timeZone::
+The time zone to use for temporal conversions that don't convey any explicit time zone information.
++
+Default: `UTC`
++
+For example, to write a Pulsar string field that contains values like `2018-03-09T17:12:32.584+01:00[Europe/Paris]` to a xref:dse-6.9@cql:reference:data-types.adoc#date-and-time-types[timestamp] column, set `timezone: ISO_ZONED_DATE_TIME`.
+
+locale::
+Locale to use for locale-sensitive conversions.
++
+Default: `en_US`

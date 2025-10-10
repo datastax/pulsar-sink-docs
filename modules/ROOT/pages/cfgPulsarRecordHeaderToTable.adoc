@@ -1,16 +1,16 @@
-= Extract Pulsar record header values
+= Extract message properties
 
-In the Apache Pulsar(TM) topic mapping, you can extract values from the message properties, and write the values to a database table.
+In your mapping, you can extract values from the message properties, and then write those values to a database table.
 
-For example:
+For example, this mapping extracts the `header` property `f4` from the message properties, and writes it to the `col3` column in the specified table:
 
-[source,console]
+[source,yaml]
 ----
 topic:
-  my_topic
-    my_keyspace:
-      my_table:
+  topic_name:
+    keyspace_name:
+      table_name:
         mapping: 'col1=key.f1, col2=value.f1, __ttl=value.f2, __timestamp=value.f3, col3=header.f4'
 ----
 
-Use one or more individual mapping statements to extract the desired values and have them written to the database table.
+Use one or more individual mapping statements to extract the desired values and write them to table columns.
