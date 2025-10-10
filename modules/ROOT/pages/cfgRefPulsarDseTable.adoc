@@ -24,7 +24,7 @@ topic:
 
 [#topics]
 topics::
-A comma separated list of all topics to which the DataStax Connector subscribes.
+A comma separated list of all topics to which the DataStax connector subscribes.
 
 topic::
 A container for the configuration details for each subscribed topic.
@@ -61,7 +61,7 @@ Whether to treat null values in Pulsar as `UNSET` in the database table.
 +
 This parameter controls the handling of updates versus overrides.
 +
-If `true`, the DataStax Pulsar Connector treats null values as unset fields.
+If `true`, the DataStax Pulsar connector treats null values as unset fields.
 When a new record arrives, it only updates fields that _aren't_ null in the incoming message.
 DataStax recommends setting this to `true` to avoid creating unnecessary tombstones.
 +
@@ -110,11 +110,11 @@ However, the connector inserts the record without the TTL because the Pulsar con
 ======
 +
 If TTL is set (either statically or dynamically), the same TTL limit is applied to _all_ rows in the mapped table.
-The DataStax Pulsar Connector appends `AND TTL <seconds>` to all `INSERT` statements for the table.
+The DataStax Pulsar connector appends `AND TTL <seconds>` to all `INSERT` statements for the table.
 +
 With either static or dynamic TTL, you can optionally set `ttlTimeUnit` to specify the time unit for the `ttl` value.
 The default time unit is `SECONDS`.
-If you specify a different time unit, such as `HOURS`, the DataStax Pulsar Connector automatically converts the value to `SECONDS` for compatibility.
+If you specify a different time unit, such as `HOURS`, the DataStax Pulsar connector automatically converts the value to `SECONDS` for compatibility.
 
 [#deletesEnabled]
 deletesEnabled::

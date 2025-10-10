@@ -1,24 +1,24 @@
-= Install DataStax Apache Pulsar(TM) Connector
+= Install DataStax Apache Pulsar(TM) connector
 :navtitle: Install
 :page-aliases: ROOT:pulsarSizing.adoc
 
-Install DataStax Apache Pulsar(TM) Connector from the DataStax distribution tar file using an account that has write access to the Pulsar configuration directory.
+Install DataStax Apache Pulsar(TM) connector from the DataStax distribution tar file using an account that has write access to the Pulsar configuration directory.
 
 == System requirements
 
-The system requirements for DataStax Pulsar Connector depends on the workload and network capacity.
+The system requirements for DataStax Pulsar connector depends on the workload and network capacity.
 The factors include characteristics of the Pulsar topic and the cluster data models and volume.
 DataStax recommends testing with realistic data flows before committing to an instance type for the connector.
 
 Database::
-The DataStax Pulsar Connector supports the following databases:
+The DataStax Pulsar connector supports the following databases:
 +
 * DataStax Astra DB
 * DataStax Enterprise (DSE) 4.7 and later (non-EOL versions recommended)
 * Open source Apache Cassandra(R) 2.1 and later (non-EOL versions recommended, full compatibility with 5.x isn't guaranteed)
 
 Pulsar::
-The DataStax Pulsar Connector requires Apache Pulsar 2.7.0 or later.
+The DataStax Pulsar connector requires Apache Pulsar 2.7.0 or later.
 +
 The connector supports the following data structures in Pulsar topics:
 +
@@ -31,7 +31,7 @@ Operating system::
 The supported operating systems are Linux and macOS.
 
 CPU::
-DataStax Pulsar Connector is bound by the amount of CPU available on the host.
+DataStax Pulsar connector is bound by the amount of CPU available on the host.
 The connector holds all the records pulled from Pulsar topics in memory, along with the cluster metadata and prepared statements.
 +
 Memory pressure is influenced by the following:
@@ -41,18 +41,18 @@ Memory pressure is influenced by the following:
 * Number of simultaneous tasks run by the connector
 
 Network::
-DataStax Pulsar Connector needs adequate network capacity for the payload.
+DataStax Pulsar connector needs adequate network capacity for the payload.
 This includes the connections from Pulsar Servers to the target platform.
 Scale the connector horizontally by adding additional workers to increase overall throughput.
 +
-The DataStax Pulsar Connector framework automatically rebalances the load when workers are added by reallocating the tasks among the workers.
+The DataStax Pulsar connector framework automatically rebalances the load when workers are added by reallocating the tasks among the workers.
 
 == Install the connector
 
 Perform the following steps on a Pulsar Connect node running Apache Pulsar 2.7.0 or later.
 If you need to install Pulsar, see xref:ROOT:pulsarQuickStart.adoc[].
 
-. Download the DataStax Apache Pulsar Connector tar file from the https://downloads.datastax.com/#apc[DataStax downloads site].
+. Download the DataStax Apache Pulsar connector tar file from the https://downloads.datastax.com/#apc[DataStax downloads site].
 
 . Extract the files, replacing **VERSION** with the version number of the tar file you downloaded:
 +
@@ -75,7 +75,7 @@ cassandra-enhanced-pulsar-sink-1.4.0.nar
 . In your Pulsar `home` directory, find the `connectors` directory.
 If there isn't a `connectors` directory, create one.
 
-. Move the DataStax Pulsar Connector NAR file to the Pulsar `connectors` directory:
+. Move the DataStax Pulsar connector NAR file to the Pulsar `connectors` directory:
 +
 [source,bash]
 ----
@@ -100,7 +100,7 @@ For example, for information about connection, authentication, and encryption pa
 bin/pulsar-admin sinks reload
 ----
 
-. Check that the DataStax Pulsar Connector is available:
+. Check that the DataStax Pulsar connector is available:
 +
 [source,bash]
 ----
@@ -136,4 +136,4 @@ For more information, see xref:ROOT:cfgRefPulsarDseTable.adoc[].
 
 == Next steps
 
-Explore the rest of the documentation to learn more about configuring and using the DataStax Pulsar Connector.
+Explore the rest of the documentation to learn more about configuring and using the DataStax Pulsar connector.

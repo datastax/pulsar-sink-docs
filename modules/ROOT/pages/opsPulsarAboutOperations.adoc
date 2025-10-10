@@ -1,8 +1,8 @@
-= Operate and maintain the DataStax Apache Pulsar(TM) Connector
+= Operate and maintain the DataStax Apache Pulsar(TM) connector
 :navtitle: Pulsar connector administration
 :page-aliases: ROOT:opsPulsarConnectorStatus.adoc, ROOT:opsPulsarDisplayConfig.adoc, ROOT:opsPulsarUpdateConfig.adoc, ROOT:opsPulsarRestart.adoc
 
-To operate and maintain the DataStax Apache Pulsar(TM) Connector, use the https://pulsar.apache.org/docs/4.1.x/admin-api-tools/[Apache Pulsar administration tools], which include the pulsar-admin CLI and the Pulsar admin API.
+To operate and maintain the DataStax Apache Pulsar(TM) connector, use the https://pulsar.apache.org/docs/4.1.x/admin-api-tools/[Apache Pulsar administration tools], which include the pulsar-admin CLI and the Pulsar admin API.
 
 == Get the connector's status
 
@@ -151,7 +151,7 @@ pulsar-admin sinks update --name **SINK_NAME** **OPTIONS**
 
 Replace the following:
 
-* `**SINK_NAME**`: The name of the sink associated with your DataStax Pulsar Connector.
+* `**SINK_NAME**`: The name of the sink associated with your DataStax Pulsar connector.
 * `**OPTIONS**`: https://pulsar.apache.org/docs/next/io-cli/#update-1[Pulsar sink configuration options] that you want to update, such as `--sink-config-file`, `--parallelism`, or `--timeout-ms`.
 
 For example, after modifying the connector's configuration file, run the following command to apply the new configuration.

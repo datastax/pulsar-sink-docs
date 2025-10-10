@@ -1,6 +1,6 @@
 = Configure error handling
 
-Use the DataStax Apache Pulsar(TM) Connector's `ignoreErrors` parameter to specify how the connector handles runtime errors when processing messages from Pulsar topics and writing them to database tables.
+Use the DataStax Apache Pulsar(TM) connector's `ignoreErrors` parameter to specify how the connector handles runtime errors when processing messages from Pulsar topics and writing them to database tables.
 
 You can configure the connector to ignore specific types of errors or all errors, depending on the option you choose:
 
@@ -21,7 +21,7 @@ Logging of non-blocking driver errors depends on the driver configuration.
 All errors are ignored.
 +
 The connector continues processing records even if an error occurred on the prior record.
-The erroneous record is logged once, and then the next record is picked up by the Pulsar Connector automatically.
+The erroneous record is logged once, and then the next record is picked up by the Pulsar connector automatically.
 
 `false` (deprecated)::
 Use `NONE`.

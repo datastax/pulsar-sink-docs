@@ -1,4 +1,4 @@
-= Scale the DataStax Apache Pulsar(TM) Connector
+= Scale the DataStax Apache Pulsar(TM) connector
 :navtitle: Configure parallelism (scaling)
 :page-aliases: ROOT:cfgPulsarConfigTasksMax.adoc
 

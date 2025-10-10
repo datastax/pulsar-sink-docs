@@ -1,8 +1,8 @@
-= Troubleshoot the DataStax Apache Pulsar Connector
+= Troubleshoot the DataStax Apache Pulsar connector
 :navtitle: Troubleshoot the connector
 :page-aliases: ROOT:trbPulsarTsLoadBalancing.adoc, trbPulsarTsRecordFailsToWriteToTable.adoc, trbPulsarTsRecordParsingFails.adoc
 
-This page describes some common issues that you might encounter when using the DataStax Apache Pulsar(TM) Connector and how to resolve them.
+This page describes some common issues that you might encounter when using the DataStax Apache Pulsar(TM) connector and how to resolve them.
 
 == Load balancing datacenter is not specified
 
@@ -25,7 +25,7 @@ Make sure your connector configuration file includes a valid path to the databas
 
 == Writes fail because of mutation size
 
-The Pulsar Connector collects records to write to the database in CQL `xref:dse-6.9@cql:reference:cql-commands/batch.adoc[BATCH]` commands.
+The Pulsar connector collects records to write to the database in CQL `xref:dse-6.9@cql:reference:cql-commands/batch.adoc[BATCH]` commands.
 Data insertions and deletions in the records are known as mutations.
 The connector is implemented to use single-partition batches that are submitted as one mutation operation.
 

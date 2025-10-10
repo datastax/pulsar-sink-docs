@@ -135,7 +135,7 @@ datastax-java-driver.advanced.metrics.session.enabled.1=b
 
 == Authentication and encryption
 
-You can authenticate the DataStax Pulsar Connector session using internal, LDAP, Kerberos, or application token authentication, depending on the methods supported by your cluster.
+You can authenticate the DataStax Pulsar connector session using internal, LDAP, Kerberos, or application token authentication, depending on the methods supported by your cluster.
 The connector also supports SSL-encrypted connections.
 
 [tabs]
@@ -146,7 +146,7 @@ DSE::
 When xref:6.9@dse:securing:authorization-authentication/enable-unified-authentication.adoc[DSE Unified Authentication is enabled], you must provide internal/LDAP authentication credentials or the Kerberos keytab filepath in the <<authentication-parameters,authentication parameters>>.
 The connector supports DSE role management with internal and LDAP schemes.
 
-If the cluster has client encryption enabled, configure the <<ssl-encrypted-connections,SSL keys and certificates in the Pulsar Connector>>.
+If the cluster has client encryption enabled, configure the <<ssl-encrypted-connections,SSL keys and certificates in the Pulsar connector>>.
 SSL encryption settings are configured in the xref:6.9@dse:securing:encrypt-client-node-ssl.adoc[DSE client-to-node encryption options].
 
 For information about authentication configuration for DSE clusters, see the documentation for your version of DSE.

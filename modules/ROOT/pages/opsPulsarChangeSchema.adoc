@@ -1,7 +1,7 @@
 = Change the topic or table schema
 :page-aliases: ROOT:opsPulsarRemoveField.adoc, ROOT:opsPulsarAddField.adoc, ROOT:opsPulsarAddTableColumn.adoc, ROOT:opsPulsarRemoveColumn.adoc
 
-You must update the DataStax Apache Pulsar(TM) Connector configuration when your field or table schema changes.
+You must update the DataStax Apache Pulsar(TM) connector configuration when your field or table schema changes.
 
 == Add a field
 

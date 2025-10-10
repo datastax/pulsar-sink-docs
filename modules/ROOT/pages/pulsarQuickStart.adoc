@@ -1,4 +1,4 @@
-= Pulsar Connector single instance quickstart for DSE
+= Pulsar connector single instance quickstart for DSE
 :navtitle: Single instance quickstart for DSE
 
 This quickstart provides the minimal configuration to connect a standalone Apache Pulsar(TM) instance to a single, standalone DataStax Enterprise (DSE) node.
@@ -70,7 +70,7 @@ wget https://archive.apache.org/dist/pulsar/pulsar-2.7.0/apache-pulsar-2.7.0-bin
 tar xvfz apache-pulsar-2.7.0-bin.tar.gz
 ----
 
-. Download the DataStax Apache Pulsar Connector tar file from the https://downloads.datastax.com/#apc[DataStax downloads site].
+. Download the DataStax Apache Pulsar connector tar file from the https://downloads.datastax.com/#apc[DataStax downloads site].
 +
 For more information about system requirements for the connector, see xref:ROOT:pulsarInstall.adoc[].
 
@@ -84,7 +84,7 @@ tar zxf cassandra-enhanced-pulsar-sink-**VERSION**.tar.gz
 . In your Pulsar `home` directory, find the `connectors` directory.
 If there isn't a `connectors` directory, create one.
 
-. Move the DataStax Pulsar Connector NAR file to the Pulsar `connectors` directory:
+. Move the DataStax Pulsar connector NAR file to the Pulsar `connectors` directory:
 +
 [source,bash]
 ----
@@ -166,7 +166,7 @@ configs:
 bin/pulsar standalone
 ----
 
-. In a new terminal, check that the DataStax Pulsar Connector is running:
+. In a new terminal, check that the DataStax Pulsar connector is running:
 +
 [source,bash]
 ----

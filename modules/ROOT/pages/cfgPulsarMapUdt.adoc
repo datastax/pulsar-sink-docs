@@ -1,6 +1,6 @@
 = Mapping messages to table that has a User Defined Type
 
-The DataStax Apache Pulsar(TM) Connector processes JSON, Avro, and complex types directly into a xref:dse-6.9@cql:develop:user-defined-type-overview.adoc[user-defined type] column in the database. The Pulsar message embedded field names and the UDT field names must match.
+The DataStax Apache Pulsar(TM) connector processes JSON, Avro, and complex types directly into a xref:dse-6.9@cql:develop:user-defined-type-overview.adoc[user-defined type] column in the database. The Pulsar message embedded field names and the UDT field names must match.
 
 In the example `stocks_topic`, the key is a basic string and the value is regular JSON.
 
@@ -82,7 +82,7 @@ topic:
 
 == Mapping complex user defined types
 
-The DataStax Apache Pulsar(TM) Connector supports mapping complex user defined types of `map`, `set`, and `list`.
+The DataStax Apache Pulsar(TM) connector supports mapping complex user defined types of `map`, `set`, and `list`.
 
 The DataStax keyspace name is `stocks_keyspace`. In the stocks keyspace create the user defined type, `stocks_complex_type`:
 

@@ -1,7 +1,7 @@
-= Delete the DataStax Apache Pulsar(TM) Connector
-:navtitle: Delete the Pulsar Connector
+= Delete the DataStax Apache Pulsar(TM) connector
+:navtitle: Delete the Pulsar connector
 
-To completely remove the DataStax Apache Pulsar(TM) Connector, do the following:
+To completely remove the DataStax Apache Pulsar(TM) connector, do the following:
 
 . Delete any sinks associated with the connector:
 +

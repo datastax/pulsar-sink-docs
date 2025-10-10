@@ -1,7 +1,7 @@
-= DataStax Apache Pulsar(TM) Connector metrics
+= DataStax Apache Pulsar(TM) connector metrics
 :navtitle: Metrics
 
-You can view DataStax Apache Pulsar(TM) Connector metrics in raw Prometheus format at the Apache Pulsar metrics endpoint: `http://**PULSAR_INSTANCE**:8080/metrics`.
+You can view DataStax Apache Pulsar(TM) connector metrics in raw Prometheus format at the Apache Pulsar metrics endpoint: `http://**PULSAR_INSTANCE**:8080/metrics`.
 
 You can also https://prometheus.io/docs/prometheus/latest/getting_started/[configure a Prometheus instance to monitor your Pulsar instance].
 
@@ -10,7 +10,7 @@ You can also https://prometheus.io/docs/prometheus/latest/getting_started/[confi
 The entries in this reference are formatted as Prometheus query strings.
 
 The root of each query is a combination of `com_datastax_oss_pulsar_sink`, sink name, and metric class.
-The sink name refers to a configured and running DataStax Pulsar Connector sink, and metric class is the general class of the metric, such as `Count` or `SnapShotSize`.
+The sink name refers to a configured and running DataStax Pulsar connector sink, and metric class is the general class of the metric, such as `Count` or `SnapShotSize`.
 For example, a complete query root could be `com_datastax_oss_pulsar_sink_dse_sink_kv_Count`.
 
 In addition to the Prometheus query root, you can append a `name` attribute to focus on specific topics.

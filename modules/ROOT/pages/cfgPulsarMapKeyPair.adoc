@@ -44,7 +44,7 @@ For example, this command verifies the schema for `world_keyspace`:
 nodetool describering -- world_keyspace
 ----
 
-. In the DataStax Connector configuration file, add the Pulsar topic name to `xref:cfgRefPulsarDseTable.adoc#topics[topics]`, and define the xref:cfgRefPulsarDseTable.adoc#mapping[field-to-column mapping].
+. In the DataStax connector configuration file, add the Pulsar topic name to `xref:cfgRefPulsarDseTable.adoc#topics[topics]`, and define the xref:cfgRefPulsarDseTable.adoc#mapping[field-to-column mapping].
 +
 The following example is maps the `world_topic` to the `world_table` using the minimum required settings:
 +
