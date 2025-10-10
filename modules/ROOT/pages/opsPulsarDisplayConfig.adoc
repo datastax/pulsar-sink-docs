@@ -1,30 +1,28 @@
-= Displaying the DataStax Apache Pulsar(TM) Connector configuration
-:navtitle: Displaying the Pulsar Connector configuration
+= Get the DataStax Apache Pulsar(TM) Connector configuration
+:navtitle: Get the connector configuration
 
-Use the Apache Pulsar(TM) administration tool sinks command to retrieve detailed information on a Pulsar sink:
+Use the `pulsar-admin sinks get` command to retrieve detailed information on a Pulsar sink:
 
 [source,bash]
 ----
 bin/pulsar-admin sinks get --name sink-name
 ----
 
-where
+Replace `sink-name` with the name of the sink associated with your DataStax Pulsar Connector.
 
-* sink-name - The sink name associated with the DataStax Pulsar Connector.
-
-
-Example show configuration
-
-To display the configuration of `dse-sink-kv`:
+For example, the following command retrieves the configuration for a sink named `dse-sink-kv`:
 
 [source,bash]
 ----
 bin/pulsar-admin sinks get --name dse-sink-kv
 ----
 
-The results show in JSON format:
+The configuration is returned in JSON format.
 
-[source,results]
+.Result
+[%collapsible]
+====
+[source,json]
 ----
 {
   "tenant": "public",
@@ -98,3 +96,4 @@ The results show in JSON format:
   "archive": "builtin://cassandra-enhanced"
 }
 ----
+====

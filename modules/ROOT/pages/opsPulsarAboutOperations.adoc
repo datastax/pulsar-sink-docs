@@ -6,3 +6,5 @@ To operate and maintain the DataStax Apache Pulsar(TM) Connector use the Apache 
 For more information on `pulsar-admin`, see http://pulsar.apache.org/tools/pulsar-admin/2.7.0-SNAPSHOT/#topics[Apache Pulsar Admin Tool Documentation].
 
 For more information on the Apache Pulsar(TM) REST Administration API, see https://pulsar.apache.org/admin-rest-api/?version=2.7.0[Apache Pulsar REST Administration API].
+
+//TODO: combine all ops stubs onto this page

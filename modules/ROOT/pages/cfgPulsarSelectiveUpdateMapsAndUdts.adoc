@@ -38,6 +38,5 @@ UPDATE ks.table set udtColNotFrozen.udtmem1=:udtcol1, udtColNotFrozen.udtmem2=:u
 
 When the new record arrives, DataStax Apache Pulsar(TM) Connector sets only the not null fields;
 it will not override fields of UDT that have a null value (or are not present) in the Pulsar record, assuming `nullToUnset` is set to `true`.
-The behavior of the Update versus Override is defined via the `nullToUnset` parameter.
-See its description in xref:cfgRefPulsarDseTable.adoc#nullToUnset[nullToUnset].
+The behavior of the Update versus Override is defined via the `xref:cfgRefPulsarDseTable.adoc#nullToUnset[nullToUnset]` parameter.
 For related information about Pulsar maps and UDTs, see xref:cfgPulsarMapUdt.adoc[].

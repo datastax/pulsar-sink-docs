@@ -182,7 +182,10 @@ The Pulsar function framework handles deployment to additional Pulsar machines.
 
 You must also provide set `auth.username` and `auth.password`, as explained in <<authentication-parameters>>.
 
-When using `cloud.secureConnectBundle`, _all_ subproperties of `ssl:` must be empty.
+[IMPORTANT]
+====
+When using `cloud.secureConnectBundle`, _all_ subproperties of `ssl:` must be empty, and you must not set `loadBalancing.localDc`.
 These properties are managed by the SCB.
+====
 --
 ======

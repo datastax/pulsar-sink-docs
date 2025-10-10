@@ -6,7 +6,7 @@ This page describes some common issues that you might encounter when using the D
 
 == Load balancing datacenter is not specified
 
-The following error message occurs when the load balancing datacenter (xref:ROOT:cfgRefPulsarDseConnection.adoc#loadBalancing[loadBalancing.localDc]) is not set in the configuration file:
+The following error message occurs when the load balancing datacenter isn't set in the connector's configuration file:
 
 [source,console]
 ----
@@ -15,9 +15,10 @@ org.apache.pulsar.common.config.ConfigException: Invalid value [127.0.0.2] for
           also be specified
 ----
 
-The connector requires that you set the `loadBalancing.localDc` for DSE clusters.
+The connector requires that you set the `loadBalancing.localDc` for DSE clusters when `contactPoints` isn't set to `localhost`.
 
-Check the datacenter name in the cluster by running `xref:dse:managing:tools/nodetool/status.adoc[nodetool status]` and verify that xref:ROOT:cfgRefPulsarDseConnection.adoc#loadBalancing[loadBalancing.localDc] exactly matches because datacenter names are case sensitive.
+Check the datacenter name in the cluster by running `xref:dse:managing:tools/nodetool/status.adoc[nodetool status]`, and then verify that `xref:ROOT:cfgRefPulsarDseConnection.adoc[loadBalancing.localDc]` has the exact same name, including capitalization.
+DSE datacenter names are case sensitive.
 
 For Astra clusters, the datacenter is set by the Secure Connect Bundle (SCB).
 Make sure your connector configuration file includes a valid path to the database's SCB zip file.
@@ -46,7 +47,7 @@ Before making any changes, understand the relationship between the `xref:dse:man
 However, {company} recommends that you investigate why the mutations are larger than expected.
 Look for underlying issues with your client application, access patterns, and data model because increasing the commitlog segment size is a limited fix.
 
-You can decrease the batch size by lowering the number of records collected in each batch in xref:cfgRefPulsarDseConnection.adoc#maxNumberOfRecordsInBatch[maxNumberOfRecordsInBatch].
+You can decrease the batch size by lowering the number of records collected in each batch in `xref:cfgRefPulsarDseConnection.adoc[maxNumberOfRecordsInBatch]`.
 
 If you cannot decrease the size of your batches, test whether increases to `max_mutation_size_in_kb` and `commitlog_segment_size_in_mb` result in batches completing successfully, without consuming too much RAM on the partition's node.
 You can also increase the DSE database batch threshold using `xref:dse:managing:configure/configure-cassandra-yaml.adoc#guardrailsYaml[batch_size_warn_threshold_in_kb]`.

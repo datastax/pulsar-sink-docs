@@ -1,89 +1,133 @@
-= Pulsar topic-to-table settings
+= Pulsar topic-to-table parameters
+:page-aliases: ROOT:cfgPulsarSettingRowLevelTtl.adoc, ROOT:cfgPulsarMapTopicTable.adoc
 
-Capture Apache Pulsar(TM) topics in the xref:index.adoc#supported-databases[supported database] by specifying a target keyspace, table, and then map the topic fields to table columns in the name of the parameter.
+The connector writes messages from your Apache Pulsar(TM) topics to tables in your database using the mapping and topic properties set in your connector's configuration YAML file.
 
-== Parameters
+This includes the topic name, keyspace name, table name, schema mapping, and other write options.
+
+== Topic-to-table parameters
 
 Use the following syntax for standalone properties file:
 
 [source,yaml]
 ----
-topics: topic_list
+topics: topic_name, topic_name1, topic_name2
 topic:
   topic_name:
     keyspace_name:
       table_name:
-        mapping: mapping_specification
-        consistencyLevel: WRITE_CONSISTENCY_LEVEL
-        ttlTimeUnit: seconds
+        mapping: 'record=key, content=value'
+        consistencyLevel: LOCAL_ONE
+        ttlTimeUnit: SECONDS
         ttl: -1
         nullToUnset: true
         deletesEnabled: true
 ----
 
 [#topics]
-=== topics
+topics::
 A comma separated list of all topics to which the DataStax Connector subscribes.
 
-* `topic_name` - Pulsar topic name.
-* `keyspace_name` - database keyspace where the table is located.
-* `table_name` - database table where data is written.
+topic::
+A container for the configuration details for each subscribed topic.
+For each subscribed topic, provide the topic, keyspace, and table name nested under `topic`.
+For example:
++
+[source,yaml]
+----
+topic:
+  my_topic:
+    my_keyspace:
+      my_table:
+----
++
+Make sure that the keyspace and table are the correct targets for the topic.
+This is where Pulsar will write the messages from the topic.
 
 [#mapping]
-=== mapping
-Required, field-to-column mapping.
+mapping::
+Required.
+A mapping of Pulsar fields to table columns.
+The exact contents depends on the message format and table schema.
+For more information and examples, explore the other mapping topics in this documentation.
 
-For more, see xref:ROOT:cfgPulsarMapTopicTable.adoc[].
-
-[#consistencyLevel]
-=== consistencyLevel
-Query consistency level.
-
+consistencyLevel::
+Query xref:dse:architecture:database-internals/about-data-consistency.adoc[consistency level] for writes.
+Valid values depend on your database provider and use case.
++
 Default: `LOCAL_ONE`
 
-DSE settings are:
-
-* xref:dse:architecture:database-internals/configure-consistency.adoc[ALL]
-* xref:dse:architecture:database-internals/configure-consistency.adoc[EACH QUORUM]
-* xref:dse:architecture:database-internals/configure-consistency.adoc[QUORUM]
-* xref:dse:architecture:database-internals/configure-consistency.adoc[LOCAL_QUORUM]
-* xref:dse:architecture:database-internals/configure-consistency.adoc[ONE]
-* xref:dse:architecture:database-internals/configure-consistency.adoc[TWO]
-* xref:dse:architecture:database-internals/configure-consistency.adoc[THREE]
-* xref:dse:architecture:database-internals/configure-consistency.adoc[LOCAL_ONE]
-* xref:dse:architecture:database-internals/configure-consistency.adoc[ANY]
-
-For more, see xref:dse:architecture:database-internals/about-data-consistency.adoc[]
-
 [#nullToUnset]
-=== nullToUnset
-Whether to treat null values in Pulsar as UNSET in DSE.
-
+nullToUnset::
+Whether to treat null values in Pulsar as `UNSET` in the database table.
++
+This parameter controls the handling of updates versus overrides.
++
+If `true`, the DataStax Pulsar Connector treats null values as unset fields.
+When a new record arrives, it only updates fields that _aren't_ null in the incoming message.
+DataStax recommends setting this to `true` to avoid creating unnecessary tombstones.
++
+If `false`, fields with null values are visible in the table as `UNSET` values.
++
 Default: `true`
 
-This parameter controls the handling of updates versus overrides.
+ttl, ttlTimeUnit, _\_ttl::
+There are two ways to set time-to-live (TTL) in your connector configuration.
++
+[tabs]
+======
+Static TTL::
++
+--
+In the table configuration, set `ttl` to the amount of seconds that a record remains in the table before it is automatically deleted.
+The default is `-1`, which means that TTL is disabled.
 
-When true (default), the DataStax Pulsar Connector treats null values as unset fields.
-It only updates fields that are _not_ null when a new record arrives.
-DataStax recommends using the default to avoid creating unnecessary tombstones.
+[source,yaml]
+----
+      table_name:
+        mapping: 'col1=key.f1, col2=value.f1'
+        ttlTimeUnit: SECONDS
+        ttl: 80000
+----
+--
 
-If false, fields with null values are visible in the DSE target table.
+Dynamic TTL::
++
+--
+In the `mapping` parameter, you can use the `__ttl` property to specify the column to use as the TTL value for the record being inserted into the database table.
+For example:
 
-[#ttl]
-=== ttl
-Time-to-live.
+[source,yaml]
+----
+      table_name:
+        mapping: 'col1=key.f1, col2=value.f1, __ttl=value.f2'
+        ttlTimeUnit: SECONDS
+----
 
-Default: `-1` (disabled)
+If you set both static and dynamic TTL, the dynamic TTL (in `mapping`) takes precedence, and the connector writes a warning message to the log file.
 
-Set to the number of seconds before the data is automatically deleted from the DSE table.
-When you configure `topic.<topic-name>.<keyspace-name>.<table-name>.ttl`, all rows for that topic table will have this same `TTL` value.
-DataStax Pulsar Connector appends `AND TTL <configured-ttl-value>` to the INSERT statement for those rows.
+If the dynamic TTL value is negative, an error is thrown when writing records to the table.
+However, the connector inserts the record without the TTL because the Pulsar connector is a streaming system.
+--
+======
++
+If TTL is set (either statically or dynamically), the same TTL limit is applied to _all_ rows in the mapped table.
+The DataStax Pulsar Connector appends `AND TTL <seconds>` to all `INSERT` statements for the table.
++
+With either static or dynamic TTL, you can optionally set `ttlTimeUnit` to specify the time unit for the `ttl` value.
+The default time unit is `SECONDS`.
+If you specify a different time unit, such as `HOURS`, the DataStax Pulsar Connector automatically converts the value to `SECONDS` for compatibility.
 
 [#deletesEnabled]
-=== deletesEnabled
-
-Default: `true`
-
-When enabled, treat records that after mapping would result in only non-null values for primary key columns as deletes, rather than inserting/updating nulls for all regular columns.
-
-Only triggers if the setting is enabled and the mapping specification contains all DSE table columns.
+deletesEnabled::
+This parameter controls the handling of records that cause all columns to contain null values except for the primary key (PK) columns.
++
+If `false` (disabled), records are always applied as `INSERT`/`UPDATE` statements, even if all non-PK columns would become null.
++
+If `true` (enabled, default), a record that results in all-null values (except for PK columns) is applied as a `DELETE`, rather than an `INSERT`/`UPDATE` that would write nulls to all non-PK columns.
++
+If `true`, the `mapping` must include _all_ columns in order for the setting to function.
+If the `mapping` doesn't include all columns, this parameter is treated as `false`.
++
+The behavior applies to the post-mapping result.
+For example, if a row has a mix of null and non-null values, and the new record nullifies all of the non-null values, the result is a `DELETE`.

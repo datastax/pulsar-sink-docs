@@ -1,8 +1,7 @@
-= DataStax connection
+= DataStax Apache Pulsar Connector connection parameters
+:navtitle: Connection parameters
 
-Configure the connection settings from Apache Pulsar(TM) to the cluster.
-
-== Parameters
+Use the connection parameters to configure the connection settings from Apache Pulsar(TM) to your database cluster:
 
 [source,yaml]
 ----
@@ -17,53 +16,43 @@ Configure the connection settings from Apache Pulsar(TM) to the cluster.
  compression: None
 ----
 
-[#connectionPoolLocalSize]
 connectionPoolLocalSize:: Number of connections that driver maintains within a connection pool to each node in the local datacenter.
 +
 Default: `4`
 
-[#contactPoints]
-contactPoints:: A comma-separated list of host names or IP addresses in square brackets.
-+
-NOTE: When this setting is specified (for example, the database is on a remote host), the xref:cfgRefPulsarDseConnection.adoc#loadBalancing[loadBalancing.localDc] parameter is required.
+contactPoints:: Either `localhost` or a comma-separated list of host names or IP addresses in square brackets.
+If you provide a list of hosts, you must also set `loadBalancing.localDc`.
 +
 Default: `localhost`
 
-[#loadBalancing]
 loadBalancing.localDc:: The case-sensitive datacenter name for the driver to use for load balancing.
 +
-NOTE: You cannot use this option if you set `xref:ROOT:secPulsarInternalLdapAuth.adoc[cloud.secureConnectBundle]` to connect to Astra.
+When connecting to Astra with `xref:ROOT:secPulsarInternalLdapAuth.adoc[cloud.secureConnectBundle]`, leave this property unset.
 +
 Default: `""`
 
-[#port]
 port:: DSE native transport port.
 See `xref:6.9@dse:managing:configure/configure-cassandra-yaml.adoc#native-transport-cql-binary-protocol[native_transport_port]`.
 +
 Default: `9042`
 
-[#maxConcurrentRequests]
 maxConcurrentRequests:: Maximum number of requests to send to DSE at the same time.
 +
 Default: `500`
 
-[#maxNumberOfRecordsInBatch]
 maxNumberOfRecordsInBatch:: Number of records to include in a write request to the database table.
 +
 Default: `32`
 
-[#jmx]
 jmx:: Whether to enable metrics reporting using Java Management Extensions (JMX).
 +
 Default: `true`
 
-[#compression]
 compression:: Compression algorithm to use when issuing requests to the database server.
 Valid values are `None`, `Snappy`, and `LZ4`, which is applied per connector instance.
 +
 Default: `None`
 
-[#queryExecutionTimeout]
 queryExecutionTimeout:: CQL statement execution timeout, in seconds.
 +
 Default: `30`
