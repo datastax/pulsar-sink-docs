@@ -1,41 +1,43 @@
-= Scaling the DataStax Apache Pulsar(TM) Connector
-:navtitle: Scaling the Pulsar Connector
-:page-tag: pulsar-connector,admin,manage,pulsar
+= Scale the DataStax Apache Pulsar(TM) connector
+:navtitle: Configure parallelism (scaling)
+:page-aliases: ROOT:cfgPulsarConfigTasksMax.adoc
 
-Use the Apache Pulsar(TM) administration tool to increase or decrease the number of workers to run for a given sink using the parallelism factor. You can specify the parallelism factor during creation of a Pulsar sink, and you can modify it after the fact as well. The default parallelism factor is `1`.
+The `parallelism` parameter specifies the number of workers (instances) that run for an Apache Pulsar(TM) sink.
+You can set the parallelism factor when you create a sink or modify it afterwards.
 
-== Configuring parallelism during sink creation
+The default parallelism factor is `1`.
 
-To configure parallelism during sink creation, add the `--parallelism` flag to the `pulsar-admin sinks create` command and specify the number of workers:
+== Configure parallelism when creating a sink
 
-Example create a Pulsar sink with a parallelism factor of 3:
+To configure parallelism when you create a sink, add the `--parallelism` flag to the `pulsar-admin sinks create` command and specify the number of instances:
+
+The following example creates a Pulsar sink with a parallelism factor of 3:
 
 [source,bash]
 ----
 bin/pulsar-admin sinks create \
 	--name dse-sink-kv \
-  --classname com.datastax.oss.sink.pulsar.StringCassandraSinkTask \
-	--parallelism: 3 \
+    --classname com.datastax.oss.sink.pulsar.StringCassandraSinkTask \
+	--parallelism 3 \
 	--sink-config-file conf/qs.yml \
 	--sink-type cassandra-enhanced \
 	--tenant public \
 	--namespace default \
 	--inputs "persistent://public/default/example_topic"
-"Created successfully"
 ----
 
-The sink will run three parallel Pulsar workers.
+With this configuration, the sink runs three parallel instances of this sink.
 
-== Modifying parallelism post sink creation
+== Modify parallelism for an existing sink
 
-To modify the parallelism factor of an existing sink, you can use `pulsar-admin sinks update` command and increase or reduce the factor as required:
+To modify the parallelism factor of an existing sink, use the `xref:ROOT:opsPulsarAboutOperations.adoc#pulsar-admin-sinks-update[pulsar-admin sinks update]` command and specify the desired parallelism factor
 
-Example change the parallelism factor of an existing sink:
+For example, to change the parallelism factor to 3 for a sink named `dse-sink-kv`, run the following command:
 
 [source,bash]
 ----
-bin/pulsar-admin sinks update --name dse-sink-kv --parallelism 1
-"Updated successfully"
+bin/pulsar-admin sinks update --name dse-sink-kv --parallelism 3
 ----
 
-The sink will terminate all but a single Pulsar worker.
+If the parallelism factor increased, the command starts new instances to scale up to the new value.
+If the factor decreased, the command stops existing instances to scale down to the new value.

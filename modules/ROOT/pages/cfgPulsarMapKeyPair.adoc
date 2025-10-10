@@ -1,52 +1,60 @@
-= Mapping basic messages to table columns
-:page-tag: pulsar-connector,dev,develop,pulsar
+= Map basic messages
 
-When messages are created using a Basic or primitive serializer, the message contains a key-value pair. Map the key and value to table columns. Ensure that the data types of the message field are compatible with the data type of the target column.
+When messages are created using a basic or primitive serializer, the message contains a key-value pair.
+Map the key and value to table columns.
 
-For example, the Pulsar world topic (`world_topic`) contains 5 records with a key-value pair in each.
+== Mapping requirements
+
+When mapping fields to columns, the following requirements apply:
+
+* The data in the Pulsar field must be compatible with the mapped column's xref:dse-6.9@cql:reference:data-types.adoc[data type].
+For example, a string field cannot map to a number column.
+
+* A Pulsar field mapped to a table's primary key (PK) column must always contain data because primary key columns don't allow nulls.
+
+* All primary key columns must have a mapping because primary key columns don't allow nulls.
+
+== Basic mapping example
+
+In this example, a Pulsar topic named `world_topic` contains five records with a key-value pair in each.
 The key is an integer and the value is text.
 
-== Table requirements
-
-. Ensure the following when mapping fields to columns:
+. Create a keyspace in your database.
 +
-* Data in the Pulsar field is compatible with the database table column https://docs.datastax.com/en/dse/6.8/cql/cql/cql_reference/refDataTypes.html[data type].
-* Pulsar field mapped to a database primary key (PK) column always contains data.
-Null values are not allowed in PK columns.
-
-. Set up the xref:index.adoc#supported-databases[supported database] table.
-. Create the keyspace.
-Ensure that keyspace is replicated to a datacenter that is set in the DataStax Apache Pulsar Connector xref:cfgRefPulsarDseConnection.adoc#contactPoints[contactPoints] parameter.
-For example, create the world_keyspace:
+This example creates a keyspace named `world_keyspace`:
 +
 [source,bash]
 ----
-cqlsh -e "CREATE KEYSPACE world_keyspace WITH replication = {'class': 'NetworkTopologyStrategy','Cassandra': 1};"
+cqlsh -e "CREATE KEYSPACE world_keyspace \
+  WITH replication = {'class': 'NetworkTopologyStrategy', \
+  'Cassandra': 1};"
 ----
 +
-NOTE: The datacenter name is case sensitive.
-Use https://docs.datastax.com/en/dse/6.8/dse-dev/datastax_enterprise/tools/nodetool/toolsRing.html[nodetool ring] to get a list of datacenters.
+For DSE and Cassandra clusters, make sure that the keyspace is replicated to a datacenter set in the connector's `xref:cfgRefPulsarDseConnection.adoc[contactPoints]` parameter.
+DSE datacenter names are case sensitive.
+Use `xref:dse:managing:tools/nodetool/ring.adoc[nodetool ring]` to get a list of datacenters.
 
-. Create the table. For example, create the world\_table:
+. Create a table.
++
+This example creates a table named `world_table` with two columns:
 +
 [source,bash]
 ----
 cqlsh -e "CREATE TABLE world_table (recordid int PRIMARY KEY, continent text);"
 ----
 
-. Verify that all nodes have the same schema version using [nodetool describering](https://docs.datastax.com/en/dse/6.8/dse-admin/datastax_enterprise/tools/nodetool/toolsDescribeRing.html). Replace keyspace_name:
+. For DSE, verify that all nodes have the same schema version using `xref:dse:managing:tools/nodetool/describe-ring.adoc[nodetool describering]`.
++
+For example, this command verifies the schema for `world_keyspace`:
 +
 [source,bash]
 ----
-nodetool describering -- keyspace_name
+nodetool describering -- world_keyspace
 ----
 
-. In the DataStax Apache Pulsar(TM) Connector configuration file:
-.. Add the topic name to xref:cfgRefPulsarDseTable.adoc#topics[topics].
-.. Define the topic-to-table map xref:cfgRefPulsarDseTable.adoc#prefix[prefix].
-.. Define the xref:cfgRefPulsarDseTable.adoc#mapping[field-to-column map].
+. In the DataStax connector configuration file, add the Pulsar topic name to `xref:cfgRefPulsarDseTable.adoc#topics[topics]`, and define the xref:cfgRefPulsarDseTable.adoc#mapping[field-to-column mapping].
 +
-Example configurations for `world_topic` to `world_table` using the minimum required settings:
+The following example is maps the `world_topic` to the `world_table` using the minimum required settings:
 +
 [source,yaml]
 ----
@@ -58,3 +66,5 @@ topic:
       world_table:
         mapping: 'recordid=key, continent=value'
 ----
+
+. Use `xref:ROOT:opsPulsarAboutOperations.adoc#pulsar-admin-sinks-update[pulsar-admin sinks update]` to apply the new configuration.

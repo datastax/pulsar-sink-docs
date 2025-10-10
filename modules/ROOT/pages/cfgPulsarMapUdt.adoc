@@ -1,56 +1,88 @@
-= Mapping messages to table that has a User Defined Type
-:page-tag: pulsar-connector,dev,develop,pulsar
+= Map to User Defined Types (UDTs)
+:page-aliases: ROOT:cfgPulsarSelectiveUpdateMapsAndUdts.adoc
 
-The DataStax Apache Pulsar(TM) Connector processes JSON, Avro, and complex types directly into a https://docs.datastax.com/en/dse/6.8/cql/cql/cql_using/useAlterType.html[user-defined type] column in the xref:index.adoc#supported-databases[supported database]. The Pulsar message embedded field names and the UDT field names must match.
+The DataStax Apache Pulsar(TM) connector can process JSON, Avro, and complex types directly into xref:dse-6.9@cql:develop:user-defined-type-overview.adoc[user-defined type] columns.
 
-In the example `stocks_topic`, the key is a basic string and the value is regular JSON.
+The Pulsar messages' embedded field names and the UDT's field names must match.
 
-[cols="a,a"]
+== UDT mapping example
+
+In the following example, the key is a basic string and the value is regular JSON:
+
+[cols="1,2"]
 |===
 |key|value
 
-|APPLE|
-[source,console]
+|`APPLE`
+a|
+[source,json]
 ----
-{"symbol":"APPL", "value":208, "exchange":"NASDAQ", "industry":"TECH", "ts":"2018-11-26T19:26:27.483"}
-----
-
-|EXXON MOBIL|
-[source,console]
-----
-{"symbol":"M",
-"value":80,
-"exchange":"NYSE",
-"industry":"ENERGY",
-"ts":"2018-11-26T19:26:27.483"}
+{
+  "symbol":"APPL",
+  "value":208,
+  "exchange":"NASDAQ",
+  "industry":"TECH",
+  "ts":"2018-11-26T19:26:27.483"
+}
 ----
 
-|GENERAL MOTORS|
-[source,console]
+|`EXXON MOBIL`
+a|
+[source,json]
 ----
-{"symbol":"GM", "value":38, "exchange":"NYSE", "industry":"AUTO", "ts":"2018-11-26T19:26:27.483"}
-----
-
-|AT&T|
-[source,console]
-----
-{"symbol":"AT&T",
-"value":33,
-"exchange":"NYSE",
-"industry":"TELECOM",
-"ts":"2018-11-26T19:26:27.483"}
+{
+  "symbol":"M",
+  "value":80,
+  "exchange":"NYSE",
+  "industry":"ENERGY",
+  "ts":"2018-11-26T19:26:27.483"
+}
 ----
 
-|FORD MOTOR|
-[source,console]
+|`GENERAL MOTORS`
+a|
+[source,json]
 ----
-{"symbol":"F", "value":10, "exchange":"NYSE", "industry":"AUTO", "ts":"2018-11-26T19:26:27.483"}
+{
+  "symbol":"GM",
+  "value":38,
+  "exchange":"NYSE",
+  "industry":"AUTO",
+  "ts":"2018-11-26T19:26:27.483"
+}
 ----
 
+|`AT&T`
+a|
+[source,json]
+----
+{
+  "symbol":"AT&T",
+  "value":33,
+  "exchange":"NYSE",
+  "industry":"TELECOM",
+  "ts":"2018-11-26T19:26:27.483"
+}
+----
+
+|`FORD MOTORS`
+a|
+[source,json]
+----
+{
+  "symbol":"F",
+  "value":10,
+  "exchange":"NYSE",
+  "industry":"AUTO",
+  "ts":"2018-11-26T19:26:27.483"
+}
+----
 |===
 
-The DataStax keyspace name is `stocks_keyspace`. In the stocks keyspace create the user defined type, `stocks_type`:
+. Create a keyspace named `stocks_keyspace`.
 
+. Create a UDT named `stocks_type` with the following definition:
++
 [source,cql]
 ----
 CREATE TYPE stocks_keyspace.stocks_type (
@@ -61,8 +93,8 @@ CREATE TYPE stocks_keyspace.stocks_type (
     value double);
 ----
 
-Define a table named `stocks_udt_table` that has a column for the primitive string field `name` and a second column that uses the type, `stocks_type`:
-
+. Create a table named `stocks_udt_table` that has a column for the primitive string field `name` and a column that uses the `stocks_type` UDT:
++
 [source,cql]
 ----
 CREATE TABLE stocks_keyspace.stocks_table (
@@ -70,23 +102,23 @@ CREATE TABLE stocks_keyspace.stocks_table (
     stocks FROZEN<stocks_type>);
 ----
 
-Configure the connector settings and use the following for the map specification:
-
+. In the connector configuration, define the mapping as follows:
++
 [source,yaml]
 ----
 topic:
-    stocks_topic:
-        stocks_keyspace:
-            stocks_udt_table:
-                mapping: 'name=key,stocks=value'
+  stocks_topic:
+    stocks_keyspace:
+      stocks_udt_table:
+        mapping: 'name=key,stocks=value'
 ----
 
-== Mapping complex user defined types
+== Map complex UDTs
 
-The DataStax Apache Pulsar(TM) Connector supports mapping complex user defined types of `map`, `set`, and `list`.
+The connector supports mapping complex user defined types of `map`, `set`, and `list`.
 
-The DataStax keyspace name is `stocks_keyspace`. In the stocks keyspace create the user defined type, `stocks_complex_type`:
-
+. Using the same keyspace from the previous example, create a UDT named `stocks_complex_type` with the following definition:
++
 [source,cql]
 ----
 CREATE TYPE stocks_keyspace.stocks_complex_type (
@@ -99,13 +131,17 @@ CREATE TYPE stocks_keyspace.stocks_complex_type (
     similar_symbols frozen<set<text>>,
     stats frozen<map<text, double>>);
 ----
++
+For this example, the UDT `stocks_complex_type` has the following fields:
++
+* `trailing_five_days_value frozen<list<double>>`: Contains a `list` of the value of the stock in the last five days, for example `[10.0, 11.0, 12.0, 23.0, 10.0]`.
+Values in a list don't need to be unique.
+* `similar_symbols frozen<set<text>>`: Contains a `set` of symbols in the same industry, or performing similarly, for example `["M", "GM", "F"]`.
+Values in a set must be unique.
+* `stats frozen<map<text, double>>`: Contains a `map` of key-value pairs, for example `{"open": 11.0, "high": 20.0, "low": 9.0}`.
 
-* `trailing_five_days_value frozen<list<double>>` contains a `list` of the value of the stock in the last five days, for example `[10.0, 11.0, 12.0, 23.0, 10.0]`. Values in a list do not need to be unique.
-* `similar_symbols frozen<set<text>>` contains a `set` of symbols in the same industry, or performing similarly, for example `["M", "GM", "F"]`. Values in a set must be unique.
-* `stats frozen<map<text, double>>` contains a `map` of key-value pairs, for example `{"open": 11.0, "high": 20.0, "low": 9.0}`.
-
-Define a table named `stocks_complex_udt_table` that has a column for the primitive string field `name` and a second column that uses the type, `stocks_complex_type`:
-
+. Create a table named `stocks_complex_udt_table` that has a column for the primitive string field `name` and a column that uses the `stocks_complex_type` UDT:
++
 [source,cql]
 ----
 CREATE TABLE stocks_keyspace.stocks_complex_udt_table (
@@ -113,16 +149,70 @@ CREATE TABLE stocks_keyspace.stocks_complex_udt_table (
     stocks_complex FROZEN<stocks_complex_type>);
 ----
 
-Configure the connector settings and use the following for the map specification:
-
+. In the connector configuration, define the mapping as follows:
++
 [source,yaml]
 ----
 topic:
-    stocks_topic:
-        stocks_keyspace:
-            stocks_complex_udt_table:
-                mapping: 'name=key,stocks_complex=value'
+  stocks_topic:
+    stocks_keyspace:
+      stocks_complex_udt_table:
+        mapping: 'name=key,stocks_complex=value'
 ----
 
+[#selectively-update-maps-and-udts]
+== Selectively update maps and UDTs
 
+If your mapping includes maps or UDTs, you can xref:ROOT:cfgPulsarCqlQuery.adoc[use CQL queries in your connector configuration] to selectively update maps and UDTs based on the existence of values in the Pulsar fields.
 
+When a new record arrives, the connector sets only the non-null fields in the message.
+It won't override UDT fields that have a null value or aren't present in the Pulsar record.
+This configuration requires that `xref:cfgRefPulsarDseTable.adoc#nullToUnset[nullToUnset]` is `true`.
+
+This configuration helps minimize tombstones in the database.
+It uses the CQL `UPDATE` command to only update the fields present in the Pulsar record.
+You must use the `udtColNotFrozen` keyword in the CQL query, and the type definition cannot be frozen.
+
+. Create the UDT and ensure that it isn't frozen.
+For example:
++
+[source,cql]
+----
+CREATE TYPE IF NOT EXISTS myudt (udtmem1 int, udtmem2 text);
+----
+
+. In your connector configuration, set the `nullToUnset` parameter to `true`:
++
+[source,yaml]
+----
+topic:
+  topic_name:
+    keyspace_name:
+      table_name:
+        nullToUnset: true
+----
+
+. Ensure all UDT fields and bound variables you plan to use in your query are set in the `mapping`:
++
+[source,yaml]
+----
+topic:
+  topic_name:
+    keyspace_name:
+      table_name:
+        nullToUnset: true
+        mapping: bigintcol=key, udtcol1=value.udtmem1, udtcol2=value.udtmem2
+----
+
+. Once you will have the UDT and mapping defined, add the `query` parameter with your `UPDATE` command using the `udtColNotFrozen` keyword:
++
+[source,yaml]
+----
+topic:
+  topic_name:
+    keyspace_name:
+      table_name:
+        nullToUnset: true
+        mapping: bigintcol=key, udtcol1=value.udtmem1, udtcol2=value.udtmem2
+        query: 'UPDATE ks.table set udtColNotFrozen.udtmem1=:udtcol1, udtColNotFrozen.udtmem2=:udtcol2 where bigintCol=:bigintcol'
+----

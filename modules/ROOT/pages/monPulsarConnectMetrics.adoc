@@ -1,128 +1,102 @@
-= DataStax Apache Pulsar(TM) Connector metrics
+= DataStax Apache Pulsar(TM) connector metrics
 :navtitle: Metrics
-:page-tag: pulsar-connector,admin,manage,pulsar
 
-You can view DataStax Apache Pulsar(TM) Connector metrics in raw Prometheus format at the Apache Pulsar metrics endpoint:
+You can view DataStax Apache Pulsar(TM) connector metrics in raw Prometheus format at the Apache Pulsar metrics endpoint: `http://**PULSAR_INSTANCE**:8080/metrics`.
 
-[source,console]
-----
-http://<pulsar_instance>:8080/metrics
-----
+You can also https://prometheus.io/docs/prometheus/latest/getting_started/[configure a Prometheus instance to monitor your Pulsar instance].
 
-You can also configure a Prometheus instance to monitor your Pulsar instance as described here, https://prometheus.io/docs/prometheus/latest/getting_started/[Getting Started].
+== Prometheus query roots and attributes
 
-== Prometheus query roots
+The entries in this reference are formatted as Prometheus query strings.
 
-The entries in this reference are formatted as Prometheus query strings. The root of each query takes the format:
+The root of each query is a combination of `com_datastax_oss_pulsar_sink`, sink name, and metric class.
+The sink name refers to a configured and running DataStax Pulsar connector sink, and metric class is the general class of the metric, such as `Count` or `SnapShotSize`.
+For example, a complete query root could be `com_datastax_oss_pulsar_sink_dse_sink_kv_Count`.
 
-*com_datastax_oss_pulsar_sink* + *sink_name* + *metric_class*
+In addition to the Prometheus query root, you can append a `name` attribute to focus on specific topics.
+For example, to focus on the `failedRecordCount` slice of the `Count` metric class, you can use the attribute `name="failedRecordCount"`:
 
-where:
+[source,no-highlight]
+====
+com_datastax_oss_pulsar_sink_dse_sink_kv_Count{name="failedRecordCount"}
+====
 
-sink_name:: is the name of a configured and running DataStax Pulsar Connector sink.
+The following example shows a complete Prometheus query that includes the root, `name` attribute, and other attributes.
+Including the `name` attribute causes the response to include only the number of failed records (`25`).
 
-metric_class:: is the general class of the metric, for example, `Count` or `SnapShotSize`
-
-An example query root would be:
-
-*com_datastax_oss_pulsar_sink_dse_sink_kv_Count*
-
-== Prometheus query attributes
-
-In addition to the Prometheus query root, you can append a `name` attribute to zero in on specific topics of interest.
-
-An example query would be:
-
-*com_datastax_oss_pulsar_sink_dse_sink_kv_Count{name="failedRecordCount"}*
-
-and would return the number of failed records:
-
-[source,console]
+[source,no-highlight]
 ----
 com_datastax_oss_pulsar_sink_dse_sink_kv_Count{instance="localhost:8080", job="pulsar", keyspace="pulsar_qs", name="failedRecordCount", table="pulsar_kv", topic="example_topic"}
 25
 ----
 
-The entries in this reference are separated into the Prometheus root query, and available metrics for the `name` attribute are listed within.
+This reference is organized by root query.
+Each section includes the available metrics for the `name` attribute along with an example query.
 
-TIP: Specifying only the root query returns all of the available named metrics.
+Specifying only the root query returns all of the available named metrics.
 
 == com_datastax_oss_pulsar_sink_<sink_name>_Count
 
 Integer count for various DataStax Pulsar Connect metrics.
 
-=== cql-client-timeouts
-
+cql-client-timeouts::
 Number of CQL client timeouts.
-
-Example
-
++
+.Example
 [source,console]
 ----
 com_datastax_oss_pulsar_sink_dse_sink_kv_Count{driver="driver", instance="localhost:8080", job="pulsar", name="cql-client-timeouts", session="s0"}
 ----
 
-=== cql-requests
-
+cql-requests::
 Number of CQL requests.
-
-Example
-
++
+.Example
 [source,console]
 ----
 com_datastax_oss_pulsar_sink_dse_sink_kv_Count{driver="driver", instance="localhost:8080", job="pulsar", name="cql-requests", session="s0"}
 ----
 
-=== batchSize
-
+batchSize::
 Returns the number of statements in the CQL batch used to write records to the database.
-
-Example
-
++
+.Example
 [source,console]
 ----
 com_datastax_oss_pulsar_sink_dse_sink_kv_Count{instance="localhost:8080", job="pulsar", keyspace="pulsar_qs", name="batchSize", table="pulsar_kv", topic="example_topic"}
 ----
 
-=== batchSizeInBytes
-
+batchSizeInBytes::
 Calculated size of every batch statement in bytes.
-
-Example
-
++
+.Example
 [source,console]
 ----
 com_datastax_oss_pulsar_sink_dse_sink_kv_Count{instance="localhost:8080", job="pulsar", keyspace="pulsar_qs", name="batchSizeInBytes", table="pulsar_kv", topic="example_topic"}
 ----
 
-=== failedRecordCount
-
+failedRecordCount::
 Running total of the number of failed records encountered by the connector instance.
-
-Example
-
++
+.Example
 [source,console]
 ----
 com_datastax_oss_pulsar_sink_dse_sink_kv_Count{instance="localhost:8080", job="pulsar", keyspace="pulsar_qs", name="failedRecordCount", table="pulsar_kv", topic="example_topic"}
 ----
 
-=== recordCount
-
+recordCount::
 Running total of records processed.
-
-Example
-
++
+.Example
 [source,console]
 ----
 com_datastax_oss_pulsar_sink_dse_sink_kv_Count{instance="localhost:8080", job="pulsar", keyspace="pulsar_qs", name="recordCount", table="pulsar_kv", topic="example_topic"}
 ----
 
-=== failedRecordsWithUnknownTopic
-
+failedRecordsWithUnknownTopic::
 Number of failed record transactions with an unknown topic.
-
-Example
-
++
+.Example
 [source,console]
 ----
 com_datastax_oss_pulsar_sink_dse_sink_kv_Count{instance="localhost:8080", job="pulsar", name="failedRecordsWithUnknownTopic"}
@@ -132,574 +106,257 @@ com_datastax_oss_pulsar_sink_dse_sink_kv_Count{instance="localhost:8080", job="p
 
 Snapshot size.
 
-=== batchSize
-
+batchSize::
 Returns the number of statements in the CQL batch used to write records to the database.
-
-Example
-
++
+.Example
 [source,console]
 ----
 com_datastax_oss_pulsar_sink_dse_sink_kv_SnapshotSize{instance="localhost:8080", job="pulsar", keyspace="pulsar_qs", name="batchSize", table="pulsar_kv", topic="example_topic"}
 ----
 
-=== batchSizeInBytes
-
+batchSizeInBytes::
 Calculated size of every batch statement in bytes.
-
-Example
-
++
+.Example
 [source,console]
 ----
 com_datastax_oss_pulsar_sink_dse_sink_kv_SnapshotSize{instance="localhost:8080", job="pulsar", keyspace="pulsar_qs", name="batchSizeInBytes", table="pulsar_kv", topic="example_topic"}
 ----
 
-== com_datastax_oss_pulsar_sink_<sink_name>_FiveMinuteRate
-
-Moving average of records processed in the last five minutes.
-
-=== cql-requests
-
-Moving average of CQL requests processed in the last five minutes.
-
-Example
-
-[source,console]
-----
-com_datastax_oss_pulsar_sink_dse_sink_kv_FiveMinuteRate{driver="driver", instance="localhost:8080", job="pulsar", name="cql-requests", session="s0"}
-----
-
-=== failedRecordCount
-
-Moving average of failed records processed in the last five minutes.
-
-Example
-
-[source,console]
-----
-com_datastax_oss_pulsar_sink_dse_sink_kv_FiveMinuteRate{instance="localhost:8080", job="pulsar", keyspace="pulsar_qs", name="failedRecordCount", table="pulsar_kv", topic="example_topic"}
-----
-
-=== recordCount
-
-Moving average of records processed in the last five minutes.
-
-Example
-
-[source,console]
-----
-com_datastax_oss_pulsar_sink_dse_sink_kv_FiveMinuteRate{instance="localhost:8080", job="pulsar", keyspace="pulsar_qs", name="recordCount", table="pulsar_kv", topic="example_topic"}
-----
-
-=== failedRecordsWithUnknownTopic
-
-Moving average of failed records with unknown topics processed in the last five minutes.
-
-Example
-
-[source,console]
-----
-com_datastax_oss_pulsar_sink_dse_sink_kv_FiveMinuteRate{instance="localhost:8080", job="pulsar", name="failedRecordsWithUnknownTopic"}
-----
-
-== com_datastax_oss_pulsar_sink_<sink_name>_95thPercentile
-
-95th percentile latency histogram.
-
-=== cql-requests
-
-Number of CQL requests in the 95th percentile latency histogram.
-
-Example
-
-[source,console]
-----
-com_datastax_oss_pulsar_sink_dse_sink_kv_95thPercentile{driver="driver", instance="localhost:8080", job="pulsar", name="cql-requests", session="s0"}
-----
-
-=== batchSize
-
-Returns the number of statements in the CQL batch used to write records to the database.
-
-Example
-
-[source,console]
-----
-com_datastax_oss_pulsar_sink_dse_sink_kv_95thPercentile{instance="localhost:8080", job="pulsar", keyspace="pulsar_qs", name="batchSize", table="pulsar_kv", topic="example_topic"}
-----
-
-=== batchSizeInBytes
-
-Calculated size of every batch statement in bytes.
-
-Example
-
-[source,console]
-----
-com_datastax_oss_pulsar_sink_dse_sink_kv_95thPercentile{instance="localhost:8080", job="pulsar", keyspace="pulsar_qs", name="batchSizeInBytes", table="pulsar_kv", topic="example_topic"}
-----
-
-== com_datastax_oss_pulsar_sink_dse_sink_kv_50thPercentile
-
-50th percentile latency histogram.
-
-=== cql-requests
-
-Number of CQL requests in the 50th percentile latency histogram.
-
-Example
-
-[source,console]
-----
-com_datastax_oss_pulsar_sink_dse_sink_kv_50thPercentile{driver="driver", instance="localhost:8080", job="pulsar", name="cql-requests", session="s0"}
-----
-
-=== batchSize
-
-Returns the number of statements in the CQL batch used to write records to the database.
-
-Example
-
-[source,console]
-----
-com_datastax_oss_pulsar_sink_dse_sink_kv_50thPercentile{instance="localhost:8080", job="pulsar", keyspace="pulsar_qs", name="batchSize", table="pulsar_kv", topic="example_topic"}
-----
-
-=== batchSizeInBytes
-
-Calculated size of every batch statement in bytes.
-
-Example
-
-[source,console]
-----
-com_datastax_oss_pulsar_sink_dse_sink_kv_50thPercentile{instance="localhost:8080", job="pulsar", keyspace="pulsar_qs", name="batchSizeInBytes", table="pulsar_kv", topic="example_topic"}
-----
-
-== com_datastax_oss_pulsar_sink_<sink_name>_999thPercentile
-
-999th percentile latency histogram.
-
-=== cql-requests
-
-Number of CQL requests in the 999th percentile latency histogram.
-
-Example
-
-[source,console]
-----
-com_datastax_oss_pulsar_sink_dse_sink_kv_999thPercentile{driver="driver", instance="localhost:8080", job="pulsar", name="cql-requests", session="s0"}
-----
-
-=== batchSize
-
-Returns the number of statements in the CQL batch used to write records to the database.
-
-Example
-
-[source,console]
-----
-com_datastax_oss_pulsar_sink_dse_sink_kv_999thPercentile{instance="localhost:8080", job="pulsar", keyspace="pulsar_qs", name="batchSize", table="pulsar_kv", topic="example_topic"}
-----
-
-=== batchSizeInBytes
-
-Calculated size of every batch statement in bytes.
-
-Example
-
-[source,console]
-----
-com_datastax_oss_pulsar_sink_dse_sink_kv_999thPercentile{instance="localhost:8080", job="pulsar", keyspace="pulsar_qs", name="batchSizeInBytes", table="pulsar_kv", topic="example_topic"}
-----
-
-== com_datastax_oss_pulsar_sink_<sink_name>_98thPercentile
-
-98th percentile latency histogram.
-
-=== cql-requests
-
-Number of CQL requests in the 98th percentile latency histogram.
-
-Example
-
-[source,console]
-----
-com_datastax_oss_pulsar_sink_dse_sink_kv_98thPercentile{driver="driver", instance="localhost:8080", job="pulsar", name="cql-requests", session="s0"}
-----
-
-=== batchSize
-
-Returns the number of statements in the CQL batch used to write records to the database.
-
-Example
-
-[source,console]
-----
-com_datastax_oss_pulsar_sink_dse_sink_kv_98thPercentile{instance="localhost:8080", job="pulsar", keyspace="pulsar_qs", name="batchSize", table="pulsar_kv", topic="example_topic"}
-----
-
-=== batchSizeInBytes
-
-Calculated size of every batch statement in bytes.
-
-Example
-
-[source,console]
-----
-com_datastax_oss_pulsar_sink_dse_sink_kv_98thPercentile{instance="localhost:8080", job="pulsar", keyspace="pulsar_qs", name="batchSizeInBytes", table="pulsar_kv", topic="example_topic"}
-----
-
-== com_datastax_oss_pulsar_sink_<sink_name>_99thPercentile
-
-99th percentile latency histogram.
-
-=== cql-requests
-
-Number of CQL requests in the 99th percentile latency histogram.
-
-Example
-
+== com_datastax_oss_pulsar_sink_<sink_name>_<n>thPercentile
+
+Percentile latency histograms where `<n>` is one of `999`, `99`, `98`, `95`, `75`, or `50`.
+For example `com_datastax_oss_pulsar_sink_dse_sink_kv_95thPercentile` returns metrics for the 95th percentile latency histogram.
+
+cql-requests::
+Number of CQL requests in the given percentile latency histogram.
++
+.Example
 [source,console]
 ----
 com_datastax_oss_pulsar_sink_dse_sink_kv_99thPercentile{driver="driver", instance="localhost:8080", job="pulsar", name="cql-requests", session="s0"}
 ----
 
-=== batchSize
-
-Returns the number of statements in the CQL batch used to write records to the database.
-
-Example
-
+batchSize::
+Returns the number of statements in the CQL batch used to write records to the database in the given percentile latency histogram.
++
+.Example
 [source,console]
 ----
-com_datastax_oss_pulsar_sink_dse_sink_kv_99thPercentile{instance="localhost:8080", job="pulsar", keyspace="pulsar_qs", name="batchSize", table="pulsar_kv", topic="example_topic"}
+com_datastax_oss_pulsar_sink_dse_sink_kv_95thPercentile{instance="localhost:8080", job="pulsar", keyspace="pulsar_qs", name="batchSize", table="pulsar_kv", topic="example_topic"}
 ----
 
-=== batchSizeInBytes
-
-Calculated size of every batch statement in bytes.
-
-Example
-
+batchSizeInBytes::
+Calculated size of every batch statement in bytes in the given percentile latency histogram.
++
+.Example
 [source,console]
 ----
-com_datastax_oss_pulsar_sink_dse_sink_kv_99thPercentile{instance="localhost:8080", job="pulsar", keyspace="pulsar_qs", name="batchSizeInBytes", table="pulsar_kv", topic="example_topic"}
+com_datastax_oss_pulsar_sink_dse_sink_kv_50thPercentile{instance="localhost:8080", job="pulsar", keyspace="pulsar_qs", name="batchSizeInBytes", table="pulsar_kv", topic="example_topic"}
 ----
 
-== com_datastax_oss_pulsar_sink_<sink_name>_Mean
+== com_datastax_oss_pulsar_sink_<sink_name>_<n>MinuteRate
 
-Mean number of requests processed.
+Moving average of records processed in the last `<n>` minutes where `<n>` is one of `One`, `Five`, or `Fifteen`.
+For example, `com_datastax_oss_pulsar_sink_dse_sink_kv_OneMinuteRate` returns metrics for the one-minute moving average.
 
-=== cql-requests
-
-Mean number of CQL requests processed.
-
-Example
-
+cql-requests::
+Number of CQL requests in the last one, five, or fifteen minutes.
++
+.Example
 [source,console]
 ----
-com_datastax_oss_pulsar_sink_dse_sink_kv_Mean{driver="driver", instance="localhost:8080", job="pulsar", name="cql-requests", session="s0"}
+com_datastax_oss_pulsar_sink_dse_sink_kv_OneMinuteRate{driver="driver", instance="localhost:8080", job="pulsar", name="cql-requests", session="s0"}
 ----
 
-=== batchSize
-
-Returns the number of statements in the CQL batch used to write records to the database.
-
-Example
-
+recordCount::
+Moving average of records in the last one, five, or fifteen minutes.
++
+.Example
 [source,console]
 ----
-com_datastax_oss_pulsar_sink_dse_sink_kv_Mean{instance="localhost:8080", job="pulsar", keyspace="pulsar_qs", name="batchSize", table="pulsar_kv", topic="example_topic"}
+com_datastax_oss_pulsar_sink_dse_sink_kv_FifteenMinuteRate{instance="localhost:8080", job="pulsar", keyspace="pulsar_qs", name="recordCount", table="pulsar_kv", topic="example_topic"}
 ----
 
-=== batchSizeInBytes
-
-Calculated size of every batch statement in bytes.
-
-Example
-
+failedRecordCount::
+Moving average of failed records in the last one, five, or fifteen minutes.
++
+.Example
 [source,console]
 ----
-com_datastax_oss_pulsar_sink_dse_sink_kv_Mean{instance="localhost:8080", job="pulsar", keyspace="pulsar_qs", name="batchSizeInBytes", table="pulsar_kv", topic="example_topic"}
+com_datastax_oss_pulsar_sink_dse_sink_kv_FiveMinuteRate{instance="localhost:8080", job="pulsar", keyspace="pulsar_qs", name="failedRecordCount", table="pulsar_kv", topic="example_topic"}
+----
+
+failedRecordsWithUnknownTopic::
+Moving average of failed records with unknown topics processed in the last five or fifteen minutes.
+Not available for `OneMinuteRate`.
++
+.Example
+[source,console]
+----
+com_datastax_oss_pulsar_sink_dse_sink_kv_FiveMinuteRate{instance="localhost:8080", job="pulsar", name="failedRecordsWithUnknownTopic"}
 ----
 
 == com_datastax_oss_pulsar_sink_<sink_name>_Max
 
 Maximum number of requests.
 
-=== cql-requests
-
+cql-requests::
 Maximum number of CQL requests.
-
-Example
-
++
+.Example
 [source,console]
 ----
 com_datastax_oss_pulsar_sink_dse_sink_kv_Max{driver="driver", instance="localhost:8080", job="pulsar", name="cql-requests", session="s0"}
 ----
 
-=== batchSize
-
+batchSize::
 Returns the number of statements in the CQL batch used to write records to the database.
-
-Example
-
++
+.Example
 [source,console]
 ----
 com_datastax_oss_pulsar_sink_dse_sink_kv_Max{instance="localhost:8080", job="pulsar", keyspace="pulsar_qs", name="batchSize", table="pulsar_kv", topic="example_topic"}
 ----
 
-=== batchSizeInBytes
-
+batchSizeInBytes::
 Calculated size of every batch statement in bytes.
-
-Example
-
++
+.Example
 [source,console]
 ----
 com_datastax_oss_pulsar_sink_dse_sink_kv_Max{instance="localhost:8080", job="pulsar", keyspace="pulsar_qs", name="batchSizeInBytes", table="pulsar_kv", topic="example_topic"}
-----
-
-== com_datastax_oss_pulsar_sink_<sink_name>_FifteenMinuteRate
-
-Moving average in the last 15 minutes.
-
-=== cql-requests
-
-Number of CQL requests in the last 15 minutes.
-
-Example
-
-[source,console]
-----
-com_datastax_oss_pulsar_sink_dse_sink_kv_FifteenMinuteRate{driver="driver", instance="localhost:8080", job="pulsar", name="cql-requests", session="s0"}
-----
-
-=== failedRecordCount
-
-Moving average of failed records in the last 15 minutes.
-
-Example
-
-[source,console]
-----
-com_datastax_oss_pulsar_sink_dse_sink_kv_FifteenMinuteRate{instance="localhost:8080", job="pulsar", keyspace="pulsar_qs", name="failedRecordCount", table="pulsar_kv", topic="example_topic"}
-----
-
-=== recordCount
-
-Moving average of records in the last 15 minutes.
-
-Example
-
-[source,console]
-----
-com_datastax_oss_pulsar_sink_dse_sink_kv_FifteenMinuteRate{instance="localhost:8080", job="pulsar", keyspace="pulsar_qs", name="recordCount", table="pulsar_kv", topic="example_topic"}
-----
-
-=== failedRecordsWithUnknownTopic
-
-Moving average of failed records with an unknown topic in the last 15 minutes.
-
-Example
-
-[source,console]
-----
-com_datastax_oss_pulsar_sink_dse_sink_kv_FifteenMinuteRate{instance="localhost:8080", job="pulsar", name="failedRecordsWithUnknownTopic"}
 ----
 
 == com_datastax_oss_pulsar_sink_<sink_name>_Min
 
 Minimum number of records processed.
 
-=== CQL Requests
-
+cql-requests::
 Minimum number of CQL requests processed.
-
-Example
-
++
+.Example
 [source,console]
 ----
 com_datastax_oss_pulsar_sink_dse_sink_kv_Min{driver="driver", instance="localhost:8080", job="pulsar", name="cql-requests", session="s0"}
 ----
 
-=== batchSize
-
+batchSize::
 Returns the number of statements in the CQL batch used to write records to the database.
-
-Example
-
++
+.Example
 [source,console]
 ----
 com_datastax_oss_pulsar_sink_dse_sink_kv_Min{instance="localhost:8080", job="pulsar", keyspace="pulsar_qs", name="batchSize", table="pulsar_kv", topic="example_topic"}
 ----
 
-=== batchSizeInBytes
-
+batchSizeInBytes::
 Calculated size of every batch statement in bytes.
-
-Example
-
++
+.Example
 [source,console]
 ----
 com_datastax_oss_pulsar_sink_dse_sink_kv_Min{instance="localhost:8080", job="pulsar", keyspace="pulsar_qs", name="batchSizeInBytes", table="pulsar_kv", topic="example_topic"}
 ----
 
+== com_datastax_oss_pulsar_sink_<sink_name>_Mean
+
+Mean number of requests processed.
+
+cql-requests::
+Mean number of CQL requests processed.
++
+.Example
+[source,console]
+----
+com_datastax_oss_pulsar_sink_dse_sink_kv_Mean{driver="driver", instance="localhost:8080", job="pulsar", name="cql-requests", session="s0"}
+----
+
+batchSize::
+Returns the number of statements in the CQL batch used to write records to the database.
++
+.Example
+[source,console]
+----
+com_datastax_oss_pulsar_sink_dse_sink_kv_Mean{instance="localhost:8080", job="pulsar", keyspace="pulsar_qs", name="batchSize", table="pulsar_kv", topic="example_topic"}
+----
+
+batchSizeInBytes::
+Calculated size of every batch statement in bytes.
++
+.Example
+[source,console]
+----
+com_datastax_oss_pulsar_sink_dse_sink_kv_Mean{instance="localhost:8080", job="pulsar", keyspace="pulsar_qs", name="batchSizeInBytes", table="pulsar_kv", topic="example_topic"}
+----
+
 == com_datastax_oss_pulsar_sink_<sink_name>_MeanRate
 
-Average number of records processed since the connector was created.
+The connector's lifetime average number of records processed.
 
-=== cql-requests
-
+cql-requests::
 Average number of CQL requests processed since the connector was created.
-
-Example
-
++
+.Example
 [source,console]
 ----
 com_datastax_oss_pulsar_sink_dse_sink_kv_MeanRate{driver="driver", instance="localhost:8080", job="pulsar", name="cql-requests", session="s0"}
 ----
 
-=== failedRecordCount
-
-Average number of failed records processed since the connector was created.
-
-Example
-
-[source,console]
-----
-com_datastax_oss_pulsar_sink_dse_sink_kv_MeanRate{instance="localhost:8080", job="pulsar", keyspace="pulsar_qs", name="failedRecordCount", table="pulsar_kv", topic="example_topic"}
-----
-
-=== recordCount
-
+recordCount::
 Average number of records processed since the connector was created.
-
-Example
-
++
+.Example
 [source,console]
 ----
 com_datastax_oss_pulsar_sink_dse_sink_kv_MeanRate{instance="localhost:8080", job="pulsar", keyspace="pulsar_qs", name="recordCount", table="pulsar_kv", topic="example_topic"}
 ----
 
-=== failedRecordsWithUnknownTopic
+failedRecordCount::
+Average number of failed records processed since the connector was created.
++
+.Example
+[source,console]
+----
+com_datastax_oss_pulsar_sink_dse_sink_kv_MeanRate{instance="localhost:8080", job="pulsar", keyspace="pulsar_qs", name="failedRecordCount", table="pulsar_kv", topic="example_topic"}
+----
 
+failedRecordsWithUnknownTopic::
 Average number of failed records with unknown topics processed since the connector was created.
-
-Example
-
++
+.Example
 [source,console]
 ----
 com_datastax_oss_pulsar_sink_dse_sink_kv_MeanRate{instance="localhost:8080", job="pulsar", name="failedRecordsWithUnknownTopic"}
-----
-
-== com_datastax_oss_pulsar_sink_<sink_name>_75thPercentile
-
-75th percentile latency histogram.
-
-=== cql-requests
-
-Number of CQL requests in the 75th percentile latency histogram.
-
-Example
-
-[source,console]
-----
-com_datastax_oss_pulsar_sink_dse_sink_kv_75thPercentile{driver="driver", instance="localhost:8080", job="pulsar", name="cql-requests", session="s0"}
-----
-
-=== batchSize
-
-Returns the number of statements in the CQL batch used to write records to the database.
-
-Example
-
-[source,console]
-----
-com_datastax_oss_pulsar_sink_dse_sink_kv_75thPercentile{instance="localhost:8080", job="pulsar", keyspace="pulsar_qs", name="batchSize", table="pulsar_kv", topic="example_topic"}
-----
-
-=== batchSizeInBytes
-
-Calculated size of every batch statement in bytes.
-
-Example
-
-[source,console]
-----
-com_datastax_oss_pulsar_sink_dse_sink_kv_75thPercentile{instance="localhost:8080", job="pulsar", keyspace="pulsar_qs", name="batchSizeInBytes", table="pulsar_kv", topic="example_topic"}
-----
-
-== com_datastax_oss_pulsar_sink_<sink_name>_OneMinuteRate
-
-Moving average in the last minute.
-
-=== cql-requests
-
-Number of CQL requests in the last minute.
-
-Example
-
-[source,console]
-----
-com_datastax_oss_pulsar_sink_dse_sink_kv_OneMinuteRate{driver="driver", instance="localhost:8080", job="pulsar", name="cql-requests", session="s0"}
-----
-
-=== failedRecordCount
-
-Moving average of failed records in the last minute.
-
-Example
-
-[source,console]
-----
-com_datastax_oss_pulsar_sink_dse_sink_kv_OneMinuteRate{instance="localhost:8080", job="pulsar", keyspace="pulsar_qs", name="failedRecordCount", table="pulsar_kv", topic="example_topic"}
-----
-
-=== recordCount
-
-Moving average of records in the last minute.
-
-Example
-
-[source,console]
-----
-com_datastax_oss_pulsar_sink_dse_sink_kv_OneMinuteRate{instance="localhost:8080", job="pulsar", keyspace="pulsar_qs", name="recordCount", table="pulsar_kv", topic="example_topic"}
 ----
 
 == com_datastax_oss_pulsar_sink_<sink_name>_StdDev
 
 Standard deviation.
 
-=== cql-requests
-
+cql-requests::
 Standard deviation for CQL requests.
-
-Example
-
++
+.Example
 [source,console]
 ----
 com_datastax_oss_pulsar_sink_dse_sink_kv_StdDev{driver="driver", instance="localhost:8080", job="pulsar", name="cql-requests", session="s0"}
 ----
 
-=== batchSize
-
+batchSize::
 Returns the number of statements in the CQL batch used to write records to the database.
-
-Example
-
++
+.Example
 [source,console]
 ----
 com_datastax_oss_pulsar_sink_dse_sink_kv_StdDev{instance="localhost:8080", job="pulsar", keyspace="pulsar_qs", name="batchSize", table="pulsar_kv", topic="example_topic"}
 ----
 
-=== batchSizeInBytes
-
+batchSizeInBytes::
 Calculated size of every batch statement in bytes.
-
-Example
-
++
+.Example
 [source,console]
 ----
 com_datastax_oss_pulsar_sink_dse_sink_kv_StdDev{instance="localhost:8080", job="pulsar", keyspace="pulsar_qs", name="batchSizeInBytes", table="pulsar_kv", topic="example_topic"}

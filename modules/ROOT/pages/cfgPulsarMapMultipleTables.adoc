@@ -1,59 +1,77 @@
-= Mapping a topic to multiple tables
-:page-tag: pulsar-connector,dev,develop,pulsar
+= Map a topic to multiple tables
 
-The DataStax Apache Pulsar(TM) Connector allows for mapping a single topic to multiple tables for a single connector instance.
+The DataStax Apache Pulsar(TM) connector allows for mapping a single topic to multiple tables for a single connector instance.
 
 In the example `stocks_topic`, the key is a basic string and the value is regular JSON.
 
-[cols="a,a"]
 |===
 |key|value
 
-|
-APPLE
-|
-[source,console]
+|`APPLE`
+a|
+[source,json]
 ----
-{"symbol":"APPL", "value":208, "exchange":"NASDAQ", "industry":"TECH", "ts":"2018-11-26T19:26:27.483"}
+{
+  "symbol":"APPL",
+  "value":208,
+  "exchange":"NASDAQ",
+  "industry":"TECH",
+  "ts":"2018-11-26T19:26:27.483"
+}
 ----
-|
-EXXON MOBIL
-|
-[source,console]
+
+|`EXXON MOBIL`
+a|
+[source,json]
 ----
-{"symbol":"M",
-"value":80,
-"exchange":"NYSE",
-"industry":"ENERGY",
-"ts":"2018-11-26T19:26:27.483"}
+{
+  "symbol":"M",
+  "value":80,
+  "exchange":"NYSE",
+  "industry":"ENERGY",
+  "ts":"2018-11-26T19:26:27.483"
+}
 ----
-|
-GENERAL MOTORS
-|
-[source,console]
+
+|`GENERAL MOTORS`
+a|
+[source,json]
 ----
-{"symbol":"GM", "value":38, "exchange":"NYSE", "industry":"AUTO", "ts":"2018-11-26T19:26:27.483"}
+{
+  "symbol":"GM",
+  "value":38,
+  "exchange":"NYSE",
+  "industry":"AUTO",
+  "ts":"2018-11-26T19:26:27.483"
+}
 ----
-|
-AT&T
-|
-[source,console]
+
+|`AT&T`
+a|
+[source,json]
 ----
-{"symbol":"AT&T",
-"value":33,
-"exchange":"NYSE",
-"industry":"TELECOM",
-"ts":"2018-11-26T19:26:27.483"}
+{
+  "symbol":"AT&T",
+  "value":33,
+  "exchange":"NYSE",
+  "industry":"TELECOM",
+  "ts":"2018-11-26T19:26:27.483"
+}
 ----
-|
-FORD MOTOR
-|
-[source,console]
+
+|`FORD MOTORS`
+a|
+[source,json]
 ----
-{"symbol":"F", "value":10, "exchange":"NYSE", "industry":"AUTO", "ts":"2018-11-26T19:26:27.483"}
+{
+  "symbol":"F",
+  "value":10,
+  "exchange":"NYSE",
+  "industry":"AUTO",
+  "ts":"2018-11-26T19:26:27.483"
+}
 ----
 |===
-
 
 In the DataStax keyspace `stocks_keyspace`, create three different tables that optimized with different schemas.
 

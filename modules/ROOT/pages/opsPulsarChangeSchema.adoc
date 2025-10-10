@@ -1,9 +1,64 @@
-= Changing the topic or table schema
-:page-tag: pulsar-connector,dev,develop,pulsar
+= Change the topic or table schema
+:page-aliases: ROOT:opsPulsarRemoveField.adoc, ROOT:opsPulsarAddField.adoc, ROOT:opsPulsarAddTableColumn.adoc, ROOT:opsPulsarRemoveColumn.adoc
 
-How to update the DataStax Apache Pulsar(TM) Connector when schema changes are required.
+You must update the DataStax Apache Pulsar(TM) connector configuration when your field or table schema changes.
 
-* xref:opsPulsarAddField.adoc[] Add a field Pulsar Topic schema.
-* xref:opsPulsarRemoveField.adoc[] Remove a field from a Pulsar Topic.
-* xref:opsPulsarAddTableColumn.adoc[] Add a column to the database table to synchronize an existing field from a Pulsar topic.
-* xref:opsPulsarRemoveColumn.adoc[] Remove a database column from the schema.
+== Add a field
+
+Use these steps to write a new Pulsar field to an existing table column:
+
+. In the connector's configuration file, add the xref:ROOT:cfgRefPulsarDseTable.adoc[field-to-column mapping].
+
+. Use `xref:ROOT:opsPulsarAboutOperations.adoc#pulsar-admin-sinks-update[pulsar-admin sinks update]` to apply the new configuration.
+
+. Start the Pulsar producer that had the schema change if it was stopped.
+
+== Remove a field
+
+Connector processing fails if any mapped Pulsar topic fields are missing from the record.
+If a field is missing or if the schema change is known ahead, remove or edit the topic-column mapping.
+
+. Use the `cqlsh` command `xref:dse-6.9@cql:reference:cqlsh-commands/describe-table.adoc[DESCRIBE TABLE]` to verify that the field isn't mapped to a xref:dse-6.9@cql:data-modeling:methodology.adoc[primary key (PK) column].
++
+If the field _is_ mapped to a PK column, you must map a different field to the column because PK columns cannot contain `NULL` values.
+PK columns must always have a mapping.
++
+If the field isn't mapped to a PK column, you can remove or edit the mapping, according to your preference and use case.
+
+. Remove or edit the invalid definition in your xref:ROOT:cfgRefPulsarDseTable.adoc[field-to-column mapping].
+
+. Use `xref:ROOT:opsPulsarAboutOperations.adoc#pulsar-admin-sinks-update[pulsar-admin sinks update]` to apply the new configuration.
+
+. Start the Pulsar producer that had the schema change if it was stopped.
+
+== Add a column to a table and synchronize an existing field
+
+You can add a column to your database table, and then synchronize the data from an existing field in a Pulsar topic:
+
+. Use `xref:dse-6.9@cql:reference:cql-commands/alter-table.adoc[ALTER TABLE]` to add the column to the table in your database.
+
+. For DSE, confirm that the schema change has been pushed to all nodes using `xref:6.9@dse:managing:tools/nodetool/describe-cluster.adoc[nodetool describecluster]`.
++
+[IMPORTANT]
+====
+Data synchronization can fail if the schema change is inconsistent across the entire cluster.
+====
+
+. In your connector's configuration file, add the new column to your xref:ROOT:cfgRefPulsarDseTable.adoc[field-to-column mapping].
+
+. Use `xref:ROOT:opsPulsarAboutOperations.adoc#pulsar-admin-sinks-update[pulsar-admin sinks update]` to apply the new configuration.
+
+== Remove a column
+
+You can only remove non-primary key columns because primary key columns must always have a mapping.
+
+. Remove the column definition from your xref:ROOT:cfgRefPulsarDseTable.adoc[field-to-column mapping].
+
+. Use `xref:dse-6.9@cql:reference:cql-commands/alter-table.adoc[ALTER TABLE]` to remove the column from the table on your database.
+
+. For DSE, confirm that the schema change has been pushed to all nodes using `xref:6.9@dse:managing:tools/nodetool/describe-cluster.adoc[nodetool describecluster]`.
++
+[IMPORTANT]
+====
+Data synchronization can fail if the schema change is inconsistent across the entire cluster.
+====

@@ -1,22 +1,30 @@
 = Configure error handling
-:page-tag: pulsar-connector,admin,manage,pulsar
 
-The DataStax Apache Pulsar(TM) Connector provides an optional parameter, `ignoreErrors`.
-When set to `true`, it allows the connector to continue processing records even after an error occurred on the prior record.
+Use the DataStax Apache Pulsar(TM) connector's `ignoreErrors` parameter to specify how the connector handles runtime errors when processing messages from Pulsar topics and writing them to database tables.
 
-[#ignoreErrors]
-ignoreErrors:: Use `ignoreErrors` settings to ignore specific types or all runtime errors, depending on the setting you choose.
-+
-|===
-|Value|Meaning|Notes
+You can configure the connector to ignore specific types of errors or all errors, depending on the option you choose:
 
-|`false`|No errors are ignored|Deprecated - equivalent to `NONE`
-|`true`|Only driver errors are ignored|Deprecated - equivalent to `DRIVER`
-|`NONE`|No errors are ignored; default behavior|
-|`ALL`|All errors are ignored|
-|`DRIVER`|Only driver errors are ignored|
-|===
+`NONE` (default)::
+No errors are ignored.
 +
-If you set `ignoreErrors` to any value other than `false`, any erroneous record is logged once and the next record is picked up by the Pulsar Connector automatically.
+Any error causes processing to stop.
+
+`DRIVER`::
+Only driver errors are ignored.
 +
-Default: `NONE`.
+If a driver error occurs, the connector continues processing records.
+Other errors cause processing to stop.
++
+Logging of non-blocking driver errors depends on the driver configuration.
+
+`ALL`::
+All errors are ignored.
++
+The connector continues processing records even if an error occurred on the prior record.
+The erroneous record is logged once, and then the next record is picked up by the Pulsar connector automatically.
+
+`false` (deprecated)::
+Use `NONE`.
+
+`true` (deprecated)::
+Use `DRIVER`.

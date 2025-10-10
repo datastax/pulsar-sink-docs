@@ -1,42 +1,60 @@
-= Mapping Avro messages
-:page-tag: pulsar-connector,dev,develop,pulsar,avro
+= Map Avro messages
 
-The DataStax Apache Pulsar(TM) Connector supports mapping individual fields from https://avro.apache.org/docs/1.8.1/gettingstartedjava.html[Avro] formatted key or values.
+The DataStax Apache Pulsar(TM) connector supports mapping individual fields from https://avro.apache.org/docs/1.8.1/gettingstartedjava.html[Avro] formatted key or values.
+
+== Mapping requirements
+
+When mapping fields to columns, the following requirements apply:
+
+* The data in the Pulsar field must be compatible with the mapped column's xref:dse-6.9@cql:reference:data-types.adoc[data type].
+For example, a string field cannot map to a number column.
+
+* A Pulsar field mapped to a table's primary key (PK) column must always contain data because primary key columns don't allow nulls.
+
+* All primary key columns must have a mapping because primary key columns don't allow nulls.
+
+== Avro mapping example
 
 In this example, the key is a basic string and the value is Avro format.
 The Pulsar topic name is `users_topic` and have the following records:
 
+[cols="1,3"]
 |===
-| key| value
+|Key |Value
 
-|user0|
-`{"`name`": "`chris`",  "`favorite_number`":14,  "`favorite_color`": "`blue`"}`
-|user1|
-`{“name”: “jack”,
-“favorite_number”:56,
-“favorite_color”: “pink”}`
-|user2|
-`{"`name`": "`shereen`", + "`favorite_number`":7, + "`favorite_color`": "`black`"}`
-|user3|
-`{“name”: “kimberly”,
-“favorite_number”:11,
-“favorite_color”: “orange”}`
-|user4|
-`{"`name`": "`taryn`", + "`favorite_number`":37, + "`favorite_color`": "`green`"}`
+|user0
+|`{"name": "chris",  "favorite_number":14,  "favorite_color": "blue"}`
+
+|user1
+|`{"name": "jack", "favorite_number":56, "favorite_color": "pink"}`
+
+|user2
+|`{"name": "shereen",  "favorite_number":7,  "favorite_color": "black"}`
+
+|user3
+|`{"name": "kimberly", "favorite_number":11, "favorite_color": "orange"}`
+
+|user4
+|`{"name": "taryn", "favorite_number":37, "favorite_color": "green"}`
+|===
 
 The value field uses the following Avro Schema:
-`{
+
+[source,java]
+----
+{
  "namespace": "example.avro",
  "type": "record",
  "name": "user",
  "fields": [
      {"name": "name", "type": "string"},
-     {"name": "favorite_number",  "type": “int”},
-     {"name": "favorite_color", "type": “string”}
- ]`
-|===
+     {"name": "favorite_number",  "type": "int"},
+     {"name": "favorite_color", "type": "string"}
+ ]
+}
+----
 
-The DataStax keyspace name is `users_keyspace` and table is `users_table`.
+The following table describes the desired outcome from the mapping when the messages are written to the CQL table:
 
 |===
 | userid | name | favoritenumber | favoritecolor
@@ -67,15 +85,9 @@ The DataStax keyspace name is `users_keyspace` and table is `users_table`.
 | green
 |===
 
-To create the table use the following command:
 
-[source,cql]
-----
-CREATE TABLE users_keyspace.users_table (userid text primary key, name text,
-          favoritenumber int, favoritecolor text);
-----
-
-Configure the connector and use the following map specification:
+To achieve this outcome, the connector's mapping must be configured as follows.
+For this example, the topic name is `users_topic`, the keyspace name is `users_keyspace`, and the table name is `users_table`.
 
 [source,yaml]
 ----

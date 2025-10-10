@@ -1,45 +1,39 @@
-= Pulsar Connector single instance quickstart
-:navtitle: Single instance quickstart
-:page-tag: pulsar-connector,dev,admin,planner,quickstart,pulsar
+= Pulsar connector single instance quickstart for DSE
+:navtitle: Single instance quickstart for DSE
 
-This quickstart will walk you through the simplest possible configuration connecting a standalone Apache Pulsar(TM) instance to a single standalone DataStax Enterprise (DSE) 6.8 node.
+This quickstart provides the minimal configuration to connect a standalone Apache Pulsar(TM) instance to a single, standalone DataStax Enterprise (DSE) node.
 
-Once you've configured Pulsar, a Pulsar sink, the DataStax Apache Pulsar(TM) Connector and the DSE instance, you'll be able to send simple key/value pair messages using the Pulsar client utility, `pulsar-client` and retrieve them from a DSE keyspace and table.
+It covers installation and configuration of DSE, Apache Pulsar, and the connector.
+Then, it demonstrates how to send simple key/value pair messages from Pulsar to DSE with the Pulsar client utility and verify that the records were written to the database table.
 
-== Install and configure DSE 6.8
-. Install the tarball distribution of DSE 6.8 as described in https://docs.datastax.com/en/install/6.8/install/installTARdse.html[Installing DataStax Enterprise 6.8 using the binary tarball].
+== Install DSE
+
+. If you don't have DSE installed already, xref:dse:installing:tarball-dse.adoc[install the tarball distribution of DSE].
+
+. Enable authentication or get the credentials for your DSE cluster.
++
+By default, DSE doesn't enable authentication.
+While this may be acceptable for this quickstart, DataStax recommends enabling authentication for production clusters.
+
 . Start DSE from the installation directory:
 +
 [source,bash]
 ----
 bin/dse cassandra
 ----
-
-. Verify that DataStax Enterprise is running from the installation directory:
 +
-[source,bash]
-----
-bin/nodetool status
-Datacenter: Cassandra
-=====================
-Status=Up/Down
-|/ State=Normal/Leaving/Joining/Moving/Stopped
---  Address    Load       Owns (effective)  Host ID    Token    Rack
-UN  127.0.0.1  152.24 KiB  100.0%           <host-id>  <token>  rack1
-----
+You can run `bin/nodetool status` to verify that DSE is running from the installation directory, and get the node address and other connection details.
 
-. Start `cqlsh`:
+. Create a keyspace and table for your Pulsar records:
++
+.. Start `cqlsh`:
 +
 [source,bash]
 ----
 bin/cqlsh
-Connected to Test Cluster at 127.0.0.1:9042.
-[cqlsh 6.8.0 | DSE 6.8.9 | CQL spec 3.4.5 | DSE protocol v2]
-Use HELP for help.
-cqlsh>
 ----
 
-. Create a new keyspace, `pulsar_qs`:
+.. Create a keyspace named `pulsar_qs`:
 +
 [source,cql]
 ----
@@ -50,7 +44,7 @@ WITH replication = {
 };
 ----
 
-. Create a new table, `pulsar_kv` in the keyspace to hold the Pulsar message content:
+.. Create a table named `pulsar_kv`:
 +
 [source,cql]
 ----
@@ -60,9 +54,9 @@ cqlsh> CREATE TABLE pulsar_qs.pulsar_kv (
 );
 ----
 
-== Install and configure Apache Pulsar
+== Install Apache Pulsar and the connector
 
-. Download Apache Pulsar:
+. Download Apache Pulsar 2.7.0 or later:
 +
 [source,bash]
 ----
@@ -76,42 +70,30 @@ wget https://archive.apache.org/dist/pulsar/pulsar-2.7.0/apache-pulsar-2.7.0-bin
 tar xvfz apache-pulsar-2.7.0-bin.tar.gz
 ----
 
-. Download the DataStax Apache Pulsar Connector tar file from the https://downloads.datastax.com/#apc[DataStax downloads site].
-If you agree, enable the *Terms* checkbox and click the download icon.
-. Extract the files:
+. Download the DataStax Apache Pulsar connector tar file from the https://downloads.datastax.com/#apc[DataStax downloads site].
++
+For more information about system requirements for the connector, see xref:ROOT:pulsarInstall.adoc[].
+
+. Extract the files, replacing **VERSION** with the version number of the tar file you downloaded:
++
+[source,bash,subs="+quotes"]
+----
+tar zxf cassandra-enhanced-pulsar-sink-**VERSION**.tar.gz
+----
+
+. In your Pulsar `home` directory, find the `connectors` directory.
+If there isn't a `connectors` directory, create one.
+
+. Move the DataStax Pulsar connector NAR file to the Pulsar `connectors` directory:
 +
 [source,bash]
 ----
-tar zxf cassandra-enhanced-pulsar-sink-1.4.0.tar.gz
+mv installation_location/cassandra-enhanced-pulsar-sink-1.4.0.nar pulsar_home/connectors
 ----
 
-. Create a `connectors` directory in the Pulsar home directory if it doesn't exist.
-. Copy the DataStax connector NAR to the Pulsar `connectors` directory:
+. In your Pulsar `config` directory, create a `qs.yml` file with the following contents:
 +
-[source,bash]
-----
-cp installation_location/cassandra-enhanced-pulsar-sink-1.4.0.nar pulsar_home/connectors
-----
-
-. Start Apache Pulsar in standalone mode:
-+
-[source,bash]
-----
-bin/pulsar standalone
-----
-
-. Open a new terminal and check that the DataStax Apache Pulsar Connector is running:
-+
-[source,bash]
-----
-curl -s http://localhost:8080/admin/v2/functions/connectors
-[{"name":"cassandra-enhanced","description":"A DataStax Pulsar Sink to load records from Pulsar topics to Apache Cassandra(R) or DataStax Enterprise(DSE)\n","sinkClass":"com.datastax.oss.sink.pulsar.RecordCassandraSinkTask"}]%
-----
-
-== Configure the DataStax Apache Pulsar Connector
-
-. Save following YAML contents to the Pulsar configuration directory, `conf` as `qs.yml`:
-+
+.qs.yml
 [source,yaml]
 ----
 configs:
@@ -171,22 +153,50 @@ configs:
         unit: MILLISECONDS
 ----
 
-. Create a new Pulsar sink:
+. If your cluster has authentication enabled, you want to use an SSL-encrypted connection, or your cluster isn't compatible with the connection properties in `qs.yml`, you must edit the configuration file as explained in xref:ROOT:cfgRefPulsarDseConnection.adoc[].
+
+. Ensure that the user running Pulsar has permission to access the configuration and NAR files.
+
+== Run Pulsar with the connector
+
+. Start Apache Pulsar in standalone mode:
++
+[source,bash]
+----
+bin/pulsar standalone
+----
+
+. In a new terminal, check that the DataStax Pulsar connector is running:
++
+[source,bash]
+----
+curl -s http://localhost:8080/admin/v2/functions/connectors
+----
++
+Make sure the response includes the DataStax Pulsar connector:
++
+[source,json]
+----
+[{"name":"cassandra-enhanced","description":"A DataStax Pulsar Sink to load records from Pulsar topics to Apache Cassandra(R) or DataStax Enterprise(DSE)\n","sinkClass":"com.datastax.oss.sink.pulsar.RecordCassandraSinkTask"}]
+----
+
+. Create a Pulsar sink:
 +
 [source,bash]
 ----
 bin/pulsar-admin sinks create \
 	--name dse-sink-kv \
 	--classname com.datastax.oss.sink.pulsar.StringCassandraSinkTask \
-	--sink-config-file conf/qs.yml \
+	--sink-config-file config/qs.yml \
 	--sink-type cassandra-enhanced \
 	--tenant public \
 	--namespace default \
 	--inputs "persistent://public/default/example_topic"
-"Created successfully"
 ----
++
+The topic name and mapping are set in the connector configuration YAML file.
 
-. Send some messages to DSE:
+. Send some messages to your new sink:
 +
 [source,bash]
 ----
@@ -195,12 +205,17 @@ bin/pulsar-client produce -k "Message 2" -m "Content 2" persistent://public/defa
 bin/pulsar-client produce -k "Message 3" -m "Content 3" persistent://public/default/example_topic
 ----
 
-. Start cqlsh and view the messages in the `pulsar_kv` table:
+. To verify that the messages were written to DSE, start `cqlsh`, and then query your `pulsar_kv` table:
 +
 [source,cql]
 ----
 cqlsh> SELECT * FROM pulsar_qs.pulsar_kv;
-
+----
++
+The result should include the test messages you sent:
++
+[source,console]
+----
  key       | content
 -----------+-----------
  Message 3 | Content 3
@@ -210,18 +225,15 @@ cqlsh> SELECT * FROM pulsar_qs.pulsar_kv;
 (3 rows)
 ----
 
-== Where to go from here...
+== Next steps
 
-Now that you've run through a simple end-to-end configuration, you can start experimenting with more complicated Pulsar mappings and DSE schemas. For more details, see the following topics:
+Your schemas probably require more complex mappings than the example used in this quickstart.
+Explore the following documentation to get started with more complex mappings and schemas:
 
-* xref:cfgPulsarDisplayingTopic.adoc[] Display messages to determine the data structure of the topic messages.
-* xref:cfgPulsarMapKeyPair.adoc[] Create a topic-table map for Pulsar messages that only contain a key and value in each record.
-* xref:cfgPulsarMapJson.adoc[] For JSON fields, map individual fields in the structure to columns.
-* xref:cfgPulsarMapAvroMessages.adoc[] Supports mapping individual fields from a Avro format field.
-* xref:cfgPulsarRecordHeaderToTable.adoc[] Extract values from Pulsar record header and write to the database table.
-* xref:cfgPulsarMapUdt.adoc[] Write complex types directly into User-defined Types (UDT).
-* xref:cfgPulsarMapMultipleTables.adoc[] Ingest a single topic into multiple tables using a single connector instance.
-* xref:cfgPulsarMultTopicToTables.adoc[] Ingest multiple topics and write to different tables using a single connector instance.
-* xref:cfgPulsarSelectiveUpdateMapsAndUdts.adoc[] Selectively update maps and UDTs based on Pulsar fields.
-* xref:cfgPulsarCqlQuery.adoc[] Provide CQL queries when new record arrives on the Pulsar topic.
-* xref:cfgPulsarNowFunction.adoc[] You can use the now() function in mappings.
+* xref:cfgPulsarDisplayingTopic.adoc[Print messages] to determine the data structure of the topic messages.
+
+* Create xref:cfgPulsarMapKeyPair.adoc[key-value pair mappings], xref:cfgPulsarMapJson.adoc[JSON mappings], and xref:cfgPulsarMapAvroMessages.adoc[Avro mappings].
+
+* Try advanced and specialized mapping functionality, such as xref:cfgPulsarMapUdt.adoc[mapping UDTs].
+
+* Use one connector instance to xref:cfgPulsarMapMultipleTables.adoc[ingest a single topic into multiple tables] or xref:cfgPulsarMultTopicToTables.adoc[ingest multiple topics to different tables].

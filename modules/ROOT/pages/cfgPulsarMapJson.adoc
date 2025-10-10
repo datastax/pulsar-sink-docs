@@ -1,9 +1,355 @@
-= Mapping a message that contain JSON fields
-:page-tag: pulsar-connector,dev,develop,pulsar,json
+= Map messages that contain JSON
+:page-aliases: ROOT:cfgPulsarStringJson.adoc, ROOT:cfgPulsarJsonMessageSchema.adoc
 
-When the data format for the key or value is JSON, the DataStax Apache Pulsar(TM) Connector mapping can include individual fields in the JSON structure.
+When the data format for the key or value is JSON, the DataStax Apache Pulsar(TM) connector mapping can include individual fields in the JSON structure.
 
-NOTE: JSON records in Pulsar can also have a schema associated with them.
+JSON records in Pulsar can have a schema associated with them, but this isn't required.
 
-* xref:cfgPulsarStringJson.adoc[] When the data format for the Pulsar key or value is JSON, individual fields of that JSON structure can be specified in the connector mapping.
-* xref:cfgPulsarJsonMessageSchema.adoc[] Supports mapping JSON messages with or without a schema.
+== Mapping requirements
+
+When mapping fields to columns, the following requirements apply:
+
+* The data in the Pulsar field must be compatible with the mapped column's xref:dse-6.9@cql:reference:data-types.adoc[data type].
+For example, a string field cannot map to a number column.
+
+* A Pulsar field mapped to a table's primary key (PK) column must always contain data because primary key columns don't allow nulls.
+
+* All primary key columns must have a mapping because primary key columns don't allow nulls.
+
+== Map messages that contain basic and JSON fields
+
+When the data format for the message key or value is JSON, the DataStax Apache Pulsar(TM) connector mapping can include individual fields in the JSON structure.
+
+In the following example, the key is a text field and the value is JSON.
+The key is mapped to a `name` field, and each of the JSON fields are mapped to a separate column in the table.
+
+[cols="1,2"]
+|===
+|key|value
+
+|`APPLE`
+a|
+[source,json]
+----
+{
+  "symbol":"APPL",
+  "value":208,
+  "exchange":"NASDAQ",
+  "industry":"TECH",
+  "ts":"2018-11-26T19:26:27.483"
+}
+----
+
+|`EXXON MOBIL`
+a|
+[source,json]
+----
+{
+  "symbol":"M",
+  "value":80,
+  "exchange":"NYSE",
+  "industry":"ENERGY",
+  "ts":"2018-11-26T19:26:27.483"
+}
+----
+
+|`GENERAL MOTORS`
+a|
+[source,json]
+----
+{
+  "symbol":"GM",
+  "value":38,
+  "exchange":"NYSE",
+  "industry":"AUTO",
+  "ts":"2018-11-26T19:26:27.483"
+}
+----
+
+|`AT&T`
+a|
+[source,json]
+----
+{
+  "symbol":"AT&T",
+  "value":33,
+  "exchange":"NYSE",
+  "industry":"TELECOM",
+  "ts":"2018-11-26T19:26:27.483"
+}
+----
+
+|`FORD MOTORS`
+a|
+[source,json]
+----
+{
+  "symbol":"F",
+  "value":10,
+  "exchange":"NYSE",
+  "industry":"AUTO",
+  "ts":"2018-11-26T19:26:27.483"
+}
+----
+|===
+
+. Create a keyspace in your database.
++
+This example creates a keyspace named `stocks_keyspace`:
++
+[source,bash]
+----
+cqlsh -e "CREATE KEYSPACE stocks_keyspace \
+  WITH replication = {'class': 'NetworkTopologyStrategy',\
+  'Cassandra': 1};"
+----
++
+For DSE and Cassandra clusters, make sure that the keyspace is replicated to a datacenter set in the connector's `xref:cfgRefPulsarDseConnection.adoc[contactPoints]` parameter.
+DSE datacenter names are case sensitive.
+Use `xref:dse:managing:tools/nodetool/ring.adoc[nodetool ring]` to get a list of datacenters.
+
+. Create a table.
++
+This example creates a table named `stocks_table` with six columns:
++
+[source,bash]
+----
+cqlsh -e "CREATE TABLE stocks_keyspace.stocks_table ( \
+  symbol text, \
+  ts timestamp, \
+  exchange text, \
+  industry text, \
+  name text, \
+  value double, \
+  PRIMARY KEY (symbol, ts));"
+----
+
+. For DSE, verify that all nodes have the same schema version using `xref:dse:managing:tools/nodetool/describe-ring.adoc[nodetool describering]`.
++
+For example, this command verifies the schema for `stocks_keyspace`:
++
+[source,bash]
+----
+nodetool describering -- stocks_keyspace
+----
+
+. In the DataStax connector configuration file, add the Pulsar topic name to `xref:cfgRefPulsarDseTable.adoc#topics[topics]`, and define the xref:cfgRefPulsarDseTable.adoc#mapping[field-to-column mapping].
++
+The following example is maps the `stocks_topic` to the `stocks_table` using the minimum required settings:
++
+[source,yaml]
+----
+tasks.max: 1
+topics: stocks_topic
+topic:
+  stocks_topic:
+    stocks_keyspace:
+      stocks_table:
+        mapping: 'symbol=value.symbol, ts=value.ts, exchange=value.exchange, industry=value.industry, name=key, value=value.value'
+----
+
+. Use `xref:ROOT:opsPulsarAboutOperations.adoc#pulsar-admin-sinks-update[pulsar-admin sinks update]` to apply the new configuration.
+
+== Map JSON-only messages
+
+The DataStax Apache Pulsar connector supports mapping JSON messages with or without a schema.
+
+In this example, the key is regular JSON without a schema, and the value is JSON that contains a schema and payload.
+The type of the payload is `Map`, and the connector is able to access the individual fields of the map.
+
+[cols=2]
+|===
+| key | value
+
+|`{"name":"APPLE"}`
+a|
+[source,json]
+----
+{
+  "schema": {
+    "type": "map",
+    "fields": [
+      { "type": "string", "optional": false, "field": "symbol" },
+      { "type": "int32", "optional": true, "field": "value" },
+      { "type": "string", "optional": true, "field": "exchange" },
+      { "type": "string", "optional": true, "field": "industry" },
+      { "type": "string", "optional": false, "field": "ts" }
+    ],
+    "optional": false,
+    "name": "stocksdata"
+  },
+  "payload": {
+    "symbol": "APPL",
+    "value": 208,
+    "exchange": "NASDAQ",
+    "industry": "TECH",
+    "ts": "2018-11-26T19:26:27.483"
+  }
+}
+----
+
+|`{"name":"EXXON MOBIL"}`
+a|
+[source,json]
+----
+{
+  "schema": {
+    "type": "map",
+    "fields": [
+      { "type": "string", "optional": false, "field": "symbol" },
+      { "type": "int32", "optional": true, "field": "value" },
+      { "type": "string", "optional": true, "field": "exchange" },
+      { "type": "string", "optional": true, "field": "industry" },
+      { "type": "string", "optional": false, "field": "ts" }
+    ],
+    "optional": false,
+    "name": "stocksdata"
+  },
+  "payload": {
+    "symbol": "M",
+    "value": 80,
+    "exchange": "NYSE",
+    "industry": "ENERGY",
+    "ts": "2018-11-26T19:26:27.483"
+  }
+}
+----
+
+|`{"name":"GENERAL MOTORS"}`
+a|
+[source,json]
+----
+{
+  "schema": {
+    "type": "map",
+    "fields": [
+      { "type": "string", "optional": false, "field": "symbol" },
+      { "type": "int32", "optional": true, "field": "value" },
+      { "type": "string", "optional": true, "field": "exchange" },
+      { "type": "string", "optional": true, "field": "industry" },
+      { "type": "string", "optional": false, "field": "ts" }
+    ],
+    "optional": false,
+    "name": "stocksdata"
+  },
+  "payload": {
+    "symbol": "GM",
+    "value": 38,
+    "exchange": "NYSE",
+    "industry": "AUTO",
+    "ts": "2018-11-26T19:26:27.483"
+  }
+}
+----
+
+|`{"name":"AT&T"}`
+a|
+[source,json]
+----
+{
+  "schema": {
+    "type": "map",
+    "fields": [
+      { "type": "string", "optional": false, "field": "symbol" },
+      { "type": "int32", "optional": true, "field": "value" },
+      { "type": "string", "optional": true, "field": "exchange" },
+      { "type": "string", "optional": true, "field": "industry" },
+      { "type": "string", "optional": false, "field": "ts" }
+    ],
+    "optional": false,
+    "name": "stocksdata"
+  },
+  "payload": {
+    "symbol": "AT&T",
+    "value": 33,
+    "exchange": "NYSE",
+    "industry": "TELECOM",
+    "ts": "2018-11-26T19:26:27.483"
+  }
+}
+----
+
+|`{"name":"FORD MOTOR"}`
+a|
+[source,json]
+----
+{
+  "schema": {
+    "type": "map",
+    "fields": [
+      { "type": "string", "optional": false, "field": "symbol" },
+      { "type": "int32", "optional": true, "field": "value" },
+      { "type": "string", "optional": true, "field": "exchange" },
+      { "type": "string", "optional": true, "field": "industry" },
+      { "type": "string", "optional": false, "field": "ts" }
+    ],
+    "optional": false,
+    "name": "stocksdata"
+  },
+  "payload": {
+    "symbol": "F",
+    "value": 10,
+    "exchange": "NYSE",
+    "industry": "AUTO",
+    "ts": "2018-11-26T19:26:27.483"
+  }
+}
+----
+|===
+
+. Create a keyspace in your database.
++
+This example creates a keyspace named `stocks_keyspace`:
++
+[source,bash]
+----
+cqlsh -e "CREATE KEYSPACE stocks_keyspace \
+  WITH replication = {'class': 'NetworkTopologyStrategy',\
+  'Cassandra': 1};"
+----
++
+For DSE and Cassandra clusters, make sure that the keyspace is replicated to a datacenter set in the connector's `xref:cfgRefPulsarDseConnection.adoc[contactPoints]` parameter.
+DSE datacenter names are case sensitive.
+Use `xref:dse:managing:tools/nodetool/ring.adoc[nodetool ring]` to get a list of datacenters.
+
+. Create a table.
++
+This example creates a table named `stocks_table` with six columns:
++
+[source,bash]
+----
+cqlsh -e "CREATE TABLE stocks_keyspace.stocks_table ( \
+  symbol text, \
+  ts timestamp, \
+  exchange text, \
+  industry text, \
+  name text, \
+  value double, \
+  PRIMARY KEY (symbol, ts));"
+----
+
+. For DSE, verify that all nodes have the same schema version using `xref:dse:managing:tools/nodetool/describe-ring.adoc[nodetool describering]`.
++
+For example, this command verifies the schema for `stocks_keyspace`:
++
+[source,bash]
+----
+nodetool describering -- stocks_keyspace
+----
+
+. In the DataStax connector configuration file, add the Pulsar topic name to `xref:cfgRefPulsarDseTable.adoc#topics[topics]`, and then define the xref:cfgRefPulsarDseTable.adoc#mapping[field-to-column mapping].
++
+The following example is maps the `stocks_topic` to the `stocks_table` using the minimum required settings:
++
+[source,yaml]
+----
+tasks.max: 1
+topics: stocks_topic
+topic:
+  stocks_topic:
+    stocks_keyspace:
+      stocks_table:
+        mapping: 'symbol=value.symbol, ts=value.dateTime, exchange=value.exchange, industry=value.industry, name=key.name, value=value.value'
+----
+
+. Use `xref:ROOT:opsPulsarAboutOperations.adoc#pulsar-admin-sinks-update[pulsar-admin sinks update]` to apply the new configuration.

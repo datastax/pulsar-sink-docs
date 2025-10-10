@@ -1,11 +1,35 @@
-= Writing fails because of mutation size
-:page-tag: pulsar-connector,planner,plan,pulsar
+= Troubleshoot the DataStax Apache Pulsar connector
+:navtitle: Troubleshoot the connector
+:page-aliases: ROOT:trbPulsarTsLoadBalancing.adoc, trbPulsarTsRecordFailsToWriteToTable.adoc, trbPulsarTsRecordParsingFails.adoc
 
-The DataStax Apache Pulsar(TM) Connector collects records to write to the DataStax Enterprise (DSE) database in CQL https://docs.datastax.com/en/dse/6.8/cql/cql/cql_reference/cql_commands/cqlBatch.html[BATCH] commands.
+This page describes some common issues that you might encounter when using the DataStax Apache Pulsar(TM) connector and how to resolve them.
+
+== Load balancing datacenter is not specified
+
+The following error message occurs when the load balancing datacenter isn't set in the connector's configuration file:
+
+[source,console]
+----
+org.apache.pulsar.common.config.ConfigException: Invalid value [127.0.0.2] for
+          configuration contactPoints: When contact points is provided, loadBalancing.localDc must
+          also be specified
+----
+
+The connector requires that you set the `loadBalancing.localDc` for DSE clusters when `contactPoints` isn't set to `localhost`.
+
+Check the datacenter name in the cluster by running `xref:dse:managing:tools/nodetool/status.adoc[nodetool status]`, and then verify that `xref:ROOT:cfgRefPulsarDseConnection.adoc[loadBalancing.localDc]` has the exact same name, including capitalization.
+DSE datacenter names are case sensitive.
+
+For Astra clusters, the datacenter is set by the Secure Connect Bundle (SCB).
+Make sure your connector configuration file includes a valid path to the database's SCB zip file.
+
+== Writes fail because of mutation size
+
+The Pulsar connector collects records to write to the database in CQL `xref:dse-6.9@cql:reference:cql-commands/batch.adoc[BATCH]` commands.
 Data insertions and deletions in the records are known as mutations.
-The Connector is implemented to use single-partition batches that are submitted as one mutation operation.
+The connector is implemented to use single-partition batches that are submitted as one mutation operation.
 
-For a given batch, if the total size of the mutation exceeds the maximum allowed by DSE (https://docs.datastax.com/en/dse/6.8/dse-admin/datastax_enterprise/config/configCassandra_yaml.html#configCassandra_yaml__max_mutation_size_in_kb[max_mutation_size_in_kb]) the batch is rejected and the error message is written to the system.log, by default in `var/log/cassandra`.
+For a given batch, if the total size of the mutation exceeds the maximum allowed by DSE in `xref:dse:managing:configure/configure-cassandra-yaml.adoc#max_mutation_size_in_kb[max_mutation_size_in_kb]` the batch is rejected and the error message is written to the `system.log`, by default in `var/log/cassandra`.
 
 For example:
 
@@ -14,25 +38,60 @@ For example:
 Mutation of 28087887 bytes is too large for the maximum size of 16777216
 ----
 
-== Remediation
+Before making any changes, understand the relationship between the `xref:dse:managing:configure/configure-cassandra-yaml.adoc#max_mutation_size_in_kb[max_mutation_size_in_kb]` and `xref:dse:managing:configure/configure-cassandra-yaml.adoc#commitLogSection[commitlog_segment_size_in_mb]` settings:
 
-Before making any changes, understand the relationship between the https://docs.datastax.com/en/dse/6.8/dse-admin/datastax_enterprise/config/configCassandra_yaml.html#configCassandra_yaml__max_mutation_size_in_kb[max_mutation_size_in_kb] and https://docs.datastax.com/en/dse/6.7/dse-admin/datastax_enterprise/config/configCassandra_yaml.html#configCassandra_yaml__commitlog_segment_size_in_mb[commitlog_segment_size_in_mb] settings.
-The max_mutation_size_in_kb value is calculated as half of `commitlog_segment_size_in_mb`.
+* These parameters have default values if they aren't explicitly set in `cassandra.yaml`.
+* The `max_mutation_size_in_kb` value is calculated as half of `commitlog_segment_size_in_mb`.
+* If you set `max_mutation_size_in_kb` explicitly, then you must also set `commitlog_segment_size_in_mb` to the result of `2 * max_mutation_size_in_kb / 1024`.
 
-Defaults when not set explicitly in `cassandra.yaml`:
+However, {company} recommends that you investigate why the mutations are larger than expected.
+Look for underlying issues with your client application, access patterns, and data model because increasing the commitlog segment size is a limited fix.
 
-* `commitlog_segment_size_in_mb`: 32 MB
-* `max_mutation_size_in_kb`: 16384 (16 MB)
-
-If you set `max_mutation_size_in_kb` explicitly, also set `commitlog_segment_size_in_mb` to:
-
-`2 * max_mutation_size_in_kb / 1024`
-
-You can decrease the batch size by lowering the number of records collected in each batch (xref:cfgRefPulsarDseConnection.adoc#maxNumberOfRecordsInBatch[maxNumberOfRecordsInBatch]).
-The default is 32.
+You can decrease the batch size by lowering the number of records collected in each batch in `xref:cfgRefPulsarDseConnection.adoc[maxNumberOfRecordsInBatch]`.
 
 If you cannot decrease the size of your batches, test whether increases to `max_mutation_size_in_kb` and `commitlog_segment_size_in_mb` result in batches completing successfully, without consuming too much RAM on the partition's node.
-Also increase the DSE database batch threshold using https://docs.datastax.com/en/dse/6.7/dse-admin/datastax_enterprise/config/configCassandra_yaml.html#configCassandra_yaml__batch_size_warn_threshold_in_kb[batch_size_warn_threshold_in_kb].
+You can also increase the DSE database batch threshold using `xref:dse:managing:configure/configure-cassandra-yaml.adoc#guardrailsYaml[batch_size_warn_threshold_in_kb]`.
 
-Investigate why the mutations are larger than expected.
-Look for underlying issues with your client application, access patterns, and data model, because increasing the commitlog segment size is a limited fix.
+== Records fail to write
+
+Missing records can have many causes, such as node availability, transient errors that prevent writes due to consistency level, or schema changes that removed a mapped column from the target table.
+
+To investigate this issue, do the following:
+
+. Change the connector's `verbose` option to `true` in your sink configuration file:
++
+[source,yaml]
+----
+configs:
+  verbose: true
+----
+
+. Reload the sink configuration file:
++
+[source,yaml]
+----
+bin/pulsar-admin sinks update --name cass-sink-kv --sinkConfigFile conf/qs.yml
+"Updated successfully"
+----
+
+. Check for `WARN` and `ERROR` entries in the output log.
+
+== Data parsing fails
+
+When the data from a Pulsar field isn't compatible with the data type of the mapped column in the target table, the data conversion fails and a message is logged in the Pulsar Connect log.
+For example:
+
+[source,console]
+----
+java.lang.IllegalArgumentException: Could not parse 'jack'; accepted formats are: a valid
+          number (e.g. '1234.56'), a valid Java numeric format (e.g. '-123.45e6'), a valid date-time
+          pattern (e.g. '2018-10-17T18:37:52.704Z'), or a valid boolean word
+----
+
+Ensure that the Pulsar fields are mapped to the correct database columns.
+The connector can not automatically convert varying types.
+
+If they do not match, consider changing your table schema to accommodate the Pulsar field types.
+
+When adding or changing columns in a database table, ensure that the schema is fully propagated before continuing.
+With DSE, use `xref:dse:managing:tools/nodetool/describe-ring.adoc[nodetool describering]` to show the schema version.
