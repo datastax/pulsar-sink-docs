@@ -6,46 +6,72 @@ NOTE: Most Apache Pulsar(TM) systems store all messages in the same format and D
 
 In the example `stocks_topic`, the key is a basic string and the value is regular JSON.
 
-[cols="a,a"]
 |===
 |key|value
 
-|APPLE|
-[source,console]
+|`APPLE`
+a|
+[source,json]
 ----
-{"symbol":"APPL", "value":208, "exchange":"NASDAQ", "industry":"TECH", "ts":"2018-11-26T19:26:27.483"}
-----
-
-|EXXON MOBIL|
-[source,console]
-----
-{"symbol":"M",
-"value":80,
-"exchange":"NYSE",
-"industry":"ENERGY",
-"ts":"2018-11-26T19:26:27.483"}
+{
+  "symbol":"APPL",
+  "value":208,
+  "exchange":"NASDAQ",
+  "industry":"TECH",
+  "ts":"2018-11-26T19:26:27.483"
+}
 ----
 
-|GENERAL MOTORS|
-[source,console]
+|`EXXON MOBIL`
+a|
+[source,json]
 ----
-{"symbol":"GM", "value":38, "exchange":"NYSE", "industry":"AUTO", "ts":"2018-11-26T19:26:27.483"}
-----
-
-|AT&T|
-[source,console]
-----
-{"symbol":"AT&T",
-"value":33,
-"exchange":"NYSE",
-"industry":"TELECOM",
-"ts":"2018-11-26T19:26:27.483"}
+{
+  "symbol":"M",
+  "value":80,
+  "exchange":"NYSE",
+  "industry":"ENERGY",
+  "ts":"2018-11-26T19:26:27.483"
+}
 ----
 
-|FORD MOTOR|
-[source,console]
+|`GENERAL MOTORS`
+a|
+[source,json]
 ----
-{"symbol":"F", "value":10, "exchange":"NYSE", "industry":"AUTO", "ts":"2018-11-26T19:26:27.483"}
+{
+  "symbol":"GM",
+  "value":38,
+  "exchange":"NYSE",
+  "industry":"AUTO",
+  "ts":"2018-11-26T19:26:27.483"
+}
+----
+
+|`AT&T`
+a|
+[source,json]
+----
+{
+  "symbol":"AT&T",
+  "value":33,
+  "exchange":"NYSE",
+  "industry":"TELECOM",
+  "ts":"2018-11-26T19:26:27.483"
+}
+----
+
+|`FORD MOTORS`
+a|
+[source,json]
+----
+{
+  "symbol":"F",
+  "value":10,
+  "exchange":"NYSE",
+  "industry":"AUTO",
+  "ts":"2018-11-26T19:26:27.483"
+}
 ----
 |===
 
@@ -55,8 +81,9 @@ And `baseball_topic` has the same structure, basic key and JSON value.
 |===
 |key|value
 
-|redsox|
-[source,console]
+|redsox
+a|
+[source,json]
 ----
 {"number":50,
 "firstname":"mookie",
@@ -65,14 +92,20 @@ And `baseball_topic` has the same structure, basic key and JSON value.
 "city":"boston"}
 ----
 
-|redsox|
-[source,console]
+|redsox
+a|
+[source,json]
 ----
-{"number":28, "firstname":"jd", "lastname":"martinez", "street":"4 yawkey way", "city":"boston"}
+{"number":28,
+"firstname":"jd",
+"lastname":"martinez",
+"street":"4 yawkey way",
+"city":"boston"}
 ----
 
-|redsox|
-[source,console]
+|redsox
+a|
+[source,json]
 ----
 {"number":16,
 "firstname":"andrew",
@@ -81,14 +114,20 @@ And `baseball_topic` has the same structure, basic key and JSON value.
 "city":"boston"}
 ----
 
-|redsox|
-[source,console]
+|redsox
+a|
+[source,json]
 ----
-{"number":41, "firstname":"chris", "lastname":"sale", "street":"4 yawkey way", "city":"boston"}
+{"number":41,
+"firstname":"chris",
+"lastname":"sale",
+"street":"4 yawkey way",
+"city":"boston"}
 ----
 
-|redsox|
-[source,console]
+|redsox
+a|
+[source,json]
 ----
 {"number":24,
 "firstname":"david",

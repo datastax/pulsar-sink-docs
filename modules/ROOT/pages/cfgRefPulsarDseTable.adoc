@@ -1,5 +1,5 @@
 = Pulsar topic-to-table parameters
-:page-aliases: ROOT:cfgPulsarSettingRowLevelTtl.adoc, ROOT:cfgPulsarMapTopicTable.adoc, ROOT:cfgPulsarColumnWritetimeTimestamp.adoc, ROOT:cfgRefPulsarDates.adoc, ROOT:cfgPulsarNowFunction.adoc
+:page-aliases: ROOT:cfgPulsarSettingRowLevelTtl.adoc, ROOT:cfgPulsarMapTopicTable.adoc, ROOT:cfgPulsarColumnWritetimeTimestamp.adoc, ROOT:cfgRefPulsarDates.adoc, ROOT:cfgPulsarNowFunction.adoc, ROOT:cfgPulsarRecordHeaderToTable.adoc
 
 The connector writes messages from your Apache Pulsar(TM) topics to tables in your database using the mapping and topic properties set in your connector's configuration YAML file.
 
@@ -177,11 +177,27 @@ If you specify a different time unit, such as `HOURS`, the DataStax Pulsar conne
 [#mapping-properties]
 === Mapping properties and functions
 
-The `mapping` parameter accepts additional properties that you can use to modify how the connector writes records to the table:
+The `<<mapping,mapping>>` parameter accepts additional properties that you can use to modify how the connector writes records to the table:
+
+header::
+In the `mapping` parameter, you can extract values from the message properties, and then write those values to a database table.
++
+For example, the following mapping extracts the `header` property `f4` from the message properties, and writes it to the `col3` column in the specified table:
++
+[source,yaml]
+----
+topic:
+  topic_name:
+    keyspace_name:
+      table_name:
+        mapping: 'col1=key.f1, col2=value.f1, __ttl=value.f2, __timestamp=value.f3, col3=header.f4'
+----
++
+Use one or more individual mapping statements to extract the desired values and write them to table columns.
 
 [#timestamp]
 __timestamp, timestampTimeUnit::
-In the `<<mapping,mapping>>` parameter, you can use the optional `\__timestamp` property to specify which column should be used for the writetime timestamp when a record is written to the database.
+In the `mapping` parameter, you can use the optional `\__timestamp` property to specify which column should be used for the writetime timestamp when a record is written to the database.
 The specified `__timestamp` column must be a number type.
 For example:
 +

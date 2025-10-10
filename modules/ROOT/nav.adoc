@@ -10,7 +10,6 @@
 * xref:cfgPulsarMapJson.adoc[]
 * xref:cfgPulsarMapAvroMessages.adoc[]
 * xref:cfgPulsarMapUdt.adoc[]
-* xref:cfgPulsarRecordHeaderToTable.adoc[]
 * xref:cfgPulsarCqlQuery.adoc[]
 * xref:cfgPulsarMapMultipleTables.adoc[]
 * xref:cfgPulsarMultTopicToTables.adoc[]
