@@ -93,6 +93,7 @@ mv installation_location/cassandra-enhanced-pulsar-sink-1.4.0.nar pulsar_home/co
 
 . In your Pulsar `config` directory, create a `qs.yml` file with the following contents:
 +
+.qs.yml
 [source,yaml]
 ----
 configs:
@@ -152,7 +153,7 @@ configs:
         unit: MILLISECONDS
 ----
 
-. If your cluster has authentication enabled or you want to use an SSL-encrypted connection, edit the configuration file as explained in xref:ROOT:secPulsarInternalLdapAuth.adoc[].
+. If your cluster has authentication enabled, you want to use an SSL-encrypted connection, or your cluster isn't compatible with the connection properties in `qs.yml`, you must edit the configuration file as explained in xref:ROOT:cfgRefPulsarDseConnection.adoc[].
 
 . Ensure that the user running Pulsar has permission to access the configuration and NAR files.
 

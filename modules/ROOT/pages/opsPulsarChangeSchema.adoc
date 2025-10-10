@@ -7,11 +7,11 @@ You must update the DataStax Apache Pulsar(TM) Connector configuration when your
 
 Use these steps to write a new Pulsar field to an existing table column:
 
-. In the DataStax Apache Pulsar(TM) Connector configuration file, add the xref:ROOT:cfgRefPulsarDseTable.adoc[field-to-column mapping].
+. In the connector's configuration file, add the xref:ROOT:cfgRefPulsarDseTable.adoc[field-to-column mapping].
 
-. xref:ROOT:opsPulsarUpdateConfig.adoc[Update the configuration] to apply the new mapping.
+. Use `xref:ROOT:opsPulsarAboutOperations.adoc#pulsar-admin-sinks-update[pulsar-admin sinks update]` to apply the new configuration.
 
-. Start the Pulsar producer that had the schema change.
+. Start the Pulsar producer that had the schema change if it was stopped.
 
 == Remove a field
 
@@ -27,9 +27,9 @@ If the field isn't mapped to a PK column, you can remove or edit the mapping, ac
 
 . Remove or edit the invalid definition in your xref:ROOT:cfgRefPulsarDseTable.adoc[field-to-column mapping].
 
-. xref:ROOT:opsPulsarUpdateConfig.adoc[Update the configuration] to apply the new mapping.
+. Use `xref:ROOT:opsPulsarAboutOperations.adoc#pulsar-admin-sinks-update[pulsar-admin sinks update]` to apply the new configuration.
 
-. Start the Pulsar producer that had the schema change.
+. Start the Pulsar producer that had the schema change if it was stopped.
 
 == Add a column to a table and synchronize an existing field
 
@@ -44,9 +44,9 @@ You can add a column to your database table, and then synchronize the data from 
 Data synchronization can fail if the schema change is inconsistent across the entire cluster.
 ====
 
-. In your connector configuration file, add the new column to your xref:ROOT:cfgRefPulsarDseTable.adoc[field-to-column mapping].
+. In your connector's configuration file, add the new column to your xref:ROOT:cfgRefPulsarDseTable.adoc[field-to-column mapping].
 
-. xref:ROOT:opsPulsarUpdateConfig.adoc[Update the configuration] to apply the new mapping.
+. Use `xref:ROOT:opsPulsarAboutOperations.adoc#pulsar-admin-sinks-update[pulsar-admin sinks update]` to apply the new configuration.
 
 == Remove a column
 

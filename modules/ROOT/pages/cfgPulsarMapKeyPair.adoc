@@ -59,4 +59,4 @@ topic:
         mapping: 'recordid=key, continent=value'
 ----
 
-. xref:ROOT:opsPulsarUpdateConfig.adoc[Apply the configuration change].
+. Use `xref:ROOT:opsPulsarAboutOperations.adoc#pulsar-admin-sinks-update[pulsar-admin sinks update]` to apply the new configuration.

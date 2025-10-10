@@ -1,5 +1,5 @@
 = Install DataStax Apache Pulsar(TM) Connector
-:navtitle: Installation
+:navtitle: Install
 :page-aliases: ROOT:pulsarSizing.adoc
 
 Install DataStax Apache Pulsar(TM) Connector from the DataStax distribution tar file using an account that has write access to the Pulsar configuration directory.
@@ -87,7 +87,7 @@ mv installation_location/cassandra-enhanced-pulsar-sink-1.4.0.nar pulsar_home/co
 If you plan to create multiple sinks from this connector, give your configuration file a unique name.
 
 . Edit the configuration file as necessary using the information provided in this documentation.
-For example, for authentication and SSL-encrypted connections, see xref:ROOT:secPulsarInternalLdapAuth.adoc[].
+For example, for information about connection, authentication, and encryption parameters, see xref:ROOT:cfgRefPulsarDseConnection.adoc[].
 
 . Ensure that the user running Pulsar has permission to access the configuration and NAR files.
 

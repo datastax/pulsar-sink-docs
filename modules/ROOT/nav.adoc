@@ -1,11 +1,7 @@
 .Get started
 * xref:pulsarInstall.adoc[]
 * xref:pulsarQuickStart.adoc[]
-
-.Connect
 * xref:cfgRefPulsarDseConnection.adoc[]
-* xref:secPulsarInternalLdapAuth.adoc[]
-* xref:cfgPulsarSettingJavaDriverConfig.adoc[]
 
 .Map topics to tables
 * xref:cfgRefPulsarDseTable.adoc[]
@@ -26,12 +22,8 @@
 
 .Operations
 * xref:opsPulsarAboutOperations.adoc[]
-* xref:opsPulsarConnectorStatus.adoc[]
-* xref:opsPulsarDisplayConfig.adoc[]
-* xref:opsPulsarUpdateConfig.adoc[]
 * xref:opsPulsarScaling.adoc[]
 * xref:opsPulsarChangeSchema.adoc[]
-* xref:opsPulsarRestart.adoc[]
 * xref:opsPulsarDeleteConnector.adoc[]
 * xref:monPulsarConnectMetrics.adoc[]
 

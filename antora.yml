@@ -5,3 +5,5 @@ start_page: 'index.adoc'
 
 nav:
 - modules/ROOT/nav.adoc
+
+## TODO: Add attributes for DataStax, Astra, Apache Pulsar (Apache Pulsar (TM)/Apache Pulsar/Pulsar), Product (DataStax Apache Pulsar(TM) connector/DataStax Apache Pulsar connector/DataStax Pulsar connector), DSE, Cassandra, etc.
