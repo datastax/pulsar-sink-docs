@@ -9,7 +9,7 @@ The connector also supports SSL-encrypted connections.
 DSE::
 +
 --
-When xref:6.9@dse:securing:authorization-authentication/enable-unifiedi-authentication.adoc[DSE Unified Authentication is enabled], you must provide internal/LDAP authentication credentials or the Kerberos keytab filepath in the <<authentication-parameters,authentication parameters>>.
+When xref:6.9@dse:securing:authorization-authentication/enable-unified-authentication.adoc[DSE Unified Authentication is enabled], you must provide internal/LDAP authentication credentials or the Kerberos keytab filepath in the <<authentication-parameters,authentication parameters>>.
 The connector supports DSE role management with internal and LDAP schemes.
 
 If the cluster has client encryption enabled, configure the <<ssl-encrypted-connections,SSL keys and certificates in the Pulsar Connector>>.
@@ -49,7 +49,7 @@ Select the type of authentication provider configured for the cluster:
 * **`GSSAPI`**: SASL authentication to DSE clusters using the GSSAPI mechanism (Kerberos authentication)
 +
 When using GSSAPI, you must provide the path to the Kerberos configuration file (`krb5.conf`) in the `java.security.krb5.conf` system property at startup.
-For more information, see xref:ROOT:ecPulsarInternalLdapAuth.adoc[].
+For more information, see xref:ROOT:secPulsarInternalLdapAuth.adoc[].
 
 username::
 For DSE, provide the login role name or LDAP username.
