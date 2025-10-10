@@ -1,5 +1,4 @@
 .Get started
-* xref:ROOT:index.adoc[]
 * xref:pulsarInstall.adoc[]
 * xref:pulsarQuickStart.adoc[]
 
