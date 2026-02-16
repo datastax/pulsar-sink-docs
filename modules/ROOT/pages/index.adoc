@@ -1,12 +1,12 @@
-= About the DataStax Apache Pulsar(TM) connector
+= About the {product}
 
-DataStax Apache Pulsar(TM) connector is open-source software (OSS) installed in the Pulsar IO framework, and synchronizes records from a Pulsar topic with table rows in DataStax Enterprise (DSE), Astra, and Cassandra databases.
+{product} is open-source software (OSS) installed in the {pulsar-reg} IO framework, and synchronizes records from a {pulsar-short} topic with table rows in {dse}, {astra-db}, and {cass-reg} databases.
 
 Key features include:
 
-* Flexibility in mapping Apache Pulsar(TM) messages to DSE and Cassandra tables.
+* Flexibility in mapping {pulsar-short} messages to {dse-short} and {cass-short} tables.
 * Enterprise grade security support including built-in SSL, and LDAP integration.
-* Consumes all Apache Pulsar(TM) primitives including primitives, JSON and Avro formats.
+* Consumes all {pulsar-short} primitives including primitives, JSON and Avro formats.
 * Flexible time/date formatting.
 * Configurable consistency level.
 * Row-level Time-to-Live (TTL).

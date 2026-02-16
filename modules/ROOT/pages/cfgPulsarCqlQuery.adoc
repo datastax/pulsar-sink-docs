@@ -1,13 +1,13 @@
 = Use CQL queries in mappings
 
-In your connector configuration, you can provide a CQL query to run when a new record arrives on the Pulsar topic.
+In your connector configuration, you can provide a CQL query to run when a new record arrives on the {pulsar-short} topic.
 
 [IMPORTANT]
 ====
 If you define a query in the mapping, the query has priority, and it is used instead of the connector's automatically generated action.
 
 This is an advanced feature for specific use cases.
-Typically, you can use the standard Pulsar mapping without a query.
+Typically, you can use the standard {pulsar-short} mapping without a query.
 ====
 
 If you set `query`, you must provide the bound variables used in the query in the mapping column.

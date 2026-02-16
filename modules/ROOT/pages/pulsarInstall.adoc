@@ -1,26 +1,26 @@
-= Install DataStax Apache Pulsar(TM) connector
+= Install {product}
 :navtitle: Install
 :page-aliases: ROOT:pulsarSizing.adoc
 
-Install DataStax Apache Pulsar(TM) connector from the DataStax distribution tar file using an account that has write access to the Pulsar configuration directory.
+Install {product} from the {company} distribution tar file using an account that has write access to the {pulsar-short} configuration directory.
 
 == System requirements
 
-The system requirements for DataStax Pulsar connector depends on the workload and network capacity.
-The factors include characteristics of the Pulsar topic and the cluster data models and volume.
-DataStax recommends testing with realistic data flows before committing to an instance type for the connector.
+The system requirements for {product} depends on the workload and network capacity.
+The factors include characteristics of the {pulsar-short} topic and the cluster data models and volume.
+{company} recommends testing with realistic data flows before committing to an instance type for the connector.
 
 Database::
-The DataStax Pulsar connector supports the following databases:
+The {product} supports the following databases:
 +
-* DataStax Astra DB
-* DataStax Enterprise (DSE) 4.7 and later (non-EOL versions recommended)
-* Open source Apache Cassandra(R) 2.1 and later (non-EOL versions recommended, full compatibility with 5.x isn't guaranteed)
+* {company} {astra-db}
+* {dse} 4.7 and later (non-EOL versions recommended)
+* Open source {cass-reg} 2.1 and later (non-EOL versions recommended, full compatibility with 5.x isn't guaranteed)
 
-Pulsar::
-The DataStax Pulsar connector requires Apache Pulsar 2.7.0 or later.
+{pulsar-short}::
+The {product} requires {pulsar} 2.7.0 or later.
 +
-The connector supports the following data structures in Pulsar topics:
+The connector supports the following data structures in {pulsar-short} topics:
 +
 * Primitive string values
 * Avro
@@ -31,28 +31,28 @@ Operating system::
 The supported operating systems are Linux and macOS.
 
 CPU::
-DataStax Pulsar connector is bound by the amount of CPU available on the host.
-The connector holds all the records pulled from Pulsar topics in memory, along with the cluster metadata and prepared statements.
+{product} is bound by the amount of CPU available on the host.
+The connector holds all the records pulled from {pulsar-short} topics in memory, along with the cluster metadata and prepared statements.
 +
 Memory pressure is influenced by the following:
 +
-* Record size of Pulsar topics
+* Record size of {pulsar-short} topics
 * Number of records pulled at the same time, where the maximum is set by the workers `batchSize` parameter.
 * Number of simultaneous tasks run by the connector
 
 Network::
-DataStax Pulsar connector needs adequate network capacity for the payload.
-This includes the connections from Pulsar Servers to the target platform.
+{product} needs adequate network capacity for the payload.
+This includes the connections from {pulsar-short} Servers to the target platform.
 Scale the connector horizontally by adding additional workers to increase overall throughput.
 +
-The DataStax Pulsar connector framework automatically rebalances the load when workers are added by reallocating the tasks among the workers.
+The {product} framework automatically rebalances the load when workers are added by reallocating the tasks among the workers.
 
 == Install the connector
 
-Perform the following steps on a Pulsar Connect node running Apache Pulsar 2.7.0 or later.
-If you need to install Pulsar, see xref:ROOT:pulsarQuickStart.adoc[].
+Perform the following steps on a {pulsar-short} Connect node running {pulsar} 2.7.0 or later.
+If you need to install {pulsar-short}, see xref:ROOT:pulsarQuickStart.adoc[].
 
-. Download the DataStax Apache Pulsar connector tar file from the https://downloads.datastax.com/#apc[DataStax downloads site].
+. Download the {product} tar file from the https://downloads.datastax.com/#apc[{company} downloads site].
 
 . Extract the files, replacing **VERSION** with the version number of the tar file you downloaded:
 +
@@ -72,42 +72,42 @@ conf/example.yml
 cassandra-enhanced-pulsar-sink-1.4.0.nar
 ----
 
-. In your Pulsar `home` directory, find the `connectors` directory.
+. In your {pulsar-short} `home` directory, find the `connectors` directory.
 If there isn't a `connectors` directory, create one.
 
-. Move the DataStax Pulsar connector NAR file to the Pulsar `connectors` directory:
+. Move the {product} NAR file to the {pulsar-short} `connectors` directory:
 +
 [source,bash]
 ----
 mv installation_location/cassandra-enhanced-pulsar-sink-1.4.0.nar pulsar_home/connectors
 ----
 
-. Copy the sample configuration file `example.yml` from `cassandra-enhanced-pulsar-sink-**VERSION**/conf/` to your Pulsar `config` directory.
+. Copy the sample configuration file `example.yml` from `cassandra-enhanced-pulsar-sink-**VERSION**/conf/` to your {pulsar-short} `config` directory.
 +
 If you plan to create multiple sinks from this connector, give your configuration file a unique name.
 
 . Edit the configuration file as necessary using the information provided in this documentation.
 For example, for information about connection, authentication, and encryption parameters, see xref:ROOT:cfgRefPulsarDseConnection.adoc[].
 
-. Ensure that the user running Pulsar has permission to access the configuration and NAR files.
+. Ensure that the user running {pulsar-short} has permission to access the configuration and NAR files.
 
-== Start Pulsar with the connector
+== Start {pulsar-short} with the connector
 
-. Start, restart, or reload your Pulsar instance:
+. Start, restart, or reload your {pulsar-short} instance:
 +
 [source,bash]
 ----
 bin/pulsar-admin sinks reload
 ----
 
-. Check that the DataStax Pulsar connector is available:
+. Check that the {product} is available:
 +
 [source,bash]
 ----
 bin/pulsar-admin sinks available-sinks
 ----
 
-. Create a Pulsar sink:
+. Create a {pulsar-short} sink:
 +
 [source,bash,subs="+quotes"]
 ----
@@ -124,9 +124,9 @@ bin/pulsar-admin sinks create \
 Replace the following:
 +
 * **`SINK_NAME`**: A unique name for the sink.
-* **`TENANT_NAME`**: The name of the relevant Pulsar tenant.
-* **`NAMESPACE_NAME`**: The name of the relevant Pulsar namespace.
-* **`TOPIC_NAME`**: The name of the Pulsar topic that you want to stream to your database.
+* **`TENANT_NAME`**: The name of the relevant {pulsar-short} tenant.
+* **`NAMESPACE_NAME`**: The name of the relevant {pulsar-short} namespace.
+* **`TOPIC_NAME`**: The name of the {pulsar-short} topic that you want to stream to your database.
 +
 The topic mapping is set in the connector's configuration YAML file.
 Make sure that it matches the schema of the table where you want to write the messages.
@@ -136,4 +136,4 @@ For more information, see xref:ROOT:cfgRefPulsarDseTable.adoc[].
 
 == Next steps
 
-Explore the rest of the documentation to learn more about configuring and using the DataStax Pulsar connector.
+Explore the rest of the documentation to learn more about configuring and using the {product}.

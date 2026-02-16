@@ -1,12 +1,12 @@
-= Operate and maintain the DataStax Apache Pulsar(TM) connector
-:navtitle: Pulsar connector administration
+= Operate and maintain the {product}
+:navtitle: {pulsar-short} connector administration
 :page-aliases: ROOT:opsPulsarConnectorStatus.adoc, ROOT:opsPulsarDisplayConfig.adoc, ROOT:opsPulsarUpdateConfig.adoc, ROOT:opsPulsarRestart.adoc
 
-To operate and maintain the DataStax Apache Pulsar(TM) connector, use the https://pulsar.apache.org/docs/4.1.x/admin-api-tools/[Apache Pulsar administration tools], which include the pulsar-admin CLI and the Pulsar admin API.
+To operate and maintain the {product}, use the https://pulsar.apache.org/docs/4.1.x/admin-api-tools/[{pulsar} administration tools], which include the pulsar-admin CLI and the {pulsar-short} admin API.
 
 == Get the connector's status
 
-Use the `pulsar-admin sinks status` command to get the status of a Pulsar sink:
+Use the `pulsar-admin sinks status` command to get the status of a {pulsar-short} sink:
 
 [source,bash,subs="+quotes"]
 ----
@@ -47,7 +47,7 @@ For example, to check the status of a sink named `cass-sink-kv`, run `bin/pulsar
 [#pulsar-admin-sinks-get]
 == Get the connector's configuration
 
-Use the `pulsar-admin sinks get` command to retrieve the configuration details for a Pulsar sink:
+Use the `pulsar-admin sinks get` command to retrieve the configuration details for a {pulsar-short} sink:
 
 [source,bash,subs="+quotes"]
 ----
@@ -141,7 +141,7 @@ The configuration is returned in JSON format.
 [#pulsar-admin-sinks-update]
 == Apply configuration changes or edit sink settings
 
-Use the `pulsar-admin sinks update` command to update the configuration of an active Pulsar sink.
+Use the `pulsar-admin sinks update` command to update the configuration of an active {pulsar-short} sink.
 You can use this command to apply changes made to the connector's configuration file, and you can edit sink settings that aren't set in the configuration file.
 
 [source,bash,subs="+quotes"]
@@ -151,8 +151,8 @@ pulsar-admin sinks update --name **SINK_NAME** **OPTIONS**
 
 Replace the following:
 
-* `**SINK_NAME**`: The name of the sink associated with your DataStax Pulsar connector.
-* `**OPTIONS**`: https://pulsar.apache.org/docs/next/io-cli/#update-1[Pulsar sink configuration options] that you want to update, such as `--sink-config-file`, `--parallelism`, or `--timeout-ms`.
+* `**SINK_NAME**`: The name of the sink associated with your {product}.
+* `**OPTIONS**`: https://pulsar.apache.org/docs/next/io-cli/#update-1[{pulsar-short} sink configuration options] that you want to update, such as `--sink-config-file`, `--parallelism`, or `--timeout-ms`.
 
 For example, after modifying the connector's configuration file, run the following command to apply the new configuration.
 Replace `**CONFIG_FILE**` with the name or path to your configuration file.

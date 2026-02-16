@@ -1,9 +1,9 @@
 = Map to User Defined Types (UDTs)
 :page-aliases: ROOT:cfgPulsarSelectiveUpdateMapsAndUdts.adoc
 
-The DataStax Apache Pulsar(TM) connector can process JSON, Avro, and complex types directly into xref:dse-6.9@cql:develop:user-defined-type-overview.adoc[user-defined type] columns.
+The {product} can process JSON, Avro, and complex types directly into xref:dse-6.9@cql:develop:user-defined-type-overview.adoc[user-defined type] columns.
 
-The Pulsar messages' embedded field names and the UDT's field names must match.
+The {pulsar-short} messages' embedded field names and the UDT's field names must match.
 
 == UDT mapping example
 
@@ -163,14 +163,14 @@ topic:
 [#selectively-update-maps-and-udts]
 == Selectively update maps and UDTs
 
-If your mapping includes maps or UDTs, you can xref:ROOT:cfgPulsarCqlQuery.adoc[use CQL queries in your connector configuration] to selectively update maps and UDTs based on the existence of values in the Pulsar fields.
+If your mapping includes maps or UDTs, you can xref:ROOT:cfgPulsarCqlQuery.adoc[use CQL queries in your connector configuration] to selectively update maps and UDTs based on the existence of values in the {pulsar-short} fields.
 
 When a new record arrives, the connector sets only the non-null fields in the message.
-It won't override UDT fields that have a null value or aren't present in the Pulsar record.
+It won't override UDT fields that have a null value or aren't present in the {pulsar-short} record.
 This configuration requires that `xref:cfgRefPulsarDseTable.adoc#nullToUnset[nullToUnset]` is `true`.
 
 This configuration helps minimize tombstones in the database.
-It uses the CQL `UPDATE` command to only update the fields present in the Pulsar record.
+It uses the CQL `UPDATE` command to only update the fields present in the {pulsar-short} record.
 You must use the `udtColNotFrozen` keyword in the CQL query, and the type definition cannot be frozen.
 
 . Create the UDT and ensure that it isn't frozen.

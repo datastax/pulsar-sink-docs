@@ -1,7 +1,7 @@
-= Pulsar topic-to-table parameters
+= {pulsar-short} topic-to-table parameters
 :page-aliases: ROOT:cfgPulsarSettingRowLevelTtl.adoc, ROOT:cfgPulsarMapTopicTable.adoc, ROOT:cfgPulsarColumnWritetimeTimestamp.adoc, ROOT:cfgRefPulsarDates.adoc, ROOT:cfgPulsarNowFunction.adoc, ROOT:cfgPulsarRecordHeaderToTable.adoc
 
-The connector writes messages from your Apache Pulsar(TM) topics to tables in your database using the mapping and topic properties set in your connector's configuration YAML file.
+The connector writes messages from your {pulsar-short} topics to tables in your database using the mapping and topic properties set in your connector's configuration YAML file.
 
 This includes the topic name, keyspace name, table name, schema mapping, codec options, and other write options.
 
@@ -44,7 +44,7 @@ topic:
 
 [#topics]
 topics::
-A comma separated list of all topics to which the DataStax connector subscribes.
+A comma separated list of all topics to which the {product} subscribes.
 
 topic::
 A container for the configuration details for each subscribed topic.
@@ -60,7 +60,7 @@ topic:
 ----
 +
 Make sure that the keyspace and table are the correct targets for the topic.
-This is where Pulsar will write the messages from the topic.
+This is where {pulsar-short} will write the messages from the topic.
 
 == Table parameters
 
@@ -105,19 +105,19 @@ For example, if a row has a mix of null and non-null values, and the new record 
 [#mapping]
 mapping::
 Required.
-A mapping of Pulsar fields to table columns.
+A mapping of {pulsar-short} fields to table columns.
 The exact contents depends on the message format and table schema.
 For examples and options, see the other mapping topics in this documentation and <<mapping-properties>>.
 
 [#nullToUnset]
 nullToUnset::
-Whether to treat null values in Pulsar as `UNSET` in the database table.
+Whether to treat null values in {pulsar-short} as `UNSET` in the database table.
 +
 This parameter controls the handling of updates versus overrides.
 +
-If `true`, the DataStax Pulsar connector treats null values as unset fields.
+If `true`, the {product} treats null values as unset fields.
 When a new record arrives, it only updates fields that _aren't_ null in the incoming message.
-DataStax recommends setting this to `true` to avoid creating unnecessary tombstones.
+{company} recommends setting this to `true` to avoid creating unnecessary tombstones.
 +
 If `false`, fields with null values are visible in the table as `UNSET` values.
 +
@@ -163,16 +163,16 @@ For example:
 If you set both static and dynamic TTL, the dynamic TTL (in `mapping`) takes precedence, and the connector writes a warning message to the log file.
 
 If the dynamic TTL value is negative, an error is thrown when writing records to the table.
-However, the connector inserts the record without the TTL because the Pulsar connector is a streaming system.
+However, the connector inserts the record without the TTL because the {pulsar-short} connector is a streaming system.
 --
 ======
 +
 If TTL is set (either statically or dynamically), the same TTL limit is applied to _all_ rows in the mapped table.
-The DataStax Pulsar connector appends `AND TTL <seconds>` to all `INSERT` statements for the table.
+The {product} appends `AND TTL <seconds>` to all `INSERT` statements for the table.
 +
 With either static or dynamic TTL, you can optionally set `ttlTimeUnit` to specify the time unit for the `ttl` value.
 The default time unit is `SECONDS`.
-If you specify a different time unit, such as `HOURS`, the DataStax Pulsar connector automatically converts the value to `SECONDS` for compatibility.
+If you specify a different time unit, such as `HOURS`, the {product} automatically converts the value to `SECONDS` for compatibility.
 
 [#mapping-properties]
 === Mapping properties and functions
@@ -206,8 +206,8 @@ For example:
         mapping: 'col1=key.f1, col2=value.f1, __timestamp=value.f2'
 ----
 +
-By default, the database internally tracks the `writetime` timestamp of records inserted from Pulsar.
-Use the `__timestamp` property when your Pulsar records have an explicit timestamp field that you want to use as the writetime for the database record produced by the connector.
+By default, the database internally tracks the `writetime` timestamp of records inserted from {pulsar-short}.
+Use the `__timestamp` property when your {pulsar-short} records have an explicit timestamp field that you want to use as the writetime for the database record produced by the connector.
 +
 If you set `__timestamp`, you can also set `timestampTimeUnit` to specify the time unit for the provided timestamp value:
 +
@@ -219,7 +219,7 @@ If you set `__timestamp`, you can also set `timestampTimeUnit` to specify the ti
 ----
 +
 The default timestamp time unit is `MICROSECONDS`.
-If you specify a different time unit, such as `SECONDS`, the DataStax Pulsar connector automatically converts the value to `MICROSECONDS` for compatibility.
+If you specify a different time unit, such as `SECONDS`, the {product} automatically converts the value to `MICROSECONDS` for compatibility.
 
 __ttl::
 See `<<ttl,ttl>>`.
@@ -245,7 +245,7 @@ This prevents the table from containing rows with only a primary key and timesta
 
 == Codec parameters
 
-Use the `codec` parameters to configure date and time conversion for each Pulsar topic if you don't want to use the default settings:
+Use the `codec` parameters to configure date and time conversion for each {pulsar-short} topic if you don't want to use the default settings:
 
 [source,yaml]
 ----
@@ -280,7 +280,7 @@ Allowed values include the following:
 +
 Default: `CQL_TIMESTAMP`
 +
-If the Pulsar records are strings that contain only digits that cannot be parsed by the `timestamp` format, use the `<<unit,unit>>` parameter to specify the time unit of the parsed value.
+If the {pulsar-short} records are strings that contain only digits that cannot be parsed by the `timestamp` format, use the `<<unit,unit>>` parameter to specify the time unit of the parsed value.
 
 date::
 The temporal pattern to use for string-to-CQL date conversion.
@@ -291,7 +291,7 @@ Allowed values include the following:
 +
 Default: `ISO_LOCAL_DATE`
 +
-For example, to write a Pulsar string field like "2018-04-12" to a xref:dse-6.9@cql:reference:data-types.adoc#date-and-time-types[date] column, set `date: "yyyy-MM-dd"`.
+For example, to write a {pulsar-short} string field like "2018-04-12" to a xref:dse-6.9@cql:reference:data-types.adoc#date-and-time-types[date] column, set `date: "yyyy-MM-dd"`.
 
 time::
 The temporal pattern to use for string-to-CQL time conversion.
@@ -302,11 +302,11 @@ Allowed values include the following:
 +
 Default: `ISO_LOCAL_TIME`
 +
-For example, to write a Pulsar string field like "10:15:30" to a xref:dse-6.9@cql:reference:data-types.adoc#date-and-time-types[time] column, the default `ISO_LOCAL_TIME` correctly converts the time format.
+For example, to write a {pulsar-short} string field like "10:15:30" to a xref:dse-6.9@cql:reference:data-types.adoc#date-and-time-types[time] column, the default `ISO_LOCAL_TIME` correctly converts the time format.
 
 [#unit]
 unit::
-If the Pulsar records are strings that contain only digits that cannot be parsed by the `timestamp` format, use the `unit` parameter to specify the time unit to apply to the parsed values.
+If the {pulsar-short} records are strings that contain only digits that cannot be parsed by the `timestamp` format, use the `unit` parameter to specify the time unit to apply to the parsed values.
 +
 `unit` can be any TimeUnit enum constant.
 +
@@ -317,7 +317,7 @@ The time zone to use for temporal conversions that don't convey any explicit tim
 +
 Default: `UTC`
 +
-For example, to write a Pulsar string field that contains values like `2018-03-09T17:12:32.584+01:00[Europe/Paris]` to a xref:dse-6.9@cql:reference:data-types.adoc#date-and-time-types[timestamp] column, set `timezone: ISO_ZONED_DATE_TIME`.
+For example, to write a {pulsar-short} string field that contains values like `2018-03-09T17:12:32.584+01:00[Europe/Paris]` to a xref:dse-6.9@cql:reference:data-types.adoc#date-and-time-types[timestamp] column, set `timezone: ISO_ZONED_DATE_TIME`.
 
 locale::
 Locale to use for locale-sensitive conversions.

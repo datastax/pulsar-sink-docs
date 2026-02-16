@@ -1,24 +1,24 @@
 = Map messages that contain JSON
 :page-aliases: ROOT:cfgPulsarStringJson.adoc, ROOT:cfgPulsarJsonMessageSchema.adoc
 
-When the data format for the key or value is JSON, the DataStax Apache Pulsar(TM) connector mapping can include individual fields in the JSON structure.
+When the data format for the key or value is JSON, the {product} mapping can include individual fields in the JSON structure.
 
-JSON records in Pulsar can have a schema associated with them, but this isn't required.
+JSON records in {pulsar-short} can have a schema associated with them, but this isn't required.
 
 == Mapping requirements
 
 When mapping fields to columns, the following requirements apply:
 
-* The data in the Pulsar field must be compatible with the mapped column's xref:dse-6.9@cql:reference:data-types.adoc[data type].
+* The data in the {pulsar-short} field must be compatible with the mapped column's xref:dse-6.9@cql:reference:data-types.adoc[data type].
 For example, a string field cannot map to a number column.
 
-* A Pulsar field mapped to a table's primary key (PK) column must always contain data because primary key columns don't allow nulls.
+* A {pulsar-short} field mapped to a table's primary key (PK) column must always contain data because primary key columns don't allow nulls.
 
 * All primary key columns must have a mapping because primary key columns don't allow nulls.
 
 == Map messages that contain basic and JSON fields
 
-When the data format for the message key or value is JSON, the DataStax Apache Pulsar(TM) connector mapping can include individual fields in the JSON structure.
+When the data format for the message key or value is JSON, the {product} mapping can include individual fields in the JSON structure.
 
 In the following example, the key is a text field and the value is JSON.
 The key is mapped to a `name` field, and each of the JSON fields are mapped to a separate column in the table.
@@ -104,8 +104,8 @@ cqlsh -e "CREATE KEYSPACE stocks_keyspace \
   'Cassandra': 1};"
 ----
 +
-For DSE and Cassandra clusters, make sure that the keyspace is replicated to a datacenter set in the connector's `xref:cfgRefPulsarDseConnection.adoc[contactPoints]` parameter.
-DSE datacenter names are case sensitive.
+For {dse-short} and {cass-short} clusters, make sure that the keyspace is replicated to a datacenter set in the connector's `xref:cfgRefPulsarDseConnection.adoc[contactPoints]` parameter.
+{dse-short} datacenter names are case sensitive.
 Use `xref:dse:managing:tools/nodetool/ring.adoc[nodetool ring]` to get a list of datacenters.
 
 . Create a table.
@@ -124,7 +124,7 @@ cqlsh -e "CREATE TABLE stocks_keyspace.stocks_table ( \
   PRIMARY KEY (symbol, ts));"
 ----
 
-. For DSE, verify that all nodes have the same schema version using `xref:dse:managing:tools/nodetool/describe-ring.adoc[nodetool describering]`.
+. For {dse-short}, verify that all nodes have the same schema version using `xref:dse:managing:tools/nodetool/describe-ring.adoc[nodetool describering]`.
 +
 For example, this command verifies the schema for `stocks_keyspace`:
 +
@@ -133,7 +133,7 @@ For example, this command verifies the schema for `stocks_keyspace`:
 nodetool describering -- stocks_keyspace
 ----
 
-. In the DataStax connector configuration file, add the Pulsar topic name to `xref:cfgRefPulsarDseTable.adoc#topics[topics]`, and define the xref:cfgRefPulsarDseTable.adoc#mapping[field-to-column mapping].
+. In the {product} configuration file, add the {pulsar-short} topic name to `xref:cfgRefPulsarDseTable.adoc#topics[topics]`, and define the xref:cfgRefPulsarDseTable.adoc#mapping[field-to-column mapping].
 +
 The following example is maps the `stocks_topic` to the `stocks_table` using the minimum required settings:
 +
@@ -152,7 +152,7 @@ topic:
 
 == Map JSON-only messages
 
-The DataStax Apache Pulsar connector supports mapping JSON messages with or without a schema.
+The {product} supports mapping JSON messages with or without a schema.
 
 In this example, the key is regular JSON without a schema, and the value is JSON that contains a schema and payload.
 The type of the payload is `Map`, and the connector is able to access the individual fields of the map.
@@ -308,8 +308,8 @@ cqlsh -e "CREATE KEYSPACE stocks_keyspace \
   'Cassandra': 1};"
 ----
 +
-For DSE and Cassandra clusters, make sure that the keyspace is replicated to a datacenter set in the connector's `xref:cfgRefPulsarDseConnection.adoc[contactPoints]` parameter.
-DSE datacenter names are case sensitive.
+For {dse-short} and {cass-short} clusters, make sure that the keyspace is replicated to a datacenter set in the connector's `xref:cfgRefPulsarDseConnection.adoc[contactPoints]` parameter.
+{dse-short} datacenter names are case sensitive.
 Use `xref:dse:managing:tools/nodetool/ring.adoc[nodetool ring]` to get a list of datacenters.
 
 . Create a table.
@@ -328,7 +328,7 @@ cqlsh -e "CREATE TABLE stocks_keyspace.stocks_table ( \
   PRIMARY KEY (symbol, ts));"
 ----
 
-. For DSE, verify that all nodes have the same schema version using `xref:dse:managing:tools/nodetool/describe-ring.adoc[nodetool describering]`.
+. For {dse-short}, verify that all nodes have the same schema version using `xref:dse:managing:tools/nodetool/describe-ring.adoc[nodetool describering]`.
 +
 For example, this command verifies the schema for `stocks_keyspace`:
 +
@@ -337,7 +337,7 @@ For example, this command verifies the schema for `stocks_keyspace`:
 nodetool describering -- stocks_keyspace
 ----
 
-. In the DataStax connector configuration file, add the Pulsar topic name to `xref:cfgRefPulsarDseTable.adoc#topics[topics]`, and then define the xref:cfgRefPulsarDseTable.adoc#mapping[field-to-column mapping].
+. In the {product} configuration file, add the {pulsar-short} topic name to `xref:cfgRefPulsarDseTable.adoc#topics[topics]`, and then define the xref:cfgRefPulsarDseTable.adoc#mapping[field-to-column mapping].
 +
 The following example is maps the `stocks_topic` to the `stocks_table` using the minimum required settings:
 +
