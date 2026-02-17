@@ -30,7 +30,7 @@ cqlsh -e "CREATE KEYSPACE world_keyspace \
   'Cassandra': 1};"
 ----
 +
-For {dse-short} and {cass-short} clusters, make sure that the keyspace is replicated to a datacenter set in the connector's `xref:cfgRefPulsarDseConnection.adoc[contactPoints]` parameter.
+For {dse-short} and {cass-short} clusters, make sure that the keyspace is replicated to a datacenter set in the {product-short}'s `xref:cfgRefPulsarDseConnection.adoc[contactPoints]` parameter.
 {dse-short} datacenter names are case sensitive.
 Use `xref:dse:managing:tools/nodetool/ring.adoc[nodetool ring]` to get a list of datacenters.
 

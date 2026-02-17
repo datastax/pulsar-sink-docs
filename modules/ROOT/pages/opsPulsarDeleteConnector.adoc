@@ -3,7 +3,7 @@
 
 To completely remove the {product}, do the following:
 
-. Delete any sinks associated with the connector:
+. Delete any sinks associated with the {product-short}:
 +
 [source,bash,subs="+quotes"]
 ----
@@ -37,14 +37,14 @@ Shutdown is in progress... Please wait...
 Shutdown completed.
 ----
 
-. Remove the {product} NAR from your {pulsar-short} `connectors` directory:
+. Remove the {product-short} NAR from your {pulsar-short} `connectors` directory:
 +
 [source,bash]
 ----
 rm connectors/cassandra-enhanced-pulsar-sink-1.4.0.nar
 ----
 
-. Optional: Remove the connector configuration YAML file from your {pulsar-short} `config` directory.
+. Optional: Remove the {product-short} configuration YAML file from your {pulsar-short} `config` directory.
 
 . Restart the {pulsar-short} service:
 +

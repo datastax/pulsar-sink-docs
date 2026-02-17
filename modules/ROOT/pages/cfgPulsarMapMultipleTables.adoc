@@ -117,7 +117,7 @@ CREATE TABLE stocks_keyspace.stocks_table_by_industry (
    PRIMARY KEY (industry, ts));
 ----
 
-Configure the connector and add all the map specifications:
+Configure the {product-short} and add all the map specifications:
 
 * `stocks_topic` to `stocks_table_by_symbol`
 +

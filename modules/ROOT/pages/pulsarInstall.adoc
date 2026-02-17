@@ -6,21 +6,21 @@ Install {product} from the {company} distribution tar file using an account that
 
 == System requirements
 
-The system requirements for {product} depends on the workload and network capacity.
+The system requirements for {product-short} depends on the workload and network capacity.
 The factors include characteristics of the {pulsar-short} topic and the cluster data models and volume.
-{company} recommends testing with realistic data flows before committing to an instance type for the connector.
+{company} recommends testing with realistic data flows before committing to an instance type for the {product-short}.
 
 Database::
-The {product} supports the following databases:
+The {product-short} supports the following databases:
 +
 * {company} {astra-db}
 * {dse} 4.7 and later (non-EOL versions recommended)
 * Open source {cass-reg} 2.1 and later (non-EOL versions recommended, full compatibility with 5.x isn't guaranteed)
 
 {pulsar-short}::
-The {product} requires {pulsar} 2.7.0 or later.
+The {product-short} requires {pulsar} 2.7.0 or later.
 +
-The connector supports the following data structures in {pulsar-short} topics:
+The {product-short} supports the following data structures in {pulsar-short} topics:
 +
 * Primitive string values
 * Avro
@@ -31,28 +31,28 @@ Operating system::
 The supported operating systems are Linux and macOS.
 
 CPU::
-{product} is bound by the amount of CPU available on the host.
-The connector holds all the records pulled from {pulsar-short} topics in memory, along with the cluster metadata and prepared statements.
+{product-short} is bound by the amount of CPU available on the host.
+The {product-short} holds all the records pulled from {pulsar-short} topics in memory, along with the cluster metadata and prepared statements.
 +
 Memory pressure is influenced by the following:
 +
 * Record size of {pulsar-short} topics
 * Number of records pulled at the same time, where the maximum is set by the workers `batchSize` parameter.
-* Number of simultaneous tasks run by the connector
+* Number of simultaneous tasks run by the {product-short}
 
 Network::
-{product} needs adequate network capacity for the payload.
+{product-short} needs adequate network capacity for the payload.
 This includes the connections from {pulsar-short} Servers to the target platform.
-Scale the connector horizontally by adding additional workers to increase overall throughput.
+Scale the {product-short} horizontally by adding additional workers to increase overall throughput.
 +
-The {product} framework automatically rebalances the load when workers are added by reallocating the tasks among the workers.
+The {product-short} framework automatically rebalances the load when workers are added by reallocating the tasks among the workers.
 
-== Install the connector
+== Install the {product-short}
 
 Perform the following steps on a {pulsar-short} Connect node running {pulsar} 2.7.0 or later.
 If you need to install {pulsar-short}, see xref:ROOT:pulsarQuickStart.adoc[].
 
-. Download the {product} tar file from the https://downloads.datastax.com/#apc[{company} downloads site].
+. Download the {product-short} tar file from the https://downloads.datastax.com/#apc[{company} downloads site].
 
 . Extract the files, replacing **VERSION** with the version number of the tar file you downloaded:
 +
@@ -75,7 +75,7 @@ cassandra-enhanced-pulsar-sink-1.4.0.nar
 . In your {pulsar-short} `home` directory, find the `connectors` directory.
 If there isn't a `connectors` directory, create one.
 
-. Move the {product} NAR file to the {pulsar-short} `connectors` directory:
+. Move the {product-short} NAR file to the {pulsar-short} `connectors` directory:
 +
 [source,bash]
 ----
@@ -91,7 +91,7 @@ For example, for information about connection, authentication, and encryption pa
 
 . Ensure that the user running {pulsar-short} has permission to access the configuration and NAR files.
 
-== Start {pulsar-short} with the connector
+== Start {pulsar-short} with the {product-short}
 
 . Start, restart, or reload your {pulsar-short} instance:
 +
@@ -100,7 +100,7 @@ For example, for information about connection, authentication, and encryption pa
 bin/pulsar-admin sinks reload
 ----
 
-. Check that the {product} is available:
+. Check that the {product-short} is available:
 +
 [source,bash]
 ----
@@ -128,7 +128,7 @@ Replace the following:
 * **`NAMESPACE_NAME`**: The name of the relevant {pulsar-short} namespace.
 * **`TOPIC_NAME`**: The name of the {pulsar-short} topic that you want to stream to your database.
 +
-The topic mapping is set in the connector's configuration YAML file.
+The topic mapping is set in the {product-short}'s configuration YAML file.
 Make sure that it matches the schema of the table where you want to write the messages.
 For more information, see xref:ROOT:cfgRefPulsarDseTable.adoc[].
 
@@ -136,4 +136,4 @@ For more information, see xref:ROOT:cfgRefPulsarDseTable.adoc[].
 
 == Next steps
 
-Explore the rest of the documentation to learn more about configuring and using the {product}.
+Explore the rest of the documentation to learn more about configuring and using the {product-short}.

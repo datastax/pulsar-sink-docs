@@ -1,12 +1,12 @@
 = Troubleshoot the {product}
-:navtitle: Troubleshoot the connector
+:navtitle: Troubleshoot the {product-short}
 :page-aliases: ROOT:trbPulsarTsLoadBalancing.adoc, trbPulsarTsRecordFailsToWriteToTable.adoc, trbPulsarTsRecordParsingFails.adoc
 
 This page describes some common issues that you might encounter when using the {product} and how to resolve them.
 
 == Load balancing datacenter is not specified
 
-The following error message occurs when the load balancing datacenter isn't set in the connector's configuration file:
+The following error message occurs when the load balancing datacenter isn't set in the {product-short}'s configuration file:
 
 [source,console]
 ----
@@ -15,7 +15,7 @@ org.apache.pulsar.common.config.ConfigException: Invalid value [127.0.0.2] for
           also be specified
 ----
 
-The connector requires that you set the `loadBalancing.localDc` for {dse-short} clusters when `contactPoints` isn't set to `localhost`.
+The {product-short} requires that you set the `loadBalancing.localDc` for {dse-short} clusters when `contactPoints` isn't set to `localhost`.
 
 Check the datacenter name in the cluster by running `xref:dse:managing:tools/nodetool/status.adoc[nodetool status]`, and then verify that `xref:ROOT:cfgRefPulsarDseConnection.adoc[loadBalancing.localDc]` has the exact same name, including capitalization.
 {dse-short} datacenter names are case sensitive.
@@ -27,7 +27,7 @@ Make sure your connector configuration file includes a valid path to the databas
 
 The {pulsar-short} connector collects records to write to the database in CQL `xref:dse-6.9@cql:reference:cql-commands/batch.adoc[BATCH]` commands.
 Data insertions and deletions in the records are known as mutations.
-The connector is implemented to use single-partition batches that are submitted as one mutation operation.
+The {product-short} is implemented to use single-partition batches that are submitted as one mutation operation.
 
 For a given batch, if the total size of the mutation exceeds the maximum allowed by {dse-short} in `xref:dse:managing:configure/configure-cassandra-yaml.adoc#max_mutation_size_in_kb[max_mutation_size_in_kb]` the batch is rejected and the error message is written to the `system.log`, by default in `var/log/cassandra`.
 
@@ -58,7 +58,7 @@ Missing records can have many causes, such as node availability, transient error
 
 To investigate this issue, do the following:
 
-. Change the connector's `verbose` option to `true` in your sink configuration file:
+. Change the {product-short}'s `verbose` option to `true` in your sink configuration file:
 +
 [source,yaml]
 ----
@@ -89,7 +89,7 @@ java.lang.IllegalArgumentException: Could not parse 'jack'; accepted formats are
 ----
 
 Ensure that the {pulsar-short} fields are mapped to the correct database columns.
-The connector can not automatically convert varying types.
+The {product-short} can not automatically convert varying types.
 
 If they do not match, consider changing your table schema to accommodate the {pulsar-short} field types.
 

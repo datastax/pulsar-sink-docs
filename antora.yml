@@ -9,6 +9,7 @@ nav:
 asciidoc:
   attributes:
     product: 'DataStax Apache Pulsar Connector'
+    product-short: 'Pulsar Connector'
     pulsar-reg: 'Apache Pulsar(TM)'
     pulsar: 'Apache Pulsar'
     pulsar-short: 'Pulsar'

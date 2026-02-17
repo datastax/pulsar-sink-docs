@@ -2,7 +2,7 @@
 
 The {product} allows for mapping multiple topics to multiple tables in a single connector instance.
 
-NOTE: Most {pulsar-reg} systems store all messages in the same format and {product} workers only support a single converter class for key and value.
+NOTE: Most {pulsar-reg} systems store all messages in the same format and {product-short} workers only support a single converter class for key and value.
 
 In the example `stocks_topic`, the key is a basic string and the value is regular JSON.
 
@@ -168,7 +168,7 @@ CREATE TABLE baseball_keyspace.baseball_table (
    city text);
 ----
 
-In the connector configuration, add the following settings:
+In the {product-short} configuration, add the following settings:
 
 * {blank}
 +

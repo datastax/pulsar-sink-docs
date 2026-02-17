@@ -86,7 +86,7 @@ The following table describes the desired outcome from the mapping when the mess
 |===
 
 
-To achieve this outcome, the connector's mapping must be configured as follows.
+To achieve this outcome, the {product-short}'s mapping must be configured as follows.
 For this example, the topic name is `users_topic`, the keyspace name is `users_keyspace`, and the table name is `users_table`.
 
 [source,yaml]

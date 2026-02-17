@@ -67,7 +67,7 @@ Default: `30`
 
 //Author's note: pulsar-sink uses an embedded Java driver. As of 1.6.14, it uses 4.16.0 (https://github.com/datastax/pulsar-sink/blob/master/pom.xml#L46), which is a pre-donation "DataStax Java driver" version.
 
-In your {product} configuration file, you can pass some connection parameters directly to the embedded {cass} Java driver by using the `datastax-java-driver` prefix.
+In your {product-short} configuration file, you can pass some connection parameters directly to the embedded {cass} Java driver by using the `datastax-java-driver` prefix.
 For example:
 
 [source,yaml]
@@ -80,7 +80,7 @@ datastax-java-driver.basic.request.consistency=ALL
 If you define both base and `java-driver` parameters in your configuration file, the base parameters take precedence over their equivalent `java-driver` parameters.
 If you don't specify either, then the default value for the base {pulsar-short} connector parameter is used.
 
-The following list maps {product} parameters to their functionally equivalent Java driver parameters:
+The following list maps {product-short} parameters to their functionally equivalent Java driver parameters:
 
 * `contactPoints`: `datastax-java-driver.basic.contact-points`
 +
@@ -135,8 +135,8 @@ datastax-java-driver.advanced.metrics.session.enabled.1=b
 
 == Authentication and encryption
 
-You can authenticate the {product} session using internal, LDAP, Kerberos, or application token authentication, depending on the methods supported by your cluster.
-The connector also supports SSL-encrypted connections.
+You can authenticate the {product-short} session using internal, LDAP, Kerberos, or application token authentication, depending on the methods supported by your cluster.
+The {product-short} also supports SSL-encrypted connections.
 
 [tabs]
 ======
@@ -144,7 +144,7 @@ The connector also supports SSL-encrypted connections.
 +
 --
 When xref:6.9@dse:securing:authorization-authentication/enable-unified-authentication.adoc[{dse-short} Unified Authentication is enabled], you must provide internal/LDAP authentication credentials or the Kerberos keytab filepath in the <<authentication-parameters,authentication parameters>>.
-The connector supports {dse-short} role management with internal and LDAP schemes.
+The {product-short} supports {dse-short} role management with internal and LDAP schemes.
 
 If the cluster has client encryption enabled, configure the <<ssl-encrypted-connections,SSL keys and certificates in the {pulsar-short} connector>>.
 SSL encryption settings are configured in the xref:6.9@dse:securing:encrypt-client-node-ssl.adoc[{dse-short} client-to-node encryption options].
@@ -185,10 +185,10 @@ The path to the Kerberos configuration file (`https://web.mit.edu/Kerberos/krb5-
 
 username::
 For {dse-short}, provide the login role name or LDAP username.
-If xref:6.9@dse:managing:configure/configure-dse-yaml.adoc#authorizationOptions[authorization is enabled], this login role must have a minimum of `modify` privileges on the tables that receive data from the {product}.
+If xref:6.9@dse:managing:configure/configure-dse-yaml.adoc#authorizationOptions[authorization is enabled], this login role must have a minimum of `modify` privileges on the tables that receive data from the {product-short}.
 +
 For {astra-db}, enter the literal string `token` or provide the `clientId` from an {astra} application token.
-The application token's role must have read/write privileges on the tables that receive data from the {product}.
+The application token's role must have read/write privileges on the tables that receive data from the {product-short}.
 
 password::
 For {dse-short}, provide the password for the login role or LDAP username.

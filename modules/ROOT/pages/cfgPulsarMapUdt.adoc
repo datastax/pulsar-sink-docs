@@ -102,7 +102,7 @@ CREATE TABLE stocks_keyspace.stocks_table (
     stocks FROZEN<stocks_type>);
 ----
 
-. In the connector configuration, define the mapping as follows:
+. In the {product-short} configuration, define the mapping as follows:
 +
 [source,yaml]
 ----
@@ -115,7 +115,7 @@ topic:
 
 == Map complex UDTs
 
-The connector supports mapping complex user defined types of `map`, `set`, and `list`.
+The {product-short} supports mapping complex user defined types of `map`, `set`, and `list`.
 
 . Using the same keyspace from the previous example, create a UDT named `stocks_complex_type` with the following definition:
 +
@@ -149,7 +149,7 @@ CREATE TABLE stocks_keyspace.stocks_complex_udt_table (
     stocks_complex FROZEN<stocks_complex_type>);
 ----
 
-. In the connector configuration, define the mapping as follows:
+. In the {product-short} configuration, define the mapping as follows:
 +
 [source,yaml]
 ----
@@ -165,7 +165,7 @@ topic:
 
 If your mapping includes maps or UDTs, you can xref:ROOT:cfgPulsarCqlQuery.adoc[use CQL queries in your connector configuration] to selectively update maps and UDTs based on the existence of values in the {pulsar-short} fields.
 
-When a new record arrives, the connector sets only the non-null fields in the message.
+When a new record arrives, the {product-short} sets only the non-null fields in the message.
 It won't override UDT fields that have a null value or aren't present in the {pulsar-short} record.
 This configuration requires that `xref:cfgRefPulsarDseTable.adoc#nullToUnset[nullToUnset]` is `true`.
 

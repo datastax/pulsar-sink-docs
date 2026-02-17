@@ -1,7 +1,7 @@
 = {pulsar-short} topic-to-table parameters
 :page-aliases: ROOT:cfgPulsarSettingRowLevelTtl.adoc, ROOT:cfgPulsarMapTopicTable.adoc, ROOT:cfgPulsarColumnWritetimeTimestamp.adoc, ROOT:cfgRefPulsarDates.adoc, ROOT:cfgPulsarNowFunction.adoc, ROOT:cfgPulsarRecordHeaderToTable.adoc
 
-The connector writes messages from your {pulsar-short} topics to tables in your database using the mapping and topic properties set in your connector's configuration YAML file.
+The {product} writes messages from your {pulsar-short} topics to tables in your database using the mapping and topic properties set in your connector's configuration YAML file.
 
 This includes the topic name, keyspace name, table name, schema mapping, codec options, and other write options.
 
@@ -44,7 +44,7 @@ topic:
 
 [#topics]
 topics::
-A comma separated list of all topics to which the {product} subscribes.
+A comma separated list of all topics to which the {product-short} subscribes.
 
 topic::
 A container for the configuration details for each subscribed topic.
@@ -115,7 +115,7 @@ Whether to treat null values in {pulsar-short} as `UNSET` in the database table.
 +
 This parameter controls the handling of updates versus overrides.
 +
-If `true`, the {product} treats null values as unset fields.
+If `true`, the {product-short} treats null values as unset fields.
 When a new record arrives, it only updates fields that _aren't_ null in the incoming message.
 {company} recommends setting this to `true` to avoid creating unnecessary tombstones.
 +
@@ -160,24 +160,24 @@ For example:
         ttlTimeUnit: SECONDS
 ----
 
-If you set both static and dynamic TTL, the dynamic TTL (in `mapping`) takes precedence, and the connector writes a warning message to the log file.
+If you set both static and dynamic TTL, the dynamic TTL (in `mapping`) takes precedence, and the {product-short} writes a warning message to the log file.
 
 If the dynamic TTL value is negative, an error is thrown when writing records to the table.
-However, the connector inserts the record without the TTL because the {pulsar-short} connector is a streaming system.
+However, the {product-short} inserts the record without the TTL because the {pulsar-short} connector is a streaming system.
 --
 ======
 +
 If TTL is set (either statically or dynamically), the same TTL limit is applied to _all_ rows in the mapped table.
-The {product} appends `AND TTL <seconds>` to all `INSERT` statements for the table.
+The {product-short} appends `AND TTL <seconds>` to all `INSERT` statements for the table.
 +
 With either static or dynamic TTL, you can optionally set `ttlTimeUnit` to specify the time unit for the `ttl` value.
 The default time unit is `SECONDS`.
-If you specify a different time unit, such as `HOURS`, the {product} automatically converts the value to `SECONDS` for compatibility.
+If you specify a different time unit, such as `HOURS`, the {product-short} automatically converts the value to `SECONDS` for compatibility.
 
 [#mapping-properties]
 === Mapping properties and functions
 
-The `<<mapping,mapping>>` parameter accepts additional properties that you can use to modify how the connector writes records to the table:
+The `<<mapping,mapping>>` parameter accepts additional properties that you can use to modify how the {product-short} writes records to the table:
 
 header::
 In the `mapping` parameter, you can extract values from the message properties, and then write those values to a database table.
@@ -207,7 +207,7 @@ For example:
 ----
 +
 By default, the database internally tracks the `writetime` timestamp of records inserted from {pulsar-short}.
-Use the `__timestamp` property when your {pulsar-short} records have an explicit timestamp field that you want to use as the writetime for the database record produced by the connector.
+Use the `__timestamp` property when your {pulsar-short} records have an explicit timestamp field that you want to use as the writetime for the database record produced by the {product-short}.
 +
 If you set `__timestamp`, you can also set `timestampTimeUnit` to specify the time unit for the provided timestamp value:
 +
@@ -219,7 +219,7 @@ If you set `__timestamp`, you can also set `timestampTimeUnit` to specify the ti
 ----
 +
 The default timestamp time unit is `MICROSECONDS`.
-If you specify a different time unit, such as `SECONDS`, the {product} automatically converts the value to `MICROSECONDS` for compatibility.
+If you specify a different time unit, such as `SECONDS`, the {product-short} automatically converts the value to `MICROSECONDS` for compatibility.
 
 __ttl::
 See `<<ttl,ttl>>`.
@@ -267,7 +267,7 @@ Note that the `codec` parameters are nested under the topic name (`topics.topic.
 
 [TIP]
 ====
-In addition to the following settings, the connector supports any public static field in `https://docs.oracle.com/javase/8/docs/api/java/time/format/DateTimeFormatter.html[java.time.format.DateTimeFormatter]` as an option.
+In addition to the following settings, the {product-short} supports any public static field in `https://docs.oracle.com/javase/8/docs/api/java/time/format/DateTimeFormatter.html[java.time.format.DateTimeFormatter]` as an option.
 ====
 
 timestamp::

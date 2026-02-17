@@ -4,7 +4,7 @@ In your connector configuration, you can provide a CQL query to run when a new r
 
 [IMPORTANT]
 ====
-If you define a query in the mapping, the query has priority, and it is used instead of the connector's automatically generated action.
+If you define a query in the mapping, the query has priority, and it is used instead of the {product-short}'s automatically generated action.
 
 This is an advanced feature for specific use cases.
 Typically, you can use the standard {pulsar-short} mapping without a query.

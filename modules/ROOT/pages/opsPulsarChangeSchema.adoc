@@ -7,7 +7,7 @@ You must update the {product} configuration when your field or table schema chan
 
 Use these steps to write a new {pulsar-short} field to an existing table column:
 
-. In the connector's configuration file, add the xref:ROOT:cfgRefPulsarDseTable.adoc[field-to-column mapping].
+. In the {product-short}'s configuration file, add the xref:ROOT:cfgRefPulsarDseTable.adoc[field-to-column mapping].
 
 . Use `xref:ROOT:opsPulsarAboutOperations.adoc#pulsar-admin-sinks-update[pulsar-admin sinks update]` to apply the new configuration.
 

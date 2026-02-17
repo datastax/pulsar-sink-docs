@@ -3,7 +3,7 @@
 
 This quickstart provides the minimal configuration to connect a standalone {pulsar-reg} instance to a single, standalone {dse} node.
 
-It covers installation and configuration of {dse-short}, {pulsar}, and the connector.
+It covers installation and configuration of {dse-short}, {pulsar}, and the {product}.
 Then, it demonstrates how to send simple key/value pair messages from {pulsar-short} to {dse-short} with the {pulsar-short} client utility and verify that the records were written to the database table.
 
 == Install {dse-short}
@@ -54,7 +54,7 @@ cqlsh> CREATE TABLE pulsar_qs.pulsar_kv (
 );
 ----
 
-== Install {pulsar} and the connector
+== Install {pulsar} and the {product-short}
 
 . Download {pulsar} 2.7.0 or later:
 +
@@ -72,7 +72,7 @@ tar xvfz apache-pulsar-2.7.0-bin.tar.gz
 
 . Download the {product} tar file from the https://downloads.datastax.com/#apc[{company} downloads site].
 +
-For more information about system requirements for the connector, see xref:ROOT:pulsarInstall.adoc[].
+For more information about system requirements for the {product-short}, see xref:ROOT:pulsarInstall.adoc[].
 
 . Extract the files, replacing **VERSION** with the version number of the tar file you downloaded:
 +
@@ -84,7 +84,7 @@ tar zxf cassandra-enhanced-pulsar-sink-**VERSION**.tar.gz
 . In your {pulsar-short} `home` directory, find the `connectors` directory.
 If there isn't a `connectors` directory, create one.
 
-. Move the {product} NAR file to the {pulsar-short} `connectors` directory:
+. Move the {product-short} NAR file to the {pulsar-short} `connectors` directory:
 +
 [source,bash]
 ----
@@ -157,7 +157,7 @@ configs:
 
 . Ensure that the user running {pulsar-short} has permission to access the configuration and NAR files.
 
-== Run {pulsar-short} with the connector
+== Run {pulsar-short} with the {product-short}
 
 . Start {pulsar} in standalone mode:
 +
@@ -166,14 +166,14 @@ configs:
 bin/pulsar standalone
 ----
 
-. In a new terminal, check that the {product} is running:
+. In a new terminal, check that the {product-short} is running:
 +
 [source,bash]
 ----
 curl -s http://localhost:8080/admin/v2/functions/connectors
 ----
 +
-Make sure the response includes the {product}:
+Make sure the response includes the {product-short}:
 +
 [source,json]
 ----
@@ -194,7 +194,7 @@ bin/pulsar-admin sinks create \
 	--inputs "persistent://public/default/example_topic"
 ----
 +
-The topic name and mapping are set in the connector configuration YAML file.
+The topic name and mapping are set in the {product-short} configuration YAML file.
 
 . Send some messages to your new sink:
 +
