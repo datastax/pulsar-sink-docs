@@ -1,30 +1,30 @@
-= Pulsar connector single instance quickstart for DSE
-:navtitle: Single instance quickstart for DSE
+= {pulsar-short} connector single instance quickstart for {dse-short}
+:navtitle: Single instance quickstart for {dse-short}
 
-This quickstart provides the minimal configuration to connect a standalone Apache Pulsar(TM) instance to a single, standalone DataStax Enterprise (DSE) node.
+This quickstart provides the minimal configuration to connect a standalone {pulsar-reg} instance to a single, standalone {dse} node.
 
-It covers installation and configuration of DSE, Apache Pulsar, and the connector.
-Then, it demonstrates how to send simple key/value pair messages from Pulsar to DSE with the Pulsar client utility and verify that the records were written to the database table.
+It covers installation and configuration of {dse-short}, {pulsar}, and the {product}.
+Then, it demonstrates how to send simple key/value pair messages from {pulsar-short} to {dse-short} with the {pulsar-short} client utility and verify that the records were written to the database table.
 
-== Install DSE
+== Install {dse-short}
 
-. If you don't have DSE installed already, xref:dse:installing:tarball-dse.adoc[install the tarball distribution of DSE].
+. If you don't have {dse-short} installed already, xref:dse:installing:tarball-dse.adoc[install the tarball distribution of {dse-short}].
 
-. Enable authentication or get the credentials for your DSE cluster.
+. Enable authentication or get the credentials for your {dse-short} cluster.
 +
-By default, DSE doesn't enable authentication.
-While this may be acceptable for this quickstart, DataStax recommends enabling authentication for production clusters.
+By default, {dse-short} doesn't enable authentication.
+While this may be acceptable for this quickstart, {company} recommends enabling authentication for production clusters.
 
-. Start DSE from the installation directory:
+. Start {dse-short} from the installation directory:
 +
 [source,bash]
 ----
 bin/dse cassandra
 ----
 +
-You can run `bin/nodetool status` to verify that DSE is running from the installation directory, and get the node address and other connection details.
+You can run `bin/nodetool status` to verify that {dse-short} is running from the installation directory, and get the node address and other connection details.
 
-. Create a keyspace and table for your Pulsar records:
+. Create a keyspace and table for your {pulsar-short} records:
 +
 .. Start `cqlsh`:
 +
@@ -54,25 +54,25 @@ cqlsh> CREATE TABLE pulsar_qs.pulsar_kv (
 );
 ----
 
-== Install Apache Pulsar and the connector
+== Install {pulsar} and the {product-short}
 
-. Download Apache Pulsar 2.7.0 or later:
+. Download {pulsar} 2.7.0 or later:
 +
 [source,bash]
 ----
 wget https://archive.apache.org/dist/pulsar/pulsar-2.7.0/apache-pulsar-2.7.0-bin.tar.gz
 ----
 
-. Untar the Pulsar binary:
+. Untar the {pulsar-short} binary:
 +
 [source,bash]
 ----
 tar xvfz apache-pulsar-2.7.0-bin.tar.gz
 ----
 
-. Download the DataStax Apache Pulsar connector tar file from the https://downloads.datastax.com/#apc[DataStax downloads site].
+. Download the {product} tar file from the https://downloads.datastax.com/#apc[{company} downloads site].
 +
-For more information about system requirements for the connector, see xref:ROOT:pulsarInstall.adoc[].
+For more information about system requirements for the {product-short}, see xref:ROOT:pulsarInstall.adoc[].
 
 . Extract the files, replacing **VERSION** with the version number of the tar file you downloaded:
 +
@@ -81,17 +81,17 @@ For more information about system requirements for the connector, see xref:ROOT:
 tar zxf cassandra-enhanced-pulsar-sink-**VERSION**.tar.gz
 ----
 
-. In your Pulsar `home` directory, find the `connectors` directory.
+. In your {pulsar-short} `home` directory, find the `connectors` directory.
 If there isn't a `connectors` directory, create one.
 
-. Move the DataStax Pulsar connector NAR file to the Pulsar `connectors` directory:
+. Move the {product-short} NAR file to the {pulsar-short} `connectors` directory:
 +
 [source,bash]
 ----
 mv installation_location/cassandra-enhanced-pulsar-sink-1.4.0.nar pulsar_home/connectors
 ----
 
-. In your Pulsar `config` directory, create a `qs.yml` file with the following contents:
+. In your {pulsar-short} `config` directory, create a `qs.yml` file with the following contents:
 +
 .qs.yml
 [source,yaml]
@@ -155,32 +155,32 @@ configs:
 
 . If your cluster has authentication enabled, you want to use an SSL-encrypted connection, or your cluster isn't compatible with the connection properties in `qs.yml`, you must edit the configuration file as explained in xref:ROOT:cfgRefPulsarDseConnection.adoc[].
 
-. Ensure that the user running Pulsar has permission to access the configuration and NAR files.
+. Ensure that the user running {pulsar-short} has permission to access the configuration and NAR files.
 
-== Run Pulsar with the connector
+== Run {pulsar-short} with the {product-short}
 
-. Start Apache Pulsar in standalone mode:
+. Start {pulsar} in standalone mode:
 +
 [source,bash]
 ----
 bin/pulsar standalone
 ----
 
-. In a new terminal, check that the DataStax Pulsar connector is running:
+. In a new terminal, check that the {product-short} is running:
 +
 [source,bash]
 ----
 curl -s http://localhost:8080/admin/v2/functions/connectors
 ----
 +
-Make sure the response includes the DataStax Pulsar connector:
+Make sure the response includes the {product-short}:
 +
 [source,json]
 ----
-[{"name":"cassandra-enhanced","description":"A DataStax Pulsar Sink to load records from Pulsar topics to Apache Cassandra(R) or DataStax Enterprise(DSE)\n","sinkClass":"com.datastax.oss.sink.pulsar.RecordCassandraSinkTask"}]
+[{"name":"cassandra-enhanced","description":"A DataStax {pulsar-short} Sink to load records from {pulsar-short} topics to {cass-reg} or DataStax Enterprise(DSE)\n","sinkClass":"com.datastax.oss.sink.pulsar.RecordCassandraSinkTask"}]
 ----
 
-. Create a Pulsar sink:
+. Create a {pulsar-short} sink:
 +
 [source,bash]
 ----
@@ -194,7 +194,7 @@ bin/pulsar-admin sinks create \
 	--inputs "persistent://public/default/example_topic"
 ----
 +
-The topic name and mapping are set in the connector configuration YAML file.
+The topic name and mapping are set in the {product-short} configuration YAML file.
 
 . Send some messages to your new sink:
 +
@@ -205,7 +205,7 @@ bin/pulsar-client produce -k "Message 2" -m "Content 2" persistent://public/defa
 bin/pulsar-client produce -k "Message 3" -m "Content 3" persistent://public/default/example_topic
 ----
 
-. To verify that the messages were written to DSE, start `cqlsh`, and then query your `pulsar_kv` table:
+. To verify that the messages were written to {dse-short}, start `cqlsh`, and then query your `pulsar_kv` table:
 +
 [source,cql]
 ----

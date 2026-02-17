@@ -1,10 +1,10 @@
 = Determine topic data structure
 
-You can use `https://pulsar.apache.org/docs/en/reference-cli-tools/#consume[pulsar-client]` to examine the structure of Apache Pulsar(TM) messages for a topic.
+You can use `https://pulsar.apache.org/docs/en/reference-cli-tools/#consume[pulsar-client]` to examine the structure of {pulsar-short} messages for a topic.
 
 This can help you determine your field-to-column mapping.
 
-To show Apache Pulsar messages:
+To show {pulsar-short} messages:
 
 [source,bash,subs="+quotes"]
 ----
@@ -13,7 +13,7 @@ bin/pulsar-client consume **TOPIC_NAME** -s "**SUBSCRIPTION_NAME**"
 
 Replace the following:
 
-* `**TOPIC_NAME**`: Name of the Pulsar topic receiving the messages.
+* `**TOPIC_NAME**`: Name of the {pulsar-short} topic receiving the messages.
 * `**SUBSCRIPTION_NAME**`: Arbitrary name for the consumer subscription.
 
 The response is the message data when a message is received.

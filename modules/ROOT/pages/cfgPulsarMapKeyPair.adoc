@@ -7,16 +7,16 @@ Map the key and value to table columns.
 
 When mapping fields to columns, the following requirements apply:
 
-* The data in the Pulsar field must be compatible with the mapped column's xref:dse-6.9@cql:reference:data-types.adoc[data type].
+* The data in the {pulsar-short} field must be compatible with the mapped column's xref:dse-6.9@cql:reference:data-types.adoc[data type].
 For example, a string field cannot map to a number column.
 
-* A Pulsar field mapped to a table's primary key (PK) column must always contain data because primary key columns don't allow nulls.
+* A {pulsar-short} field mapped to a table's primary key (PK) column must always contain data because primary key columns don't allow nulls.
 
 * All primary key columns must have a mapping because primary key columns don't allow nulls.
 
 == Basic mapping example
 
-In this example, a Pulsar topic named `world_topic` contains five records with a key-value pair in each.
+In this example, a {pulsar-short} topic named `world_topic` contains five records with a key-value pair in each.
 The key is an integer and the value is text.
 
 . Create a keyspace in your database.
@@ -30,8 +30,8 @@ cqlsh -e "CREATE KEYSPACE world_keyspace \
   'Cassandra': 1};"
 ----
 +
-For DSE and Cassandra clusters, make sure that the keyspace is replicated to a datacenter set in the connector's `xref:cfgRefPulsarDseConnection.adoc[contactPoints]` parameter.
-DSE datacenter names are case sensitive.
+For {dse-short} and {cass-short} clusters, make sure that the keyspace is replicated to a datacenter set in the {product-short}'s `xref:cfgRefPulsarDseConnection.adoc[contactPoints]` parameter.
+{dse-short} datacenter names are case sensitive.
 Use `xref:dse:managing:tools/nodetool/ring.adoc[nodetool ring]` to get a list of datacenters.
 
 . Create a table.
@@ -43,7 +43,7 @@ This example creates a table named `world_table` with two columns:
 cqlsh -e "CREATE TABLE world_table (recordid int PRIMARY KEY, continent text);"
 ----
 
-. For DSE, verify that all nodes have the same schema version using `xref:dse:managing:tools/nodetool/describe-ring.adoc[nodetool describering]`.
+. For {dse-short}, verify that all nodes have the same schema version using `xref:dse:managing:tools/nodetool/describe-ring.adoc[nodetool describering]`.
 +
 For example, this command verifies the schema for `world_keyspace`:
 +
@@ -52,7 +52,7 @@ For example, this command verifies the schema for `world_keyspace`:
 nodetool describering -- world_keyspace
 ----
 
-. In the DataStax connector configuration file, add the Pulsar topic name to `xref:cfgRefPulsarDseTable.adoc#topics[topics]`, and define the xref:cfgRefPulsarDseTable.adoc#mapping[field-to-column mapping].
+. In the {product} configuration file, add the {pulsar-short} topic name to `xref:cfgRefPulsarDseTable.adoc#topics[topics]`, and define the xref:cfgRefPulsarDseTable.adoc#mapping[field-to-column mapping].
 +
 The following example is maps the `world_topic` to the `world_table` using the minimum required settings:
 +

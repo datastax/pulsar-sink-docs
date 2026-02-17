@@ -6,4 +6,19 @@ start_page: 'index.adoc'
 nav:
 - modules/ROOT/nav.adoc
 
-## TODO: Add attributes for DataStax, Astra, Apache Pulsar (Apache Pulsar (TM)/Apache Pulsar/Pulsar), Product (DataStax Apache Pulsar(TM) connector/DataStax Apache Pulsar connector/DataStax Pulsar connector), DSE, Cassandra, etc.
+asciidoc:
+  attributes:
+    product: 'DataStax Apache Pulsar Connector'
+    product-short: 'Pulsar Connector'
+    pulsar-reg: 'Apache Pulsar(TM)'
+    pulsar: 'Apache Pulsar'
+    pulsar-short: 'Pulsar'
+    astra: 'Astra'
+    astra-db: 'Astra DB'
+    scb: 'Secure Connect Bundle (SCB)'
+    scb-short: 'SCB'
+    cass-reg: 'Apache Cassandra(R)'
+    cass: 'Apache Cassandra'
+    cass-short: 'Cassandra'
+    dse: 'DataStax Enterprise (DSE)'
+    dse-short: 'DSE'

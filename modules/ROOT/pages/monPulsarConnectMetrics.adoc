@@ -1,16 +1,16 @@
-= DataStax Apache Pulsar(TM) connector metrics
+= {product} metrics
 :navtitle: Metrics
 
-You can view DataStax Apache Pulsar(TM) connector metrics in raw Prometheus format at the Apache Pulsar metrics endpoint: `http://**PULSAR_INSTANCE**:8080/metrics`.
+You can view {product} metrics in raw Prometheus format at the {pulsar} metrics endpoint: `http://**PULSAR_INSTANCE**:8080/metrics`.
 
-You can also https://prometheus.io/docs/prometheus/latest/getting_started/[configure a Prometheus instance to monitor your Pulsar instance].
+You can also https://prometheus.io/docs/prometheus/latest/getting_started/[configure a Prometheus instance to monitor your {pulsar-short} instance].
 
 == Prometheus query roots and attributes
 
 The entries in this reference are formatted as Prometheus query strings.
 
 The root of each query is a combination of `com_datastax_oss_pulsar_sink`, sink name, and metric class.
-The sink name refers to a configured and running DataStax Pulsar connector sink, and metric class is the general class of the metric, such as `Count` or `SnapShotSize`.
+The sink name refers to a configured and running {product-short} sink, and metric class is the general class of the metric, such as `Count` or `SnapShotSize`.
 For example, a complete query root could be `com_datastax_oss_pulsar_sink_dse_sink_kv_Count`.
 
 In addition to the Prometheus query root, you can append a `name` attribute to focus on specific topics.
@@ -37,7 +37,7 @@ Specifying only the root query returns all of the available named metrics.
 
 == com_datastax_oss_pulsar_sink_<sink_name>_Count
 
-Integer count for various DataStax Pulsar Connect metrics.
+Integer count for various {product-short} metrics.
 
 cql-client-timeouts::
 Number of CQL client timeouts.
@@ -76,7 +76,7 @@ com_datastax_oss_pulsar_sink_dse_sink_kv_Count{instance="localhost:8080", job="p
 ----
 
 failedRecordCount::
-Running total of the number of failed records encountered by the connector instance.
+Running total of the number of failed records encountered by the {product-short} instance.
 +
 .Example
 [source,console]
@@ -293,10 +293,10 @@ com_datastax_oss_pulsar_sink_dse_sink_kv_Mean{instance="localhost:8080", job="pu
 
 == com_datastax_oss_pulsar_sink_<sink_name>_MeanRate
 
-The connector's lifetime average number of records processed.
+The {product-short}'s lifetime average number of records processed.
 
 cql-requests::
-Average number of CQL requests processed since the connector was created.
+Average number of CQL requests processed since the {product-short} was created.
 +
 .Example
 [source,console]
@@ -305,7 +305,7 @@ com_datastax_oss_pulsar_sink_dse_sink_kv_MeanRate{driver="driver", instance="loc
 ----
 
 recordCount::
-Average number of records processed since the connector was created.
+Average number of records processed since the {product-short} was created.
 +
 .Example
 [source,console]
@@ -314,7 +314,7 @@ com_datastax_oss_pulsar_sink_dse_sink_kv_MeanRate{instance="localhost:8080", job
 ----
 
 failedRecordCount::
-Average number of failed records processed since the connector was created.
+Average number of failed records processed since the {product-short} was created.
 +
 .Example
 [source,console]
@@ -323,7 +323,7 @@ com_datastax_oss_pulsar_sink_dse_sink_kv_MeanRate{instance="localhost:8080", job
 ----
 
 failedRecordsWithUnknownTopic::
-Average number of failed records with unknown topics processed since the connector was created.
+Average number of failed records with unknown topics processed since the {product-short} was created.
 +
 .Example
 [source,console]

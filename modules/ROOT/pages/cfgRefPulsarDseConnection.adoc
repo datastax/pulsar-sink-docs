@@ -1,12 +1,12 @@
-= Connect the DataStax Apache Pulsar(TM) connector
+= Connect the {product}
 :navtitle: Connect
 :page-aliases: ROOT:cfgPulsarSettingJavaDriverConfig.adoc, ROOT:cfgRefPulsarAuthLdap.adoc, ROOT:cfgRefPulsarAuth.adoc, ROOT:cfgRefPulsarConnector.adoc, ROOT:cfgRefPulsarSsl.adoc
 
-To connect the DataStax Apache Pulsar(TM) connector to your database cluster, you must configure authentication, encryption, and connection parameters.
+To connect the {product} to your database cluster, you must configure authentication, encryption, and connection parameters.
 
 == Set connection parameters in the configuration file
 
-Use the connection parameters to configure the connection settings from Apache Pulsar to your database cluster.
+Use the connection parameters to configure the connection settings from {pulsar} to your database cluster.
 
 [source,yaml]
 ----
@@ -32,17 +32,17 @@ Default: `localhost`
 
 loadBalancing.localDc:: The case-sensitive datacenter name for the driver to use for load balancing.
 +
-When connecting to Astra with `<<ssl-encrypted-connections,cloud.secureConnectBundle>>`, leave this property unset.
+When connecting to {astra-db} with `<<ssl-encrypted-connections,cloud.secureConnectBundle>>`, leave this property unset.
 +
 Default: `""`
 
 [#port]
-port:: DSE native transport port.
+port:: {dse-short} native transport port.
 See `xref:6.9@dse:managing:configure/configure-cassandra-yaml.adoc#native-transport-cql-binary-protocol[native_transport_port]`.
 +
 Default: `9042`
 
-maxConcurrentRequests:: Maximum number of requests to send to DSE at the same time.
+maxConcurrentRequests:: Maximum number of requests to send to {dse-short} at the same time.
 +
 Default: `500`
 
@@ -67,7 +67,7 @@ Default: `30`
 
 //Author's note: pulsar-sink uses an embedded Java driver. As of 1.6.14, it uses 4.16.0 (https://github.com/datastax/pulsar-sink/blob/master/pom.xml#L46), which is a pre-donation "DataStax Java driver" version.
 
-In your DataStax Pulsar connector configuration file, you can pass some connection parameters directly to the embedded Cassandra Java driver by using the `datastax-java-driver` prefix.
+In your {product-short} configuration file, you can pass some connection parameters directly to the embedded {cass} Java driver by using the `datastax-java-driver` prefix.
 For example:
 
 [source,yaml]
@@ -78,9 +78,9 @@ datastax-java-driver.basic.request.consistency=ALL
 === Available Java driver parameters
 
 If you define both base and `java-driver` parameters in your configuration file, the base parameters take precedence over their equivalent `java-driver` parameters.
-If you don't specify either, then the default value for the base Pulsar connector parameter is used.
+If you don't specify either, then the default value for the base {pulsar-short} connector parameter is used.
 
-The following list maps DataStax Pulsar connector parameters to their functionally equivalent Java driver parameters:
+The following list maps {product-short} parameters to their functionally equivalent Java driver parameters:
 
 * `contactPoints`: `datastax-java-driver.basic.contact-points`
 +
@@ -135,42 +135,42 @@ datastax-java-driver.advanced.metrics.session.enabled.1=b
 
 == Authentication and encryption
 
-You can authenticate the DataStax Pulsar connector session using internal, LDAP, Kerberos, or application token authentication, depending on the methods supported by your cluster.
-The connector also supports SSL-encrypted connections.
+You can authenticate the {product-short} session using internal, LDAP, Kerberos, or application token authentication, depending on the methods supported by your cluster.
+The {product-short} also supports SSL-encrypted connections.
 
 [tabs]
 ======
-DSE::
+{dse-short}::
 +
 --
-When xref:6.9@dse:securing:authorization-authentication/enable-unified-authentication.adoc[DSE Unified Authentication is enabled], you must provide internal/LDAP authentication credentials or the Kerberos keytab filepath in the <<authentication-parameters,authentication parameters>>.
-The connector supports DSE role management with internal and LDAP schemes.
+When xref:6.9@dse:securing:authorization-authentication/enable-unified-authentication.adoc[{dse-short} Unified Authentication is enabled], you must provide internal/LDAP authentication credentials or the Kerberos keytab filepath in the <<authentication-parameters,authentication parameters>>.
+The {product-short} supports {dse-short} role management with internal and LDAP schemes.
 
-If the cluster has client encryption enabled, configure the <<ssl-encrypted-connections,SSL keys and certificates in the Pulsar connector>>.
-SSL encryption settings are configured in the xref:6.9@dse:securing:encrypt-client-node-ssl.adoc[DSE client-to-node encryption options].
+If the cluster has client encryption enabled, configure the <<ssl-encrypted-connections,SSL keys and certificates in the {pulsar-short} connector>>.
+SSL encryption settings are configured in the xref:6.9@dse:securing:encrypt-client-node-ssl.adoc[{dse-short} client-to-node encryption options].
 
-For information about authentication configuration for DSE clusters, see the documentation for your version of DSE.
+For information about authentication configuration for {dse-short} clusters, see the documentation for your version of {dse-short}.
 --
 
-Astra::
+{astra-db}::
 +
 --
-To connect to Astra, provide the application token credentials in the <<authentication-parameters,authentication parameters>>, and use the Secure Connect Bundle (SCB) to establish an <<ssl-encrypted-connections,SSL-encrypted connection>>.
+To connect to {astra-db}, provide the application token credentials in the <<authentication-parameters,authentication parameters>>, and use the {scb} to establish an <<ssl-encrypted-connections,SSL-encrypted connection>>.
 --
 ======
 
 [#authentication-parameters]
 === Authentication parameters
 
-If the cluster has internal or LDAP authentication enabled, configure the username and password settings for the Pulsar connector.
-The authenticated role must have read/write access to the tables that will receive data from the Pulsar connector.
+If the cluster has internal or LDAP authentication enabled, configure the username and password settings for the {pulsar-short} connector.
+The authenticated role must have read/write access to the tables that will receive data from the {pulsar-short} connector.
 
 In your connector's configuration YAML file, set the relevant auth parameters for `auth.provider`, `auth.username`, and `auth.password`:
 
 [source,yaml]
 ----
 auth:
-  provider: DSE
+  provider: {dse-short}
   username: login_role
   password: password
 ----
@@ -179,23 +179,23 @@ provider::
 Select the type of authentication provider configured for the cluster:
 +
 * **`None` (default)**: No authentication
-* **`DSE`**: Internal or LDAP authentication
-* **`GSSAPI` (Kerberos)**: SASL authentication to DSE clusters using the GSSAPI mechanism.
+* **`{dse-short}`**: Internal or LDAP authentication
+* **`GSSAPI` (Kerberos)**: SASL authentication to {dse-short} clusters using the GSSAPI mechanism.
 The path to the Kerberos configuration file (`https://web.mit.edu/Kerberos/krb5-current/doc/admin/conf_files/krb5_conf.html[krb5.conf]`) must be set in the `java.security.krb5.conf` system property at startup.
 
 username::
-For DSE, provide the login role name or LDAP username.
-If xref:6.9@dse:managing:configure/configure-dse-yaml.adoc#authorizationOptions[authorization is enabled], this login role must have a minimum of `modify` privileges on the tables that receive data from the DataStax Pulsar connector.
+For {dse-short}, provide the login role name or LDAP username.
+If xref:6.9@dse:managing:configure/configure-dse-yaml.adoc#authorizationOptions[authorization is enabled], this login role must have a minimum of `modify` privileges on the tables that receive data from the {product-short}.
 +
-For Astra, enter the literal string `token` or provide the `clientId` from an Astra application token.
-The application token's role must have read/write privileges on the tables that receive data from the DataStax Pulsar connector.
+For {astra-db}, enter the literal string `token` or provide the `clientId` from an {astra} application token.
+The application token's role must have read/write privileges on the tables that receive data from the {product-short}.
 
 password::
-For DSE, provide the password for the login role or LDAP username.
+For {dse-short}, provide the password for the login role or LDAP username.
 +
-For Astra, provide one of the following, depending on the value you entered for `username`:
+For {astra-db}, provide one of the following, depending on the value you entered for `username`:
 +
-* If `username: token`, provide a secure reference to your actual Astra application token, which is prefixed by `AstraCS:`.
+* If `username: token`, provide a secure reference to your actual {astra} application token, which is prefixed by `AstraCS:`.
 * If `username: <clientId>`, provide the corresponding `clientSecret` from the application token.
 
 [#ssl-encrypted-connections]
@@ -203,10 +203,10 @@ For Astra, provide one of the following, depending on the value you entered for 
 
 [tabs]
 ======
-DSE::
+{dse-short}::
 +
 --
-For DSE clusters with client-to-node encryption enabled, configure the `ssl:` properties for the Pulsar connector:
+For {dse-short} clusters with client-to-node encryption enabled, configure the `ssl:` properties for the {pulsar-short} connector:
 
 [source,yaml]
 ----
@@ -260,7 +260,7 @@ Only applicable when using OpenSSL
 
 [TIP]
 ====
-In your Pulsar configuration, you can provide paths to the keystore, truststore, private key, and certificate files, or you can provide the files as base64-encoded strings:
+In your {pulsar-short} configuration, you can provide paths to the keystore, truststore, private key, and certificate files, or you can provide the files as base64-encoded strings:
 
 . Encode the file:
 +
@@ -276,21 +276,21 @@ base64 -i trust-store-key
   path: base64:UEsDBBQACAAIADmJJ...
 ----
 
-The Pulsar function framework handles deployment to additional Pulsar machines.
+The {pulsar-short} function framework handles deployment to additional {pulsar-short} machines.
 ====
 --
 
-Astra::
+{astra-db}::
 +
 --
-When connecting to Astra, use your database's Secure Connect Bundle (SCB) zip file to establish an SSL-encrypted connection.
-The SCB also sets the local datacenter for the connection.
+When connecting to {astra-db}, use your database's {scb-short} zip file to establish an SSL-encrypted connection.
+The {scb-short} also sets the local datacenter for the connection.
 
 [tabs]
 ====
 Unencrypted string::
 +
-Provide the full path to the SCB zip file directly in `cloud.secureConnectBundle`:
+Provide the full path to the {scb-short} zip file directly in `cloud.secureConnectBundle`:
 +
 [source,yaml]
 ----
@@ -299,21 +299,21 @@ cloud.secureConnectBundle=/path/to/sbc.zip
 
 Base64-encoded string::
 +
-You can provide the literal path to your SCB or encode the zip file using the standard base64 tool:
+You can provide the literal path to your {scb-short} or encode the zip file using the standard base64 tool:
 +
 [source,bash]
 ----
 base64 -i scb.zip
 ----
 +
-Then, set the resulting base64-encoded string directly in the Pulsar configuration file:
+Then, set the resulting base64-encoded string directly in the {pulsar-short} configuration file:
 +
 [source,yaml]
 ----
 cloud.secureConnectBundle=base64:UEsDBBQACAAI....
 ----
 +
-The Pulsar function framework handles deployment to additional Pulsar machines.
+The {pulsar-short} function framework handles deployment to additional {pulsar-short} machines.
 ====
 
 You must also provide set `auth.username` and `auth.password`, as explained in <<authentication-parameters>>.
@@ -321,7 +321,7 @@ You must also provide set `auth.username` and `auth.password`, as explained in <
 [IMPORTANT]
 ====
 When using `cloud.secureConnectBundle`, _all_ subproperties of `ssl:` must be empty, and you must not set `loadBalancing.localDc`.
-These properties are managed by the SCB.
+These properties are managed by the {scb-short}.
 ====
 --
 ======

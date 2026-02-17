@@ -1,12 +1,12 @@
-= Troubleshoot the DataStax Apache Pulsar connector
-:navtitle: Troubleshoot the connector
+= Troubleshoot the {product}
+:navtitle: Troubleshoot the {product-short}
 :page-aliases: ROOT:trbPulsarTsLoadBalancing.adoc, trbPulsarTsRecordFailsToWriteToTable.adoc, trbPulsarTsRecordParsingFails.adoc
 
-This page describes some common issues that you might encounter when using the DataStax Apache Pulsar(TM) connector and how to resolve them.
+This page describes some common issues that you might encounter when using the {product} and how to resolve them.
 
 == Load balancing datacenter is not specified
 
-The following error message occurs when the load balancing datacenter isn't set in the connector's configuration file:
+The following error message occurs when the load balancing datacenter isn't set in the {product-short}'s configuration file:
 
 [source,console]
 ----
@@ -15,21 +15,21 @@ org.apache.pulsar.common.config.ConfigException: Invalid value [127.0.0.2] for
           also be specified
 ----
 
-The connector requires that you set the `loadBalancing.localDc` for DSE clusters when `contactPoints` isn't set to `localhost`.
+The {product-short} requires that you set the `loadBalancing.localDc` for {dse-short} clusters when `contactPoints` isn't set to `localhost`.
 
 Check the datacenter name in the cluster by running `xref:dse:managing:tools/nodetool/status.adoc[nodetool status]`, and then verify that `xref:ROOT:cfgRefPulsarDseConnection.adoc[loadBalancing.localDc]` has the exact same name, including capitalization.
-DSE datacenter names are case sensitive.
+{dse-short} datacenter names are case sensitive.
 
-For Astra clusters, the datacenter is set by the Secure Connect Bundle (SCB).
-Make sure your connector configuration file includes a valid path to the database's SCB zip file.
+For {astra-db}, the datacenter is set by the {scb}.
+Make sure your connector configuration file includes a valid path to the database's {scb-short} zip file.
 
 == Writes fail because of mutation size
 
-The Pulsar connector collects records to write to the database in CQL `xref:dse-6.9@cql:reference:cql-commands/batch.adoc[BATCH]` commands.
+The {pulsar-short} connector collects records to write to the database in CQL `xref:dse-6.9@cql:reference:cql-commands/batch.adoc[BATCH]` commands.
 Data insertions and deletions in the records are known as mutations.
-The connector is implemented to use single-partition batches that are submitted as one mutation operation.
+The {product-short} is implemented to use single-partition batches that are submitted as one mutation operation.
 
-For a given batch, if the total size of the mutation exceeds the maximum allowed by DSE in `xref:dse:managing:configure/configure-cassandra-yaml.adoc#max_mutation_size_in_kb[max_mutation_size_in_kb]` the batch is rejected and the error message is written to the `system.log`, by default in `var/log/cassandra`.
+For a given batch, if the total size of the mutation exceeds the maximum allowed by {dse-short} in `xref:dse:managing:configure/configure-cassandra-yaml.adoc#max_mutation_size_in_kb[max_mutation_size_in_kb]` the batch is rejected and the error message is written to the `system.log`, by default in `var/log/cassandra`.
 
 For example:
 
@@ -50,7 +50,7 @@ Look for underlying issues with your client application, access patterns, and da
 You can decrease the batch size by lowering the number of records collected in each batch in `xref:cfgRefPulsarDseConnection.adoc[maxNumberOfRecordsInBatch]`.
 
 If you cannot decrease the size of your batches, test whether increases to `max_mutation_size_in_kb` and `commitlog_segment_size_in_mb` result in batches completing successfully, without consuming too much RAM on the partition's node.
-You can also increase the DSE database batch threshold using `xref:dse:managing:configure/configure-cassandra-yaml.adoc#guardrailsYaml[batch_size_warn_threshold_in_kb]`.
+You can also increase the {dse-short} database batch threshold using `xref:dse:managing:configure/configure-cassandra-yaml.adoc#guardrailsYaml[batch_size_warn_threshold_in_kb]`.
 
 == Records fail to write
 
@@ -58,7 +58,7 @@ Missing records can have many causes, such as node availability, transient error
 
 To investigate this issue, do the following:
 
-. Change the connector's `verbose` option to `true` in your sink configuration file:
+. Change the {product-short}'s `verbose` option to `true` in your sink configuration file:
 +
 [source,yaml]
 ----
@@ -78,7 +78,7 @@ bin/pulsar-admin sinks update --name cass-sink-kv --sinkConfigFile conf/qs.yml
 
 == Data parsing fails
 
-When the data from a Pulsar field isn't compatible with the data type of the mapped column in the target table, the data conversion fails and a message is logged in the Pulsar Connect log.
+When the data from a {pulsar-short} field isn't compatible with the data type of the mapped column in the target table, the data conversion fails and a message is logged in the {pulsar-short} Connect log.
 For example:
 
 [source,console]
@@ -88,10 +88,10 @@ java.lang.IllegalArgumentException: Could not parse 'jack'; accepted formats are
           pattern (e.g. '2018-10-17T18:37:52.704Z'), or a valid boolean word
 ----
 
-Ensure that the Pulsar fields are mapped to the correct database columns.
-The connector can not automatically convert varying types.
+Ensure that the {pulsar-short} fields are mapped to the correct database columns.
+The {product-short} can not automatically convert varying types.
 
-If they do not match, consider changing your table schema to accommodate the Pulsar field types.
+If they do not match, consider changing your table schema to accommodate the {pulsar-short} field types.
 
 When adding or changing columns in a database table, ensure that the schema is fully propagated before continuing.
-With DSE, use `xref:dse:managing:tools/nodetool/describe-ring.adoc[nodetool describering]` to show the schema version.
+With {dse-short}, use `xref:dse:managing:tools/nodetool/describe-ring.adoc[nodetool describering]` to show the schema version.

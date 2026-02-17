@@ -1,8 +1,8 @@
 = Map multiple topics to multiple tables
 
-The DataStax Apache Pulsar(TM) connector allows for mapping multiple topics to multiple tables in a single connector instance.
+The {product} allows for mapping multiple topics to multiple tables in a single connector instance.
 
-NOTE: Most Apache Pulsar(TM) systems store all messages in the same format and DataStax Apache Pulsar(TM) Connect workers only support a single converter class for key and value.
+NOTE: Most {pulsar-reg} systems store all messages in the same format and {product-short} workers only support a single converter class for key and value.
 
 In the example `stocks_topic`, the key is a basic string and the value is regular JSON.
 
@@ -139,7 +139,7 @@ a|
 
 Map the topics into different keyspaces and tables, `stocks_keyspace.stocks_table` and `baseball_keyspace.baseball_table`.
 
-The DataStax Schema definitions:
+The {company} Schema definitions:
 
 * {blank}
 +
@@ -168,7 +168,7 @@ CREATE TABLE baseball_keyspace.baseball_table (
    city text);
 ----
 
-In the connector configuration, add the following settings:
+In the {product-short} configuration, add the following settings:
 
 * {blank}
 +

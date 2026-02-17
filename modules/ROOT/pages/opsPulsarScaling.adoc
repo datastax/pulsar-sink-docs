@@ -1,8 +1,8 @@
-= Scale the DataStax Apache Pulsar(TM) connector
+= Scale the {product}
 :navtitle: Configure parallelism (scaling)
 :page-aliases: ROOT:cfgPulsarConfigTasksMax.adoc
 
-The `parallelism` parameter specifies the number of workers (instances) that run for an Apache Pulsar(TM) sink.
+The `parallelism` parameter specifies the number of workers (instances) that run for a {pulsar-short} sink.
 You can set the parallelism factor when you create a sink or modify it afterwards.
 
 The default parallelism factor is `1`.
@@ -11,7 +11,7 @@ The default parallelism factor is `1`.
 
 To configure parallelism when you create a sink, add the `--parallelism` flag to the `pulsar-admin sinks create` command and specify the number of instances:
 
-The following example creates a Pulsar sink with a parallelism factor of 3:
+The following example creates a {pulsar-short} sink with a parallelism factor of 3:
 
 [source,bash]
 ----

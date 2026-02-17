@@ -1,9 +1,9 @@
-= Delete the DataStax Apache Pulsar(TM) connector
-:navtitle: Delete the Pulsar connector
+= Delete the {product}
+:navtitle: Delete the {pulsar-short} connector
 
-To completely remove the DataStax Apache Pulsar(TM) connector, do the following:
+To completely remove the {product}, do the following:
 
-. Delete any sinks associated with the connector:
+. Delete any sinks associated with the {product-short}:
 +
 [source,bash,subs="+quotes"]
 ----
@@ -12,14 +12,14 @@ bin/pulsar-admin sinks delete --name **SINK_NAME** --namespace **SINK_NAMESPACE*
 +
 Replace the following:
 +
-* `**SINK_NAME**`: The name of the Pulsar sink to delete
-* `**SINK_NAMESPACE**`: The name of the Pulsar namespace associated with the sink
-* `**SINK_TENANT**`: The name of the Pulsar tenant associated with the sink
+* `**SINK_NAME**`: The name of the {pulsar-short} sink to delete
+* `**SINK_NAMESPACE**`: The name of the {pulsar-short} namespace associated with the sink
+* `**SINK_TENANT**`: The name of the {pulsar-short} tenant associated with the sink
 
 +
 For example, to delete a sink named `cass-sink-kv` in the default namespace and public tenant, run `bin/pulsar-admin sinks delete --name cass-sink-kv --namespace default --tenant public`.
 
-. Stop the Pulsar service:
+. Stop the {pulsar-short} service:
 +
 [source,bash]
 ----
@@ -37,16 +37,16 @@ Shutdown is in progress... Please wait...
 Shutdown completed.
 ----
 
-. Remove the DataStax Pulsar connector NAR from your Pulsar `connectors` directory:
+. Remove the {product-short} NAR from your {pulsar-short} `connectors` directory:
 +
 [source,bash]
 ----
 rm connectors/cassandra-enhanced-pulsar-sink-1.4.0.nar
 ----
 
-. Optional: Remove the connector configuration YAML file from your Pulsar `config` directory.
+. Optional: Remove the {product-short} configuration YAML file from your {pulsar-short} `config` directory.
 
-. Restart the Pulsar service:
+. Restart the {pulsar-short} service:
 +
 [source,bash]
 ----
