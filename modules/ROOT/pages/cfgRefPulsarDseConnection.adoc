@@ -179,7 +179,7 @@ provider::
 Select the type of authentication provider configured for the cluster:
 +
 * **`None` (default)**: No authentication
-* **`{dse-short}`**: Internal or LDAP authentication
+* **`DSE`**: Internal or LDAP authentication
 * **`GSSAPI` (Kerberos)**: SASL authentication to {dse-short} clusters using the GSSAPI mechanism.
 The path to the Kerberos configuration file (`https://web.mit.edu/Kerberos/krb5-current/doc/admin/conf_files/krb5_conf.html[krb5.conf]`) must be set in the `java.security.krb5.conf` system property at startup.
 
