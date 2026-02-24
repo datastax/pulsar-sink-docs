@@ -91,7 +91,9 @@ If there isn't a `connectors` directory, create one.
 mv installation_location/cassandra-enhanced-pulsar-sink-1.4.0.nar pulsar_home/connectors
 ----
 
-. In your {pulsar-short} `config` directory, create a `qs.yml` file with the following contents:
+. In your {pulsar-short} `config` directory, create a `qs.yml` file with the following contents.
++
+Use a topic name in the format _keyspace_._table_ (for example, `pulsar_qs.pulsar_kv`), not a generic name like `example_topic`.
 +
 .qs.yml
 [source,yaml]
@@ -100,7 +102,7 @@ configs:
   verbose: false
   batchSize: 3000
   batchFlushTimeoutMs: 1000
-  topics: example_topic
+  topics: pulsar_qs.pulsar_kv
   contactPoints: localhost
   loadBalancing.localDc: Cassandra
   port: 9042
@@ -134,7 +136,7 @@ configs:
       path:
     cipherSuites:
   topic:
-    example_topic:
+    pulsar_qs.pulsar_kv:
       pulsar_qs:
         pulsar_kv:
           mapping: 'key=key,content=value'
@@ -182,6 +184,11 @@ Make sure the response includes the {product-short}:
 
 . Create a {pulsar-short} sink:
 +
+Use a sink task class name that matches your topic data format. The connector supports two options:
++
+* `com.datastax.oss.sink.pulsar.RecordCassandraSinkTask` — Use this class name by default. It works with all supported logical data types. The data topic typically exports messages in key-value Avro format.
+* `com.datastax.oss.sink.pulsar.StringCassandraSinkTask` — Use when the data topic carries JSON or loosely structured data. This class name might not work for some data types such as decimal, tuples, date, and timeuuid. 
++
 [source,bash]
 ----
 bin/pulsar-admin sinks create \
@@ -191,18 +198,18 @@ bin/pulsar-admin sinks create \
 	--sink-type cassandra-enhanced \
 	--tenant public \
 	--namespace default \
-	--inputs "persistent://public/default/example_topic"
+	--inputs "persistent://public/default/pulsar_qs.pulsar_kv"
 ----
 +
-The topic name and mapping are set in the {product-short} configuration YAML file.
+The topic name must use the format _keyspace_._table_ (for example, `pulsar_qs.pulsar_kv`). The topic name and mapping are set in the {product-short} configuration YAML file.
 
 . Send some messages to your new sink:
 +
 [source,bash]
 ----
-bin/pulsar-client produce -k "Message 1" -m "Content 1" persistent://public/default/example_topic
-bin/pulsar-client produce -k "Message 2" -m "Content 2" persistent://public/default/example_topic
-bin/pulsar-client produce -k "Message 3" -m "Content 3" persistent://public/default/example_topic
+bin/pulsar-client produce -k "Message 1" -m "Content 1" persistent://public/default/pulsar_qs.pulsar_kv
+bin/pulsar-client produce -k "Message 2" -m "Content 2" persistent://public/default/pulsar_qs.pulsar_kv
+bin/pulsar-client produce -k "Message 3" -m "Content 3" persistent://public/default/pulsar_qs.pulsar_kv
 ----
 
 . To verify that the messages were written to {dse-short}, start `cqlsh`, and then query your `pulsar_kv` table:
