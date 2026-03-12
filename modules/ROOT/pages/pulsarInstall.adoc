@@ -52,44 +52,26 @@ The {product-short} framework automatically rebalances the load when workers are
 Perform the following steps on a {pulsar-short} Connect node running {pulsar} 2.7.0 or later.
 If you need to install {pulsar-short}, see xref:ROOT:pulsarQuickStart.adoc[].
 
-. Download the {product-short} tar file from the https://downloads.datastax.com/#apc[{company} downloads site].
-
-. Extract the files, replacing **VERSION** with the version number of the tar file you downloaded:
-+
-[source,bash,subs="+quotes"]
-----
-tar zxf cassandra-enhanced-pulsar-sink-**VERSION**.tar.gz
-----
-+
-The following files are unpacked into a directory named after the tar file, such as `cassandra-enhanced-pulsar-sink-1.4.0`:
-+
-[source,console]
-----
-LICENSE.txt
-README.md
-THIRD-PARTY.txt
-conf/example.yml
-cassandra-enhanced-pulsar-sink-1.4.0.nar
-----
+. Download the {product-short} `.nar` file from the {pulsar-sink-repo}/releases[{product-short} repository].
 
 . In your {pulsar-short} `home` directory, find the `connectors` directory.
 If there isn't a `connectors` directory, create one.
 
-. Move the {product-short} NAR file to the {pulsar-short} `connectors` directory:
+. Move the {product-short} `.nar` file to the {pulsar-short} `connectors` directory:
 +
 [source,bash]
 ----
 mv installation_location/cassandra-enhanced-pulsar-sink-1.4.0.nar pulsar_home/connectors
 ----
 
-. Copy the sample configuration file `example.yml` from `cassandra-enhanced-pulsar-sink-**VERSION**/conf/` to your {pulsar-short} `config` directory.
+. Download and move the {pulsar-sink-repo}/blob/master/pulsar-dist/conf/example.yml[sample configuration file `example.yml`] to your {pulsar-short} `config` directory.
 +
 If you plan to create multiple sinks from this connector, give your configuration file a unique name.
 
 . Edit the configuration file as necessary using the information provided in this documentation.
 For example, for information about connection, authentication, and encryption parameters, see xref:ROOT:cfgRefPulsarDseConnection.adoc[].
 
-. Ensure that the user running {pulsar-short} has permission to access the configuration and NAR files.
+. Ensure that the user running {pulsar-short} has permission to access the configuration and `.nar` files.
 
 == Start {pulsar-short} with the {product-short}
 
