@@ -37,7 +37,7 @@ Shutdown is in progress... Please wait...
 Shutdown completed.
 ----
 
-. Remove the {product-short} NAR from your {pulsar-short} `connectors` directory:
+. Remove the {product-short} `.nar` file from your {pulsar-short} `connectors` directory:
 +
 [source,bash]
 ----

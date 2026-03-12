@@ -13,6 +13,7 @@ asciidoc:
     pulsar-reg: 'Apache Pulsar(TM)'
     pulsar: 'Apache Pulsar'
     pulsar-short: 'Pulsar'
+    pulsar-sink-repo: 'https://github.com/datastax/pulsar-sink'
     astra: 'Astra'
     astra-db: 'Astra DB'
     scb: 'Secure Connect Bundle (SCB)'

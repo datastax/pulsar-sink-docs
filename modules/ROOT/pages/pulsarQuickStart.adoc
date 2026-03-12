@@ -70,21 +70,14 @@ wget https://archive.apache.org/dist/pulsar/pulsar-2.7.0/apache-pulsar-2.7.0-bin
 tar xvfz apache-pulsar-2.7.0-bin.tar.gz
 ----
 
-. Download the {product} tar file from the https://downloads.datastax.com/#apc[{company} downloads site].
+. Download the {product} `.nar` file from the {pulsar-sink-repo}/releases[{product-short} repository].
 +
 For more information about system requirements for the {product-short}, see xref:ROOT:pulsarInstall.adoc[].
-
-. Extract the files, replacing **VERSION** with the version number of the tar file you downloaded:
-+
-[source,bash,subs="+quotes"]
-----
-tar zxf cassandra-enhanced-pulsar-sink-**VERSION**.tar.gz
-----
 
 . In your {pulsar-short} `home` directory, find the `connectors` directory.
 If there isn't a `connectors` directory, create one.
 
-. Move the {product-short} NAR file to the {pulsar-short} `connectors` directory:
+. Move the {product-short} `.nar` file to the {pulsar-short} `connectors` directory:
 +
 [source,bash]
 ----
@@ -157,7 +150,7 @@ configs:
 
 . If your cluster has authentication enabled, you want to use an SSL-encrypted connection, or your cluster isn't compatible with the connection properties in `qs.yml`, you must edit the configuration file as explained in xref:ROOT:cfgRefPulsarDseConnection.adoc[].
 
-. Ensure that the user running {pulsar-short} has permission to access the configuration and NAR files.
+. Ensure that the user running {pulsar-short} has permission to access the configuration and `.nar` files.
 
 == Run {pulsar-short} with the {product-short}
 
