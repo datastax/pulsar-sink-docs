@@ -18,7 +18,7 @@ Use these steps to write a new {pulsar-short} field to an existing table column:
 Connector processing fails if any mapped {pulsar-short} topic fields are missing from the record.
 If a field is missing or if the schema change is known ahead, remove or edit the topic-column mapping.
 
-. Use the `cqlsh` command `xref:dse-6.9@cql:reference:cqlsh-commands/describe-table.adoc[DESCRIBE TABLE]` to verify that the field isn't mapped to a xref:dse-6.9@cql:data-modeling:methodology.adoc[primary key (PK) column].
+. Use the `cqlsh` command `xref:dse-6.9@cql:cqlsh:cqlsh-commands/describe-table.adoc[DESCRIBE TABLE]` to verify that the field isn't mapped to a xref:dse-6.9@cql:data-modeling:methodology.adoc[primary key (PK) column].
 +
 If the field _is_ mapped to a PK column, you must map a different field to the column because PK columns cannot contain `NULL` values.
 PK columns must always have a mapping.
