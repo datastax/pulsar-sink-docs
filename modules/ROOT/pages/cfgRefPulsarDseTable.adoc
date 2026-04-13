@@ -129,15 +129,15 @@ See xref:ROOT:cfgPulsarCqlQuery.adoc[].
 [#ttl]
 ttl, ttlTimeUnit, __ttl::
 The default time-to-live (TTL) is `-1`, which means that TTL is disabled.
-If you want to use TTL, there are two ways to set TTL in your connector configuration.
 +
-[tabs]
-======
-Static TTL::
+If you want to use TTL, you can set static or dynamic TTL in your connector configuration.
+If TTL is set, the same TTL limit is applied to _all_ rows in the mapped table.
+The {product-short} appends `AND TTL <seconds>` to all `INSERT` statements for the table.
 +
 --
-In the table configuration, set `ttl` to the amount of seconds that a record remains in the table before it is automatically deleted.
-
+* **Static TTL**: In the table configuration, set `ttl` to the amount of seconds that a record remains in the table before it is automatically deleted.
+For example:
++
 [source,yaml]
 ----
       table_name:
@@ -145,34 +145,26 @@ In the table configuration, set `ttl` to the amount of seconds that a record rem
         ttlTimeUnit: SECONDS
         ttl: 80000
 ----
---
 
-Dynamic TTL::
-+
---
-In the `<<mapping,mapping>>` parameter, you can use the `__ttl` property to specify the column to use as the TTL value for the record being inserted into the database table.
+* **Dynamic TTL**: In the `<<mapping,mapping>>` parameter, you can use the `__ttl` property to specify the column to use as the TTL value for the record being inserted into the database table.
 For example:
-
++
 [source,yaml]
 ----
       table_name:
         mapping: 'col1=key.f1, col2=value.f1, __ttl=value.f2'
         ttlTimeUnit: SECONDS
 ----
-
-If you set both static and dynamic TTL, the dynamic TTL (in `mapping`) takes precedence, and the {product-short} writes a warning message to the log file.
-
++
 If the dynamic TTL value is negative, an error is thrown when writing records to the table.
 However, the {product-short} inserts the record without the TTL because the {pulsar-short} connector is a streaming system.
 --
-======
 +
-If TTL is set (either statically or dynamically), the same TTL limit is applied to _all_ rows in the mapped table.
-The {product-short} appends `AND TTL <seconds>` to all `INSERT` statements for the table.
+If you set both static and dynamic TTL, the dynamic TTL (in `mapping`) takes precedence, and the {product-short} writes a warning message to the log file.
 +
-With either static or dynamic TTL, you can optionally set `ttlTimeUnit` to specify the time unit for the `ttl` value.
+Both static and dynamic TTL accept an optional `ttlTimeUnit` that specifies the time unit for the `ttl` value.
 The default time unit is `SECONDS`.
-If you specify a different time unit, such as `HOURS`, the {product-short} automatically converts the value to `SECONDS` for compatibility.
+If you specify a different time unit, such as `HOURS`, then the {product-short} automatically converts the value to `SECONDS` for compatibility.
 
 [#mapping-properties]
 === Mapping properties and functions

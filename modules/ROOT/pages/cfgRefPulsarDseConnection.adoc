@@ -32,7 +32,7 @@ Default: `localhost`
 
 loadBalancing.localDc:: The case-sensitive datacenter name for the driver to use for load balancing.
 +
-When connecting to {astra-db} with `<<ssl-encrypted-connections,cloud.secureConnectBundle>>`, leave this property unset.
+When connecting to {astra-db} with `<<ssl-encrypted-connections-for-astra-db,cloud.secureConnectBundle>>`, leave this property unset.
 +
 Default: `""`
 
@@ -138,26 +138,17 @@ datastax-java-driver.advanced.metrics.session.enabled.1=b
 You can authenticate the {product-short} session using internal, LDAP, Kerberos, or application token authentication, depending on the methods supported by your cluster.
 The {product-short} also supports SSL-encrypted connections.
 
-[tabs]
-======
 {dse-short}::
-+
---
 When xref:6.9@dse:securing:authorization-authentication/enable-unified-authentication.adoc[{dse-short} Unified Authentication is enabled], you must provide internal/LDAP authentication credentials or the Kerberos keytab filepath in the <<authentication-parameters,authentication parameters>>.
 The {product-short} supports {dse-short} role management with internal and LDAP schemes.
-
-If the cluster has client encryption enabled, configure the <<ssl-encrypted-connections,SSL keys and certificates in the {pulsar-short} connector>>.
++
+If the cluster has client encryption enabled, configure the <<ssl-encrypted-connections-for-dse,SSL keys and certificates in the {pulsar-short} connector>>.
 SSL encryption settings are configured in the xref:6.9@dse:securing:encrypt-client-node-ssl.adoc[{dse-short} client-to-node encryption options].
-
++
 For information about authentication configuration for {dse-short} clusters, see the documentation for your version of {dse-short}.
---
 
 {astra-db}::
-+
---
-To connect to {astra-db}, provide the application token credentials in the <<authentication-parameters,authentication parameters>>, and use the {scb} to establish an <<ssl-encrypted-connections,SSL-encrypted connection>>.
---
-======
+To connect to {astra-db}, provide the application token credentials in the <<authentication-parameters,authentication parameters>>, and use the {scb} to establish an <<ssl-encrypted-connections-for-astra-db,SSL-encrypted connection>>.
 
 [#authentication-parameters]
 === Authentication parameters
@@ -198,14 +189,9 @@ For {astra-db}, provide one of the following, depending on the value you entered
 * If `username: token`, provide a secure reference to your actual {astra} application token, which is prefixed by `AstraCS:`.
 * If `username: <clientId>`, provide the corresponding `clientSecret` from the application token.
 
-[#ssl-encrypted-connections]
-=== SSL-encrypted connections
+[#ssl-encrypted-connections-for-dse]
+=== SSL-encrypted connections for {dse-short}
 
-[tabs]
-======
-{dse-short}::
-+
---
 For {dse-short} clusters with client-to-node encryption enabled, configure the `ssl:` properties for the {pulsar-short} connector:
 
 [source,yaml]
@@ -278,18 +264,16 @@ base64 -i trust-store-key
 
 The {pulsar-short} function framework handles deployment to additional {pulsar-short} machines.
 ====
---
 
-{astra-db}::
-+
---
+[#ssl-encrypted-connections-for-astra-db]
+=== SSL-encrypted connections for {astra-db}
+
 When connecting to {astra-db}, use your database's {scb-short} zip file to establish an SSL-encrypted connection.
 The {scb-short} also sets the local datacenter for the connection.
 
-[tabs]
-====
-Unencrypted string::
+. Provide either unencrypted or base64-encoded strings for the {scb-short} zip file:
 +
+Unencrypted string::
 Provide the full path to the {scb-short} zip file directly in `cloud.secureConnectBundle`:
 +
 [source,yaml]
@@ -298,8 +282,7 @@ cloud.secureConnectBundle=/path/to/sbc.zip
 ----
 
 Base64-encoded string::
-+
-You can provide the literal path to your {scb-short} or encode the zip file using the standard base64 tool:
+Encode the zip file using the standard base64 tool:
 +
 [source,bash]
 ----
@@ -314,14 +297,11 @@ cloud.secureConnectBundle=base64:UEsDBBQACAAI....
 ----
 +
 The {pulsar-short} function framework handles deployment to additional {pulsar-short} machines.
-====
 
-You must also provide set `auth.username` and `auth.password`, as explained in <<authentication-parameters>>.
-
+. Set `auth.username` and `auth.password`, as explained in <<authentication-parameters>>.
++
 [IMPORTANT]
 ====
 When using `cloud.secureConnectBundle`, _all_ subproperties of `ssl:` must be empty, and you must not set `loadBalancing.localDc`.
 These properties are managed by the {scb-short}.
 ====
---
-======
