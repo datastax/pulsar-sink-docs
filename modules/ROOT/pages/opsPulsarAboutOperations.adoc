@@ -17,8 +17,6 @@ Replace `**SINK_NAME**` with the name of the sink that you want to check.
 For example, to check the status of a sink named `cass-sink-kv`, run `bin/pulsar-admin sinks status --name cass-sink-kv`.
 
 .Result
-[%collapsible]
-====
 [source,results]
 ----
 {
@@ -42,7 +40,6 @@ For example, to check the status of a sink named `cass-sink-kv`, run `bin/pulsar
   } ]
 }
 ----
-====
 
 [#pulsar-admin-sinks-get]
 == Get the {product-short}'s configuration
@@ -57,11 +54,9 @@ bin/pulsar-admin sinks get --name **SINK_NAME**
 Replace `**SINK_NAME**` with the name of the sink that you want to check.
 For example, to retrieve the configuration for a sink named `dse-sink-kv`, run `bin/pulsar-admin sinks get --name dse-sink-kv`.
 
-The configuration is returned in JSON format.
+The configuration is returned in JSON format:
 
 .Result
-[%collapsible]
-====
 [source,json]
 ----
 {
@@ -136,7 +131,6 @@ The configuration is returned in JSON format.
   "archive": "builtin://cassandra-enhanced"
 }
 ----
-====
 
 [#pulsar-admin-sinks-update]
 == Apply configuration changes or edit sink settings
