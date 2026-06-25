@@ -17,9 +17,9 @@ In addition to the Prometheus query root, you can append a `name` attribute to f
 For example, to focus on the `failedRecordCount` slice of the `Count` metric class, you can use the attribute `name="failedRecordCount"`:
 
 [source,no-highlight]
-====
+----
 com_datastax_oss_pulsar_sink_dse_sink_kv_Count{name="failedRecordCount"}
-====
+----
 
 The following example shows a complete Prometheus query that includes the root, `name` attribute, and other attributes.
 Including the `name` attribute causes the response to include only the number of failed records (`25`).
