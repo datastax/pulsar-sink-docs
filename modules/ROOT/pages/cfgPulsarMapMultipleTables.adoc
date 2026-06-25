@@ -134,7 +134,7 @@ topic:
 +
 [source,yaml]
 ----
-“topic:
+topic:
    stocks_topic:
       stocks_keyspace:
          stocks_table_by_exchange:

@@ -1,29 +1,29 @@
 .Get started
-* xref:pulsarInstall.adoc[]
-* xref:pulsarQuickStart.adoc[]
-* xref:cfgRefPulsarDseConnection.adoc[]
+* xref:ROOT:pulsarInstall.adoc[]
+* xref:ROOT:pulsarQuickStart.adoc[]
+* xref:ROOT:cfgRefPulsarDseConnection.adoc[]
 
 .Map topics to tables
-* xref:cfgRefPulsarDseTable.adoc[]
-* xref:cfgPulsarDisplayingTopic.adoc[]
-* xref:cfgPulsarMapKeyPair.adoc[]
-* xref:cfgPulsarMapJson.adoc[]
-* xref:cfgPulsarMapAvroMessages.adoc[]
-* xref:cfgPulsarMapUdt.adoc[]
-* xref:cfgPulsarCqlQuery.adoc[]
-* xref:cfgPulsarMapMultipleTables.adoc[]
-* xref:cfgPulsarMultTopicToTables.adoc[]
+* xref:ROOT:cfgRefPulsarDseTable.adoc[]
+* xref:ROOT:cfgPulsarDisplayingTopic.adoc[]
+* xref:ROOT:cfgPulsarMapKeyPair.adoc[]
+* xref:ROOT:cfgPulsarMapJson.adoc[]
+* xref:ROOT:cfgPulsarMapAvroMessages.adoc[]
+* xref:ROOT:cfgPulsarMapUdt.adoc[]
+* xref:ROOT:cfgPulsarCqlQuery.adoc[]
+* xref:ROOT:cfgPulsarMapMultipleTables.adoc[]
+* xref:ROOT:cfgPulsarMultTopicToTables.adoc[]
 
 .Operations
-* xref:opsPulsarAboutOperations.adoc[]
-* xref:opsPulsarScaling.adoc[]
-* xref:opsPulsarChangeSchema.adoc[]
-* xref:opsPulsarDeleteConnector.adoc[]
-* xref:monPulsarConnectMetrics.adoc[]
+* xref:ROOT:opsPulsarAboutOperations.adoc[]
+* xref:ROOT:opsPulsarScaling.adoc[]
+* xref:ROOT:opsPulsarChangeSchema.adoc[]
+* xref:ROOT:opsPulsarDeleteConnector.adoc[]
+* xref:ROOT:monPulsarConnectMetrics.adoc[]
 
 .Troubleshooting
-* xref:trbPulsarTsLargeBatches.adoc[]
-* xref:cfgPulsarConfigureErrorHandling.adoc[]
+* xref:ROOT:trbPulsarTsLargeBatches.adoc[]
+* xref:ROOT:cfgPulsarConfigureErrorHandling.adoc[]
 
 .Release notes
 * https://github.com/datastax/release-notes/blob/master/DataStax_Apache_Pulsar_Connector_1.4_Release_Notes.md[Release notes]

@@ -137,11 +137,9 @@ a|
 ----
 |===
 
-Map the topics into different keyspaces and tables, `stocks_keyspace.stocks_table` and `baseball_keyspace.baseball_table`.
+Map the topics into different keyspaces and tables, `stocks_keyspace.stocks_table` and `baseball_keyspace.baseball_table`:
 
-The {company} Schema definitions:
-
-* {blank}
+* {company} Schema definitions:
 +
 [source,cql]
 ----
@@ -154,8 +152,6 @@ CREATE TABLE stocks_keyspace.stocks_table_by_symbol (
    value double,
    PRIMARY KEY (symbol, ts));
 ----
-
-* {blank}
 +
 [source,cql]
 ----
@@ -168,11 +164,9 @@ CREATE TABLE baseball_keyspace.baseball_table (
    city text);
 ----
 
-In the {product-short} configuration, add the following settings:
-
-* {blank}
+* {product-short} configuration settings:
 +
-[source,console]
+[source,yaml]
 ----
 topic:
    stocks_topic:
@@ -180,10 +174,8 @@ topic:
          stocks_table_by_symbol:
             mapping: 'symbol=value.symbol, ts=value.dateTime, exchange=value.exchange, industry=value.industry, name=key.name, value=value.value'
 ----
-
-* {blank}
 +
-[source,console]
+[source,yaml]
 ----
 topic:
    baseball_topic:

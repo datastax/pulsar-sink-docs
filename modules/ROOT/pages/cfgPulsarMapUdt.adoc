@@ -167,7 +167,7 @@ If your mapping includes maps or UDTs, you can xref:ROOT:cfgPulsarCqlQuery.adoc[
 
 When a new record arrives, the {product-short} sets only the non-null fields in the message.
 It won't override UDT fields that have a null value or aren't present in the {pulsar-short} record.
-This configuration requires that `xref:cfgRefPulsarDseTable.adoc#nullToUnset[nullToUnset]` is `true`.
+This configuration requires that `xref:ROOT:cfgRefPulsarDseTable.adoc#nullToUnset[nullToUnset]` is `true`.
 
 This configuration helps minimize tombstones in the database.
 It uses the CQL `UPDATE` command to only update the fields present in the {pulsar-short} record.

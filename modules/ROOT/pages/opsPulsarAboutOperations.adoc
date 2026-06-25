@@ -17,7 +17,7 @@ Replace `**SINK_NAME**` with the name of the sink that you want to check.
 For example, to check the status of a sink named `cass-sink-kv`, run `bin/pulsar-admin sinks status --name cass-sink-kv`.
 
 .Result
-[source,results]
+[source,json]
 ----
 {
   "numInstances" : 1,

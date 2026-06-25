@@ -37,7 +37,7 @@ bin/cqlsh
 +
 [source,cql]
 ----
-cqlsh> CREATE KEYSPACE IF NOT EXISTS pulsar_qs
+CREATE KEYSPACE IF NOT EXISTS pulsar_qs
 WITH replication = {
   'class' : 'SimpleStrategy',
   'replication_factor' : 1
@@ -48,7 +48,7 @@ WITH replication = {
 +
 [source,cql]
 ----
-cqlsh> CREATE TABLE pulsar_qs.pulsar_kv (
+CREATE TABLE pulsar_qs.pulsar_kv (
 	key text PRIMARY KEY,
 	content text
 );
@@ -172,15 +172,25 @@ Make sure the response includes the {product-short}:
 +
 [source,json]
 ----
-[{"name":"cassandra-enhanced","description":"A DataStax {pulsar-short} Sink to load records from {pulsar-short} topics to {cass-reg} or DataStax Enterprise(DSE)\n","sinkClass":"com.datastax.oss.sink.pulsar.RecordCassandraSinkTask"}]
+[
+  {
+    "name":"cassandra-enhanced",
+    "description":"A DataStax Pulsar Sink to load records from Pulsar topics to Apache Cassandra or DataStax Enterprise(DSE)\n",
+    "sinkClass":"com.datastax.oss.sink.pulsar.RecordCassandraSinkTask"
+  }
+]
 ----
 
 . Create a {pulsar-short} sink:
 +
-Use a sink task class name that matches your topic data format. The connector supports two options:
+Use a sink task class name that matches your topic data format.
+The connector supports two options:
 +
-* `com.datastax.oss.sink.pulsar.RecordCassandraSinkTask` — Use this class name by default. It works with all supported logical data types. The data topic typically exports messages in key-value Avro format.
-* `com.datastax.oss.sink.pulsar.StringCassandraSinkTask` — Use when the data topic carries JSON or loosely structured data. This class name might not work for some data types such as decimal, tuples, date, and timeuuid. 
+* `com.datastax.oss.sink.pulsar.RecordCassandraSinkTask`: Use this class name by default.
+It works with all supported logical data types.
+The data topic typically exports messages in key-value Avro format.
+* `com.datastax.oss.sink.pulsar.StringCassandraSinkTask`: Use when the data topic carries JSON or loosely structured data.
+This class name might not work for some data types such as decimal, tuples, date, and timeuuid.
 +
 [source,bash]
 ----
@@ -194,7 +204,8 @@ bin/pulsar-admin sinks create \
 	--inputs "persistent://public/default/pulsar_qs.pulsar_kv"
 ----
 +
-The topic name must use the format _keyspace_._table_ (for example, `pulsar_qs.pulsar_kv`). The topic name and mapping are set in the {product-short} configuration YAML file.
+The topic name must use the format _keyspace_._table_ (for example, `pulsar_qs.pulsar_kv`).
+The topic name and mapping are set in the {product-short} configuration YAML file.
 
 . Send some messages to your new sink:
 +
@@ -209,7 +220,7 @@ bin/pulsar-client produce -k "Message 3" -m "Content 3" persistent://public/defa
 +
 [source,cql]
 ----
-cqlsh> SELECT * FROM pulsar_qs.pulsar_kv;
+SELECT * FROM pulsar_qs.pulsar_kv;
 ----
 +
 The result should include the test messages you sent:
@@ -230,10 +241,10 @@ The result should include the test messages you sent:
 Your schemas probably require more complex mappings than the example used in this quickstart.
 Explore the following documentation to get started with more complex mappings and schemas:
 
-* xref:cfgPulsarDisplayingTopic.adoc[Print messages] to determine the data structure of the topic messages.
+* xref:ROOT:cfgPulsarDisplayingTopic.adoc[Print messages] to determine the data structure of the topic messages.
 
-* Create xref:cfgPulsarMapKeyPair.adoc[key-value pair mappings], xref:cfgPulsarMapJson.adoc[JSON mappings], and xref:cfgPulsarMapAvroMessages.adoc[Avro mappings].
+* Create xref:ROOT:cfgPulsarMapKeyPair.adoc[key-value pair mappings], xref:ROOT:cfgPulsarMapJson.adoc[JSON mappings], and xref:ROOT:cfgPulsarMapAvroMessages.adoc[Avro mappings].
 
-* Try advanced and specialized mapping functionality, such as xref:cfgPulsarMapUdt.adoc[mapping UDTs].
+* Try advanced and specialized mapping functionality, such as xref:ROOT:cfgPulsarMapUdt.adoc[mapping UDTs].
 
-* Use one connector instance to xref:cfgPulsarMapMultipleTables.adoc[ingest a single topic into multiple tables] or xref:cfgPulsarMultTopicToTables.adoc[ingest multiple topics to different tables].
+* Use one connector instance to xref:ROOT:cfgPulsarMapMultipleTables.adoc[ingest a single topic into multiple tables] or xref:ROOT:cfgPulsarMultTopicToTables.adoc[ingest multiple topics to different tables].

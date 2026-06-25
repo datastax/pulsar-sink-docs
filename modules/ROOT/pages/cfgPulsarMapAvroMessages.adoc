@@ -40,7 +40,7 @@ The {pulsar-short} topic name is `users_topic` and have the following records:
 
 The value field uses the following Avro Schema:
 
-[source,java]
+[source,json]
 ----
 {
  "namespace": "example.avro",
