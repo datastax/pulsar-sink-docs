@@ -68,7 +68,7 @@ configs:
 
 . Reload the sink configuration file:
 +
-[source,yaml]
+[source,bash]
 ----
 bin/pulsar-admin sinks update --name cass-sink-kv --sinkConfigFile conf/qs.yml
 "Updated successfully"

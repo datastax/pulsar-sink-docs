@@ -37,7 +37,7 @@ bin/cqlsh
 +
 [source,cql]
 ----
-cqlsh> CREATE KEYSPACE IF NOT EXISTS pulsar_qs
+CREATE KEYSPACE IF NOT EXISTS pulsar_qs
 WITH replication = {
   'class' : 'SimpleStrategy',
   'replication_factor' : 1
@@ -48,7 +48,7 @@ WITH replication = {
 +
 [source,cql]
 ----
-cqlsh> CREATE TABLE pulsar_qs.pulsar_kv (
+CREATE TABLE pulsar_qs.pulsar_kv (
 	key text PRIMARY KEY,
 	content text
 );
@@ -172,7 +172,13 @@ Make sure the response includes the {product-short}:
 +
 [source,json]
 ----
-[{"name":"cassandra-enhanced","description":"A DataStax {pulsar-short} Sink to load records from {pulsar-short} topics to {cass-reg} or DataStax Enterprise(DSE)\n","sinkClass":"com.datastax.oss.sink.pulsar.RecordCassandraSinkTask"}]
+[
+  {
+    "name":"cassandra-enhanced",
+    "description":"A DataStax Pulsar Sink to load records from Pulsar topics to Apache Cassandra or DataStax Enterprise(DSE)\n",
+    "sinkClass":"com.datastax.oss.sink.pulsar.RecordCassandraSinkTask"
+  }
+]
 ----
 
 . Create a {pulsar-short} sink:
@@ -180,7 +186,7 @@ Make sure the response includes the {product-short}:
 Use a sink task class name that matches your topic data format. The connector supports two options:
 +
 * `com.datastax.oss.sink.pulsar.RecordCassandraSinkTask` — Use this class name by default. It works with all supported logical data types. The data topic typically exports messages in key-value Avro format.
-* `com.datastax.oss.sink.pulsar.StringCassandraSinkTask` — Use when the data topic carries JSON or loosely structured data. This class name might not work for some data types such as decimal, tuples, date, and timeuuid. 
+* `com.datastax.oss.sink.pulsar.StringCassandraSinkTask` — Use when the data topic carries JSON or loosely structured data. This class name might not work for some data types such as decimal, tuples, date, and timeuuid.
 +
 [source,bash]
 ----
@@ -209,7 +215,7 @@ bin/pulsar-client produce -k "Message 3" -m "Content 3" persistent://public/defa
 +
 [source,cql]
 ----
-cqlsh> SELECT * FROM pulsar_qs.pulsar_kv;
+SELECT * FROM pulsar_qs.pulsar_kv;
 ----
 +
 The result should include the test messages you sent:
