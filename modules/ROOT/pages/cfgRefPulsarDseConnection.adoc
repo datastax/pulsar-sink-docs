@@ -123,7 +123,7 @@ This includes the following properties:
 The conversion splits the comma-separated values provided in those setting to create indexed properties.
 For example:
 
-[source,no-highlight]
+[source,plaintext]
 ----
 # Original comma-separated values
 datastax-java-driver.advanced.metrics.session.enabled=a,b
@@ -139,7 +139,7 @@ You can authenticate the {product-short} session using internal, LDAP, Kerberos,
 The {product-short} also supports SSL-encrypted connections.
 
 {dse-short}::
-When xref:6.9@dse:securing:authorization-authentication/enable-unified-authentication.adoc[{dse-short} Unified Authentication is enabled], you must provide internal/LDAP authentication credentials or the Kerberos keytab filepath in the <<authentication-parameters,authentication parameters>>.
+When xref:6.9@dse:securing:authorization-authentication/enable-unified-authentication.adoc[{dse-short} Unified Authentication is enabled], you must provide internal/LDAP authentication credentials or the Kerberos keytab file path in the <<authentication-parameters,authentication parameters>>.
 The {product-short} supports {dse-short} role management with internal and LDAP schemes.
 +
 If the cluster has client encryption enabled, configure the <<ssl-encrypted-connections-for-dse,SSL keys and certificates in the {pulsar-short} connector>>.

@@ -16,7 +16,6 @@ bin/pulsar-admin sinks status --name **SINK_NAME**
 Replace `**SINK_NAME**` with the name of the sink that you want to check.
 For example, to check the status of a sink named `cass-sink-kv`, run `bin/pulsar-admin sinks status --name cass-sink-kv`.
 
-.Result
 [source,json]
 ----
 {
@@ -56,7 +55,6 @@ For example, to retrieve the configuration for a sink named `dse-sink-kv`, run `
 
 The configuration is returned in JSON format:
 
-.Result
 [source,json]
 ----
 {

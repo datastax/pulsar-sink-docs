@@ -88,7 +88,6 @@ mv installation_location/cassandra-enhanced-pulsar-sink-1.4.0.nar pulsar_home/co
 +
 Use a topic name in the format _keyspace_._table_ (for example, `pulsar_qs.pulsar_kv`), not a generic name like `example_topic`.
 +
-.qs.yml
 [source,yaml]
 ----
 configs:
