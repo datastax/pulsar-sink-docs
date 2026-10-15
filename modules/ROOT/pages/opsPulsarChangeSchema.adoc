@@ -18,7 +18,7 @@ Use these steps to write a new {pulsar-short} field to an existing table column:
 Connector processing fails if any mapped {pulsar-short} topic fields are missing from the record.
 If a field is missing or if the schema change is known ahead, remove or edit the topic-column mapping.
 
-. Use the `cqlsh` command `xref:dse-6.9@cql:cqlsh:cqlsh-commands/describe-table.adoc[DESCRIBE TABLE]` to verify that the field isn't mapped to a xref:dse-6.9@cql:data-modeling:methodology.adoc[primary key (PK) column].
+. Use the `cqlsh` command `xref:dse:cql:cqlsh/cqlsh-commands/describe-table.adoc[DESCRIBE TABLE]` to verify that the field isn't mapped to a xref:dse:architecture:data-model.adoc[primary key (PK) column].
 +
 If the field _is_ mapped to a PK column, you must map a different field to the column because PK columns cannot contain `NULL` values.
 PK columns must always have a mapping.
@@ -35,7 +35,7 @@ If the field isn't mapped to a PK column, you can remove or edit the mapping, ac
 
 You can add a column to your database table, and then synchronize the data from an existing field in a {pulsar-short} topic:
 
-. Use `xref:dse-6.9@cql:reference:cql-commands/alter-table.adoc[ALTER TABLE]` to add the column to the table in your database.
+. Use `xref:dse:cql:reference/cql-commands/alter-table.adoc[ALTER TABLE]` to add the column to the table in your database.
 
 . For {dse-short}, confirm that the schema change has been pushed to all nodes using `xref:6.9@dse:managing:tools/nodetool/describe-cluster.adoc[nodetool describecluster]`.
 +
@@ -54,7 +54,7 @@ You can only remove non-primary key columns because primary key columns must alw
 
 . Remove the column definition from your xref:ROOT:cfgRefPulsarDseTable.adoc[field-to-column mapping].
 
-. Use `xref:dse-6.9@cql:reference:cql-commands/alter-table.adoc[ALTER TABLE]` to remove the column from the table on your database.
+. Use `xref:dse:cql:reference/cql-commands/alter-table.adoc[ALTER TABLE]` to remove the column from the table on your database.
 
 . For {dse-short}, confirm that the schema change has been pushed to all nodes using `xref:6.9@dse:managing:tools/nodetool/describe-cluster.adoc[nodetool describecluster]`.
 +

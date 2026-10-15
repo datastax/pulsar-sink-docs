@@ -218,7 +218,7 @@ See `<<ttl,ttl>>`.
 
 now()::
 In the `<<mapping,mapping>>` parameter, you can use the optional `now()` function to set a column to the current timeuuid when a record is written to the database.
-The function gets the `TIMEUUID`, which is written to the table's xref:dse-6.9@cql:reference:uuid.adoc[UUID and timeuuid column].
+The function gets the `TIMEUUID`, which is written to the table's xref:dse:cql:reference/data-types.adoc#unique-identifier-types[UUID and timeuuid column].
 +
 You can use the `now()` function on one or more columns, for example:
 +
@@ -283,7 +283,7 @@ Allowed values include the following:
 +
 Default: `ISO_LOCAL_DATE`
 +
-For example, to write a {pulsar-short} string field like "2018-04-12" to a xref:dse-6.9@cql:reference:data-types.adoc#date-and-time-types[date] column, set `date: "yyyy-MM-dd"`.
+For example, to write a {pulsar-short} string field like "2018-04-12" to a xref:dse:cql:reference/date-time-formats.adoc[date] column, set `date: "yyyy-MM-dd"`.
 
 time::
 The temporal pattern to use for string-to-CQL time conversion.
@@ -294,7 +294,7 @@ Allowed values include the following:
 +
 Default: `ISO_LOCAL_TIME`
 +
-For example, to write a {pulsar-short} string field like "10:15:30" to a xref:dse-6.9@cql:reference:data-types.adoc#date-and-time-types[time] column, the default `ISO_LOCAL_TIME` correctly converts the time format.
+For example, to write a {pulsar-short} string field like "10:15:30" to a xref:dse:cql:reference/date-time-formats.adoc[time] column, the default `ISO_LOCAL_TIME` correctly converts the time format.
 
 [#unit]
 unit::
@@ -309,7 +309,7 @@ The time zone to use for temporal conversions that don't convey any explicit tim
 +
 Default: `UTC`
 +
-For example, to write a {pulsar-short} string field that contains values like `2018-03-09T17:12:32.584+01:00[Europe/Paris]` to a xref:dse-6.9@cql:reference:data-types.adoc#date-and-time-types[timestamp] column, set `timezone: ISO_ZONED_DATE_TIME`.
+For example, to write a {pulsar-short} string field that contains values like `2018-03-09T17:12:32.584+01:00[Europe/Paris]` to a xref:dse:cql:reference/date-time-formats.adoc[timestamp] column, set `timezone: ISO_ZONED_DATE_TIME`.
 
 locale::
 Locale to use for locale-sensitive conversions.

@@ -25,7 +25,7 @@ Make sure your connector configuration file includes a valid path to the databas
 
 == Writes fail because of mutation size
 
-The {pulsar-short} connector collects records to write to the database in CQL `xref:dse-6.9@cql:reference:cql-commands/batch.adoc[BATCH]` commands.
+The {pulsar-short} connector collects records to write to the database in CQL `xref:dse:cql:reference/cql-commands/batch.adoc[BATCH]` commands.
 Data insertions and deletions in the records are known as mutations.
 The {product-short} is implemented to use single-partition batches that are submitted as one mutation operation.
 
