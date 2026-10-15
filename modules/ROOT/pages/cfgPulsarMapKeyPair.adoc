@@ -7,7 +7,7 @@ Map the key and value to table columns.
 
 When mapping fields to columns, the following requirements apply:
 
-* The data in the {pulsar-short} field must be compatible with the mapped column's xref:dse-6.9@cql:reference:data-types.adoc[data type].
+* The data in the {pulsar-short} field must be compatible with the mapped column's xref:dse:cql:reference/data-types.adoc[data type].
 For example, a string field cannot map to a number column.
 
 * A {pulsar-short} field mapped to a table's primary key (PK) column must always contain data because primary key columns don't allow nulls.
