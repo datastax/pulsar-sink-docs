@@ -1,5 +1,4 @@
 = {pulsar-short} topic-to-table parameters
-:page-aliases: ROOT:cfgPulsarSettingRowLevelTtl.adoc, ROOT:cfgPulsarMapTopicTable.adoc, ROOT:cfgPulsarColumnWritetimeTimestamp.adoc, ROOT:cfgRefPulsarDates.adoc, ROOT:cfgPulsarNowFunction.adoc, ROOT:cfgPulsarRecordHeaderToTable.adoc
 
 The {product} writes messages from your {pulsar-short} topics to tables in your database using the mapping and topic properties set in your connector's configuration YAML file.
 

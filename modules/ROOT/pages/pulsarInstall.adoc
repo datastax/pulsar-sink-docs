@@ -1,6 +1,5 @@
 = Install {product}
 :navtitle: Install
-:page-aliases: ROOT:pulsarSizing.adoc
 
 Install {product} from the {company} distribution tar file using an account that has write access to the {pulsar-short} configuration directory.
 

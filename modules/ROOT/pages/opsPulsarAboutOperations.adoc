@@ -1,6 +1,5 @@
 = Operate and maintain the {product}
 :navtitle: {pulsar-short} connector administration
-:page-aliases: ROOT:opsPulsarConnectorStatus.adoc, ROOT:opsPulsarDisplayConfig.adoc, ROOT:opsPulsarUpdateConfig.adoc, ROOT:opsPulsarRestart.adoc
 
 To operate and maintain the {product}, use the https://pulsar.apache.org/docs/4.1.x/admin-api-tools/[{pulsar} administration tools], which include the pulsar-admin CLI and the {pulsar-short} admin API.
 
