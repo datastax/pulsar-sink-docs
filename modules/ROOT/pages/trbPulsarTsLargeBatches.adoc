@@ -1,6 +1,5 @@
 = Troubleshoot the {product}
 :navtitle: Troubleshoot the {product-short}
-:page-aliases: ROOT:trbPulsarTsLoadBalancing.adoc, trbPulsarTsRecordFailsToWriteToTable.adoc, trbPulsarTsRecordParsingFails.adoc
 
 This page describes some common issues that you might encounter when using the {product} and how to resolve them.
 

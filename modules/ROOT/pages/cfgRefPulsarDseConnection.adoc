@@ -1,6 +1,5 @@
 = Connect the {product}
 :navtitle: Connect
-:page-aliases: ROOT:cfgPulsarSettingJavaDriverConfig.adoc, ROOT:cfgRefPulsarAuthLdap.adoc, ROOT:cfgRefPulsarAuth.adoc, ROOT:cfgRefPulsarConnector.adoc, ROOT:cfgRefPulsarSsl.adoc
 
 To connect the {product} to your database cluster, you must configure authentication, encryption, and connection parameters.
 

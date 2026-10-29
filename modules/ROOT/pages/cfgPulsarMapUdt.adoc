@@ -1,5 +1,4 @@
 = Map to User Defined Types (UDTs)
-:page-aliases: ROOT:cfgPulsarSelectiveUpdateMapsAndUdts.adoc
 
 The {product} can process JSON, Avro, and complex types directly into xref:dse:cql:reference/data-types.adoc#udt[user-defined type (UDT)] columns.
 

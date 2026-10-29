@@ -1,5 +1,4 @@
 = Map messages that contain JSON
-:page-aliases: ROOT:cfgPulsarStringJson.adoc, ROOT:cfgPulsarJsonMessageSchema.adoc
 
 When the data format for the key or value is JSON, the {product} mapping can include individual fields in the JSON structure.
 
